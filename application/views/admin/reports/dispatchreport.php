@@ -6,10 +6,10 @@
 
     <div class="row page-titles">
         <div class="col-md-5 col-8 align-self-center">
-            <h3 class="text-themecolor m-b-0 m-t-0">Initial Stage</h3>
+            <h3 class="text-themecolor m-b-0 m-t-0">Disptach Order Report</h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">Initial Stage Data</li>
+                <li class="breadcrumb-item active">Disptach Order Report</li>
             </ol>
         </div>
         <div class="col-md-7 col-4 align-self-center">
@@ -63,7 +63,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    <form method="get" action="<?php echo base_url('admin/reports/initial') ?>"
+                    <form method="get" action="<?php echo base_url('admin/reports/dispatchreport') ?>"
                         class="form-horizontal" novalidate>
                         <div class="form-body">
                             <br>
@@ -102,7 +102,7 @@
 
 
 
-												<div class="col-md-4">
+											<div class="col-md-4">
                                                     <div class="form-group">
                                                         <h5>Store Name</h5>
                                                         <div class="controls">
@@ -122,6 +122,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
+		
+
+
 
 
                                                 <div class="col-md-2">
@@ -187,32 +190,39 @@
 
                                     <th>Store Name</th>
                                     <th>Order No.</th>
-                                    <th>Date</th>
-
                                     <th>Total Garment</th>
-                                    <th>Total Incomplete Garment</th>
-                                    <th>Primary Service</th>
+                                   <th>Primary Service</th>
+                                   
                                     <th>Due On</th>
-                                    <th>Status</th>
+                                   <th>Dispatch Time</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($challans as $challan){ ?>
+                                <?php
+	                                
+	                                
+	                                 foreach($challans as $challan){
+
+	                                
+	                                 ?>
                                 <tr>
 
                                     <td><?php echo $challan['Store_Name']; ?></td>
                                     <td><?php echo $challan['Order_No']; ?></td>
-                                    <td><span
-                                            style="display:none;"><?php echo strtotime($challan['Order_Date']);?></span><?php echo date("d-m-Y", strtotime($challan['Order_Date'])); ?>
+                                    <td><?php echo $challan['total_garment']; ?>
                                     </td>
-                                    <td><?php echo $challan['total_clothes']; ?></td>
-                                    <td><?php echo $challan['incomplete_cloth']; ?></td>
-
                                     <td><?php echo $challan['Primary_Service']; ?></td>
                                     <td><span
-                                            style="display:none;"><?php echo strtotime($challan['Due_on']);?></span><?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
+                                            style="display:none;"><?php echo strtotime($challan['Due_on']. ' - 1 days');?></span><?php echo date("d-m-Y", strtotime($challan['Due_on']. ' - 1 days')); ?>
                                     </td>
-                                    <td><?php if($challan['incomplete_cloth']==0){echo "<span class='btn btn-success'>Complete</span>";} else{echo "<span class='btn btn-danger'>Incomplete</span>";}?>
+                                   
+                                    <td><span
+                                            style="display:none;"><?php echo strtotime($challan['dispatch_time']);?></span>
+                                            <?php 
+	                                            echo date("d-m-Y H:i:s", strtotime($challan['dispatch_time']));
+	                                            //echo $challan['dispatch_time'];
+	                                             ?>
                                     </td>
                                 </tr>
                                 <?php } ?>

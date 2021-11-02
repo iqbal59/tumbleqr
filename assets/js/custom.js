@@ -40,15 +40,15 @@ $(document).ready(function() {
     return false;
   });
 
-  $("#print_ledger").click(function() {
-    $("#ledger_form").attr("action", $("#print_ledger_url").val());
-    $("#ledger_form").attr("target", "_blank");
-    $("#ledger_form").submit();
+  $("#showchallan").click(function() {
+    $("#challan_form").attr("action", $("#sendchallanurl").val());
+    $("#challan_form").attr("target", "_self");
+    $("#challan_form").submit();
   });
 
-  $("#show_ledger").click(function() {
-    $("#ledger_form").attr("action", $("#show_ledger_url").val());
-    $("#ledger_form").attr("target", "_self");
-    $("#ledger_form").submit();
+  $("#sendchallan").click(function() {
+    $("#challan_form").attr("action", $("#sendchallanurlmail").val());
+    $("#challan_form").attr("target", "_self");
+    $("#challan_form").submit();
   });
 });

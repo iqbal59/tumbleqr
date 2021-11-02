@@ -6,10 +6,10 @@
 
     <div class="row page-titles">
         <div class="col-md-5 col-8 align-self-center">
-            <h3 class="text-themecolor m-b-0 m-t-0">Initial Stage</h3>
+            <h3 class="text-themecolor m-b-0 m-t-0">Send Challan</h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">Initial Stage Data</li>
+                <li class="breadcrumb-item active">Send Challan</li>
             </ol>
         </div>
         <div class="col-md-7 col-4 align-self-center">
@@ -63,12 +63,13 @@
             <div class="card">
 
                 <div class="card-body">
-                    <form method="get" action="<?php echo base_url('admin/reports/initial') ?>"
+                    <form method="post" id="challan_form" action="<?php echo base_url('admin/reports/sendchallan') ?>"
                         class="form-horizontal" novalidate>
                         <div class="form-body">
                             <br>
 
-
+							<input type="hidden" name="sendchallanurl" id="sendchallanurl" value="<?php echo base_url('admin/reports/sendchallan');?>"/>
+							<input type="hidden" name="sendchallanurlmail" id="sendchallanurlmail" value="<?php echo base_url('admin/reports/sendchallanmail');?>"/>
 
                             <div class="row">
                                 <div class="col-md-12">
@@ -78,31 +79,11 @@
 
 
                                             <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <h5>Enter From Date <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="date" name="s_from_date" class="form-control"
-                                                                placeholder="MM/DD/YYYY" 
-                                                                value="<?php if(!empty($condition)){echo $condition['from_date'];} ?>">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <h5>Enter To Date <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="date" name="s_to_date" class="form-control"
-                                                                placeholder="MM/DD/YYYY" 
-                                                                value="<?php if(!empty($condition)){echo $condition['to_date'];}?>">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                              
 
 
 
-
-												<div class="col-md-4">
+											<div class="col-md-4">
                                                     <div class="form-group">
                                                         <h5>Store Name</h5>
                                                         <div class="controls">
@@ -122,16 +103,33 @@
                                                         </div>
                                                     </div>
                                                 </div>
+		
 
 
-                                                <div class="col-md-2">
+
+
+                                                <div class="col-md-1">
                                                     <div class="form-group">
-                                                        <label class="control-label text-right col-md-3"></label>
+                                                        <label class="control-label text-left col-md-3"></label>
                                                         <div class="controls">
-                                                            <button type="submit" class="btn btn-success">Show</button>
+                                                            <button type="button" id="showchallan" class="btn btn-success">Show</button>
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
+                                                
+                                                <div class="col-md-1">
+                                                    <div class="form-group">
+                                                        <label class="control-label text-left col-md-3"></label>
+                                                        <div class="controls">
+                                                            <button type="button" id="sendchallan" class="btn btn-success">Send Challan</button>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
 
                                                 <!--/span-->
                                             </div>
@@ -187,32 +185,51 @@
 
                                     <th>Store Name</th>
                                     <th>Order No.</th>
-                                    <th>Date</th>
-
-                                    <th>Total Garment</th>
-                                    <th>Total Incomplete Garment</th>
-                                    <th>Primary Service</th>
+                                    <th>Cloth Count</th>
+                                   
+                                    
                                     <th>Due On</th>
-                                    <th>Status</th>
+                                    <th>Dispatch Date</th>
+                                    <th>Dispatch Shift</th>
+                                    
+                                    
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($challans as $challan){ ?>
+                                <?php foreach($challans as $challan){
+/*
+	                                if($challan['total_garment']!=$challan['psc'])
+	                                continue;
+*/
+	                                
+	                                 ?>
                                 <tr>
 
                                     <td><?php echo $challan['Store_Name']; ?></td>
-                                    <td><?php echo $challan['Order_No']; ?></td>
-                                    <td><span
-                                            style="display:none;"><?php echo strtotime($challan['Order_Date']);?></span><?php echo date("d-m-Y", strtotime($challan['Order_Date'])); ?>
+                                    <td><a href="<?php echo base_url('admin/reports/packingdetail?order_no='.$challan['Order_No'].'&store_id='.$challan['store_id'])?>" target="_blank"><?php echo $challan['Order_No']; ?></a> </td>
+                                    <td><?php echo $challan['total_garment']; ?>
                                     </td>
-                                    <td><?php echo $challan['total_clothes']; ?></td>
-                                    <td><?php echo $challan['incomplete_cloth']; ?></td>
-
-                                    <td><?php echo $challan['Primary_Service']; ?></td>
+                                   
+                                    
+                                   
                                     <td><span
                                             style="display:none;"><?php echo strtotime($challan['Due_on']);?></span><?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
                                     </td>
-                                    <td><?php if($challan['incomplete_cloth']==0){echo "<span class='btn btn-success'>Complete</span>";} else{echo "<span class='btn btn-danger'>Incomplete</span>";}?>
+                                    <td> <span
+                                            style="display:none;"><?php echo strtotime($challan['dispatch_time']);?></span><?php echo date("d-m-Y", strtotime($challan['dispatch_time'])); ?>
+                                    </td>
+                                    <td>
+	                                    
+	                                    <?php 
+											$hr_no=date("H", strtotime($challan['dispatch_time']));
+											
+											if($hr_no <=13)
+											echo "Shift 1";
+											else
+											echo "Shift 2";
+		                                    
+	                                    ?>
+	                                    
                                     </td>
                                 </tr>
                                 <?php } ?>

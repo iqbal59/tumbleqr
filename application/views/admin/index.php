@@ -15,10 +15,14 @@
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- chartist CSS -->
+<!--
     <link href="<?php echo base_url() ?>assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+-->
+<!--
     <link href="<?php echo base_url() ?>assets/plugins/chartist-plugin-tooltip-master/dist/
     chartist-plugin-tooltip.css" rel="stylesheet">
+-->
     <link href="<?php echo base_url() ?>assets/plugins/css-chart/css-chart.css" rel="stylesheet">
     <!--This page css - Morris CSS -->
     <link href="<?php echo base_url() ?>assets/plugins/morrisjs/morris.css" rel="stylesheet">
@@ -110,8 +114,10 @@
                         <b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
+<!--
                             <img src="<?php echo base_url() ?>assets/images/logo-icon.png" alt="homepage"
                                 class="dark-logo" />
+-->
                             <!-- Light Logo icon -->
                             <img src="<?php echo base_url() ?>assets/images/logo-light-icon.png" alt="homepage"
                                 class="light-logo" />
@@ -120,8 +126,10 @@
                         <!-- Logo text -->
                         <span>
                             <!-- dark Logo text -->
+<!--
                             <img src="<?php echo base_url() ?>assets/images/logo-text.png" alt="homepage"
                                 class="dark-logo" />
+-->
                             <!-- Light Logo text -->
                             <img src="<?php echo base_url() ?>assets/images/logo-light-text.png" class="light-logo"
                                 alt="homepage" />
@@ -478,7 +486,181 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="nav-small-cap"></li>
+                        
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Initial Stage</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+
+                                <li><a href="<?php echo base_url('admin/reports/initial') ?>"><i
+                                            class="fa fa-angle-right"></i> Initial Stage Report</a></li>
+								
+<li><a href="<?php echo base_url('admin/reports/initialcomplete') ?>"><i
+                                            class="fa fa-angle-right"></i> Complete</a></li>
+                                            
+                               
+<li><a href="<?php echo base_url('admin/reports/initialtotal') ?>"><i
+                                            class="fa fa-angle-right"></i> Total Report</a></li>
+
+<li><a href="<?php echo base_url('admin/reports/initialhourly') ?>"><i
+                                            class="fa fa-angle-right"></i> Report Hourly</a></li>
+
+
+                            </ul>
+                        </li>
+
+
+
+ <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Spotting Stage</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+
+								
+<li><a href="<?php echo base_url('admin/reports/spotcomplete') ?>"><i
+                                            class="fa fa-angle-right"></i> Complete</a></li>
+                                            
+                               
+<li><a href="<?php echo base_url('admin/reports/spottotal') ?>"><i
+                                            class="fa fa-angle-right"></i> Total Report</a></li>
+
+<li><a href="<?php echo base_url('admin/reports/spothourly') ?>"><i
+                                            class="fa fa-angle-right"></i> Report Hourly</a></li>
+
+
+                            </ul>
+                        </li>
+
+
+
+
+						<li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Quality Checking</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+
+                                                              
+								<li><a href="<?php echo base_url('admin/reports/qccomplete') ?>"><i
+                                            class="fa fa-angle-right"></i> Complete</a></li>
+                                            
+                               
+<li><a href="<?php echo base_url('admin/reports/qcreport') ?>"><i
+                                            class="fa fa-angle-right"></i> Quality Report</a></li>
+
+<li><a href="<?php echo base_url('admin/reports/qcreporthourly') ?>"><i
+                                            class="fa fa-angle-right"></i> Quality Report Hourly</a></li>
+                                            
+                               
+
+
+                            </ul>
+                        </li>
+
+
+
+
+						<li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Packaging</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+
+                                                                          
+                                  <li><a href="<?php echo base_url('admin/reports/packagingcomplete') ?>"><i
+                                            class="fa fa-angle-right"></i> Complete</a></li>          
+                                            
+                                            
+                                   <li><a href="<?php echo base_url('admin/reports/packagingall') ?>"><i
+                                            class="fa fa-angle-right"></i>Total Report</a></li>
+                               
+								<li><a href="<?php echo base_url('admin/reports/packaging') ?>"><i
+                                            class="fa fa-angle-right"></i> Packing Hourly</a></li>
+          
+
+
+
+                            </ul>
+                        </li>
+
+
+							<li>
+                            <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/pendingreport') ?>"
+                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span
+                                    class="hide-menu">Pending Garment Report</span></a>
+                        </li>
+
+
+<li>
+                            <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/garmentreport') ?>"
+                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span
+                                    class="hide-menu">Garment Report</span></a>
+                        </li>
+
+							<li>
+                            <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/pendingorderreport') ?>"
+                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span
+                                    class="hide-menu">Order Status</span></a>
+                        </li>
+
+
+
+							<li>
+                            <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/printpackinglabel') ?>"
+                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span
+                                    class="hide-menu">Print Packing Label</span></a>
+									</li>
+
+
+						<li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Dispatch</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+
+                                                                          
+                                  <li><a href="<?php echo base_url('admin/reports/readytodispatch') ?>"><i
+                                            class="fa fa-angle-right"></i> Ready to Dispatch</a></li>     
+                                            
+                                            <li><a href="<?php echo base_url('admin/reports/otherreadytodispatch') ?>"><i
+                                            class="fa fa-angle-right"></i> Other Ready to Dispatch</a></li>               
+                                            
+                                            
+                                   <li><a href="<?php echo base_url('admin/reports/dispatchreport') ?>"><i
+                                            class="fa fa-angle-right"></i> Dispatch Order</a></li>
+                               
+								 <li><a href="<?php echo base_url('admin/reports/sendchallan') ?>"><i
+                                            class="fa fa-angle-right"></i> Send Challan</a></li>
+
+
+
+                            </ul>
+                        </li>
+
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Import</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+
+                                <li><a href="<?php echo base_url('admin/import/importchallandata') ?>"><i
+                                            class="fa fa-angle-right"></i> Import Challan Data</a></li>
+
+                                            <li><a href="<?php echo base_url('admin/import/importstorechallandata') ?>"><i
+                                            class="fa fa-angle-right"></i> Import Store Challan Data</a></li>
+
+                                <li><a href="<?php echo base_url('admin/import/challandata') ?>"><i
+                                            class="fa fa-angle-right"></i> Challan data</a></li>
+
+
+                            </ul>
+                        </li>
+
+
+
                         <li>
                             <a class="waves-effect waves-dark" href="<?php echo base_url('admin/dashboard') ?>"
                                 aria-expanded="false"><i class="mdi mdi-gauge"></i><span
@@ -497,7 +679,7 @@
                                 <li><a href="<?php echo base_url('admin/user/power') ?>"><i
                                             class="fa fa-angle-right"></i> Add User Power</a></li>
                                 <?php else: ?>
-                                <?php if(check_power(1)):?>
+                                <?php if (check_power(1)):?>
                                 <li><a href="<?php echo base_url('admin/user') ?>"><i class="fa fa-angle-right"></i> Add
                                         User </a></li>
                                 <?php endif; ?>
@@ -524,38 +706,6 @@
 
 
 
-
-
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Import</span></a>
-                            <ul aria-expanded="false" class="collapse">
-
-
-                                <li><a href="<?php echo base_url('admin/import/importchallandata') ?>"><i
-                                            class="fa fa-angle-right"></i> Import Challan Data</a></li>
-
-                                <li><a href="<?php echo base_url('admin/import/challandata') ?>"><i
-                                            class="fa fa-angle-right"></i> Challan data</a></li>
-
-
-                            </ul>
-                        </li>
-
-
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Reports</span></a>
-                            <ul aria-expanded="false" class="collapse">
-
-
-                                <li><a href="<?php echo base_url('admin/reports/initial') ?>"><i
-                                            class="fa fa-angle-right"></i> Initial Stage</a></li>
-
-
-
-                            </ul>
-                        </li>
 
 
 
@@ -654,15 +804,19 @@
     <!-- This page plugins -->
 
     <!-- chartist chart -->
+<!--
     <script src="<?php echo base_url() ?>assets/plugins/chartist-js/dist/chartist.min.js"></script>
     <script
         src="<?php echo base_url() ?>assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js">
     </script>
-    <script src="<?php echo base_url() ?>assets/plugins/echarts/echarts-all.js"></script>
+-->
+<!--     <script src="<?php echo base_url() ?>assets/plugins/echarts/echarts-all.js"></script> -->
 
     <!-- Vector map JavaScript -->
+<!--
     <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+-->
     <!-- Calendar JavaScript -->
     <script src="<?php echo base_url() ?>assets/plugins/moment/moment.js"></script>
     <script src='<?php echo base_url() ?>assets/plugins/calendar/dist/fullcalendar.min.js'></script>
@@ -671,7 +825,7 @@
 
     <!-- sparkline chart -->
     <script src="<?php echo base_url() ?>assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/js/dashboard4.js"></script>
+<!--     <script src="<?php echo base_url() ?>assets/js/dashboard4.js"></script> -->
 
     <!-- Sweet-Alert  -->
     <script src="<?php echo base_url() ?>assets/plugins/sweetalert/sweetalert.min.js"></script>
@@ -687,6 +841,7 @@
     <script src="<?php echo base_url() ?>assets/plugins/gmaps/jquery.gmaps.js"></script> -->
 
     <!-- Vector map JavaScript -->
+<!--
     <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-in-mill.js"></script>
@@ -694,20 +849,38 @@
     <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-uk-mill-en.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-au-mill.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/vectormap/jvectormap.custom.js"></script>
+-->
 
     <!--Morris JavaScript -->
+<!--
     <script src="<?php echo base_url() ?>assets/plugins/raphael/raphael-min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/morrisjs/morris.js"></script>
     <script src="<?php echo base_url() ?>assets/js/morris-data.js"></script>
+-->
     <!-- Chart JS -->
 
+<!--
     <script src="<?php echo base_url() ?>assets/plugins/Chart.js/chartjs.init.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/Chart.js/Chart.min.js"></script>
+-->
 
     <!-- Invoice print JS -->
     <script src="<?php echo base_url() ?>assets/js/jquery.PrintArea.js" type="text/JavaScript"></script>
     <script>
     $(document).ready(function() {
+	    
+	    $('#barcode-label').keyup(function(){
+		    
+		    
+		    
+		    if($(this).val().substr($(this).val().length-1)=='*' && $(this).val().length > 1  ){
+			$('#print_label').submit();
+      		}
+		    
+	    });
+	    
+	    
+	    
         $("#print").click(function() {
             var mode = 'iframe'; //popup
             var close = mode == "popup";
@@ -725,13 +898,13 @@
 
     <!-- This is data table js -->
     <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="http://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-    <script src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
     <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script> -->
-    <script src="http://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-    <script src="http://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-    <script src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-    <script src="http://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
     <script>
     $(document).ready(function() {
@@ -828,13 +1001,44 @@
     <script src="<?php echo base_url() ?>assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"
         type="text/javascript"></script>
-    <script type="text/javascript" src="../assets/plugins/multiselect/js/jquery.multi-select.js"></script>
+<!--     <script type="text/javascript" src="../assets/plugins/multiselect/js/jquery.multi-select.js"></script> -->
     <script>
+	    
+	    function clotheDetails(){
+  var id = this.id;
+  var split_id = id.split('_');
+  var orderId = split_id[1];
+  var storeId = split_id[2];
+
+  var tooltipText = "";
+  $.ajax({
+   url: 'https://centuryfasteners.in/tumbleqr/admin/reports/getCloths',
+   type: 'post',
+   async: false,
+   data: {orderId:orderId, storeId:storeId},
+   success: function(response){
+     tooltipText = response;
+   }
+  });
+  return tooltipText;
+}
+
+
     jQuery(document).ready(function() {
+	    
+	   	    
+	    //ToolTip
 
-        //summernone text editor
-        jQuery(document).ready(function() {
 
+			$('.tooltip-cloth').tooltip({
+			   delay: 500,
+			   placement: "bottom",
+			   title: "Garment 1",
+			   html: true
+			  }); 
+	    
+
+      
             $('#store_id_voucher').select2({
                 placeholder: 'Select Store ID'
             });
@@ -850,7 +1054,7 @@
                 airMode: true
             });
 
-        });
+     
 
         // Switchery
         var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
@@ -897,10 +1101,13 @@
             postfix: "post"
         });
         // For multiselect
+/*
         $('#pre-selected-options').multiSelect();
         $('#optgroup').multiSelect({
             selectableOptgroup: true
         });
+*/
+/*
         $('#public-methods').multiSelect();
         $('#select-all').click(function() {
             $('#public-methods').multiSelect('select_all');
@@ -922,6 +1129,8 @@
             });
             return false;
         });
+*/
+/*
         $(".ajax").select2({
             ajax: {
                 url: "https://api.github.com/search/repositories",
@@ -955,6 +1164,7 @@
             templateResult: formatRepo, // omitted for brevity, see the source of this page
             templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
         });
+*/
     });
     </script>
     <!-- End form js -->

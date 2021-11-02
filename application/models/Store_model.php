@@ -41,22 +41,47 @@ class Store_model extends CI_Model
      */
     function get_store_all_royalties($id)
     {
-        $query="SELECT name, code, royality, ifnull(store_royalty, royality) as store_royalty, services.id FROM services left join (SELECT * from royalties WHERE royalties.store_id='$id') as temp on (services.id=temp.service_id)";
+        $query="SELECT name, code, royality, ifnull(store_royalty, royality) as store_royalty, services.id FROM services left join (SELECT * from royalties WHERE royalties.store_id='$id') as temp on (services.id=temp.service_id) ";
         return $this->db->query($query)->result_array();
     }
      
 
+/*****Get Active Store Id***/
+
+
+function get_all_active_stores()
+    {
+       return $this->db->query("select store_id from tbl_store")
+        ->result_array();
+        
+    }
 
     /*
      * Get all stores
      */
     function get_all_stores()
     {
-       return $this->db->query("select store_id, Store_Name from tbl_challan_data group by store_id")
+       return $this->db->query("select store_id, Store_Name from tbl_challan_data group by store_id order by Store_Name")
+        ->result_array();
+        
+    }
+    
+    function get_all_stations()
+    {
+       return $this->db->query("select station_id from tbl_spot group by station_id order by station_id")
         ->result_array();
         
     }
         
+        
+    function get_all_service()
+    {
+       return $this->db->query("select Primary_Service from tbl_challan_data group by Primary_Service order by Primary_Service")
+        ->result_array();
+        
+    }
+
+   
     /*
      * function to add new store
      */

@@ -273,6 +273,7 @@ $(function () {
 // ============================================================== 
 // Gauge chart option
 // ============================================================== 
+/*
 var gaugeChart = echarts.init(document.getElementById('gauge-chart'));
 option = {
     tooltip: {
@@ -360,3 +361,4 @@ gaugeChart.setOption(option, true), $(function () {
     }
     $(window).on("resize", resize), $(".sidebartoggler").on("click", resize)
 });
+*/

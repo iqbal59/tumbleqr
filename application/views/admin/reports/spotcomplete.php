@@ -6,10 +6,10 @@
 
     <div class="row page-titles">
         <div class="col-md-5 col-8 align-self-center">
-            <h3 class="text-themecolor m-b-0 m-t-0">Initial Stage</h3>
+            <h3 class="text-themecolor m-b-0 m-t-0">Spot Complete Report</h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">Initial Stage Data</li>
+                <li class="breadcrumb-item active">Spot Complete Report</li>
             </ol>
         </div>
         <div class="col-md-7 col-4 align-self-center">
@@ -63,7 +63,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    <form method="get" action="<?php echo base_url('admin/reports/initial') ?>"
+                    <form method="get" action="<?php echo base_url('admin/reports/spotcomplete') ?>"
                         class="form-horizontal" novalidate>
                         <div class="form-body">
                             <br>
@@ -99,10 +99,7 @@
                                                     </div>
                                                 </div>
 
-
-
-
-												<div class="col-md-4">
+<div class="col-md-3">
                                                     <div class="form-group">
                                                         <h5>Store Name</h5>
                                                         <div class="controls">
@@ -122,6 +119,30 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+
+
+<div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <h5>Services</h5>
+                                                        <div class="controls">
+                                                           <select  name="services" class="form-control">
+	                                                           <option value="">--Select--</option>
+	                                                           <?php
+		                                                           if(!empty($services)){
+			                                                           foreach($services as $service){
+				                                                           $selected='';
+				                                                            if(!empty($condition)){if($condition['services']==$service['Primary_Service']) {$selected="selected";}}
+				                                                           
+				                                                           echo '<option value="'.$service['Primary_Service'].'"   '.$selected.'>'.$service['Primary_Service'].'</option>';
+			                                                           }
+		                                                           }
+		                                                           ?>
+                                                           </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
 
 
                                                 <div class="col-md-2">
@@ -187,13 +208,15 @@
 
                                     <th>Store Name</th>
                                     <th>Order No.</th>
-                                    <th>Date</th>
-
-                                    <th>Total Garment</th>
-                                    <th>Total Incomplete Garment</th>
+                                    <th>Order Date</th>
+                                    <th>Cloth No.</th>
+                                    <th>Garment</th>
+                                    <th>Station Id</th>
+                                  
                                     <th>Primary Service</th>
                                     <th>Due On</th>
-                                    <th>Status</th>
+                                    <th>Scan Time</th>
+                                  
                                 </tr>
                             </thead>
                             <tbody>
@@ -205,15 +228,18 @@
                                     <td><span
                                             style="display:none;"><?php echo strtotime($challan['Order_Date']);?></span><?php echo date("d-m-Y", strtotime($challan['Order_Date'])); ?>
                                     </td>
-                                    <td><?php echo $challan['total_clothes']; ?></td>
-                                    <td><?php echo $challan['incomplete_cloth']; ?></td>
-
+                                    <td><?php echo $challan['Barcode']; ?></td>
+                                    <td><?php echo $challan['Sub_Garment']; ?></td>
+                                     
+									<td><?php echo $challan['station_id']; ?></td>
                                     <td><?php echo $challan['Primary_Service']; ?></td>
                                     <td><span
                                             style="display:none;"><?php echo strtotime($challan['Due_on']);?></span><?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
                                     </td>
-                                    <td><?php if($challan['incomplete_cloth']==0){echo "<span class='btn btn-success'>Complete</span>";} else{echo "<span class='btn btn-danger'>Incomplete</span>";}?>
+                                    <td><span
+                                            style="display:none;"><?php echo strtotime($challan['spot_time']);?></span><?php echo $challan['spot_time']; ?>
                                     </td>
+                                   
                                 </tr>
                                 <?php } ?>
                             </tbody>

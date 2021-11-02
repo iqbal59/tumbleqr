@@ -6,10 +6,10 @@
 
     <div class="row page-titles">
         <div class="col-md-5 col-8 align-self-center">
-            <h3 class="text-themecolor m-b-0 m-t-0">Initial Stage</h3>
+            <h3 class="text-themecolor m-b-0 m-t-0">Spotting Total Report </h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">Initial Stage Data</li>
+                <li class="breadcrumb-item active">Spotting Total Report</li>
             </ol>
         </div>
         <div class="col-md-7 col-4 align-self-center">
@@ -63,7 +63,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    <form method="get" action="<?php echo base_url('admin/reports/initial') ?>"
+                    <form method="get" action="<?php echo base_url('admin/reports/spottotal') ?>"
                         class="form-horizontal" novalidate>
                         <div class="form-body">
                             <br>
@@ -80,7 +80,7 @@
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <h5>Enter From Date <span class="text-danger">*</span></h5>
+                                                        <h5>From Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="date" name="s_from_date" class="form-control"
                                                                 placeholder="MM/DD/YYYY" 
@@ -90,7 +90,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <h5>Enter To Date <span class="text-danger">*</span></h5>
+                                                        <h5>To Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="date" name="s_to_date" class="form-control"
                                                                 placeholder="MM/DD/YYYY" 
@@ -99,22 +99,19 @@
                                                     </div>
                                                 </div>
 
-
-
-
-												<div class="col-md-4">
+<div class="col-md-3">
                                                     <div class="form-group">
-                                                        <h5>Store Name</h5>
+                                                        <h5>Station Id</h5>
                                                         <div class="controls">
                                                            <select  name="store_id" class="form-control">
 	                                                           <option value="">--Select--</option>
 	                                                           <?php
-		                                                           if(!empty($stores)){
-			                                                           foreach($stores as $store){
+		                                                           if(!empty($spot_stations)){
+			                                                           foreach($spot_stations as $store){
 				                                                           $selected='';
-				                                                            if(!empty($condition)){if($condition['store_id']==$store['store_id']) {$selected="selected";}}
+				                                                            if(!empty($condition)){if($condition['store_id']==$store['station_id']) {$selected="selected";}}
 				                                                           
-				                                                           echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
+				                                                           echo '<option value="'.$store['station_id'].'"   '.$selected.'>'.$store['station_id'].'</option>';
 			                                                           }
 		                                                           }
 		                                                           ?>
@@ -122,6 +119,29 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+
+<div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <h5>Service Type</h5>
+                                                        <div class="controls">
+                                                           <select  name="Primary_Service" class="form-control">
+	                                                           <option value="">--Select--</option>
+	                                                           <?php
+		                                                           if(!empty($services)){
+			                                                           foreach($services as $service){
+				                                                           $selected='';
+				                                                            if(!empty($condition)){if($condition['Primary_Service']==$service['Primary_Service']) {$selected="selected";}}
+				                                                           
+				                                                           echo '<option value="'.$service['Primary_Service'].'"   '.$selected.'>'.$service['Primary_Service'].'</option>';
+			                                                           }
+		                                                           }
+		                                                           ?>
+                                                           </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
 
 
                                                 <div class="col-md-2">
@@ -184,36 +204,38 @@
                             cellspacing="0" width="100%">
                             <thead>
                                 <tr>
+	                                
+	                                
+	                                
+									<th>Date</th>
 
-                                    <th>Store Name</th>
-                                    <th>Order No.</th>
-                                    <th>Date</th>
-
-                                    <th>Total Garment</th>
-                                    <th>Total Incomplete Garment</th>
-                                    <th>Primary Service</th>
-                                    <th>Due On</th>
-                                    <th>Status</th>
-                                </tr>
+                                    <th>Total</th>
+                                    <?php 
+	                                    
+	                                    foreach($stations as $station){
+		                                    echo "<th>".$station['station_id']."</th>";
+	                                    }
+                                    ?>
+                                                                    </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($challans as $challan){ ?>
+                                <?php 
+	                                
+	                                
+	                                foreach($challans as $challan){ ?>
                                 <tr>
+									<td><span
+                                            style="display:none;"><?php echo strtotime($challan['date']);?></span><?php echo $challan['date']; ?></td>
 
-                                    <td><?php echo $challan['Store_Name']; ?></td>
-                                    <td><?php echo $challan['Order_No']; ?></td>
-                                    <td><span
-                                            style="display:none;"><?php echo strtotime($challan['Order_Date']);?></span><?php echo date("d-m-Y", strtotime($challan['Order_Date'])); ?>
-                                    </td>
-                                    <td><?php echo $challan['total_clothes']; ?></td>
-                                    <td><?php echo $challan['incomplete_cloth']; ?></td>
+											<td><?php echo $challan['total']; ?></td>
+                                    
+                                   <?php 
+	                                    
+	                                    foreach($stations as $station){
+		                                    echo "<td>".$challan[$station['station_id']]."</td>";
+	                                    }
+                                    ?>
 
-                                    <td><?php echo $challan['Primary_Service']; ?></td>
-                                    <td><span
-                                            style="display:none;"><?php echo strtotime($challan['Due_on']);?></span><?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
-                                    </td>
-                                    <td><?php if($challan['incomplete_cloth']==0){echo "<span class='btn btn-success'>Complete</span>";} else{echo "<span class='btn btn-danger'>Incomplete</span>";}?>
-                                    </td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
