@@ -213,8 +213,7 @@
                             </thead>
                             <tbody>
                                 <?php foreach($challans as $challan){
-	                                if($challan['total_garment']!=$challan['psc'])
-	                                continue;
+	                               
 	                                
 	                                 ?>
                                 <tr>
