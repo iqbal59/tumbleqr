@@ -199,67 +199,40 @@
                             cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th><strong>Barcode</strong></th>
-                                    <th><strong>Order Date</strong></th>
-                                    <th><strong>Factory Due Date</strong></th>
-                                    <th><strong>Garment</strong></th>
-                                    <th><strong>Current Status</strong></th>
-                                    <th><strong>Incoming</strong></th>
-                                    <th><strong>Spot</strong></th>
-                                    <th><strong>QC</strong></th>
-                                    <th><strong>Packing</strong></th>
-                                    <th><strong>Dispatch</strong></th>
 
+                                    <th>Store Name</th>
+                                    <th>Order No.</th>
+                                    <th>Total Garment</th>
+
+                                    <th>Packing Done</th>
+                                    <th>Primary Service</th>
+                                    <th>Due On</th>
 
 
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach($challans as $challan){
-	                                
+	                                if($challan['total_garment']!=$challan['psc'])
+	                                continue;
 	                                
 	                                 ?>
                                 <tr>
 
-                                    <td><?php echo $challan['Barcode']; ?>
-                                    <td><?php echo date('d-m-Y', strtotime($challan['Order_Date'])); ?>
-                                    <td><?php echo date('d-m-Y', strtotime($challan['Due_on'].' -1 day')); ?>
-                                    <td><?php echo $challan['Sub_Garment']; ?>
+                                    <td><?php echo $challan['Store_Name']; ?></td>
+                                    <td><a href="<?php echo base_url('admin/reports/packingdetail?order_no='.$challan['Order_No'].'&store_id='.$challan['store_id'])?>"
+                                            target="_blank"><?php echo $challan['Order_No']; ?></a> </td>
+                                    <td><?php echo $challan['total_garment']; ?>
                                     </td>
-                                    <td><?php
-	                                     
-	                                    if($challan['dispatch_status']==1)
-	                                    echo "Dispatched";
-	                                    else if($challan['packaging_stage']==1)
-	                                    echo "Ready for dispatch";
-	                                    else if($challan['qc_stage']==1 && ($challan['qc_status']=='Pass' || $challan['qc_status']=='Sorry'))
-	                                    echo "Ready for packing";
-	                                    else if($challan['qc_stage']==1 && $challan['qc_status']=='Fail')
-	                                    echo "Qc done and Fail";
-	                                    else if($challan['initial_stage']==1)
-	                                     echo "Inprocess or ready for QC";
-	                                    else
-	                                    echo "Not Process";
-	                                    
-	                                    
-	                                    
-                                    ?></td>
 
-
-                                    <td><?php if(!empty($challan['initial_time'])){echo date('d-m-Y H:i:s', strtotime($challan['initial_time']. " + 330 mins")); }?>
-                                    </td>
-                                    <td><?php if(!empty($challan['spot_time'])){echo date('d-m-Y H:i:s', strtotime($challan['spot_time']. " + 330 mins"));  }?>
-                                    </td>
-                                    <td><?php if(!empty($challan['qc_time'])){echo date('d-m-Y H:i:s', strtotime($challan['qc_time']. " + 330 mins")); echo " ".$challan['qc_status'];}?>
-                                    </td>
-                                    <td><?php if(!empty($challan['packaging_time'])){echo date('d-m-Y H:i:s', strtotime($challan['packaging_time']. " + 330 mins")); }?>
-                                    </td>
-                                    <td><?php if(!empty($challan['dispatch_time'])){echo date('d-m-Y H:i:s', strtotime($challan['dispatch_time']. " + 330 mins")); }?>
+                                    <td><?php echo $challan['psc']; ?></td>
+                                    <td><?php echo $challan['Primary_Service']; ?></td>
+                                    <td><span
+                                            style="display:none;"><?php echo strtotime($challan['Due_on']. ' - 1 days');?></span><?php echo date("d-m-Y", strtotime($challan['Due_on']. ' - 1 days')); ?>
                                     </td>
 
                                 </tr>
                                 <?php } ?>
-                            </tbody>
                         </table>
 
 

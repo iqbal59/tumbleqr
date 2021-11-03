@@ -699,16 +699,19 @@ class Common_model extends CI_Model
         if (!empty($param['order_priority'])) {
             $search_query.=" and order_priority='".$param['order_priority']."'";
         }
+        else
+        {
+             $search_query.=" and order_priority != 0";
+        }
 
         $search_query.=" and dispatch_status=0";
         
         
-        if ($search_query) {
-            $sql="SELECT tbl_challan_data.*, tbl_spot.spot_time, tbl_spot.station_id FROM `tbl_challan_data` left join tbl_spot on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query";
+       
+            $sql="SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, Due_on, Primary_Service  FROM `tbl_challan_data` WHERE 1  $search_query group by store_id, Order_No ";
             $query = $this->db->query($sql)->result_array();
             return $query;
-        }
-        return;
+       
     }
 
     public function readytodispatch($param)
