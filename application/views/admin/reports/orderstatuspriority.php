@@ -220,7 +220,7 @@
                                 <tr>
 
                                     <td><?php echo $challan['Store_Name']; ?></td>
-                                    <td><a href="<?php echo base_url('admin/reports/packingdetail?order_no='.$challan['Order_No'].'&store_id='.$challan['store_id'])?>"
+                                    <td><a href="<?php echo base_url('admin/reports/pendingorderreport?order_no='.$challan['Order_No'].'&store_id='.$challan['store_id'])?>"
                                             target="_blank"><?php echo $challan['Order_No']; ?></a> </td>
 
                                     <td><?php 
