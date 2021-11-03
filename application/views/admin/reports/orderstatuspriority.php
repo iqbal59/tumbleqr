@@ -202,6 +202,7 @@
 
                                     <th>Store Name</th>
                                     <th>Order No.</th>
+                                    <th>Order Priority</th>
                                     <th>Total Garment</th>
 
                                     <th>Packing Done</th>
@@ -221,6 +222,13 @@
                                     <td><?php echo $challan['Store_Name']; ?></td>
                                     <td><a href="<?php echo base_url('admin/reports/packingdetail?order_no='.$challan['Order_No'].'&store_id='.$challan['store_id'])?>"
                                             target="_blank"><?php echo $challan['Order_No']; ?></a> </td>
+
+                                    <td><?php 
+                                    if($challan['order_priority']==1)
+                                    echo "Express";
+                                    if($challan['order_priority']==2)
+                                    echo "Urgent";
+                                    ?>
                                     <td><?php echo $challan['total_garment']; ?>
                                     </td>
 

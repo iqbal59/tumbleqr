@@ -708,7 +708,7 @@ class Common_model extends CI_Model
         
         
        
-            $sql="SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, Due_on, Primary_Service  FROM `tbl_challan_data` WHERE 1  $search_query group by store_id, Order_No ";
+            $sql="SELECT store_id, order_priority, Store_Name, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, Due_on, Primary_Service  FROM `tbl_challan_data` WHERE 1  $search_query group by store_id, Order_No ";
             $query = $this->db->query($sql)->result_array();
             return $query;
        
