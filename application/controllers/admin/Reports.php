@@ -434,7 +434,56 @@ public function packaging()
         $this->load->view('admin/index', $data);
     }
    
+
+    public function orderstatuspriority()
+    {
+        $data = array();
+        $data['page_title'] = 'Pending Report';
+        if($this->input->server('REQUEST_METHOD') === 'GET'){
+           // echo "POST";
+           // die();
+           $data['condition']=array(
+               'order_no'=> $this->input->get('order_no'),
+               'store_id'=> $this->input->get('store_id'),
+               'order_priority'=> $this->input->get('order_priority')
+           );
+           $data['condition'] = $this->security->xss_clean($data['condition']);
+           $data['challans']=$this->common_model->priorityorderreport($data['condition']);
+           $data['stores']=$this->store_model->get_all_stores();
+          
+        }   
+
+        
+        $data['main_content'] = $this->load->view('admin/reports/orderstatuspriority', $data, TRUE);
+        $this->load->view('admin/index', $data);
+    }
    
+ public function orderpriority()
+    {
+        $data = array();
+        $data['page_title'] = 'Order Priority';
+        if($this->input->server('REQUEST_METHOD') === 'POST'){
+           // echo "POST";
+           // die();
+           $data['condition']=array(
+               'order_no'=> $this->input->post('order_no'),
+               'store_id'=> $this->input->post('store_id'),
+                'order_priority'=> $this->input->post('order_priority')
+           );
+           $data['condition'] = $this->security->xss_clean($data['condition']);
+            $this->common_model->setPriority($data['condition']);
+            $this->session->set_flashdata('msg', 'Priority added Successfully');     
+            redirect("admin/reports/orderpriority");
+            
+        }   
+        $data['stores']=$this->store_model->get_all_stores();
+        
+        $data['main_content'] = $this->load->view('admin/reports/orderpriority', $data, TRUE);
+        $this->load->view('admin/index', $data);
+    }
+
+
+
     public function packingdetail()
     {
         $data = array();

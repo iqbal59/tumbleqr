@@ -15,11 +15,11 @@
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- chartist CSS -->
-<!--
+    <!--
     <link href="<?php echo base_url() ?>assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
 -->
-<!--
+    <!--
     <link href="<?php echo base_url() ?>assets/plugins/chartist-plugin-tooltip-master/dist/
     chartist-plugin-tooltip.css" rel="stylesheet">
 -->
@@ -114,7 +114,7 @@
                         <b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-<!--
+                            <!--
                             <img src="<?php echo base_url() ?>assets/images/logo-icon.png" alt="homepage"
                                 class="dark-logo" />
 -->
@@ -126,7 +126,7 @@
                         <!-- Logo text -->
                         <span>
                             <!-- dark Logo text -->
-<!--
+                            <!--
                             <img src="<?php echo base_url() ?>assets/images/logo-text.png" alt="homepage"
                                 class="dark-logo" />
 -->
@@ -486,7 +486,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        
+
                         <li>
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
                                     class="fa fa-pencil-square-o"></i><span class="hide-menu">Initial Stage</span></a>
@@ -495,15 +495,15 @@
 
                                 <li><a href="<?php echo base_url('admin/reports/initial') ?>"><i
                                             class="fa fa-angle-right"></i> Initial Stage Report</a></li>
-								
-<li><a href="<?php echo base_url('admin/reports/initialcomplete') ?>"><i
+
+                                <li><a href="<?php echo base_url('admin/reports/initialcomplete') ?>"><i
                                             class="fa fa-angle-right"></i> Complete</a></li>
-                                            
-                               
-<li><a href="<?php echo base_url('admin/reports/initialtotal') ?>"><i
+
+
+                                <li><a href="<?php echo base_url('admin/reports/initialtotal') ?>"><i
                                             class="fa fa-angle-right"></i> Total Report</a></li>
 
-<li><a href="<?php echo base_url('admin/reports/initialhourly') ?>"><i
+                                <li><a href="<?php echo base_url('admin/reports/initialhourly') ?>"><i
                                             class="fa fa-angle-right"></i> Report Hourly</a></li>
 
 
@@ -512,21 +512,21 @@
 
 
 
- <li>
+                        <li>
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
                                     class="fa fa-pencil-square-o"></i><span class="hide-menu">Spotting Stage</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
-								
-<li><a href="<?php echo base_url('admin/reports/spotcomplete') ?>"><i
+
+                                <li><a href="<?php echo base_url('admin/reports/spotcomplete') ?>"><i
                                             class="fa fa-angle-right"></i> Complete</a></li>
-                                            
-                               
-<li><a href="<?php echo base_url('admin/reports/spottotal') ?>"><i
+
+
+                                <li><a href="<?php echo base_url('admin/reports/spottotal') ?>"><i
                                             class="fa fa-angle-right"></i> Total Report</a></li>
 
-<li><a href="<?php echo base_url('admin/reports/spothourly') ?>"><i
+                                <li><a href="<?php echo base_url('admin/reports/spothourly') ?>"><i
                                             class="fa fa-angle-right"></i> Report Hourly</a></li>
 
 
@@ -536,24 +536,25 @@
 
 
 
-						<li>
+                        <li>
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Quality Checking</span></a>
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Quality
+                                    Checking</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
-                                                              
-								<li><a href="<?php echo base_url('admin/reports/qccomplete') ?>"><i
+
+                                <li><a href="<?php echo base_url('admin/reports/qccomplete') ?>"><i
                                             class="fa fa-angle-right"></i> Complete</a></li>
-                                            
-                               
-<li><a href="<?php echo base_url('admin/reports/qcreport') ?>"><i
+
+
+                                <li><a href="<?php echo base_url('admin/reports/qcreport') ?>"><i
                                             class="fa fa-angle-right"></i> Quality Report</a></li>
 
-<li><a href="<?php echo base_url('admin/reports/qcreporthourly') ?>"><i
+                                <li><a href="<?php echo base_url('admin/reports/qcreporthourly') ?>"><i
                                             class="fa fa-angle-right"></i> Quality Report Hourly</a></li>
-                                            
-                               
+
+
 
 
                             </ul>
@@ -562,23 +563,23 @@
 
 
 
-						<li>
+                        <li>
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
                                     class="fa fa-pencil-square-o"></i><span class="hide-menu">Packaging</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
-                                                                          
-                                  <li><a href="<?php echo base_url('admin/reports/packagingcomplete') ?>"><i
-                                            class="fa fa-angle-right"></i> Complete</a></li>          
-                                            
-                                            
-                                   <li><a href="<?php echo base_url('admin/reports/packagingall') ?>"><i
+
+                                <li><a href="<?php echo base_url('admin/reports/packagingcomplete') ?>"><i
+                                            class="fa fa-angle-right"></i> Complete</a></li>
+
+
+                                <li><a href="<?php echo base_url('admin/reports/packagingall') ?>"><i
                                             class="fa fa-angle-right"></i>Total Report</a></li>
-                               
-								<li><a href="<?php echo base_url('admin/reports/packaging') ?>"><i
+
+                                <li><a href="<?php echo base_url('admin/reports/packaging') ?>"><i
                                             class="fa fa-angle-right"></i> Packing Hourly</a></li>
-          
+
 
 
 
@@ -586,52 +587,66 @@
                         </li>
 
 
-							<li>
-                            <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/pendingreport') ?>"
-                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span
-                                    class="hide-menu">Pending Garment Report</span></a>
+                        <li>
+                            <a class="waves-effect waves-dark"
+                                href="<?php echo base_url('admin/reports/pendingreport') ?>" aria-expanded="false"><i
+                                    class="mdi mdi-gauge"></i><span class="hide-menu">Pending Garment Report</span></a>
                         </li>
 
 
-<li>
-                            <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/garmentreport') ?>"
-                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span
-                                    class="hide-menu">Garment Report</span></a>
+                        <li>
+                            <a class="waves-effect waves-dark"
+                                href="<?php echo base_url('admin/reports/garmentreport') ?>" aria-expanded="false"><i
+                                    class="mdi mdi-gauge"></i><span class="hide-menu">Garment Report</span></a>
                         </li>
 
-							<li>
-                            <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/pendingorderreport') ?>"
-                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span
-                                    class="hide-menu">Order Status</span></a>
+                        <li>
+                            <a class="waves-effect waves-dark"
+                                href="<?php echo base_url('admin/reports/pendingorderreport') ?>"
+                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Order
+                                    Status</span></a>
                         </li>
 
 
+                        <li>
+                            <a class="waves-effect waves-dark"
+                                href="<?php echo base_url('admin/reports/orderpriority') ?>" aria-expanded="false"><i
+                                    class="mdi mdi-gauge"></i><span class="hide-menu">Order Priority</span></a>
+                        </li>
 
-							<li>
-                            <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/printpackinglabel') ?>"
-                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span
-                                    class="hide-menu">Print Packing Label</span></a>
-									</li>
+                        <li>
+                            <a class="waves-effect waves-dark"
+                                href="<?php echo base_url('admin/reports/orderstatuspriority') ?>"
+                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Order Status
+                                    Priority</span></a>
+                        </li>
+
+                        <li>
+                            <a class="waves-effect waves-dark"
+                                href="<?php echo base_url('admin/reports/printpackinglabel') ?>"
+                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Print Packing
+                                    Label</span></a>
+                        </li>
 
 
-						<li>
+                        <li>
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
                                     class="fa fa-pencil-square-o"></i><span class="hide-menu">Dispatch</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
-                                                                          
-                                  <li><a href="<?php echo base_url('admin/reports/readytodispatch') ?>"><i
-                                            class="fa fa-angle-right"></i> Ready to Dispatch</a></li>     
-                                            
-                                            <li><a href="<?php echo base_url('admin/reports/otherreadytodispatch') ?>"><i
-                                            class="fa fa-angle-right"></i> Other Ready to Dispatch</a></li>               
-                                            
-                                            
-                                   <li><a href="<?php echo base_url('admin/reports/dispatchreport') ?>"><i
+
+                                <li><a href="<?php echo base_url('admin/reports/readytodispatch') ?>"><i
+                                            class="fa fa-angle-right"></i> Ready to Dispatch</a></li>
+
+                                <li><a href="<?php echo base_url('admin/reports/otherreadytodispatch') ?>"><i
+                                            class="fa fa-angle-right"></i> Other Ready to Dispatch</a></li>
+
+
+                                <li><a href="<?php echo base_url('admin/reports/dispatchreport') ?>"><i
                                             class="fa fa-angle-right"></i> Dispatch Order</a></li>
-                               
-								 <li><a href="<?php echo base_url('admin/reports/sendchallan') ?>"><i
+
+                                <li><a href="<?php echo base_url('admin/reports/sendchallan') ?>"><i
                                             class="fa fa-angle-right"></i> Send Challan</a></li>
 
 
@@ -649,7 +664,7 @@
                                 <li><a href="<?php echo base_url('admin/import/importchallandata') ?>"><i
                                             class="fa fa-angle-right"></i> Import Challan Data</a></li>
 
-                                            <li><a href="<?php echo base_url('admin/import/importstorechallandata') ?>"><i
+                                <li><a href="<?php echo base_url('admin/import/importstorechallandata') ?>"><i
                                             class="fa fa-angle-right"></i> Import Store Challan Data</a></li>
 
                                 <li><a href="<?php echo base_url('admin/import/challandata') ?>"><i
@@ -804,16 +819,16 @@
     <!-- This page plugins -->
 
     <!-- chartist chart -->
-<!--
+    <!--
     <script src="<?php echo base_url() ?>assets/plugins/chartist-js/dist/chartist.min.js"></script>
     <script
         src="<?php echo base_url() ?>assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js">
     </script>
 -->
-<!--     <script src="<?php echo base_url() ?>assets/plugins/echarts/echarts-all.js"></script> -->
+    <!--     <script src="<?php echo base_url() ?>assets/plugins/echarts/echarts-all.js"></script> -->
 
     <!-- Vector map JavaScript -->
-<!--
+    <!--
     <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
 -->
@@ -825,7 +840,7 @@
 
     <!-- sparkline chart -->
     <script src="<?php echo base_url() ?>assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-<!--     <script src="<?php echo base_url() ?>assets/js/dashboard4.js"></script> -->
+    <!--     <script src="<?php echo base_url() ?>assets/js/dashboard4.js"></script> -->
 
     <!-- Sweet-Alert  -->
     <script src="<?php echo base_url() ?>assets/plugins/sweetalert/sweetalert.min.js"></script>
@@ -841,7 +856,7 @@
     <script src="<?php echo base_url() ?>assets/plugins/gmaps/jquery.gmaps.js"></script> -->
 
     <!-- Vector map JavaScript -->
-<!--
+    <!--
     <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-in-mill.js"></script>
@@ -852,14 +867,14 @@
 -->
 
     <!--Morris JavaScript -->
-<!--
+    <!--
     <script src="<?php echo base_url() ?>assets/plugins/raphael/raphael-min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/morrisjs/morris.js"></script>
     <script src="<?php echo base_url() ?>assets/js/morris-data.js"></script>
 -->
     <!-- Chart JS -->
 
-<!--
+    <!--
     <script src="<?php echo base_url() ?>assets/plugins/Chart.js/chartjs.init.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/Chart.js/Chart.min.js"></script>
 -->
@@ -868,19 +883,19 @@
     <script src="<?php echo base_url() ?>assets/js/jquery.PrintArea.js" type="text/JavaScript"></script>
     <script>
     $(document).ready(function() {
-	    
-	    $('#barcode-label').keyup(function(){
-		    
-		    
-		    
-		    if($(this).val().substr($(this).val().length-1)=='*' && $(this).val().length > 1  ){
-			$('#print_label').submit();
-      		}
-		    
-	    });
-	    
-	    
-	    
+
+        $('#barcode-label').keyup(function() {
+
+
+
+            if ($(this).val().substr($(this).val().length - 1) == '*' && $(this).val().length > 1) {
+                $('#print_label').submit();
+            }
+
+        });
+
+
+
         $("#print").click(function() {
             var mode = 'iframe'; //popup
             var close = mode == "popup";
@@ -1001,60 +1016,62 @@
     <script src="<?php echo base_url() ?>assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"
         type="text/javascript"></script>
-<!--     <script type="text/javascript" src="../assets/plugins/multiselect/js/jquery.multi-select.js"></script> -->
+    <!--     <script type="text/javascript" src="../assets/plugins/multiselect/js/jquery.multi-select.js"></script> -->
     <script>
-	    
-	    function clotheDetails(){
-  var id = this.id;
-  var split_id = id.split('_');
-  var orderId = split_id[1];
-  var storeId = split_id[2];
+    function clotheDetails() {
+        var id = this.id;
+        var split_id = id.split('_');
+        var orderId = split_id[1];
+        var storeId = split_id[2];
 
-  var tooltipText = "";
-  $.ajax({
-   url: 'https://centuryfasteners.in/tumbleqr/admin/reports/getCloths',
-   type: 'post',
-   async: false,
-   data: {orderId:orderId, storeId:storeId},
-   success: function(response){
-     tooltipText = response;
-   }
-  });
-  return tooltipText;
-}
+        var tooltipText = "";
+        $.ajax({
+            url: 'https://centuryfasteners.in/tumbleqr/admin/reports/getCloths',
+            type: 'post',
+            async: false,
+            data: {
+                orderId: orderId,
+                storeId: storeId
+            },
+            success: function(response) {
+                tooltipText = response;
+            }
+        });
+        return tooltipText;
+    }
 
 
     jQuery(document).ready(function() {
-	    
-	   	    
-	    //ToolTip
 
 
-			$('.tooltip-cloth').tooltip({
-			   delay: 500,
-			   placement: "bottom",
-			   title: "Garment 1",
-			   html: true
-			  }); 
-	    
+        //ToolTip
 
-      
-            $('#store_id_voucher').select2({
-                placeholder: 'Select Store ID'
-            });
 
-            $('.summernote').summernote({
-                height: 350, // set editor height
-                minHeight: null, // set minimum height of editor
-                maxHeight: null, // set maximum height of editor
-                focus: false // set focus to editable area after initializing summernote
-            });
+        $('.tooltip-cloth').tooltip({
+            delay: 500,
+            placement: "bottom",
+            title: "Garment 1",
+            html: true
+        });
 
-            $('.inline-editor').summernote({
-                airMode: true
-            });
 
-     
+
+        $('#store_id_voucher').select2({
+            placeholder: 'Select Store ID'
+        });
+
+        $('.summernote').summernote({
+            height: 350, // set editor height
+            minHeight: null, // set minimum height of editor
+            maxHeight: null, // set maximum height of editor
+            focus: false // set focus to editable area after initializing summernote
+        });
+
+        $('.inline-editor').summernote({
+            airMode: true
+        });
+
+
 
         // Switchery
         var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
@@ -1101,70 +1118,70 @@
             postfix: "post"
         });
         // For multiselect
-/*
-        $('#pre-selected-options').multiSelect();
-        $('#optgroup').multiSelect({
-            selectableOptgroup: true
-        });
-*/
-/*
-        $('#public-methods').multiSelect();
-        $('#select-all').click(function() {
-            $('#public-methods').multiSelect('select_all');
-            return false;
-        });
-        $('#deselect-all').click(function() {
-            $('#public-methods').multiSelect('deselect_all');
-            return false;
-        });
-        $('#refresh').on('click', function() {
-            $('#public-methods').multiSelect('refresh');
-            return false;
-        });
-        $('#add-option').on('click', function() {
-            $('#public-methods').multiSelect('addOption', {
-                value: 42,
-                text: 'test 42',
-                index: 0
-            });
-            return false;
-        });
-*/
-/*
-        $(".ajax").select2({
-            ajax: {
-                url: "https://api.github.com/search/repositories",
-                dataType: 'json',
-                delay: 250,
-                data: function(params) {
-                    return {
-                        q: params.term, // search term
-                        page: params.page
-                    };
-                },
-                processResults: function(data, params) {
-                    // parse the results into the format expected by Select2
-                    // since we are using custom formatting functions we do not need to
-                    // alter the remote JSON data, except to indicate that infinite
-                    // scrolling can be used
-                    params.page = params.page || 1;
-                    return {
-                        results: data.items,
-                        pagination: {
-                            more: (params.page * 30) < data.total_count
-                        }
-                    };
-                },
-                cache: true
-            },
-            escapeMarkup: function(markup) {
-                return markup;
-            }, // let our custom formatter work
-            minimumInputLength: 1,
-            templateResult: formatRepo, // omitted for brevity, see the source of this page
-            templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
-        });
-*/
+        /*
+                $('#pre-selected-options').multiSelect();
+                $('#optgroup').multiSelect({
+                    selectableOptgroup: true
+                });
+        */
+        /*
+                $('#public-methods').multiSelect();
+                $('#select-all').click(function() {
+                    $('#public-methods').multiSelect('select_all');
+                    return false;
+                });
+                $('#deselect-all').click(function() {
+                    $('#public-methods').multiSelect('deselect_all');
+                    return false;
+                });
+                $('#refresh').on('click', function() {
+                    $('#public-methods').multiSelect('refresh');
+                    return false;
+                });
+                $('#add-option').on('click', function() {
+                    $('#public-methods').multiSelect('addOption', {
+                        value: 42,
+                        text: 'test 42',
+                        index: 0
+                    });
+                    return false;
+                });
+        */
+        /*
+                $(".ajax").select2({
+                    ajax: {
+                        url: "https://api.github.com/search/repositories",
+                        dataType: 'json',
+                        delay: 250,
+                        data: function(params) {
+                            return {
+                                q: params.term, // search term
+                                page: params.page
+                            };
+                        },
+                        processResults: function(data, params) {
+                            // parse the results into the format expected by Select2
+                            // since we are using custom formatting functions we do not need to
+                            // alter the remote JSON data, except to indicate that infinite
+                            // scrolling can be used
+                            params.page = params.page || 1;
+                            return {
+                                results: data.items,
+                                pagination: {
+                                    more: (params.page * 30) < data.total_count
+                                }
+                            };
+                        },
+                        cache: true
+                    },
+                    escapeMarkup: function(markup) {
+                        return markup;
+                    }, // let our custom formatter work
+                    minimumInputLength: 1,
+                    templateResult: formatRepo, // omitted for brevity, see the source of this page
+                    templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+                });
+        */
     });
     </script>
     <!-- End form js -->

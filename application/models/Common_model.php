@@ -682,6 +682,35 @@ class Common_model extends CI_Model
     }
 
 
+ public function priorityorderreport($param)
+    {
+        // print_r($param);
+        
+        if (!empty($param['order_no'])) {
+            $search_query=" and Order_No='".$param['order_no']."'";
+        } else {
+            $search_query='';
+        }
+        
+        if (!empty($param['store_id'])) {
+            $search_query.=" and store_id='".$param['store_id']."'";
+        }
+        
+        if (!empty($param['order_priority'])) {
+            $search_query.=" and order_priority='".$param['order_priority']."'";
+        }
+
+        $search_query.=" and dispatch_status=0";
+        
+        
+        if ($search_query) {
+            $sql="SELECT tbl_challan_data.*, tbl_spot.spot_time, tbl_spot.station_id FROM `tbl_challan_data` left join tbl_spot on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query";
+            $query = $this->db->query($sql)->result_array();
+            return $query;
+        }
+        return;
+    }
+
     public function readytodispatch($param)
     {
         // print_r($param);
@@ -844,6 +873,11 @@ class Common_model extends CI_Model
     }
 
 
+    public function setPriority($params)
+    {
+         $sql="update tbl_challan_data set order_priority=".$params['order_priority']." where Order_No='".$params['order_no']."' and store_id=".$params['store_id'];
+        $this->db->query($sql);
+    }
 
 
     public function import_challan($param)
