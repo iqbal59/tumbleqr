@@ -3,7 +3,7 @@
 
      <div class="card-body">
 
-         <h3 align="center">Report 1AM: INCOMING TO SPOTTING </h3>
+         <h3 align="center">Report : INCOMING TO SPOTTING </h3>
 
          <div class="table-responsive m-t-40">
 
@@ -70,7 +70,7 @@
 
      <div class="card-body">
 
-         <h3 align="center">Report 1AM: SPOTTING TO QC SCAN </h3>
+         <h3 align="center">Report : SPOTTING TO QC SCAN </h3>
 
          <div class="table-responsive m-t-40">
 
@@ -135,7 +135,7 @@
 
      <div class="card-body">
 
-         <h3 align="center">Report 1AM: QC TO PACK </h3>
+         <h3 align="center">Report: QC TO PACK </h3>
 
          <div class="table-responsive m-t-40">
 
