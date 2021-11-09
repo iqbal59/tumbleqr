@@ -22,8 +22,8 @@
                          <th>Count</th>
                          <th>OK</th>
                          <th>NOK</th>
-                         <th>NOK-Done</th>
-                         <th>NOK-Pending</th>
+
+
                          <th>OK (%)</th>
                          <th>NOK (%)</th>
 
@@ -45,12 +45,11 @@
                          <td><?php echo date('d-m-Y', strtotime($end_date)); ?></td>
                          <td><?php echo date('H:i:s', strtotime($end_date)); ?></td>
                          <td><?php echo $challan['total_incoming']; ?></td>
-                         <td><?php echo $challan['total_spot_ok']; ?></td>
-                         <td><?php echo $challan['total_incoming']-$challan['total_spot_ok']; ?></td>
-                         <td><?php echo $challan['total_spot']-$challan['total_spot_ok']; ?></td>
-                         <td><?php echo $challan['total_spot_pending']; ?></td>
-                         <td><?php echo ($challan['total_spot_ok']/$challan['total_incoming'])*100; ?></td>
-                         <td><?php echo (($challan['total_incoming']-$challan['total_spot_ok'])/$challan['total_incoming'])*100;?>
+                         <td><?php echo $challan['total_spot']; ?></td>
+                         <td><?php echo $challan['total_incoming']-$challan['total_spot']; ?></td>
+
+                         <td><?php echo ($challan['total_spot']/$challan['total_incoming'])*100; ?></td>
+                         <td><?php echo (($challan['total_incoming']-$challan['total_spot'])/$challan['total_incoming'])*100;?>
                          </td>
 
                      </tr>
@@ -90,8 +89,7 @@
                          <th>Count</th>
                          <th>OK</th>
                          <th>NOK</th>
-                         <th>NOK-Done</th>
-                         <th>NOK-Pending</th>
+
                          <th>OK (%)</th>
                          <th>NOK (%)</th>
 
@@ -113,12 +111,11 @@
                          <td><?php echo date('d-m-Y', strtotime($end_date)); ?></td>
                          <td><?php echo date('H:i:s', strtotime($end_date)); ?></td>
                          <td><?php echo $challan['total_spot']; ?></td>
-                         <td><?php echo $challan['total_qc_ok']; ?></td>
-                         <td><?php echo $challan['total_spot']-$challan['total_qc_ok']; ?></td>
-                         <td><?php echo $challan['total_qc_done']-$challan['total_qc_ok']; ?></td>
-                         <td><?php echo $challan['total_qc_pending']; ?></td>
-                         <td><?php echo ($challan['total_qc_ok']/$challan['total_spot'])*100; ?></td>
-                         <td><?php echo (($challan['total_spot']-$challan['total_qc_ok'])/$challan['total_spot'])*100;?>
+                         <td><?php echo $challan['total_qc']; ?></td>
+                         <td><?php echo $challan['total_spot']-$challan['total_qc']; ?></td>
+
+                         <td><?php echo ($challan['total_qc']/$challan['total_spot'])*100; ?></td>
+                         <td><?php echo (($challan['total_spot']-$challan['total_qc'])/$challan['total_spot'])*100;?>
                          </td>
 
                      </tr>
@@ -157,8 +154,7 @@
                          <th>Count</th>
                          <th>OK</th>
                          <th>NOK</th>
-                         <th>NOK-Done</th>
-                         <th>NOK-Pending</th>
+
                          <th>OK (%)</th>
                          <th>NOK (%)</th>
 
@@ -180,12 +176,11 @@
                          <td><?php echo date('d-m-Y', strtotime($end_date)); ?></td>
                          <td><?php echo date('H:i:s', strtotime($end_date)); ?></td>
                          <td><?php echo $challan['total_qc']; ?></td>
-                         <td><?php echo $challan['total_pack_ok']; ?></td>
-                         <td><?php echo $challan['total_qc']-$challan['total_pack_ok']; ?></td>
-                         <td><?php echo $challan['total_pack_done']-$challan['total_pack_ok']; ?></td>
-                         <td><?php echo $challan['total_pack_pending']; ?></td>
-                         <td><?php echo ($challan['total_pack_ok']/$challan['total_qc'])*100; ?></td>
-                         <td><?php echo (($challan['total_qc']-$challan['total_pack_ok'])/$challan['total_qc'])*100;?>
+                         <td><?php echo $challan['total_pack']; ?></td>
+                         <td><?php echo $challan['total_qc']-$challan['total_pack']; ?></td>
+
+                         <td><?php echo ($challan['total_pack']/$challan['total_qc'])*100; ?></td>
+                         <td><?php echo (($challan['total_qc']-$challan['total_pack'])/$challan['total_qc'])*100;?>
                          </td>
 
                      </tr>

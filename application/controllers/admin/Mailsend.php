@@ -595,10 +595,12 @@ $this->email->send();
 
         $data['start_date'] = date('Y-m-d 15:00:00', strtotime('-2 day'));
         $data['end_date'] = date('Y-m-d 15:00:00', strtotime('-1 day'));
+         $data['current_date'] = date('Y-m-d');
 
-        $data['challans'] = $this->common_model->incomingtospot1am($data['start_date'], $data['end_date']);
-        $data['spottoqc'] = $this->common_model->spottingtoqc1am($data['start_date'], $data['end_date']);
-        $data['qctopack'] = $this->common_model->qctopack1am($data['start_date'], $data['end_date']);
+
+        $data['challans'] = $this->common_model->incomingtospot1am($data['start_date'], $data['end_date'], $data['current_date']);
+        $data['spottoqc'] = $this->common_model->spottingtoqc1am($data['start_date'], $data['end_date'], $data['current_date']);
+        $data['qctopack'] = $this->common_model->qctopack1am($data['start_date'], $data['end_date'], $data['current_date']);
         $this->load->view('admin/mail/exceptionreport1am.php', $data);
 
     }

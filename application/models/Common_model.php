@@ -1305,30 +1305,30 @@ public function qctopack($start_date, $end_date, $to_end_date)
 
 
 
-    public function incomingtospot1am($start_date, $end_date)
+    public function incomingtospot1am($start_date, $end_date, $current_date)
     {
         
        
           $sql="SELECT count(*) as total_incoming, SUM(case when spot_time  then 1 else 0 end) as total_spot
-, SUM(case when (spot_time and HOUR(TIMEDIFF(initial_time, spot_time)) <=3)  then 1 else 0 end) as total_spot_ok, sum(case when spot_time then 0 else 1 end  ) as total_spot_pending FROM `tbl_challan_data` left join  (select MIN(spot_time) as spot_time, Barcode from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and initial_stage=1 and date_add(initial_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'";
+ FROM `tbl_challan_data` left join  (select MIN(spot_time) as spot_time, Barcode from tbl_spot  where date_add(spot_time, INTERVAL 5.30 hour) < '".$current_date."' group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and initial_stage=1 and date_add(initial_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
 
-     public function spottingtoqc1am($start_date, $end_date)
+     public function spottingtoqc1am($start_date, $end_date, $current_date)
     {
         
        
-          $sql="SELECT SUM(case when spot_time then 1 else 0 end) as total_spot , SUM(case when (spot_time and HOUR(TIMEDIFF(spot_time, qc_time)) <=3) then 1 else 0 end) as total_qc_ok, sum(case when qc_time then 1 else 0 end ) as total_qc_done, sum(case when qc_time then 0 else 1 end ) as total_qc_pending FROM `tbl_challan_data` left join (select MIN(spot_time) as spot_time, Barcode from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1  and date_add(spot_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'";
+          $sql="SELECT SUM(case when spot_time then 1 else 0 end) as total_spot,  sum(case when qc_time and date_add(qc_time, INTERVAL 5.30 hour) < '".$current_date."' then 1 else 0 end ) as total_qc_done FROM `tbl_challan_data` left join (select MIN(spot_time) as spot_time, Barcode from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and date_add(spot_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
 
-    public function qctopack1am($start_date, $end_date)
+    public function qctopack1am($start_date, $end_date, $current_date)
     {
         
        
-         $sql="SELECT SUM(case when qc_time then 1 else 0 end) as total_qc , SUM(case when (qc_time and HOUR(TIMEDIFF(qc_time, packaging_time)) <=3) then 1 else 0 end) as total_pack_ok, sum(case when packaging_time then 1 else 0 end ) as total_pack_done, sum(case when packaging_time then 0 else 1 end ) as total_pack_pending FROM `tbl_challan_data` WHERE 1  and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'";
+         $sql="SELECT SUM(case when qc_time then 1 else 0 end) as total_qc ,  sum(case when packaging_time  and date_add(packaging_time, INTERVAL 5.30 hour) < '".$current_date."' then 1 else 0 end ) as total_pack_done FROM `tbl_challan_data` WHERE 1  and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
