@@ -411,6 +411,57 @@ public function packaging()
         $data['main_content'] = $this->load->view('admin/reports/garmentreport', $data, TRUE);
         $this->load->view('admin/index', $data);
     }
+
+public function exceptionreport()
+    {
+        $data = array();
+        $data['page_title'] = 'Exception Report';
+        if($this->input->server('REQUEST_METHOD') === 'GET'){
+           // echo "POST";
+           // die();
+           $data['condition']=array(
+               'from_station'=> $this->input->get('from_station'),
+               'to_station'=> $this->input->get('to_station'),
+               'from_date'=> $this->input->get('from_date'),
+               'from_time'=> $this->input->get('from_time'),
+               'to_date'=> $this->input->get('to_date'),
+               'to_time'=> $this->input->get('to_time'),
+               'till_date'=> $this->input->get('till_date'),
+               'till_time'=> $this->input->get('till_time')
+           );
+           $data['condition'] = $this->security->xss_clean($data['condition']);
+           
+           if($data['condition']['from_station']==1 && $data['condition']['to_station']==2)
+           {
+                $start_dt=$data['condition']['from_date'].' '.$data['condition']['from_time'].':00';
+                $to_dt=$data['condition']['to_date'].' '.$data['condition']['to_time'].':00';
+                $till_dt=$data['condition']['till_date'].' '.$data['condition']['till_time'].':00';
+                $data['challans']=$this->common_model->incomingtospot1am($start_dt, $to_dt, $till_dt);
+           }
+           
+          if($data['condition']['from_station']==2 && $data['condition']['to_station']==3)
+           {
+                $start_dt=$data['condition']['from_date'].' '.$data['condition']['from_time'].':00';
+                $to_dt=$data['condition']['to_date'].' '.$data['condition']['to_time'].':00';
+                $till_dt=$data['condition']['till_date'].' '.$data['condition']['till_time'].':00';
+                $data['spottoqc']=$this->common_model->spottingtoqc1am($start_dt, $to_dt, $till_dt);
+           }
+
+           if($data['condition']['from_station']==3 && $data['condition']['to_station']==4)
+           {
+                $start_dt=$data['condition']['from_date'].' '.$data['condition']['from_time'].':00';
+                $to_dt=$data['condition']['to_date'].' '.$data['condition']['to_time'].':00';
+                $till_dt=$data['condition']['till_date'].' '.$data['condition']['till_time'].':00';
+                $data['qctopack']=$this->common_model->qctopack1am($start_dt, $to_dt, $till_dt);
+           }
+          
+        }   
+
+        
+        $data['main_content'] = $this->load->view('admin/reports/exceptionreport', $data, TRUE);
+        $this->load->view('admin/index', $data);
+    }
+
    
    public function pendingorderreport()
     {

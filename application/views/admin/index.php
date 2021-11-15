@@ -628,6 +628,13 @@
                                     Label</span></a>
                         </li>
 
+                        <li>
+                            <a class="waves-effect waves-dark"
+                                href="<?php echo base_url('admin/reports/exceptionreport') ?>" aria-expanded="false"><i
+                                    class="mdi mdi-gauge"></i><span class="hide-menu">Exception
+                                    Report</span></a>
+                        </li>
+
 
                         <li>
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
