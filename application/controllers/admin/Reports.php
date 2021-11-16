@@ -427,7 +427,8 @@ public function exceptionreport()
                'to_date'=> $this->input->get('to_date'),
                'to_time'=> $this->input->get('to_time'),
                'till_date'=> $this->input->get('till_date'),
-               'till_time'=> $this->input->get('till_time')
+               'till_time'=> $this->input->get('till_time'),
+               'primary_service'=> implode(",", $this->input->get('primary_service'))
            );
            $data['condition'] = $this->security->xss_clean($data['condition']);
            
@@ -436,7 +437,7 @@ public function exceptionreport()
                 $start_dt=$data['condition']['from_date'].' '.$data['condition']['from_time'].':00';
                 $to_dt=$data['condition']['to_date'].' '.$data['condition']['to_time'].':00';
                 $till_dt=$data['condition']['till_date'].' '.$data['condition']['till_time'].':00';
-                $data['challans']=$this->common_model->incomingtospot1am($start_dt, $to_dt, $till_dt);
+                $data['challans']=$this->common_model->incomingtospot1am($start_dt, $to_dt, $till_dt, $data['condition']['primary_service']);
            }
            
           if($data['condition']['from_station']==2 && $data['condition']['to_station']==3)
@@ -444,7 +445,7 @@ public function exceptionreport()
                 $start_dt=$data['condition']['from_date'].' '.$data['condition']['from_time'].':00';
                 $to_dt=$data['condition']['to_date'].' '.$data['condition']['to_time'].':00';
                 $till_dt=$data['condition']['till_date'].' '.$data['condition']['till_time'].':00';
-                $data['spottoqc']=$this->common_model->spottingtoqc1am($start_dt, $to_dt, $till_dt);
+                $data['spottoqc']=$this->common_model->spottingtoqc1am($start_dt, $to_dt, $till_dt,  $data['condition']['primary_service']);
            }
 
            if($data['condition']['from_station']==3 && $data['condition']['to_station']==4)
@@ -452,11 +453,12 @@ public function exceptionreport()
                 $start_dt=$data['condition']['from_date'].' '.$data['condition']['from_time'].':00';
                 $to_dt=$data['condition']['to_date'].' '.$data['condition']['to_time'].':00';
                 $till_dt=$data['condition']['till_date'].' '.$data['condition']['till_time'].':00';
-                $data['qctopack']=$this->common_model->qctopack1am($start_dt, $to_dt, $till_dt);
+                $data['qctopack']=$this->common_model->qctopack1am($start_dt, $to_dt, $till_dt,  $data['condition']['primary_service']);
            }
           
         }   
 
+        $data['services']=$this->common_model->get_all_Service();
         
         $data['main_content'] = $this->load->view('admin/reports/exceptionreport', $data, TRUE);
         $this->load->view('admin/index', $data);

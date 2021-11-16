@@ -76,7 +76,7 @@
 
                                         <div class="col-md-12 controls">
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <h5>From Station<span class="text-danger">*</span></h5>
                                                         <div class="controls">
@@ -97,7 +97,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <h5>To Station <span class="text-danger">*</span></h5>
                                                         <div class="controls">
@@ -112,6 +112,25 @@
                                                                 <option value="4"
                                                                     <?php if(!empty($condition) && $condition['to_station']=='4'){echo "selected";} ?>>
                                                                     Packing</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <h5>Service <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="primary_service[]" class="form-control"
+                                                                required multiple>
+                                                                <option value="">--Select--</option>
+                                                                <?php foreach($services as $s){
+                                                                    ?>
+                                                                <option value="<?php echo $s['Primary_Service']?>">
+                                                                    <?php echo $s['Primary_Service']?></option>
+                                                                <?php
+                                                                }?>
                                                             </select>
                                                         </div>
                                                     </div>
