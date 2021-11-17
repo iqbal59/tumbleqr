@@ -123,7 +123,7 @@
                                                         <h5>Service <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <select name="primary_service[]" class="form-control"
-                                                                required multiple>
+                                                                multiple>
                                                                 <option value="">--Select--</option>
                                                                 <?php foreach($services as $s){
                                                                     ?>
@@ -145,7 +145,8 @@
                                                         <div class="controls">
                                                             <input type="date" name="from_date" class="form-control"
                                                                 placeholder="MM/DD/YYYY"
-                                                                value="<?php if(!empty($condition)){echo $condition['from_date'];} ?>">
+                                                                value="<?php if(!empty($condition)){echo $condition['from_date'];} ?>"
+                                                                required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -156,7 +157,8 @@
                                                         <div class="controls">
                                                             <input type="time" name="from_time" class="form-control"
                                                                 placeholder="HH:MM:SS"
-                                                                value="<?php if(!empty($condition)){echo $condition['from_time'];} ?>">
+                                                                value="<?php if(!empty($condition)){echo $condition['from_time'];} ?>"
+                                                                required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -168,7 +170,8 @@
                                                         <div class="controls">
                                                             <input type="date" name="to_date" class="form-control"
                                                                 placeholder="MM/DD/YYYY"
-                                                                value="<?php if(!empty($condition)){echo $condition['to_date'];} ?>">
+                                                                value="<?php if(!empty($condition)){echo $condition['to_date'];} ?>"
+                                                                required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -179,7 +182,8 @@
                                                         <div class="controls">
                                                             <input type="time" name="to_time" class="form-control"
                                                                 placeholder="HH:MM:SS"
-                                                                value="<?php if(!empty($condition)){echo $condition['to_time'];} ?>">
+                                                                value="<?php if(!empty($condition)){echo $condition['to_time'];} ?>"
+                                                                required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -190,7 +194,8 @@
                                                         <div class="controls">
                                                             <input type="date" name="till_date" class="form-control"
                                                                 placeholder="MM/DD/YYYY"
-                                                                value="<?php if(!empty($condition)){echo $condition['till_date'];} ?>">
+                                                                value="<?php if(!empty($condition)){echo $condition['till_date'];} ?>"
+                                                                required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -201,7 +206,8 @@
                                                         <div class="controls">
                                                             <input type="time" name="till_time" class="form-control"
                                                                 placeholder="HH:MM:SS"
-                                                                value="<?php if(!empty($condition)){echo $condition['till_time'];} ?>">
+                                                                value="<?php if(!empty($condition)){echo $condition['till_time'];} ?>"
+                                                                required>
                                                         </div>
                                                     </div>
                                                 </div>

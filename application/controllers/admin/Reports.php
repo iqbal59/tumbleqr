@@ -428,7 +428,9 @@ public function exceptionreport()
                'to_time'=> $this->input->get('to_time'),
                'till_date'=> $this->input->get('till_date'),
                'till_time'=> $this->input->get('till_time'),
-               'primary_service'=> implode(",", $this->input->get('primary_service'))
+               'primary_service'=>"'" . implode( "','", $this->input->get('primary_service') ) . "'"
+               
+               
            );
            $data['condition'] = $this->security->xss_clean($data['condition']);
            
