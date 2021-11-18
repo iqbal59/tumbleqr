@@ -605,6 +605,61 @@ $this->email->send();
 
     }
 
+
+
+public function exceptionreport10am()
+    {
+        $data = array();
+
+        $data['start_date'] = date('Y-m-d 15:00:00', strtotime('-1 day'));
+        $data['end_date'] = date('Y-m-d 10:00:00');
+        $data['current_date'] = date('Y-m-d 10:00:00');
+
+
+        $data['challans'] = $this->common_model->incomingtospot1am($data['start_date'], $data['end_date'], $data['current_date']);
+        $data['spottoqc'] = $this->common_model->spottingtoqc1am($data['start_date'], $data['end_date'], $data['current_date']);
+        $data['qctopack'] = $this->common_model->qctopack1am($data['start_date'], $data['end_date'], $data['current_date']);
+        $this->load->view('admin/mail/exceptionreport1am.php', $data);
+
+    }
+
+public function exceptionreport2pm()
+    {
+        $data = array();
+
+        $data['start_date'] = date('Y-m-d 15:00:00', strtotime('-1 day'));
+        $data['end_date'] = date('Y-m-d 14:00:00');
+        $data['current_date'] = date('Y-m-d 14:00:00');
+
+
+        $data['challans'] = $this->common_model->incomingtospot1am($data['start_date'], $data['end_date'], $data['current_date']);
+        $data['spottoqc'] = $this->common_model->spottingtoqc1am($data['start_date'], $data['end_date'], $data['current_date']);
+        $data['qctopack'] = $this->common_model->qctopack1am($data['start_date'], $data['end_date'], $data['current_date']);
+        $this->load->view('admin/mail/exceptionreport1am.php', $data);
+
+    }
+
+public function exceptionreport6pm()
+    {
+        $data = array();
+
+         $data['start_date'] = date('Y-m-d 15:00:00', strtotime('-1 day'));
+        $data['end_date'] = date('Y-m-d 15:00:00');
+        $data['current_date'] = date('Y-m-d 18:00:00');
+
+
+        $data['challans'] = $this->common_model->incomingtospot1am($data['start_date'], $data['end_date'], $data['current_date']);
+        $data['spottoqc'] = $this->common_model->spottingtoqc1am($data['start_date'], $data['end_date'], $data['current_date']);
+        $data['qctopack'] = $this->common_model->qctopack1am($data['start_date'], $data['end_date'], $data['current_date']);
+        $this->load->view('admin/mail/exceptionreport1am.php', $data);
+
+    }
+
+
+
+
+
+
     public function incomingtospot8am()
     {
         $data = array();
@@ -637,6 +692,30 @@ $this->email->send();
 
         $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com'));
     }
+
+
+public function send10am()
+    {
+        $htmlData = file_get_contents('http://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport10am');
+
+        $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com'));
+    }
+
+public function send2pm()
+    {
+        $htmlData = file_get_contents('http://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport2pm');
+
+        $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com'));
+    }
+
+public function send6pm()
+    {
+        $htmlData = file_get_contents('http://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport6pm');
+
+        $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com'));
+    }
+
+
 
     public function send4pm()
     {
