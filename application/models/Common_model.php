@@ -680,7 +680,7 @@ class Common_model extends CI_Model
         
         
         if ($search_query) {
-            $sql="SELECT tbl_challan_data.*, tbl_spot.spot_time, tbl_spot.station_id FROM `tbl_challan_data` left join tbl_spot on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query";
+           echo  $sql="SELECT tbl_challan_data.*, tbl_spot.spot_time, tbl_spot.station_id FROM `tbl_challan_data` left join (select max(spot_time) as spot_time, station_id, Barcode from tbl_spot group by Barcode) as tbl_spot on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query";
             $query = $this->db->query($sql)->result_array();
             return $query;
         }
