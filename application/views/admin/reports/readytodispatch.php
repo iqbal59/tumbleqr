@@ -193,6 +193,7 @@
                                     <th>Total Garment</th>
                                    
                                     <th>Packing Done</th>
+                                    <th>Packing Type</th>
                                     <th>Primary Service</th>
                                     <th>Due On</th>
                                     <th>Action</th>
@@ -213,6 +214,7 @@
                                     </td>
                                    
                                     <td><?php echo $challan['psc']; ?></td>
+                                    <td>Hanger: <?php echo $challan['hanger']; ?> Fold: <?php echo $challan['fold']; ?></td>
                                     <td><?php echo $challan['Primary_Service']; ?></td>
                                     <td><span
                                             style="display:none;"><?php echo strtotime($challan['Due_on']. ' - 1 days');?></span><?php echo date("d-m-Y", strtotime($challan['Due_on']. ' - 1 days')); ?>

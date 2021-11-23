@@ -220,7 +220,7 @@
                                     
 
                                    
-                                    <td><?php if(!empty($challan['Color'])){echo $challan['Color'];}?></td>
+                                    <td><?php if(!empty($challan['color_new'])){echo $challan['color_new'];}?></td>
                                      <td><?php if(!empty($challan['packaging_time'])){echo date('d-m-Y H:i:s', strtotime($challan['packaging_time']. " + 330 mins")); }?></td>
                                    
                                 </tr>

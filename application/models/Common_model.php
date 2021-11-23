@@ -680,7 +680,7 @@ class Common_model extends CI_Model
         
         
         if ($search_query) {
-             $sql="SELECT tbl_challan_data.*, tbl_spot.spot_time, tbl_spot.station_id FROM `tbl_challan_data` left join (select max(spot_time) as spot_time, station_id, Barcode from tbl_spot group by Barcode) as tbl_spot on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query";
+              $sql="SELECT tbl_challan_data.*, tbl_spot.spot_time, tbl_spot.station_id, case when Color != '' then Color else (SELECT packing_type FROM `tbl_default_packing` WHERE 1 and concat(category_name, ' - ', garment_name)=Garment limit 0,1)  end as color_new  FROM `tbl_challan_data` left join (select max(spot_time) as spot_time, station_id, Barcode from tbl_spot group by Barcode) as tbl_spot on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query";
             $query = $this->db->query($sql)->result_array();
             return $query;
         }
@@ -739,7 +739,7 @@ class Common_model extends CI_Model
         }
         
         
-        $sql="SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, Due_on, Primary_Service  FROM `tbl_challan_data` WHERE 1 and dispatch_status=0 $search_query group by store_id, Order_No ";
+       $sql="SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, sum(case when color_new = 'Fold' then 1 else 0 end) as fold, sum(case when color_new = 'Hanger' then 1 else 0 end) as hanger, Due_on, Primary_Service  FROM (select *, case when Color != '' then Color else (SELECT packing_type FROM `tbl_default_packing` WHERE 1 and concat(category_name, ' - ', garment_name)=Garment limit 0,1) end as color_new from tbl_challan_data) as tbl_challan_data WHERE 1 and dispatch_status=0 $search_query group by store_id, Order_No ";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
