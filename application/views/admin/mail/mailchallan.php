@@ -21,9 +21,9 @@
                                    
                                     
                                     <th>Due On</th>
-                                    <th>Dispatch Date</th>
+                                    <!-- <th>Dispatch Date</th>
                                     <th>Dispatch Shift</th>
-                                    
+                                     -->
                                     
                                 </tr>
                             </thead>
@@ -46,7 +46,7 @@
                                    
                                     <td><?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
                                     </td>
-                                    <td> <?php echo date("d-m-Y", strtotime($challan['dispatch_time'])); ?>
+                                    <!-- <td> <?php echo date("d-m-Y", strtotime($challan['dispatch_time'])); ?>
                                     </td>
                                     <td>
 	                                    
@@ -60,7 +60,7 @@
 		                                    
 	                                    ?>
 	                                    
-                                    </td>
+                                    </td> -->
                                 </tr>
                                 <?php } ?>
                             </tbody>
