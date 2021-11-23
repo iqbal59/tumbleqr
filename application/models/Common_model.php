@@ -746,6 +746,31 @@ class Common_model extends CI_Model
 
  
  
+    public function quickwing($param)
+    {
+        // print_r($param);
+        
+        if (!empty($param['from_date']) && !empty($param['to_date'])) {
+            $search_query=" and Due_on between '".date('Y-m-d', strtotime($param['from_date']. ' + 1 days'))."' and '".date('Y-m-d', strtotime($param['to_date']. ' + 1 days'))."'";
+        } else {
+            $search_query='';
+        }
+        
+        if (!empty($param['store_id'])) {
+            $search_query.=" and store_id='".$param['store_id']."'";
+        }
+        
+        if (!empty($param['services'])) {
+            $search_query.=" and Primary_Service='".$param['services']."'";
+        }
+        
+        
+       $sql="SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, count(case when qc_stage=1 and (qc_status='Pass' or qc_status='Sorry') then 1 else null end) as qc_done, sum(case when color_new = 'Fold' then 1 else 0 end) as fold, sum(case when color_new = 'Hanger' then 1 else 0 end) as hanger, Due_on, Primary_Service  FROM (select *, case when Color != '' then Color else (SELECT packing_type FROM `tbl_default_packing` WHERE 1 and concat(category_name, ' - ', garment_name)=Garment limit 0,1) end as color_new from tbl_challan_data) as tbl_challan_data WHERE 1 and dispatch_status=0 $search_query group by store_id, Order_No ";
+        $query = $this->db->query($sql)->result_array();
+        return $query;
+    }
+
+ 
     public function dispatchreport($param)
     {
         // print_r($param);

@@ -646,6 +646,10 @@
                                 <li><a href="<?php echo base_url('admin/reports/readytodispatch') ?>"><i
                                             class="fa fa-angle-right"></i> Ready to Dispatch</a></li>
 
+                                            <li><a href="<?php echo base_url('admin/reports/quickwing') ?>"><i
+                                            class="fa fa-angle-right"></i> Quick Wing</a></li>
+
+
                                 <li><a href="<?php echo base_url('admin/reports/otherreadytodispatch') ?>"><i
                                             class="fa fa-angle-right"></i> Other Ready to Dispatch</a></li>
 

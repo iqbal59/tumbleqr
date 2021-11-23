@@ -592,6 +592,34 @@ public function exceptionreport()
 
 
 
+    public function quickwing()
+    {
+        $data = array();
+        $data['page_title'] = 'Quick Wing';
+        if($this->input->server('REQUEST_METHOD') === 'GET'){
+           // echo "POST";
+           // die();
+           $data['condition']=array(
+               'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d', strtotime('- 7 days')),
+               'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d', strtotime('+ 7 days')),
+               'store_id'=> $this->input->get('store_id')
+           );
+           $data['condition'] = $this->security->xss_clean($data['condition']);
+           $data['challans']=$this->common_model->quickwing($data['condition']);
+           $data['stores']=$this->store_model->get_all_stores();
+          
+
+        }   
+
+        
+        $data['main_content'] = $this->load->view('admin/reports/quickwing', $data, TRUE);
+        $this->load->view('admin/index', $data);
+    }
+
+
+
+
+
 public function otherreadytodispatch()
     {
         $data = array();
