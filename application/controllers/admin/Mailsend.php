@@ -629,6 +629,51 @@ $this->email->send();
     }
 
 
+    public function exportexceptionspottoqc($start_date, $end_date, $current_date){
+
+        header("Content-type: application/csv");
+    header("Content-Disposition: attachment; filename=\"exception_report".".csv\"");
+    header("Pragma: no-cache");
+    header("Expires: 0");
+    $handle = fopen('php://output', 'w');
+    fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'Spot Time'));
+
+
+
+                   
+    $dataItems = $this->common_model->spottingtoqcexport(urldecode($start_date), urldecode($end_date), urldecode($current_date));
+    $i=0;
+    foreach($dataItems as $item){
+        fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['incoming']));
+    }
+
+                    fclose($handle);
+                    exit;
+    }
+
+    public function exportexceptionqctopack($start_date, $end_date, $current_date){
+
+        header("Content-type: application/csv");
+    header("Content-Disposition: attachment; filename=\"exception_report".".csv\"");
+    header("Pragma: no-cache");
+    header("Expires: 0");
+    $handle = fopen('php://output', 'w');
+    fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'QC Time',));
+
+
+
+                   
+    $dataItems = $this->common_model->qctopackexport(urldecode($start_date), urldecode($end_date), urldecode($current_date));
+    $i=0;
+    foreach($dataItems as $item){
+        fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['incoming']));
+    }
+
+                    fclose($handle);
+                    exit;
+    }
+
+
 public function exceptionreport10am()
     {
         $data = array();

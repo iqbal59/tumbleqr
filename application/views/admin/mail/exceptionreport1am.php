@@ -112,7 +112,7 @@
                          <td><?php echo date('H:i:s', strtotime($end_date)); ?></td>
                          <td><?php echo $challan['total_spot']; ?></td>
                          <td><?php echo $challan['total_qc_done']; ?></td>
-                         <td><?php echo $challan['total_spot']-$challan['total_qc_done']; ?></td>
+                         <td><?php echo $challan['total_spot']-$challan['total_qc_done']; ?> <a href="<?php echo base_url('/admin/mailsend/exportexceptionspottoqc/'.$start_date.'/'.$end_date.'/'.$current_date)?>"> [ Download ] </a></td>
 
                          <td><?php echo ($challan['total_qc_done']/$challan['total_spot'])*100; ?></td>
                          <td><?php echo (($challan['total_spot']-$challan['total_qc_done'])/$challan['total_spot'])*100;?>
@@ -177,7 +177,7 @@
                          <td><?php echo date('H:i:s', strtotime($end_date)); ?></td>
                          <td><?php echo $challan['total_qc']; ?></td>
                          <td><?php echo $challan['total_pack_done']; ?></td>
-                         <td><?php echo $challan['total_qc']-$challan['total_pack_done']; ?></td>
+                         <td><?php echo $challan['total_qc']-$challan['total_pack_done']; ?> <a href="<?php echo base_url('/admin/mailsend/exportexceptionqctopack/'.$start_date.'/'.$end_date.'/'.$current_date)?>"> [ Download ] </a></td>
 
                          <td><?php echo ($challan['total_pack_done']/$challan['total_qc'])*100; ?></td>
                          <td><?php echo (($challan['total_qc']-$challan['total_pack_done'])/$challan['total_qc'])*100;?>
