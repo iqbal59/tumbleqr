@@ -1409,7 +1409,7 @@ public function qctopack($start_date, $end_date, $to_end_date)
         $sql_search=" and Primary_Service in (".$p.")";
         else
         $sql_search=" and Primary_Service not in ('SHC', 'SI')";
-        $sql_search.=" and (packaging_time is null or date_add(initial_time, INTERVAL 5.30 hour) > '".$current_date."' )";
+        $sql_search.=" and (packaging_time is null or date_add(packaging_time, INTERVAL 5.30 hour) > '".$current_date."' )";
          $sql="SELECT  tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(qc_time, INTERVAL 5.30 hour)as incoming FROM `tbl_challan_data` WHERE 1  and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;;
         $query = $this->db->query($sql)->result_array();
         return $query;
