@@ -46,7 +46,7 @@
                          <td><?php echo date('H:i:s', strtotime($end_date)); ?></td>
                          <td><?php echo $challan['total_incoming']; ?></td>
                          <td><?php echo $challan['total_spot']; ?></td>
-                         <td><?php echo $challan['total_incoming']-$challan['total_spot']; ?></td>
+                         <td><?php echo $challan['total_incoming']-$challan['total_spot']; ?> <a href="<?php echo base_url('/admin/mailsend/exportexceptionincomingtospot/'.$start_date.'/'.$end_date.'/'.$current_date)?>"> [ Download ] </a></td>
 
                          <td><?php echo ($challan['total_spot']/$challan['total_incoming'])*100; ?></td>
                          <td><?php echo (($challan['total_incoming']-$challan['total_spot'])/$challan['total_incoming'])*100;?>

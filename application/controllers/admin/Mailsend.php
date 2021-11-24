@@ -595,7 +595,7 @@ $this->email->send();
 
         $data['start_date'] = date('Y-m-d 15:00:00', strtotime('-2 day'));
         $data['end_date'] = date('Y-m-d 15:00:00', strtotime('-1 day'));
-         $data['current_date'] = date('Y-m-d');
+        $data['current_date'] = date('Y-m-d');
 
 
         $data['challans'] = $this->common_model->incomingtospot1am($data['start_date'], $data['end_date'], $data['current_date']);
@@ -605,6 +605,28 @@ $this->email->send();
 
     }
 
+
+    public function exportexceptionincomingtospot($start_date, $end_date, $current_date){
+
+        header("Content-type: application/csv");
+    header("Content-Disposition: attachment; filename=\"exception_report".".csv\"");
+    header("Pragma: no-cache");
+    header("Expires: 0");
+    $handle = fopen('php://output', 'w');
+    fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'Incoming Time'));
+
+
+
+                   
+    $dataItems = $this->common_model->incomingtospotexport(urldecode($start_date), urldecode($end_date), urldecode($current_date));
+    $i=0;
+    foreach($dataItems as $item){
+        fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['incoming']));
+    }
+
+                    fclose($handle);
+                    exit;
+    }
 
 
 public function exceptionreport10am()
