@@ -647,7 +647,7 @@
                                             class="fa fa-angle-right"></i> Ready to Dispatch</a></li>
 
                                             <li><a href="<?php echo base_url('admin/reports/quickwing') ?>"><i
-                                            class="fa fa-angle-right"></i> Quick Wing</a></li>
+                                            class="fa fa-angle-right"></i> Quick Win</a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/otherreadytodispatch') ?>"><i
