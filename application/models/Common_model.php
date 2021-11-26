@@ -1329,7 +1329,7 @@ public function qctopack($start_date, $end_date, $to_end_date)
     {
         
        
-         $sql="SELECT SUM(case when qc_time then 1 else 0 end) as total_qc , SUM(case when (qc_time != '' and date_add(qc_time, INTERVAL 5.30 hour) <= date_add('".$start_date."', INTERVAL 2 hour) and HOUR(TIMEDIFF(qc_time, packaging_time)) <=3) or (qc_time != '' and date_add(qc_time, INTERVAL 5.30 hour) >= date_add('".$start_date."', INTERVAL 2 hour) and date_add(packaging_time, INTERVAL 5.30 hour) < '".$to_end_date."' ) then 1 else 0 end) as total_pack_ok, sum(case when packaging_time then 1 else 0 end ) as total_pack_done, sum(case when packaging_time then 0 else 1 end ) as total_pack_pending FROM `tbl_challan_data`  WHERE 1 and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'";
+         $sql="SELECT SUM(case when qc_time and qc_status= 'Pass' then 1 else 0 end) as total_qc , SUM(case when (qc_time != '' and date_add(qc_time, INTERVAL 5.30 hour) <= date_add('".$start_date."', INTERVAL 2 hour) and HOUR(TIMEDIFF(qc_time, packaging_time)) <=3) or (qc_time != '' and date_add(qc_time, INTERVAL 5.30 hour) >= date_add('".$start_date."', INTERVAL 2 hour) and date_add(packaging_time, INTERVAL 5.30 hour) < '".$to_end_date."' ) then 1 else 0 end) as total_pack_ok, sum(case when packaging_time then 1 else 0 end ) as total_pack_done, sum(case when packaging_time then 0 else 1 end ) as total_pack_pending FROM `tbl_challan_data`  WHERE 1 and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -1367,7 +1367,7 @@ public function qctopack($start_date, $end_date, $to_end_date)
         $sql_search=" and Primary_Service in (".$p.")";
         else
         $sql_search=" and Primary_Service not in ('SHC', 'SI')";
-         $sql="SELECT SUM(case when qc_time then 1 else 0 end) as total_qc ,  sum(case when packaging_time  and date_add(packaging_time, INTERVAL 5.30 hour) < '".$current_date."' then 1 else 0 end ) as total_pack_done FROM `tbl_challan_data` WHERE 1  and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;;
+         $sql="SELECT SUM(case when qc_time and qc_status= 'Pass' then 1 else 0 end) as total_qc ,  sum(case when packaging_time  and date_add(packaging_time, INTERVAL 5.30 hour) < '".$current_date."' then 1 else 0 end ) as total_pack_done FROM `tbl_challan_data` WHERE 1  and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;;
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -1385,7 +1385,7 @@ public function qctopack($start_date, $end_date, $to_end_date)
 
 
         $sql_search.=" and (spot_time is null or date_add(initial_time, INTERVAL 5.30 hour) > '".$current_date."' )";
-           $sql="SELECT tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(initial_time, INTERVAL 5.30 hour)as incoming, spot_time FROM `tbl_challan_data` left join  (select MIN(spot_time) as spot_time, Barcode from tbl_spot  where date_add(spot_time, INTERVAL 5.30 hour) < '".$current_date."' group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and initial_stage=1 and date_add(initial_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;
+           $sql="SELECT tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(initial_time, INTERVAL 5.30 hour)as incoming, spot_time, packaging_stage FROM `tbl_challan_data` left join  (select MIN(spot_time) as spot_time, Barcode from tbl_spot  where date_add(spot_time, INTERVAL 5.30 hour) < '".$current_date."' group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and initial_stage=1 and date_add(initial_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -1398,7 +1398,7 @@ public function qctopack($start_date, $end_date, $to_end_date)
         else
         $sql_search=" and Primary_Service not in ('SHC', 'SI')";
         $sql_search.=" and (qc_time is null or date_add(qc_time, INTERVAL 5.30 hour) > '".$current_date."' )";
-         echo $sql="SELECT tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(spot_time, INTERVAL 5.30 hour)as incoming FROM `tbl_challan_data` left join (select MIN(spot_time) as spot_time, Barcode from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and date_add(spot_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;
+         echo $sql="SELECT tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(spot_time, INTERVAL 5.30 hour)as incoming, packaging_stage FROM `tbl_challan_data` left join (select MIN(spot_time) as spot_time, Barcode from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and date_add(spot_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -1410,7 +1410,8 @@ public function qctopack($start_date, $end_date, $to_end_date)
         else
         $sql_search=" and Primary_Service not in ('SHC', 'SI')";
         $sql_search.=" and (packaging_time is null or date_add(packaging_time, INTERVAL 5.30 hour) > '".$current_date."' )";
-         $sql="SELECT  tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(qc_time, INTERVAL 5.30 hour)as incoming FROM `tbl_challan_data` WHERE 1  and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;;
+        $sql_search.=" and qc_status='Pass'";
+         $sql="SELECT  tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(qc_time, INTERVAL 5.30 hour)as incoming, packaging_stage FROM `tbl_challan_data` WHERE 1  and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;;
         $query = $this->db->query($sql)->result_array();
         return $query;
     }

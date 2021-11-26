@@ -606,14 +606,14 @@ $this->email->send();
     }
 
 
-    public function exportexceptionincomingtospot($start_date, $end_date, $current_date){
+    public function exportexceptionincomingtospot($start_date, $end_date, $current_date, $file_name){
 
         header("Content-type: application/csv");
-    header("Content-Disposition: attachment; filename=\"exception_report".".csv\"");
+      header("Content-Disposition: attachment; filename=\"exception_report_".$file_name."_".date('d-m-Y_H_i_s').".csv\"");
     header("Pragma: no-cache");
     header("Expires: 0");
     $handle = fopen('php://output', 'w');
-    fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'Incoming Time'));
+    fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'Incoming Time','Packing Status'));
 
 
 
@@ -621,7 +621,7 @@ $this->email->send();
     $dataItems = $this->common_model->incomingtospotexport(urldecode($start_date), urldecode($end_date), urldecode($current_date));
     $i=0;
     foreach($dataItems as $item){
-        fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['incoming']));
+        fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['incoming'], $item['packaging_stage']));
     }
 
                     fclose($handle);
@@ -629,14 +629,14 @@ $this->email->send();
     }
 
 
-    public function exportexceptionspottoqc($start_date, $end_date, $current_date){
+    public function exportexceptionspottoqc($start_date, $end_date, $current_date, $file_name){
 
         header("Content-type: application/csv");
-    header("Content-Disposition: attachment; filename=\"exception_report".".csv\"");
+      header("Content-Disposition: attachment; filename=\"exception_report_".$file_name."_".date('d-m-Y_H_i_s').".csv\"");
     header("Pragma: no-cache");
     header("Expires: 0");
     $handle = fopen('php://output', 'w');
-    fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'Spot Time'));
+    fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'Spot Time','Packing Status'));
 
 
 
@@ -644,21 +644,21 @@ $this->email->send();
     $dataItems = $this->common_model->spottingtoqcexport(urldecode($start_date), urldecode($end_date), urldecode($current_date));
     $i=0;
     foreach($dataItems as $item){
-        fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['incoming']));
+        fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['incoming'], $item['packaging_stage']));
     }
 
                     fclose($handle);
                     exit;
     }
 
-    public function exportexceptionqctopack($start_date, $end_date, $current_date){
+    public function exportexceptionqctopack($start_date, $end_date, $current_date, $file_name){
 
         header("Content-type: application/csv");
-    header("Content-Disposition: attachment; filename=\"exception_report".".csv\"");
+    header("Content-Disposition: attachment; filename=\"exception_report_".$file_name."_".date('d-m-Y_H_i_s').".csv\"");
     header("Pragma: no-cache");
     header("Expires: 0");
     $handle = fopen('php://output', 'w');
-    fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'QC Time',));
+    fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'QC Time','Packing Status'));
 
 
 
@@ -666,7 +666,7 @@ $this->email->send();
     $dataItems = $this->common_model->qctopackexport(urldecode($start_date), urldecode($end_date), urldecode($current_date));
     $i=0;
     foreach($dataItems as $item){
-        fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['incoming']));
+        fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['incoming'], $item['packaging_stage']));
     }
 
                     fclose($handle);
@@ -755,7 +755,7 @@ public function exceptionreport6pm()
 
  public function send5am()
     {
-        $htmlData = file_get_contents('http://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport1am');
+        $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport1am');
 
         $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
     }
@@ -763,21 +763,21 @@ public function exceptionreport6pm()
 
 public function send10am()
     {
-        $htmlData = file_get_contents('http://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport10am');
+        $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport10am');
 
         $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
     }
 
 public function send2pm()
     {
-        $htmlData = file_get_contents('http://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport2pm');
+        $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport2pm');
 
         $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
     }
 
 public function send6pm()
     {
-        $htmlData = file_get_contents('http://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport6pm');
+        $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport6pm');
 
         $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
     }
