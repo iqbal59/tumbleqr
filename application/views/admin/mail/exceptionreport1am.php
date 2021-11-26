@@ -50,8 +50,8 @@
                                  href="<?php echo base_url('/admin/mailsend/exportexceptionincomingtospot/'.$start_date.'/'.$end_date.'/'.$current_date.'/incomingtospot')?>">
                                  [ Download ] </a></td>
 
-                         <td><?php echo ($challan['total_spot']/$challan['total_incoming'])*100; ?></td>
-                         <td><?php echo (($challan['total_incoming']-$challan['total_spot'])/$challan['total_incoming'])*100;?>
+                         <td><?php echo round(($challan['total_spot']/$challan['total_incoming'])*100,2); ?></td>
+                         <td><?php echo round((($challan['total_incoming']-$challan['total_spot'])/$challan['total_incoming'])*100,2);?>
                          </td>
 
                      </tr>
@@ -118,8 +118,8 @@
                                  href="<?php echo base_url('/admin/mailsend/exportexceptionspottoqc/'.$start_date.'/'.$end_date.'/'.$current_date.'/spottoqc')?>">
                                  [ Download ] </a></td>
 
-                         <td><?php echo ($challan['total_qc_done']/$challan['total_spot'])*100; ?></td>
-                         <td><?php echo (($challan['total_spot']-$challan['total_qc_done'])/$challan['total_spot'])*100;?>
+                         <td><?php echo round(($challan['total_qc_done']/$challan['total_spot'])*100,2); ?></td>
+                         <td><?php echo round((($challan['total_spot']-$challan['total_qc_done'])/$challan['total_spot'])*100,2);?>
                          </td>
 
                      </tr>
@@ -185,8 +185,8 @@
                                  href="<?php echo base_url('/admin/mailsend/exportexceptionqctopack/'.$start_date.'/'.$end_date.'/'.$current_date.'/qctopack')?>">
                                  [ Download ] </a></td>
 
-                         <td><?php echo ($challan['total_pack_done']/$challan['total_qc'])*100; ?></td>
-                         <td><?php echo (($challan['total_qc']-$challan['total_pack_done'])/$challan['total_qc'])*100;?>
+                         <td><?php echo round(($challan['total_pack_done']/$challan['total_qc'])*100, 2); ?></td>
+                         <td><?php echo round((($challan['total_qc']-$challan['total_pack_done'])/$challan['total_qc'])*100, 2);?>
                          </td>
 
                      </tr>
