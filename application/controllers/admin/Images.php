@@ -60,14 +60,14 @@ public function sendPhotoEmail(){
         $mail->addReplyTo('admin@centuryfasteners.in', 'Factory Automation');
 
         // Add a recipient
-       // $mail->addAddress('Gaurav.Nigam@tumbledry.in');
-        $mail->addAddress('iqbal.alam59@gmail.com');
+        $mail->addAddress('Gaurav.Nigam@tumbledry.in');
+        //$mail->addAddress('iqbal.alam59@gmail.com');
 
         // Add cc or bcc
        // $mail->addCC('Gaurav.Teotia@tumbledry.in');
-       // $mail->addCC('gaurishankarm@gmail.com');
+       $mail->addCC('gaurishankarm@gmail.com');
        // $mail->addCC('tumbledryfactory@gmail.com');
-        //$mail->addBCC('iqbal.alam59@gmail.com');
+        $mail->addBCC('iqbal.alam59@gmail.com');
 
         // Email subject
         $mail->Subject = "Order # ".$order_no."_Incoming Photos";
