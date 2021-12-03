@@ -33,7 +33,7 @@
     figure {
         position: relative;
         display: inline-block;
-        width: 33.333%;
+        width: 50%;
         float: left;
         padding: 10px;
         ;
