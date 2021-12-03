@@ -89,7 +89,7 @@
                             <!-- Thumbnail -->
                             <img src="https://thelawtimes.in/upload/<?php echo $p['picture'];?>" itemprop="thumbnail"
                                 alt="Image description">
-                            <div class="badge"><?php echo $p['Sub_Garment']?> (<?php echo $p['remarks']?>)
+                            <div class="badge"><?php echo $p['Sub_Garment']?> (<?php echo $p['remarks']?>) <br />
                                 <?php echo $p['Barcode']?></div>
                         </a>
                     </figure>
