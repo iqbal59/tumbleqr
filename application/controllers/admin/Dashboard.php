@@ -17,13 +17,13 @@ class Dashboard extends CI_Controller {
         $this->load->view('admin/index', $data);
     }
 
-    public function backup($fileName='db_backup.zip'){
-        $this->load->dbutil();
-        $backup =& $this->dbutil->backup();
-        $this->load->helper('file');
-        write_file(FCPATH.'/downloads/'.$fileName, $backup);
-        $this->load->helper('download');
-        force_download($fileName, $backup);
-    }
+    // public function backup($fileName='db_backup.zip'){
+    //     $this->load->dbutil();
+    //     $backup =& $this->dbutil->backup();
+    //     $this->load->helper('file');
+    //     write_file(FCPATH.'/downloads/'.$fileName, $backup);
+    //     $this->load->helper('download');
+    //     force_download($fileName, $backup);
+    // }
 
 }

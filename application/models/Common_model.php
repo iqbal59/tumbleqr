@@ -1412,10 +1412,22 @@ public function qctopack($start_date, $end_date, $to_end_date)
         $sql_search=" and Primary_Service not in ('SHC', 'SI')";
         $sql_search.=" and (packaging_time is null or date_add(packaging_time, INTERVAL 5.30 hour) > '".$current_date."' )";
         $sql_search.=" and qc_status='Pass'";
-        $sql="SELECT  tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(qc_time, INTERVAL 5.30 hour)as incoming, packaging_stage FROM `tbl_challan_data` WHERE 1  and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;;
+        $sql="SELECT  tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(qc_time, INTERVAL 5.30 hour)as incoming, packaging_stage FROM `tbl_challan_data` WHERE 1  and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
+
+
+//Get Images by ORDER NO AND STORE ID
+
+public function getPictures($order_no, $store_id)
+    {
+        
+        $sql="SELECT * FROM `tbl_picture`  left join tbl_challan_data on (tbl_challan_data.Barcode=tbl_picture.Barcode) where store_id=$store_id and Order_No='".$order_no."'";
+        $query = $this->db->query($sql)->result_array();
+        return $query;
+    }
+
 
 
 }

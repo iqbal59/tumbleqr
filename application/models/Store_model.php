@@ -65,6 +65,15 @@ function get_all_active_stores()
         ->result_array();
         
     }
+
+    function get_store_by_id($id)
+    {
+      return $this->db->query("select store_id, Store_Name from tbl_challan_data where store_id='".$id."' group by store_id order by Store_Name")
+        ->row();
+        
+    }
+
+
     
     function get_all_stations()
     {
