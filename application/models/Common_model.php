@@ -1428,6 +1428,22 @@ public function getPictures($order_no, $store_id)
         return $query;
     }
 
+public function getPicturestoEmail()
+    {
+        
+        $sql=" SELECT max(create_date) as photo_time, tbl_picture.Barcode, Order_No, store_id FROM `tbl_picture` left join tbl_challan_data on (tbl_challan_data.Barcode=tbl_picture.Barcode) where photo_email=0 group by Order_No, store_id";
+        $query = $this->db->query($sql)->result_array();
+        return $query;
+    }
+   
 
+    public function update_email_status($order_no, $store_id)
+    {
+        
+        $sql="update tbl_challan_data set photo_email=1 where Order_No='".$order_no."' and store_id=".$store_id;
+        $query = $this->db->query($sql);
+        return $query;
+    }
+   
 
 }
