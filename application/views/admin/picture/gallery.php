@@ -33,11 +33,20 @@
     figure {
         position: relative;
         display: inline-block;
-        width: 50%;
+        width: 25%;
         float: left;
         padding: 10px;
         ;
     }
+
+
+
+    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        figure {
+            width: 100%;
+        }
+    }
+
 
     img {
         width: 100%;
@@ -74,7 +83,7 @@
     <?php if(!empty($pictures)) {?>
     <div class="container">
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-12">
 
                 <h1 class="text-center">
                     Order No. <?php echo $order_no?><br>
