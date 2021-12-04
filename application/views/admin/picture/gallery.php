@@ -61,6 +61,12 @@
     .badge--hidden {
         opacity: 0;
     }
+
+    figure p {
+        text-align: center;
+        padding: 10px;
+        font-weight: 700;
+    }
     </style>
 </head>
 
@@ -89,9 +95,10 @@
                             <!-- Thumbnail -->
                             <img src="https://thelawtimes.in/upload/<?php echo $p['picture'];?>" itemprop="thumbnail"
                                 alt="Image description">
-                            <div class="badge"><?php echo $p['Sub_Garment']?> (<?php echo $p['remarks']?>) <br />
-                                <?php echo $p['Barcode']?></div>
+
                         </a>
+                        <p><?php echo $p['Sub_Garment']?> (<?php echo $p['remarks']?>)
+                            <?php echo $p['Barcode']?></p>
                     </figure>
 
                     <?php } ?>
