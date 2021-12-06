@@ -1431,7 +1431,7 @@ public function getPictures($order_no, $store_id)
 public function getPicturestoEmail()
     {
         
-        $sql=" SELECT max(create_date) as photo_time, tbl_picture.Barcode, Order_No, store_id FROM `tbl_picture` left join tbl_challan_data on (tbl_challan_data.Barcode=tbl_picture.Barcode) where photo_email=0 group by Order_No, store_id";
+        $sql="select * from (SELECT max(create_date) as photo_time, tbl_picture.Barcode, Order_No, store_id FROM `tbl_picture` left join tbl_challan_data on (tbl_challan_data.Barcode=tbl_picture.Barcode) where photo_email=0 group by Order_No, store_id) as temp where photo_time < DATE_SUB(NOW(), INTERVAL 3 HOUR)";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
