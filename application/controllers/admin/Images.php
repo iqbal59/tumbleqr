@@ -70,7 +70,7 @@ public function sendPhotoEmail(){
         $mail->addBCC('iqbal.alam59@gmail.com');
 
         // Email subject
-        $mail->Subject = "Order # ".$order_no."_Incoming Photos";
+        $mail->Subject = "Update: Tumbledry Order #".$order_no;
 
         // Set email format to HTML
         $mail->isHTML(true);
@@ -78,7 +78,14 @@ public function sendPhotoEmail(){
         // Email body content
         $url="https://centuryfasteners.in/tumbleqr/admin/images/viewgallery/".$order_no."/".$store_id;
         
-        $mailContent = "<a href=".$url.">".$url."</a>";
+        $mailContent = "Dear Customer<br><br>
+ 
+Thank you for choosing Tumbledry as your dry clean service partner. This is an update regarding your order #".$order_no.".<br><br>
+ 
+We have observed the following findings in order #T2484 during the pre-processing inspection by our dry cleaning experts. In case you feel there is any discrepancy, please feel free to contact us on 8080809334.<br><br>
+<a href=".$url.">".$url."</a><br><br>Warm Regards,<br>
+Tumbledry <br><br><br><br><br> <em>This is an auto generated mail. Please do not reply to this email. To know more about our services, please visit: <a href='https://www.tumbledry.in'>www.tumbledry.in</a>
+</em>";
 
         $mail->Body = $mailContent;
 
