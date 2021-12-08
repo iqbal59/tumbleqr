@@ -82,7 +82,7 @@ public function sendPhotoEmail(){
  
 Thank you for choosing Tumbledry as your dry clean service partner. This is an update regarding your order #".$order_no.".<br><br>
  
-We have observed the following findings in order #T2484 during the pre-processing inspection by our dry cleaning experts. In case you feel there is any discrepancy, please feel free to contact us on 8080809334.<br><br>
+We have observed the following findings in order #".$order_no." during the pre-processing inspection by our dry cleaning experts. In case you feel there is any discrepancy, please feel free to contact us on 8080809334.<br><br>
 <a href=".$url.">".$url."</a><br><br>Warm Regards,<br>
 Tumbledry <br><br><br><br><br> <em>This is an auto generated mail. Please do not reply to this email. To know more about our services, please visit: <a href='https://www.tumbledry.in'>www.tumbledry.in</a>
 </em>";
