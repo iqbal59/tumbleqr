@@ -106,7 +106,7 @@
 <body>
     <?php if(!empty($pictures)) {?>
     <section style="background:#fff;">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-md-3 col-xs-6">
                     <h1 class="text-center">
