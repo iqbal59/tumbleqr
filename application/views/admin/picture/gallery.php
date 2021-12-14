@@ -116,7 +116,7 @@
                 </div>
                 <div class="col-md-9 col-xs-6">
                     <h1 class="text-right">
-                        Order #<?php echo $order_no?><br>
+                        Order # <?php echo $order_no?><br>
                         <?php echo $storeData->Store_Name;?>
                     </h1>
                 </div>
