@@ -141,7 +141,8 @@
 
         </div>
     </section>
-    <section style="background-color:#ff726f;height:20px; margin-bottom:16px;"></section>
+    <section style="background-color:#bb0200;height:20px; margin-bottom:3px;"></section>
+    <section style="background-color:#bb0200;height:3px; margin-bottom:16px;"></section>
     <div class="container">
 
         <div class="row">
