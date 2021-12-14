@@ -16,7 +16,7 @@
     <style>
     body {
         font-family: 'tumbledry';
-        background: #f5e6e4;
+        background: #F5F5DB;
 
     }
 
@@ -48,7 +48,7 @@
         position: relative;
         display: inline-block;
         width: 25%;
-        float: left;
+        /* float: left; */
         padding: 10px;
         ;
     }
@@ -62,7 +62,7 @@
 
         figure p {
 
-            font-size: 25px !important;
+            font-size: 35px !important;
         }
 
         img.logo-tumble {
@@ -98,7 +98,7 @@
         text-align: center;
         padding: 15px;
         font-weight: 700;
-        font-size: 18px;
+        font-size: 15px;
     }
     </style>
 </head>
@@ -106,17 +106,18 @@
 <body>
     <?php if(!empty($pictures)) {?>
     <section style="background:#fff;">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 col-xs-6">
                     <h1 class="text-center">
                         <img class="logo-tumble" src="<?php echo base_url() ?>assets/images/logo-email.png"
                             alt="homepage" />
                     </h1>
                 </div>
-                <div class="col-md-9">
-                    <h1 class="text-center">
-                        Call Centre: 8080809334
+                <div class="col-md-9 col-xs-6">
+                    <h1 class="text-right">
+                        Order #<?php echo $order_no?><br>
+                        <?php echo $storeData->Store_Name;?>
                     </h1>
                 </div>
 
@@ -124,20 +125,11 @@
 
         </div>
     </section>
-    <section style="background-color: rgba(76,200,210,0.54);height:20px;"></section>
+    <section style="background-color:#D79D95;height:20px; margin-bottom:16px;"></section>
     <div class="container">
 
         <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center">
-
-                    Order #<?php echo $order_no?>
-                    <?php echo $storeData->Store_Name;?>
-                </h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-12 text-center">
 
 
 
@@ -166,7 +158,11 @@
 
             </div>
         </div>
+
     </div>
+
+
+
 
     <!-- Some spacing 😉 -->
     <div class="spacer"></div>
