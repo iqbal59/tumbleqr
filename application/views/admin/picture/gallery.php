@@ -120,13 +120,13 @@
     <section style="background:#fff;">
         <div class="container fluid">
             <div class="row">
-                <div class="col-md-3 col-xs-6">
+                <div class="col-md-6 col-xs-6">
                     <h1 class="text-center mobile_logo">
                         <img class="logo-tumble" src="<?php echo base_url() ?>assets/images/logo-email.png"
                             alt="homepage" />
                     </h1>
                 </div>
-                <div class="col-md-9 col-xs-6">
+                <div class="col-md-6 col-xs-6">
                     <h1 class="text-right order_no">
                         Order # <?php echo $order_no?><br />
                         <?php echo $storeData->Store_Name;?>
