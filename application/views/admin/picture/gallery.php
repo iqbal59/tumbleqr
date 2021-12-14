@@ -123,8 +123,8 @@
                     </h1>
                 </div>
                 <div class="col-md-9 col-xs-6">
-                    <h1 class="text-center order_no">
-                        Order # <?php echo $order_no?><br>
+                    <h1 class="text-right order_no">
+                        Order # <?php echo $order_no?>
                         <?php echo $storeData->Store_Name;?>
                     </h1>
                 </div>
