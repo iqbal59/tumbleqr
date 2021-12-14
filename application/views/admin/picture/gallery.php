@@ -69,8 +69,12 @@
             width: 75%;
         }
 
-        h1 {
+        h1.order_no {
             text-align: right !important;
+        }
+
+        h1.mobile_logo {
+            text-align: left !important;
         }
     }
 
@@ -113,13 +117,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3 col-xs-6">
-                    <h1 class="text-center">
+                    <h1 class="text-center mobile_logo">
                         <img class="logo-tumble" src="<?php echo base_url() ?>assets/images/logo-email.png"
                             alt="homepage" />
                     </h1>
                 </div>
                 <div class="col-md-9 col-xs-6">
-                    <h1 class="text-center">
+                    <h1 class="text-center order_no">
                         Order # <?php echo $order_no?><br>
                         <?php echo $storeData->Store_Name;?>
                     </h1>
