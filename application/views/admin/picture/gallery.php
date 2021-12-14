@@ -12,13 +12,27 @@
 
     <!-- A touch of fanciness 💄 -->
     <link href='https://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link href="<?php echo base_url() ?>assets/css/font.css" rel="stylesheet">
     <style>
     body {
-        font-family: 'Bitter', Georgia, Times, sans-serif;
+        font-family: 'tumbledry';
+        background: #f5e6e4;
+
+    }
+
+
+
+
+    .row-eq-height {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
     }
 
     h1 {
-        margin: 2em;
+        margin: 1em;
+        vertical-align: middle;
     }
 
     .pswp__caption__center {
@@ -44,6 +58,15 @@
     @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
         figure {
             width: 100%;
+        }
+
+        figure p {
+
+            font-size: 25px !important;
+        }
+
+        img.logo-tumble {
+            width: 75%;
         }
     }
 
@@ -73,22 +96,50 @@
 
     figure p {
         text-align: center;
-        padding: 10px;
+        padding: 15px;
         font-weight: 700;
+        font-size: 18px;
     }
     </style>
 </head>
 
 <body>
     <?php if(!empty($pictures)) {?>
+    <section style="background:#fff;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h1 class="text-center">
+                        <img class="logo-tumble" src="<?php echo base_url() ?>assets/images/logo-email.png"
+                            alt="homepage" />
+                    </h1>
+                </div>
+                <div class="col-md-9">
+                    <h1 class="text-center">
+                        Call Centre: 8080809334
+                    </h1>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section style="background-color: rgba(76,200,210,0.54);height:20px;"></section>
     <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">
+
+                    Order #<?php echo $order_no?>
+                    <?php echo $storeData->Store_Name;?>
+                </h1>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-12">
 
-                <h1 class="text-center">
-                    Order No. <?php echo $order_no?><br>
-                    <small><em><?php echo $storeData->Store_Name;?></em></small>
-                </h1>
+
 
                 <!-- Galley wrapper that contains all items -->
                 <div id="gallery" class="gallery" itemscope itemtype="http://schema.org/ImageGallery">

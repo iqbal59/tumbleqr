@@ -1,0 +1,6 @@
+@font-face {
+  font-family: "tumbledry";
+  src: url("../Fonts/Co Headline Corp Bold.ttf") format("truetype"),
+    url("../Fonts/Co Headline Corp Light.ttf") format("truetype"),
+    url("../Fonts/Co Headline Corp Regular.ttf") format("truetype");
+}
