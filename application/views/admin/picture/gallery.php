@@ -76,6 +76,10 @@
         h1.mobile_logo {
             text-align: left !important;
         }
+
+        .fluid {
+            width: 100% !important;
+        }
     }
 
 
@@ -114,7 +118,7 @@
 <body>
     <?php if(!empty($pictures)) {?>
     <section style="background:#fff;">
-        <div class="container-fluid">
+        <div class="container fluid">
             <div class="row">
                 <div class="col-md-3 col-xs-6">
                     <h1 class="text-center mobile_logo">
@@ -124,7 +128,7 @@
                 </div>
                 <div class="col-md-9 col-xs-6">
                     <h1 class="text-right order_no">
-                        Order # <?php echo $order_no?>
+                        Order # <?php echo $order_no?><br />
                         <?php echo $storeData->Store_Name;?>
                     </h1>
                 </div>
