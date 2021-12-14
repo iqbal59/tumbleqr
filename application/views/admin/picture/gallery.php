@@ -68,6 +68,10 @@
         img.logo-tumble {
             width: 75%;
         }
+
+        h1 {
+            text-align: right !important;
+        }
     }
 
 
@@ -106,7 +110,7 @@
 <body>
     <?php if(!empty($pictures)) {?>
     <section style="background:#fff;">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3 col-xs-6">
                     <h1 class="text-center">
@@ -115,7 +119,7 @@
                     </h1>
                 </div>
                 <div class="col-md-9 col-xs-6">
-                    <h1 class="text-right">
+                    <h1 class="text-center">
                         Order # <?php echo $order_no?><br>
                         <?php echo $storeData->Store_Name;?>
                     </h1>
