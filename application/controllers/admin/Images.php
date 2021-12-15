@@ -31,8 +31,9 @@ public function sendPhotoEmail(){
     $data['pictures']=$this->common_model->getPicturestoEmail();
    
     foreach ($data['pictures'] as $p){
-        $this->send($p['Order_No'], $p['store_id']);
-        $this->common_model->update_email_status($p['Order_No'], $p['store_id']);
+       // $this->send($p['Order_No'], $p['store_id']);
+        //$this->common_model->update_email_status($p['Order_No'], $p['store_id']);
+         $this->send("TEST ORDER NO", "TEST STORE");
     }
     
 }
