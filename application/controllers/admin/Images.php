@@ -29,11 +29,11 @@ class Images extends CI_Controller
 
 public function sendPhotoEmail(){
     $data['pictures']=$this->common_model->getPicturestoEmail();
-   
+    $this->send("TEST ORDER NO", "TEST STORE");
     foreach ($data['pictures'] as $p){
-       // $this->send($p['Order_No'], $p['store_id']);
-        //$this->common_model->update_email_status($p['Order_No'], $p['store_id']);
-         $this->send("TEST ORDER NO", "TEST STORE");
+       $this->send($p['Order_No'], $p['store_id']);
+        $this->common_model->update_email_status($p['Order_No'], $p['store_id']);
+       
     }
     
 }
