@@ -207,10 +207,13 @@
 	                                    echo "Dispatch";
 	                                    
 	                                    else if( $challan['packaging_stage']==1)
-	                                    echo "Quality Check ". $challan['qc_status'];
+	                                    echo "Packed";
 
 	                                    else if($challan['qc_stage']==1)
 	                                    echo "Quality Check ". $challan['qc_status'];
+
+                                        else if($challan['spot_time'])
+	                                    echo "Spot";
                                         
 	                                   else if($challan['initial_stage']==1)
 	                                    echo "Incoming";
