@@ -670,6 +670,32 @@ public function otherreadytodispatch()
     }
 
 
+public function cancelledorder()
+    {
+        $data = array();
+        $data['page_title'] = 'Pending Report';
+        if($this->input->server('REQUEST_METHOD') === 'GET'){
+           // echo "POST";
+           // die();
+           $data['condition']=array(
+               'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+               'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+               'store_id'=> $this->input->get('store_id')
+           );
+           $data['condition'] = $this->security->xss_clean($data['condition']);
+           $data['challans']=$this->common_model->cancelledorder($data['condition']);
+           $data['stores']=$this->store_model->get_all_stores();
+          
+
+        }   
+
+        
+        $data['main_content'] = $this->load->view('admin/reports/cancelledorder', $data, TRUE);
+        $this->load->view('admin/index', $data);
+    }
+
+
+
 
 public function sendchallan()
     {
@@ -815,6 +841,36 @@ public function dispatchorder()
             else
             redirect("admin/reports/readytodispatch?s_from_date=$from&s_to_date=$to&store_id=$store_id");
           
+
+        }   
+
+        
+        
+    }
+
+
+
+    public function cancelorder()
+    {
+        
+        if($this->input->server('REQUEST_METHOD') === 'GET'){
+           
+            $flg=$this->input->get('flg');
+            $order_no=$this->input->get('order_no');
+            $store_id=$this->input->get('store_id');
+            $from=$this->input->get('from');
+            $to=$this->input->get('to');
+            if($order_no && $store_id){
+			$this->common_model->cancelorder($order_no, $store_id);
+            $this->session->set_flashdata('msg', 'Cancelled Successfully');           
+            }
+            else
+            {
+	          $this->session->set_flashdata('error_msg', 'Error');             
+            }
+            
+           // redirect("admin/reports/cancelledorder?s_from_date=$from&s_to_date=$to&store_id=$store_id");
+           redirect("admin/reports/cancelledorder");
 
         }   
 

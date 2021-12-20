@@ -745,6 +745,30 @@ class Common_model extends CI_Model
     }
 
  
+    public function cancelledorder($param)
+    {
+        // print_r($param);
+        
+        if (!empty($param['from_date']) && !empty($param['to_date'])) {
+            $search_query=" and Due_on between '".date('Y-m-d', strtotime($param['from_date']. ' + 1 days'))."' and '".date('Y-m-d', strtotime($param['to_date']. ' + 1 days'))."'";
+        } else {
+            $search_query='';
+        }
+        
+        if (!empty($param['store_id'])) {
+            $search_query.=" and store_id='".$param['store_id']."'";
+        }
+        
+        if (!empty($param['services'])) {
+            $search_query.=" and Primary_Service='".$param['services']."'";
+        }
+        
+        
+         $sql="SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No,  Due_on, Primary_Service  FROM  tbl_challan_data WHERE 1 and cancel_status=0 and initial_stage=0 and qc_stage=0 and packaging_stage=0  group by store_id, Order_No ";
+        $query = $this->db->query($sql)->result_array();
+        return $query;
+    }
+
  
     public function quickwing($param)
     {
@@ -905,7 +929,11 @@ class Common_model extends CI_Model
         $sql="update tbl_challan_data set dispatch_status=1, dispatch_time='".date('Y-m-d H:i:s')."' where Order_No='".$order_no."' and store_id=".$store_id;
         $this->db->query($sql);
     }
-
+ public function cancelorder($order_no, $store_id)
+    {
+        $sql="update tbl_challan_data set cancel_status=1, cancel_time='".date('Y-m-d H:i:s')."' where Order_No='".$order_no."' and store_id=".$store_id;
+        $this->db->query($sql);
+    }
 
     public function setPriority($params)
     {

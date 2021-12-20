@@ -646,7 +646,7 @@
                                 <li><a href="<?php echo base_url('admin/reports/readytodispatch') ?>"><i
                                             class="fa fa-angle-right"></i> Ready to Dispatch</a></li>
 
-                                            <li><a href="<?php echo base_url('admin/reports/quickwing') ?>"><i
+                                <li><a href="<?php echo base_url('admin/reports/quickwing') ?>"><i
                                             class="fa fa-angle-right"></i> Quick Win</a></li>
 
 
@@ -659,6 +659,10 @@
 
                                 <li><a href="<?php echo base_url('admin/reports/sendchallan') ?>"><i
                                             class="fa fa-angle-right"></i> Send Challan</a></li>
+
+
+                                <li><a href="<?php echo base_url('admin/reports/cancelledorder') ?>"><i
+                                            class="fa fa-angle-right"></i> Cancel Order</a></li>
 
 
 
