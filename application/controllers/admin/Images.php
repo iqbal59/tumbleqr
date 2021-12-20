@@ -81,11 +81,17 @@ public function sendPhotoEmail(){
         
         $mailContent = "Dear Customer<br><br>
  
-Thank you for choosing Tumbledry as your Dry Clean service partner. This is an update regarding your order # ".$order_no.".<br><br>
+Thank you for choosing Tumbledry as your Dry Clean Service Partner. This is an update regarding your order # ".$order_no.".<br><br>
  
-We have the following observations in order # ".$order_no." during the Pre-Processing inspection by our Dry Cleaning experts. In case you feel there is any discrepancy, please feel free to contact us on 8080809334<br><br>
-<a href=".$url.">".$url."</a><br><br>Warm Regards,<br>
-Tumbledry <br><br><br><br><br> <em>This is an auto generated email. Please do not reply to this. To know more about our services, please visit: <a href='https://www.tumbledry.in'>www.tumbledry.in</a>
+We have few observations in order # ".$order_no." during the Pre-Processing inspection by our Dry Cleaning experts which can be seen by clicking on below link:
+<br><br>
+<a href=".$url.">Update on your order # ".$order_no."</a><br><br>
+Our Team of Experts at Tumbledry will try their best to resolve it and deliver your garments fresh as new.<br><br>
+
+In case you feel there is any discrepancy, please feel free to contact us on 8080809334<br/><r/>
+
+Warm Regards,<br>
+Tumbledry <br><br><br><br><br> <em>This is an auto generated mail. Please do not reply to this. To know more about our services, please visit: <a href='https://www.tumbledry.in'>www.tumbledry.in</a>
 </em>";
 
         $mail->Body = $mailContent;
