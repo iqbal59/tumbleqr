@@ -80,10 +80,12 @@
 
                                     <th>Store Name</th>
                                     <th>Order No.</th>
+                                    <th>Order Date</th>
                                     <th>Total Garment</th>
 
 
                                     <th>Primary Service</th>
+                                    
                                     <th>Due On</th>
                                     <th>Action</th>
 
@@ -98,6 +100,7 @@
                                 <tr>
 
                                     <td><?php echo $challan['Store_Name']; ?></td>
+                                    <td><?php echo date('d-m-Y', strtotime($challan['Order_Date'])); ?></td>
                                     <td><?php echo $challan['Order_No']; ?></td>
                                     <td><?php echo $challan['total_garment']; ?>
                                     </td>
