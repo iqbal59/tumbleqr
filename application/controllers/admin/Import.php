@@ -117,14 +117,14 @@ class Import extends CI_Controller
                             $data['order_priority']=2;
                             else
                             $data['order_priority']=0;
-                                 print_r($data);
-                                 echo "<br>";
+                                // print_r($data);
+                                 //echo "<br>";
 
-                           // $this->common_model->import_challan($data);
+                            $this->common_model->import_challan($data);
                         }
                        
-                      //  $this->session->set_flashdata('msg', "data upload success");
-                        //redirect('admin/import/importchallandata');
+                        $this->session->set_flashdata('msg', "data upload success");
+                        redirect('admin/import/importchallandata');
                 break;
              
             }
