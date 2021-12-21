@@ -105,7 +105,15 @@ class Import extends CI_Controller
                             $data['Received_from_Workshop'] = date('Y-m-d', strtotime($filesop[24]));
                             $data['Delivered_on'] = date('Y-m-d', strtotime($filesop[25]));
                             $data['store_id'] = $store_id;
-                          
+
+                            $facatory_due_date= strtotime($data['Due_on']. ' - 1 days');
+
+                            $diff=$facatory_due_date-strtotime($filesop[2]);
+
+                            $due_days=ceil(abs($diff / 86400));
+
+                            if($diff < 2)
+                            $data['order_priority']=2;
                                 // print_r($data);
                                 // echo "<br>";
 
