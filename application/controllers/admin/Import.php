@@ -112,7 +112,7 @@ class Import extends CI_Controller
 
                             $due_days=ceil(abs($diff / 86400));
 
-                            if($diff < 2)
+                            if($due_days < 2)
                             $data['order_priority']=2;
                                 // print_r($data);
                                 // echo "<br>";
