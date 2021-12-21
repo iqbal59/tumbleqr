@@ -110,18 +110,19 @@ class Import extends CI_Controller
 
                             $diff=$facatory_due_date-strtotime($filesop[2]);
 
-                            $due_days=ceil(abs($diff / 86400));
+                          echo  $due_days=ceil(abs($diff / 86400));
+                          echo "<br/>";
 
                             if($due_days < 2)
                             $data['order_priority']=2;
-                                // print_r($data);
-                                // echo "<br>";
+                                 print_r($data);
+                                 echo "<br>";
 
-                            $this->common_model->import_challan($data);
+                           // $this->common_model->import_challan($data);
                         }
                        
-                        $this->session->set_flashdata('msg', "data upload success");
-                        redirect('admin/import/importchallandata');
+                      //  $this->session->set_flashdata('msg', "data upload success");
+                        //redirect('admin/import/importchallandata');
                 break;
              
             }
