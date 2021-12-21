@@ -110,11 +110,13 @@ class Import extends CI_Controller
 
                             $diff=$facatory_due_date-strtotime($filesop[2]);
 
-                          echo  $due_days=ceil(abs($diff / 86400));
-                          echo "<br/>";
+                            $due_days=ceil(abs($diff / 86400));
+                          
 
                             if($due_days < 2)
                             $data['order_priority']=2;
+                            else
+                            $data['order_priority']=0;
                                  print_r($data);
                                  echo "<br>";
 
