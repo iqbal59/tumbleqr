@@ -31,16 +31,40 @@ public function sendPhotoEmail(){
     $data['pictures']=$this->common_model->getPicturestoEmail();
     //$this->send("TEST ORDER NO", "TEST STORE");
     foreach ($data['pictures'] as $p){
-       $this->send($p['Order_No'], $p['store_id']);
+       $this->send($p['Order_No'], $p['store_id'], $p['Barcode']);
         $this->common_model->update_email_status($p['Order_No'], $p['store_id']);
        
     }
     
 }
 
+function getCustomerEmail($barcode=''){
+    $data = array(
+    'Barcode' => $barcode,
+    'StoreCode' => 'TS0',
+    'Token' => 'QhI3bD3cR7iF8kL6wW5DC'
+);
+
+$url = "https://api.quickdrycleaning.com/APIQDC/CustomerInfo";
+$postdata = json_encode($data);
+$ch = curl_init($url); 
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+$result = curl_exec($ch);
+curl_close($ch);
+$info=json_decode($result);
+if($info)
+return $info->EmailID; 
+else
+return;
+}
 
 
- public function send($order_no, $store_id)
+
+
+ public function send($order_no, $store_id, $barcode)
     {
         // Load PHPMailer library
         $this->load->library('PHPMailer_Lib');
@@ -60,13 +84,22 @@ public function sendPhotoEmail(){
         $mail->setFrom('admin@centuryfasteners.in', 'Factory Automation');
         $mail->addReplyTo('admin@centuryfasteners.in', 'Factory Automation');
 
+        
         // Add a recipient
-        $mail->addAddress('Gaurav.Nigam@tumbledry.in');
+//GET EMAIL ID OF CUSTOMERS
+        $customer_email=$this->getCustomerEmail($barcode);
+          if($customer_email && $order_no == 'T13198')  
+          {$mail->addAddress($customer_email);}
+          else { return;} 
+
+//END EMAIL ID OF CUSTOMERS
+
+        $mail->addCC('Gaurav.Nigam@tumbledry.in');
         //$mail->addAddress('iqbal.alam59@gmail.com');
 
         // Add cc or bcc
        // $mail->addCC('Gaurav.Teotia@tumbledry.in');
-       $mail->addCC('gaurishankarm@gmail.com');
+        $mail->addCC('gaurishankarm@gmail.com');
        // $mail->addCC('tumbledryfactory@gmail.com');
         $mail->addBCC('iqbal.alam59@gmail.com');
 
