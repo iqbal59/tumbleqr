@@ -764,7 +764,7 @@ class Common_model extends CI_Model
         }
         
         
-         $sql="SELECT store_id, Order_Date, Store_Name, count(Barcode) as total_garment, Order_No,  Due_on, Primary_Service  FROM  tbl_challan_data WHERE 1 and cancel_status=0 and initial_stage=0 and qc_stage=0 and packaging_stage=0 and dispatch_status=0  group by store_id, Order_No ";
+        $sql="select * from (SELECT store_id, Order_Date, Store_Name, count(Barcode) as total_garment, Order_No,  Due_on, Primary_Service, max(cancel_status) as cancel_status, max(initial_stage) as initial_stage, max(qc_stage) as qc_stage, max(packaging_stage) as packaging_stage, max(dispatch_status) as dispatch_status  FROM  tbl_challan_data group by store_id, Order_No) as tbl_challan_new  WHERE 1 and cancel_status=0 and initial_stage=0 and qc_stage=0 and packaging_stage=0 and dispatch_status=0";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
