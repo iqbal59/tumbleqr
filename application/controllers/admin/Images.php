@@ -88,7 +88,7 @@ return;
         // Add a recipient
 //GET EMAIL ID OF CUSTOMERS
         $customer_email=$this->getCustomerEmail($barcode);
-          if($customer_email && $order_no == 'T13198')  
+          if($customer_email && $order_no == 'T13224')  
           {$mail->addAddress($customer_email);}
           else { return;} 
 
