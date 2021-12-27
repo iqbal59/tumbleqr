@@ -813,6 +813,22 @@ public function send6pm()
         $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
     }
 
+    //
+
+public function sendqtos6am()
+    {
+        $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreportqctospot6am');
+
+        $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
+    }
+
+
+    public function sendqtos6pm()
+    {
+        $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreportqctospot6pm');
+
+        $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
+    }
 
 
     public function send4pm()
@@ -832,25 +848,35 @@ public function send6pm()
 
         // SMTP configuration
         $mail->isSMTP();
-        $mail->Host = 'mail.centuryfasteners.in';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'admin@centuryfasteners.in';
-        $mail->Password = 'B5]DIG&#OcNH';
-        $mail->SMTPSecure = 'ssl';
-        $mail->Port = 465;
+        // $mail->Host = 'mail.centuryfasteners.in';
+        // $mail->SMTPAuth = true;
+        // $mail->Username = 'admin@centuryfasteners.in';
+        // $mail->Password = 'B5]DIG&#OcNH';
+        // $mail->SMTPSecure = 'ssl';
+        // $mail->Port = 465;
 
+        $mail->Host = 'smtp.office365.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'order_update@tumbledry.in';
+        $mail->Password = 'Caz83967';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+
+        
         $mail->setFrom('admin@centuryfasteners.in', 'Factory Automation');
         $mail->addReplyTo('admin@centuryfasteners.in', 'Factory Automation');
 
         // Add a recipient
 
-        $mail->addAddress($to);
-        foreach ($cc as $c) {
-            $mail->addCC($c);
-        }
+        // $mail->addAddress($to);
+        // foreach ($cc as $c) {
+        //     $mail->addCC($c);
+        // }
+
         // Add cc or bcc
         // $mail->addCC('Gaurav.Teotia@tumbledry.in');
-        $mail->addBCC('iqbal.alam59@gmail.com');
+        $mail->addAddress('iqbal.alam59@gmail.com');
+        //$mail->addBCC('iqbal.alam59@gmail.com');
 
         // Email subject
         $mail->Subject = $subject;

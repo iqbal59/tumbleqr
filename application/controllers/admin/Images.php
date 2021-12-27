@@ -74,21 +74,29 @@ return;
 
         // SMTP configuration
         $mail->isSMTP();
-        $mail->Host = 'mail.centuryfasteners.in';
+        $mail->Host = 'smtp.office365.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'admin@centuryfasteners.in';
-        $mail->Password = 'B5]DIG&#OcNH';
-        $mail->SMTPSecure = 'ssl';
-        $mail->Port = 465;
+        $mail->Username = 'order_update@tumbledry.in';
+        $mail->Password = 'Caz83967';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
 
-        $mail->setFrom('admin@centuryfasteners.in', 'Factory Automation');
-        $mail->addReplyTo('admin@centuryfasteners.in', 'Factory Automation');
+
+        // $mail->Host = 'mail.centuryfasteners.in';
+        // $mail->SMTPAuth = true;
+        // $mail->Username = 'admin@centuryfasteners.in';
+        // $mail->Password = 'B5]DIG&#OcNH';
+        // $mail->SMTPSecure = 'ssl';
+        // $mail->Port = 465;
+
+        $mail->setFrom('order_update@tumbledry.in', 'Tumbledry');
+        $mail->addReplyTo('order_update@tumbledry.in', 'Tumbledry');
 
         
         // Add a recipient
 //GET EMAIL ID OF CUSTOMERS
         $customer_email=$this->getCustomerEmail($barcode);
-          if($customer_email && $order_no == 'T13224')  
+          if($customer_email && $order_no == 'T13323')  
           {$mail->addAddress($customer_email);}
           else { return;} 
 
