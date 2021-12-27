@@ -722,12 +722,12 @@ public function exceptionreport6pm()
 
 //Qc to Re-Spot
 
-public function exceptionreportqctospot7am()
+public function exceptionreportqctospot6am()
     {
         $data = array();
 
-         $data['start_date'] = date('Y-m-d 15:00:00', strtotime('-1 day'));
-        $data['end_date'] = date('Y-m-d 15:00:00');
+         $data['start_date'] = date('Y-m-d 20:00:00', strtotime('-1 day'));
+        $data['end_date'] = date('Y-m-d 04:00:00');
         $data['current_date'] = date('Y-m-d 18:00:00');
 
 
@@ -736,12 +736,12 @@ public function exceptionreportqctospot7am()
 
     }
 
-    public function exceptionreportqctospot7pm()
+    public function exceptionreportqctospot6pm()
     {
         $data = array();
 
-         $data['start_date'] = date('Y-m-d 15:00:00', strtotime('-1 day'));
-        $data['end_date'] = date('Y-m-d 15:00:00');
+         $data['start_date'] = date('Y-m-d 08:00:00');
+        $data['end_date'] = date('Y-m-d 16:00:00');
         $data['current_date'] = date('Y-m-d 18:00:00');
 
 
