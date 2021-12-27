@@ -1393,13 +1393,13 @@ public function qctopack($start_date, $end_date, $to_end_date)
    
     public function qctospotting1am($start_date, $end_date, $current_date, $p='')
     {
-        if($p)
-        $sql_search=" and Primary_Service in (".$p.")";
-        else
-        $sql_search=" and Primary_Service not in ('SHC', 'SI')";
-       
-        $sql="call getqctospot('".$start_date."', '".$end_date."', '".$current_date."')";
-        $query = $this->db->query($sql)->result_array();
+        // if($p)
+        // $sql_search=" and Primary_Service in (".$p.")";
+        // else
+        // $sql_search=" and Primary_Service not in ('SHC', 'SI')";
+
+        $sql = "CALL getqctospot(?, ?, ?)";
+        $query = $this->db->query($sql, array($start_date, $end_date, $current_date))->result_array();
         return $query;
     }
 
