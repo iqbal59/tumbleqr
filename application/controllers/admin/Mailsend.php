@@ -746,6 +746,7 @@ public function exceptionreportqctospot6am()
 
 
         $data['qctospot'] = $this->common_model->qctospotting1am($data['start_date'], $data['end_date'], $data['current_date']);
+        print_r($data['qctospot']);
         $this->load->view('admin/mail/exceptionreport.php', $data);
 
     }
