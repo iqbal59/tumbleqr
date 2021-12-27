@@ -1,4 +1,13 @@
- <?php if(!empty($qctospot)) {?>
+ <?php
+ 
+$total=count($spottoqc);
+$total_ok=0;
+ foreach($spottoqc as $challan){
+    if($challan['diff_in_hr'])
+    $total_ok+=1;
+}
+?>
+
  <div class="card">
 
      <div class="card-body">
@@ -30,28 +39,22 @@
                      </tr>
                  </thead>
                  <tbody>
-                     <?php foreach($spottoqc as $challan){
-/*
-	                                if($challan['total_garment']!=$challan['psc'])
-	                                continue;
-*/
-	                                
-	                                 ?>
+
                      <tr>
 
                          <td><?php echo date('d-m-Y', strtotime($start_date)); ?></td>
                          <td><?php echo date('H:i:s', strtotime($start_date)); ?></td>
                          <td><?php echo date('d-m-Y', strtotime($end_date)); ?></td>
                          <td><?php echo date('H:i:s', strtotime($end_date)); ?></td>
-                         <td><?php echo $challan['total_spot']; ?></td>
-                         <td><?php echo $challan['total_qc_done']; ?></td>
-                         <td><?php echo $challan['total_spot']-$challan['total_qc_done']; ?></td>
-                         <td><?php echo round(($challan['total_qc_done']/$challan['total_spot'])*100,2); ?></td>
-                         <td><?php echo round((($challan['total_spot']-$challan['total_qc_done'])/$challan['total_spot'])*100,2);?>
+                         <td><?php echo $total; ?></td>
+                         <td><?php echo $total_ok ?></td>
+                         <td><?php echo ($total-$total_ok); ?></td>
+                         <td><?php echo round(($total_ok/$total)*100,2); ?></td>
+                         <td><?php echo round((($total-$total_ok)/$total)*100,2);?>
                          </td>
 
                      </tr>
-                     <?php } ?>
+
                  </tbody>
              </table>
 
@@ -59,4 +62,3 @@
          </div>
      </div>
  </div>
- <?php }?>
