@@ -728,7 +728,7 @@ public function exceptionreportqctospot6am()
 
          $data['start_date'] = date('Y-m-d 20:00:00', strtotime('-1 day'));
         $data['end_date'] = date('Y-m-d 04:00:00');
-        $data['current_date'] = date('Y-m-d 18:00:00');
+        $data['current_date'] = date('Y-m-d 06:00:00');
 
 
         $data['qctospot'] = $this->common_model->qctospotting1am($data['start_date'], $data['end_date'], $data['current_date']);
