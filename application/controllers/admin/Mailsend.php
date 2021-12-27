@@ -848,19 +848,19 @@ public function sendqtos6am()
 
         // SMTP configuration
         $mail->isSMTP();
-        // $mail->Host = 'mail.centuryfasteners.in';
-        // $mail->SMTPAuth = true;
-        // $mail->Username = 'admin@centuryfasteners.in';
-        // $mail->Password = 'B5]DIG&#OcNH';
-        // $mail->SMTPSecure = 'ssl';
-        // $mail->Port = 465;
-
-        $mail->Host = 'smtp.office365.com';
+        $mail->Host = 'mail.centuryfasteners.in';
         $mail->SMTPAuth = true;
-        $mail->Username = 'order_update@tumbledry.in';
-        $mail->Password = 'Caz83967';
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
+        $mail->Username = 'admin@centuryfasteners.in';
+        $mail->Password = 'B5]DIG&#OcNH';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+
+        // $mail->Host = 'smtp.office365.com';
+        // $mail->SMTPAuth = true;
+        // $mail->Username = 'order_update@tumbledry.in';
+        // $mail->Password = 'Caz83967';
+        // $mail->SMTPSecure = 'tls';
+        // $mail->Port = 587;
 
         
         $mail->setFrom('admin@centuryfasteners.in', 'Factory Automation');

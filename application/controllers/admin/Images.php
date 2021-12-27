@@ -74,20 +74,20 @@ return;
 
         // SMTP configuration
         $mail->isSMTP();
-        // $mail->Host = 'smtp.office365.com';
-        // $mail->SMTPAuth = true;
-        // $mail->Username = 'order_update@tumbledry.in';
-        // $mail->Password = 'Caz83967';
-        // $mail->SMTPSecure = 'tls';
-        // $mail->Port = 587;
-
-
-        $mail->Host = 'mail.centuryfasteners.in';
+        $mail->Host = 'smtp.office365.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'admin@centuryfasteners.in';
-        $mail->Password = 'B5]DIG&#OcNH';
-        $mail->SMTPSecure = 'ssl';
-        $mail->Port = 465;
+        $mail->Username = 'order_update@tumbledry.in';
+        $mail->Password = 'Caz83967';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+
+
+        // $mail->Host = 'mail.centuryfasteners.in';
+        // $mail->SMTPAuth = true;
+        // $mail->Username = 'admin@centuryfasteners.in';
+        // $mail->Password = 'B5]DIG&#OcNH';
+        // $mail->SMTPSecure = 'ssl';
+        // $mail->Port = 465;
 
         $mail->setFrom('order_update@tumbledry.in', 'Tumbledry');
         $mail->addReplyTo('order_update@tumbledry.in', 'Tumbledry');
