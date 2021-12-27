@@ -1398,8 +1398,11 @@ public function qctopack($start_date, $end_date, $to_end_date)
         // else
         // $sql_search=" and Primary_Service not in ('SHC', 'SI')";
 
-        $sql = "CALL getqctospot(?, ?, ?)";
-        $query = $this->db->query($sql, array($start_date, $end_date, $current_date))->result_array();
+        
+        $query = $this->db->query('CALL getqctospot(?, ?, ?)', array('f_dt'=> $start_date, 't_dt'=>$end_date, 'till_dt'=>$current_date));
+        $res=$query->result_array();
+        mysqli_next_result($this->db->conn_id);
+        $query->free_result();
         return $query;
     }
 
