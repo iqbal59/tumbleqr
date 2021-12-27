@@ -1389,6 +1389,21 @@ public function qctopack($start_date, $end_date, $to_end_date)
         return $query;
     }
 
+   
+   
+    public function qctospotting1am($start_date, $end_date, $current_date, $p='')
+    {
+        if($p)
+        $sql_search=" and Primary_Service in (".$p.")";
+        else
+        $sql_search=" and Primary_Service not in ('SHC', 'SI')";
+       
+          $sql="SELECT SUM(case when spot_time then 1 else 0 end) as total_spot,  sum(case when qc_time and date_add(qc_time, INTERVAL 5.30 hour) < '".$current_date."' then 1 else 0 end ) as total_qc_done FROM `tbl_challan_data` left join (select MIN(spot_time) as spot_time, Barcode from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and qc_status='Fail' and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;
+        $query = $this->db->query($sql)->result_array();
+        return $query;
+    }
+
+   
     public function qctopack1am($start_date, $end_date, $current_date, $p='')
     {
         if($p)

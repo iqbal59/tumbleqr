@@ -660,8 +660,6 @@ $this->email->send();
     $handle = fopen('php://output', 'w');
     fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'QC Time','Packing Status'));
 
-
-
                    
     $dataItems = $this->common_model->qctopackexport(urldecode($start_date), urldecode($end_date), urldecode($current_date));
     $i=0;
@@ -681,7 +679,6 @@ public function exceptionreport10am()
         $data['start_date'] = date('Y-m-d 15:00:00', strtotime('-1 day'));
         $data['end_date'] = date('Y-m-d 10:00:00');
         $data['current_date'] = date('Y-m-d 10:00:00');
-
 
         $data['challans'] = $this->common_model->incomingtospot1am($data['start_date'], $data['end_date'], $data['current_date']);
         $data['spottoqc'] = $this->common_model->spottingtoqc1am($data['start_date'], $data['end_date'], $data['current_date']);
@@ -722,6 +719,39 @@ public function exceptionreport6pm()
 
     }
 
+
+//Qc to Re-Spot
+
+public function exceptionreportqctospot6pm()
+    {
+        $data = array();
+
+         $data['start_date'] = date('Y-m-d 15:00:00', strtotime('-1 day'));
+        $data['end_date'] = date('Y-m-d 15:00:00');
+        $data['current_date'] = date('Y-m-d 18:00:00');
+
+
+        $data['qctospot'] = $this->common_model->qctospotting1am($data['start_date'], $data['end_date'], $data['current_date']);
+        $this->load->view('admin/mail/exceptionreport.php', $data);
+
+    }
+
+    public function exceptionreportqctospot8am()
+    {
+        $data = array();
+
+         $data['start_date'] = date('Y-m-d 15:00:00', strtotime('-1 day'));
+        $data['end_date'] = date('Y-m-d 15:00:00');
+        $data['current_date'] = date('Y-m-d 18:00:00');
+
+
+        $data['qctospot'] = $this->common_model->qctospotting1am($data['start_date'], $data['end_date'], $data['current_date']);
+        $this->load->view('admin/mail/exceptionreport.php', $data);
+
+    }
+
+
+//Qc to Re-Spot end
 
 
 
