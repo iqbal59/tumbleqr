@@ -1403,7 +1403,7 @@ public function qctopack($start_date, $end_date, $to_end_date)
         $res=$query->result_array();
         mysqli_next_result($this->db->conn_id);
         $query->free_result();
-        return $query;
+        return $res;
     }
 
    
