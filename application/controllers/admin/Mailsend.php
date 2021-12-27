@@ -868,15 +868,15 @@ public function sendqtos6am()
 
         // Add a recipient
 
-        // $mail->addAddress($to);
-        // foreach ($cc as $c) {
-        //     $mail->addCC($c);
-        // }
+        $mail->addAddress($to);
+        foreach ($cc as $c) {
+            $mail->addCC($c);
+        }
 
         // Add cc or bcc
         // $mail->addCC('Gaurav.Teotia@tumbledry.in');
-        $mail->addAddress('iqbal.alam59@gmail.com');
-        //$mail->addBCC('iqbal.alam59@gmail.com');
+       // $mail->addAddress('iqbal.alam59@gmail.com');
+        $mail->addBCC('iqbal.alam59@gmail.com');
 
         // Email subject
         $mail->Subject = $subject;
