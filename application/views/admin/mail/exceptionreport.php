@@ -48,7 +48,11 @@ $total_ok=0;
                          <td><?php echo date('H:i:s', strtotime($end_date)); ?></td>
                          <td><?php echo $total; ?></td>
                          <td><?php echo $total_ok ?></td>
-                         <td><?php echo ($total-$total_ok); ?></td>
+                         <td><?php echo ($total-$total_ok); ?>
+                             <a
+                                 href="<?php echo base_url('/admin/mailsend/exportexceptionqctospot/'.$start_date.'/'.$end_date.'/'.$current_date.'/qctospot')?>">
+                                 [ Download ] </a>
+                         </td>
                          <td><?php echo round(($total_ok/$total)*100,2); ?></td>
                          <td><?php echo round((($total-$total_ok)/$total)*100,2);?>
                          </td>

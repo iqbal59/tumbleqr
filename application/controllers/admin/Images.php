@@ -96,20 +96,27 @@ return;
         // Add a recipient
 //GET EMAIL ID OF CUSTOMERS
         $customer_email=$this->getCustomerEmail($barcode);
-          if($customer_email && $order_no == 'T13323')  
+          if($customer_email)  
           {$mail->addAddress($customer_email);}
           else { return;} 
 
+$storeData=$this->common_model->get_store_email($store_id, "tbl_store");
+$store_email=$storeData->email_id;
+if($store_email) 
+$mail->addBCC($store_email);
+
 //END EMAIL ID OF CUSTOMERS
 
-        $mail->addCC('Gaurav.Nigam@tumbledry.in');
+        $mail->addBCC('Gaurav.Nigam@tumbledry.in');
         //$mail->addAddress('iqbal.alam59@gmail.com');
 
         // Add cc or bcc
        // $mail->addCC('Gaurav.Teotia@tumbledry.in');
-        $mail->addCC('gaurishankarm@gmail.com');
+        $mail->addBCC('gaurishankarm@gmail.com');
+        $mail->addBCC('kunal.batra@tumbledry.in');
        // $mail->addCC('tumbledryfactory@gmail.com');
         $mail->addBCC('iqbal.alam59@gmail.com');
+
 
         // Email subject
         $mail->Subject = "Update: Tumbledry Order # ".$order_no;

@@ -672,6 +672,28 @@ $this->email->send();
     }
 
 
+    public function exportexceptionqctospot($start_date, $end_date, $current_date, $file_name){
+
+        header("Content-type: application/csv");
+    header("Content-Disposition: attachment; filename=\"exception_report_".$file_name."_".date('d-m-Y_H_i_s').".csv\"");
+    header("Pragma: no-cache");
+    header("Expires: 0");
+    $handle = fopen('php://output', 'w');
+    fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'QC Fail Time', 'Re Spot Time', 'Difference in Hr.'));
+
+                   
+    $dataItems = $this->common_model->qctospotting1am(urldecode($start_date), urldecode($end_date), urldecode($current_date));
+    $i=0;
+    foreach($dataItems as $item){
+        fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['qc_fail_time'], $item['re_spot_time'], $item['diff_in_hr']));
+    }
+
+                    fclose($handle);
+                    exit;
+    }
+
+
+
 public function exceptionreport10am()
     {
         $data = array();
