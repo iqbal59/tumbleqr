@@ -1,8 +1,8 @@
  <?php
  
-echo $total=count($spottoqc);
+$total=count($spottoqc);
 $total_ok=0;
- foreach($spottoqc as $challan){
+ foreach($qctospot as $challan){
     if($challan['diff_in_hr'])
     $total_ok+=1;
 }
