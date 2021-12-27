@@ -722,7 +722,7 @@ public function exceptionreport6pm()
 
 //Qc to Re-Spot
 
-public function exceptionreportqctospot6pm()
+public function exceptionreportqctospot7am()
     {
         $data = array();
 
@@ -736,7 +736,7 @@ public function exceptionreportqctospot6pm()
 
     }
 
-    public function exceptionreportqctospot8am()
+    public function exceptionreportqctospot7pm()
     {
         $data = array();
 
