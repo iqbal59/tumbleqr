@@ -115,7 +115,7 @@ $mail->addBCC($store_email);
         $mail->addBCC('gaurishankarm@gmail.com');
         $mail->addBCC('kunal.batra@tumbledry.in');
        // $mail->addCC('tumbledryfactory@gmail.com');
-        $mail->addBCC('iqbal.alam59@gmail.com');
+        //$mail->addBCC('iqbal.alam59@gmail.com');
 
 
         // Email subject
