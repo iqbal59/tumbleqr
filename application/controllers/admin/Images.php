@@ -89,8 +89,8 @@ return;
         // $mail->SMTPSecure = 'ssl';
         // $mail->Port = 465;
 
-        $mail->setFrom('order_update@tumbledry.in', 'Tumbledry');
-        $mail->addReplyTo('order_update@tumbledry.in', 'Tumbledry');
+        $mail->setFrom('order_update@tumbledry.in', 'Tumbledry - Order Update');
+        $mail->addReplyTo('order_update@tumbledry.in', 'Tumbledry - Order Update');
 
         
         // Add a recipient
