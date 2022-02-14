@@ -802,7 +802,7 @@ public function exceptionreportqctospot6am()
     {
         $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/incomingtospot8am');
 
-        $this->sendEmail($htmlData, "Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com','Gaurav.Teotia@tumbledry.in'));
+        //$this->sendEmail($htmlData, "Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com','Gaurav.Teotia@tumbledry.in'));
     }
 
 
@@ -810,7 +810,7 @@ public function exceptionreportqctospot6am()
     {
         $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport1am');
 
-        $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
+        //$this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
     }
 
 
@@ -818,21 +818,21 @@ public function send10am()
     {
         $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport10am');
 
-        $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
+        //$this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
     }
 
 public function send2pm()
     {
         $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport2pm');
 
-        $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
+        //$this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
     }
 
 public function send6pm()
     {
         $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreport6pm');
 
-        $this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
+        //$this->sendEmail($htmlData, "Today Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
     }
 
     //
@@ -841,7 +841,7 @@ public function sendqtos6am()
     {
         $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreportqctospot6am');
 
-        $this->sendEmail($htmlData, "Today  Re-Spotting Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
+        //$this->sendEmail($htmlData, "Today  Re-Spotting Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
     }
 
 
@@ -849,7 +849,7 @@ public function sendqtos6am()
     {
         $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/exceptionreportqctospot6pm');
 
-        $this->sendEmail($htmlData, "Today Re-Spotting Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
+        //$this->sendEmail($htmlData, "Today Re-Spotting Exception Report", "Gaurav.Nigam@tumbledry.in", array('tumbledryfactory@gmail.com', 'gaurishankarm@gmail.com', 'raj575384@gmail.com', 'Gaurav.Teotia@tumbledry.in'));
     }
 
 
@@ -857,7 +857,7 @@ public function sendqtos6am()
     {
         $htmlData = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/incomingtospot4pm');
 
-        $this->sendEmail($htmlData, "Exception Report", "Gaurav.Nigam@tumbledry.in");
+        //$this->sendEmail($htmlData, "Exception Report", "Gaurav.Nigam@tumbledry.in");
     }
 
     public function sendEmail($content, $subject, $to, $cc = '', $bcc = '')

@@ -68,8 +68,12 @@
                         <div class="form-body">
                             <br>
 
-							<input type="hidden" name="sendchallanurl" id="sendchallanurl" value="<?php echo base_url('admin/reports/sendchallan');?>"/>
-							<input type="hidden" name="sendchallanurlmail" id="sendchallanurlmail" value="<?php echo base_url('admin/reports/sendchallanmail');?>"/>
+                            <input type="hidden" name="sendchallanurl" id="sendchallanurl"
+                                value="<?php echo base_url('admin/reports/sendchallan');?>" />
+                            <input type="hidden" name="sendchallanurlprint" id="sendchallanurlprint"
+                                value="<?php echo base_url('admin/mailsend/challanmail');?>" />
+                            <input type="hidden" name="sendchallanurlmail" id="sendchallanurlmail"
+                                value="<?php echo base_url('admin/reports/sendchallanmail');?>" />
 
                             <div class="row">
                                 <div class="col-md-12">
@@ -79,17 +83,17 @@
 
 
                                             <div class="row">
-                                              
 
 
 
-											<div class="col-md-4">
+
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <h5>Store Name</h5>
                                                         <div class="controls">
-                                                           <select  name="store_id" class="form-control">
-	                                                           <option value="">--Select--</option>
-	                                                           <?php
+                                                            <select name="store_id" id="store_id" class="form-control">
+                                                                <option value="">--Select--</option>
+                                                                <?php
 		                                                           if(!empty($stores)){
 			                                                           foreach($stores as $store){
 				                                                           $selected='';
@@ -99,11 +103,11 @@
 			                                                           }
 		                                                           }
 		                                                           ?>
-                                                           </select>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
-		
+
 
 
 
@@ -112,19 +116,31 @@
                                                     <div class="form-group">
                                                         <label class="control-label text-left col-md-3"></label>
                                                         <div class="controls">
-                                                            <button type="button" id="showchallan" class="btn btn-success">Show</button>
-                                                            
+                                                            <button type="button" id="showchallan"
+                                                                class="btn btn-success">Show</button>
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
-                                                
+
                                                 <div class="col-md-1">
                                                     <div class="form-group">
                                                         <label class="control-label text-left col-md-3"></label>
                                                         <div class="controls">
-                                                            <button type="button" id="sendchallan" class="btn btn-success">Send Challan</button>
-                                                            
+                                                            <button type="button" id="printchallan"
+                                                                class="btn btn-success">Print</button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-1">
+                                                    <div class="form-group">
+                                                        <label class="control-label text-left col-md-3"></label>
+                                                        <div class="controls">
+                                                            <button type="button" id="sendchallan"
+                                                                class="btn btn-success">Send Challan</button>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -186,13 +202,13 @@
                                     <th>Store Name</th>
                                     <th>Order No.</th>
                                     <th>Cloth Count</th>
-                                   
-                                    
+
+
                                     <th>Due On</th>
                                     <th>Dispatch Date</th>
                                     <th>Dispatch Shift</th>
-                                    
-                                    
+
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -206,12 +222,13 @@
                                 <tr>
 
                                     <td><?php echo $challan['Store_Name']; ?></td>
-                                    <td><a href="<?php echo base_url('admin/reports/packingdetail?order_no='.$challan['Order_No'].'&store_id='.$challan['store_id'])?>" target="_blank"><?php echo $challan['Order_No']; ?></a> </td>
+                                    <td><a href="<?php echo base_url('admin/reports/packingdetail?order_no='.$challan['Order_No'].'&store_id='.$challan['store_id'])?>"
+                                            target="_blank"><?php echo $challan['Order_No']; ?></a> </td>
                                     <td><?php echo $challan['total_garment']; ?>
                                     </td>
-                                   
-                                    
-                                   
+
+
+
                                     <td><span
                                             style="display:none;"><?php echo strtotime($challan['Due_on']);?></span><?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
                                     </td>
@@ -219,8 +236,8 @@
                                             style="display:none;"><?php echo strtotime($challan['dispatch_time']);?></span><?php echo date("d-m-Y", strtotime($challan['dispatch_time'])); ?>
                                     </td>
                                     <td>
-	                                    
-	                                    <?php 
+
+                                        <?php 
 											$hr_no=date("H", strtotime($challan['dispatch_time']));
 											
 											if($hr_no <=13)
@@ -229,7 +246,7 @@
 											echo "Shift 2";
 		                                    
 	                                    ?>
-	                                    
+
                                     </td>
                                 </tr>
                                 <?php } ?>
