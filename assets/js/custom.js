@@ -59,7 +59,7 @@ $(document).ready(function () {
         "action",
         $("#sendchallanurlprint").val() + "?store_id=" + store_id
       );
-      $("#challan_form").attr("target", "_self");
+      $("#challan_form").attr("target", "_blank");
       $("#challan_form").submit();
     } else {
       alert("Select Store");
