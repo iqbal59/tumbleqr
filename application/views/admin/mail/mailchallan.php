@@ -81,7 +81,7 @@
                      </tr>
                      <?php } ?>
                      <tr>
-                         <td colspan="2"></td>
+                         <td colspan="2"><strong>Total</strong></td>
                          <td><strong><?php echo $total;?></strong></td>
                          <td><strong><?php echo $th;?></strong></td>
                          <td><strong><?php echo $tf;?></strong></td>
