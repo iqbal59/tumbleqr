@@ -29,8 +29,8 @@
                          <th>Due On</th>
                          <th>Comments <br>(Dispatch)</th>
                          <th>Comments<br>
-                             <(Store) </th>
-                                 <!-- <th>Dispatch Date</th>
+                             (Store) </th>
+                         <!-- <th>Dispatch Date</th>
                                     <th>Dispatch Shift</th>
                                      -->
 
