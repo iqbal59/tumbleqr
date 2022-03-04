@@ -65,7 +65,7 @@ class Mailsend extends CI_Controller
     {
         $data = array();
         //$data['page_title'] = 'Pending Report';
-        if ($this->input->server('REQUEST_METHOD') === 'GET' && $this->input->get('store_id')) {
+        if (($this->input->server('REQUEST_METHOD') === 'GET' && $this->input->server('REQUEST_METHOD') === 'POST') && $this->input->get('store_id')) {
             // echo "POST";
             // die();
             $data['condition'] = array(
