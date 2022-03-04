@@ -904,7 +904,7 @@ class Common_model extends CI_Model
        
         
         
-        $sql="SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No, Due_on, count(case when packaging_stage = 1 then 1 else null end) as psc, CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30') as dispatch_time, Primary_Service  FROM `tbl_challan_data` WHERE 1 and dispatch_status=1 $search_query group by store_id, Order_No ";
+        $sql="SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No, Due_on, count(case when packaging_stage = 1 then 1 else null end) as psc, count(case when Color = 'Fold' then 1 else null end) as total_fold, count(case when Color = 'Hanger' then 1 else null end) as total_hanger, CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30') as dispatch_time, Primary_Service  FROM `tbl_challan_data` WHERE 1 and dispatch_status=1 $search_query group by store_id, Order_No ";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
