@@ -78,9 +78,11 @@
                      </tr>
                      <?php } ?>
                      <tr>
-                         <td colspan="4"><?php echo $total;?></td>
+                         <td colspan="2"></td>
+                         <td><?php echo $total;?></td>
                          <td><?php echo $th;?></td>
-                         <td colspan="3"><?php echo $tf;?></td>
+                         <td><?php echo $tf;?></td>
+                         <td colspan="3"></td>
 
                      </tr>
                  </tbody>
