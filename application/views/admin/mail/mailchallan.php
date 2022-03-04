@@ -13,11 +13,12 @@
 
              <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0"
                  cellpadding="4" align="center" border="1" width="80%">
-                 <tr>
-                     <td colspan="8">Date: <?php echo date("d-m-Y");?></td>
-                 </tr>
+
 
                  <thead>
+                     <tr>
+                         <th colspan="8">Date: <?php echo date("d-m-Y");?></th>
+                     </tr>
                      <tr>
 
                          <th>Store Name</th>
