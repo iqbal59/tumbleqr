@@ -82,9 +82,9 @@
                      <?php } ?>
                      <tr>
                          <td colspan="2"></td>
-                         <td><?php echo $total;?></td>
-                         <td><?php echo $th;?></td>
-                         <td><?php echo $tf;?></td>
+                         <td><strong><?php echo $total;?></strong></td>
+                         <td><strong><?php echo $th;?></strong></td>
+                         <td><strong><?php echo $tf;?></strong></td>
                          <td colspan="3"></td>
 
                      </tr>
