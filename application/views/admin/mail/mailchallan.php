@@ -9,9 +9,12 @@
 
 
 
-
+             <h3 align="center" class="text-center">CHALLAN GARMENT-DISPATCHED</h3>
+             <p>Date: <?php echo date("d-m-Y");?></p>
              <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0"
                  cellpadding="4" align="center" border="1" width="80%">
+
+
                  <thead>
                      <tr>
 
@@ -21,14 +24,21 @@
                          <th>Hanger</th>
                          <th>Fold</th>
                          <th>Due On</th>
-                         <!-- <th>Dispatch Date</th>
+                         <th>Comments <br>(Dispatch)</th>
+                         <th>Comments<br>
+                             <(Store) /th>
+                                 <!-- <th>Dispatch Date</th>
                                     <th>Dispatch Shift</th>
                                      -->
 
                      </tr>
                  </thead>
                  <tbody>
-                     <?php foreach($challans as $challan){
+                     <?php
+                     $total=0;
+                     $th=0;
+                     $tf=0;
+                     foreach($challans as $challan){
 /*
 	                                if($challan['total_garment']!=$challan['psc'])
 	                                continue;
@@ -39,9 +49,9 @@
 
                          <td><?php echo $challan['Store_Name']; ?></td>
                          <td><?php echo $challan['Order_No']; ?></td>
-                         <td><?php echo $challan['total_garment']; ?>
-                         <td><?php echo $challan['total_hanger']; ?>
-                         <td><?php echo $challan['total_fold']; ?>
+                         <td><?php echo $challan['total_garment']; $total+=$challan['total_garment']; ?>
+                         <td><?php echo $challan['total_hanger']; $th+= $challan['total_hanger'];?>
+                         <td><?php echo $challan['total_fold']; $tf+=$challan['total_fold'];?>
                          </td>
 
 
@@ -63,8 +73,16 @@
 	                                    ?>
 	                                    
                                     </td> -->
+                         <td>&nbsp;</td>
+                         <td>&nbsp;</td>
                      </tr>
                      <?php } ?>
+                     <tr>
+                         <td colspan="4"><?php echo $total;?></td>
+                         <td><?php echo $th;?></td>
+                         <td colspan="3"><?php echo $tf;?></td>
+
+                     </tr>
                  </tbody>
              </table>
 
