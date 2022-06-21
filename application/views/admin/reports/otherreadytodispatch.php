@@ -6,10 +6,10 @@
 
     <div class="row page-titles">
         <div class="col-md-5 col-8 align-self-center">
-            <h3 class="text-themecolor m-b-0 m-t-0">Ready to dispatch Order Report</h3>
+            <h3 class="text-themecolor m-b-0 m-t-0">Other Ready to dispatch Order Report</h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">Ready to dispatch Order Report</li>
+                <li class="breadcrumb-item active">Other Ready to dispatch Order Report</li>
             </ol>
         </div>
         <div class="col-md-7 col-4 align-self-center">
@@ -25,9 +25,10 @@
                 <!-- <div class="d-flex m-r-20 m-l-10 hidden-md-down">
                     <div class="chart-text m-r-10">
                         <h6 class="m-b-0"><small>Inctive User</small></h6>
-                        <h4 class="m-t-0 text-primary"><?php echo $count->inactive_user; ?></h4>
-                    </div>
-                </div> -->
+                        <h4 class="m-t-0 text-primary"><?php echo $count->inactive_user; ?>
+                </h4>
+            </div>
+        </div> -->
 
             </div>
         </div>
@@ -83,8 +84,9 @@
                                                         <h5>Enter From Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="date" name="s_from_date" class="form-control"
-                                                                placeholder="MM/DD/YYYY" 
-                                                                value="<?php if(!empty($condition)){echo $condition['from_date'];} ?>">
+                                                                placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
+    echo $condition['from_date'];
+} ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -93,8 +95,9 @@
                                                         <h5>Enter To Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="date" name="s_to_date" class="form-control"
-                                                                placeholder="MM/DD/YYYY" 
-                                                                value="<?php if(!empty($condition)){echo $condition['to_date'];}?>">
+                                                                placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
+    echo $condition['to_date'];
+}?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -102,27 +105,31 @@
 
 
 
-											<div class="col-md-4">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <h5>Store Name</h5>
                                                         <div class="controls">
-                                                           <select  name="store_id" class="form-control">
-	                                                           <option value="">--Select--</option>
-	                                                           <?php
-		                                                           if(!empty($stores)){
-			                                                           foreach($stores as $store){
-				                                                           $selected='';
-				                                                            if(!empty($condition)){if($condition['store_id']==$store['store_id']) {$selected="selected";}}
-				                                                           
-				                                                           echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
-			                                                           }
-		                                                           }
-		                                                           ?>
-                                                           </select>
+                                                            <select name="store_id" class="form-control">
+                                                                <option value="">--Select--</option>
+                                                                <?php
+                                                                   if (!empty($stores)) {
+                                                                       foreach ($stores as $store) {
+                                                                           $selected='';
+                                                                           if (!empty($condition)) {
+                                                                               if ($condition['store_id']==$store['store_id']) {
+                                                                                   $selected="selected";
+                                                                               }
+                                                                           }
+                                                                           
+                                                                           echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
+                                                                       }
+                                                                   }
+                                                                   ?>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
-		
+
 
 
 
@@ -171,7 +178,7 @@
                     </form>
                 </div>
             </div>
-            <?php if(!empty($challans)) {?>
+            <?php if (!empty($challans)) {?>
             <div class="card">
 
                 <div class="card-body">
@@ -191,35 +198,41 @@
                                     <th>Store Name</th>
                                     <th>Order No.</th>
                                     <th>Total Garment</th>
-                                   
+
                                     <th>Packing Done</th>
-                                     <th>Primary Service</th>
+                                    <th>Primary Service</th>
                                     <th>Due On</th>
                                     <th>Action</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($challans as $challan){
-	                               // if($challan['total_garment']!=$challan['psc'])
-	                                //continue;
-	                                
-	                                 ?>
+                                <?php foreach ($challans as $challan) {
+                                                                       // if($challan['total_garment']!=$challan['psc'])
+                                                                       //continue;?>
                                 <tr>
 
-                                    <td><?php echo $challan['Store_Name']; ?></td>
-                                    <td><a href="<?php echo base_url('admin/reports/packingdetail?order_no='.$challan['Order_No'].'&store_id='.$challan['store_id'])?>" target="_blank"><?php echo $challan['Order_No']; ?></a></td>
+                                    <td><?php echo $challan['Store_Name']; ?>
+                                    </td>
+                                    <td><a href="<?php echo base_url('admin/reports/packingdetail?order_no='.$challan['Order_No'].'&store_id='.$challan['store_id'])?>"
+                                            target="_blank"><?php echo $challan['Order_No']; ?></a>
+                                    </td>
                                     <td><?php echo $challan['total_garment']; ?>
                                     </td>
-                                   
-                                    <td><?php echo $challan['psc']; ?></td>
-                                    <td><?php echo $challan['Primary_Service']; ?></td>
-                                    <td><span
-                                            style="display:none;"><?php echo strtotime($challan['Due_on']. ' - 1 days');?></span><?php echo date("d-m-Y", strtotime($challan['Due_on']. ' - 1 days')); ?>
+
+                                    <td><?php echo $challan['psc']; ?>
                                     </td>
-                                    <td>[ <a href="<?php echo base_url('admin/reports/dispatchorder');?>?store_id=<?php echo $challan['store_id'];?>&order_no=<?php echo $challan['Order_No'];?>&from=<?php echo $condition['from_date']; ?>&to=<?php echo $condition['to_date']; ?>&flg=other">Dispatch</a> ]</td>
+                                    <td><?php echo $challan['Primary_Service']; ?>
+                                    </td>
+                                    <td><span
+                                            style="display:none;"><?php echo strtotime($challan['Due_on']. ' - 1 days'); ?></span><?php echo date("d-m-Y", strtotime($challan['Due_on']. ' - 1 days')); ?>
+                                    </td>
+                                    <td>[ <a
+                                            href="<?php echo base_url('admin/reports/dispatchorder'); ?>?store_id=<?php echo $challan['store_id']; ?>&order_no=<?php echo $challan['Order_No']; ?>&from=<?php echo $condition['from_date']; ?>&to=<?php echo $condition['to_date']; ?>&flg=other">Dispatch</a>
+                                        ]</td>
                                 </tr>
-                                <?php } ?>
+                                <?php
+                                                                   } ?>
                             </tbody>
                         </table>
 
