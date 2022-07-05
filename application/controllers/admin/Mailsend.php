@@ -204,16 +204,16 @@ class Mailsend extends CI_Controller
        
 
         // Add a recipient
-        // $mail->addAddress('Gaurav.Nigam@tumbledry.in');
-        $mail->addAddress('iqbal.alam59@gmail.com');
+        $mail->addAddress('Gaurav.Nigam@tumbledry.in');
+        //$mail->addAddress('iqbal.alam59@gmail.com');
 
         // Add cc or bcc
-        // $mail->addCC('Gaurav.Teotia@tumbledry.in');
-        // $mail->addCC('gaurishankarm@gmail.com');
-        // $mail->addCC('tumbledryfactory@gmail.com');
-        // $mail->addCC('Akash.patel@tumbledry.in');
-        // $mail->addCC('kunal.batra@tumbledry.in');
-        // $mail->addBCC('iqbal.alam59@gmail.com');
+        $mail->addCC('Gaurav.Teotia@tumbledry.in');
+        $mail->addCC('gaurishankarm@gmail.com');
+        $mail->addCC('tumbledryfactory@gmail.com');
+        $mail->addCC('Akash.patel@tumbledry.in');
+        $mail->addCC('kunal.batra@tumbledry.in');
+        $mail->addBCC('iqbal.alam59@gmail.com');
 
         // Email subject
         $mail->Subject = 'Factory Closely Watched Numbers (CWN) ' . date('Y-m-d', strtotime('-' . (24 * 60 - 330) . ' mins'));
