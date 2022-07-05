@@ -54,6 +54,7 @@ class Mailsend extends CI_Controller
         $data['packinghourly'] = $this->common_model->getPackageDataHourly($data['condition']);
 
         $data['dispatchData'] = $this->common_model->getDispatchReportMail($data['condition']);
+        echo $this->db->last_query();
         $data['dispatchDataMonthly'] = $this->common_model->getDispatchReportMailMonthly($data['condition']);
 
         $this->load->view('admin/mail/index', $data);
