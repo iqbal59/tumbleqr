@@ -1241,7 +1241,7 @@ foreach ($allusers as $user) {
 
                         <td><?php
                         if ($challan['Laundry'] != 0) {
-                            $v = number_format(($challan['laundry_dispatch']/$challan['Laundry'])*100, 2);
+                            echo  $v = number_format(($challan['laundry_dispatch']/$challan['Laundry'])*100, 2);
                         } else {
                             echo "0.00";
                         } ?>
@@ -1258,7 +1258,7 @@ foreach ($allusers as $user) {
                         <td><?php
                         
                         if ($challan['Shoe']!= 0) {
-                            $v= number_format(($challan['shoe_dispatch']/$challan['Shoe'])*100, 2);
+                            echo $v= number_format(($challan['shoe_dispatch']/$challan['Shoe'])*100, 2);
                         } else {
                             echo "0.00";
                         } ?>
@@ -1376,12 +1376,13 @@ foreach ($allusers as $user) {
                                         $tdis+=$challan['total_dispatch']; ?>
                         </td>
 
-                        <td><?php  $v=number_format(($challan['total_dispatch']/$challan['total'])*100, 2);
-                                        if ($v=='nan') {
-                                            echo "0.00";
-                                        } else {
-                                            echo $v;
-                                        } ?>
+                        <td><?php
+                        
+                        if ($challan['total'] != 0) {
+                            echo $v=number_format(($challan['total_dispatch']/$challan['total'])*100, 2);
+                        } else {
+                            echo "0.00";
+                        } ?>
                         </td>
 
                         <td><?php echo $challan['DC'];
@@ -1392,12 +1393,13 @@ foreach ($allusers as $user) {
                                         $tdcd+=$challan['dc_dispatch']; ?>
                         </td>
 
-                        <td><?php $v= number_format(($challan['dc_dispatch']/$challan['DC'])*100, 2);
-                                        if ($v=='nan') {
-                                            echo "0.00";
-                                        } else {
-                                            echo $v;
-                                        } ?>
+                        <td><?php
+                        
+                        if ($challan['DC'] != 0) {
+                            echo $v= number_format(($challan['dc_dispatch']/$challan['DC'])*100, 2);
+                        } else {
+                            echo "0.00";
+                        } ?>
                         </td>
                         <td><?php echo $challan['Laundry'];
                                         $l+=$challan['Laundry']; ?>
@@ -1407,13 +1409,13 @@ foreach ($allusers as $user) {
                                         $ld+=$challan['laundry_dispatch']; ?>
                         </td>
 
-                        <td><?php $v= number_format(($challan['laundry_dispatch']/$challan['Laundry'])*100, 2);
-                                                                             
-                                        if ($v=='nan') {
-                                            echo "0.00";
-                                        } else {
-                                            echo $v;
-                                        } ?>
+                        <td><?php
+                        
+                        if ($challan['Laundry'] != 0) {
+                            echo $v= number_format(($challan['laundry_dispatch']/$challan['Laundry'])*100, 2);
+                        } else {
+                            echo "0.00" ;
+                        } ?>
                         </td>
 
                         <td><?php echo $challan['Shoe'];
@@ -1424,13 +1426,13 @@ foreach ($allusers as $user) {
                                         $ld+=$challan['shoe_dispatch']; ?>
                         </td>
 
-                        <td><?php $v= number_format(($challan['shoe_dispatch']/$challan['Shoe'])*100, 2);
-                                                                             
-                                        if ($v=='nan') {
-                                            echo "0.00";
-                                        } else {
-                                            echo $v;
-                                        } ?>
+                        <td><?php
+                        
+                        if ($challan['Shoe'] != 0) {
+                            echo $v= number_format(($challan['shoe_dispatch']/$challan['Shoe'])*100, 2);
+                        } else {
+                            echo "0.00";
+                        } ?>
                         </td>
 
                     </tr>
