@@ -153,9 +153,9 @@ class Mailsend extends CI_Controller
     {
         $htmlData = file_get_contents('http://centuryfasteners.in/tumbleqr/admin/mailsend/?aaa');
 
-        //$this->send($htmlData);
+        $this->send($htmlData);
 
-        $this->send("Test Message");
+        // $this->send("Test Message");
 
         /*
         $this->load->library('email');
@@ -184,15 +184,24 @@ class Mailsend extends CI_Controller
 
         // SMTP configuration
         $mail->isSMTP();
-        $mail->Host = 'mail.centuryfasteners.in';
+        $mail->Host = 'smtp.office365.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'admin@centuryfasteners.in';
-        $mail->Password = 'B5]DIG&#OcNH';
-        $mail->SMTPSecure = 'ssl';
-        $mail->Port = 465;
+        $mail->Username = 'order_update@tumbledry.in';
+        $mail->Password = 'Tumble@2022';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
 
-        $mail->setFrom('admin@centuryfasteners.in', 'Factory Automation');
-        $mail->addReplyTo('admin@centuryfasteners.in', 'Factory Automation');
+
+        // $mail->Host = 'mail.centuryfasteners.in';
+        // $mail->SMTPAuth = true;
+        // $mail->Username = 'admin@centuryfasteners.in';
+        // $mail->Password = 'B5]DIG&#OcNH';
+        // $mail->SMTPSecure = 'ssl';
+        // $mail->Port = 465;
+
+        $mail->setFrom('order_update@tumbledry.in', 'Factory Automation');
+        $mail->addReplyTo('order_update@tumbledry.in', 'Factory Automation');
+       
 
         // Add a recipient
         // $mail->addAddress('Gaurav.Nigam@tumbledry.in');
@@ -837,23 +846,23 @@ class Mailsend extends CI_Controller
 
         // SMTP configuration
         $mail->isSMTP();
-        $mail->Host = 'mail.centuryfasteners.in';
+        $mail->Host = 'smtp.office365.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'admin@centuryfasteners.in';
-        $mail->Password = 'B5]DIG&#OcNH';
-        $mail->SMTPSecure = 'ssl';
-        $mail->Port = 465;
+        $mail->Username = 'order_update@tumbledry.in';
+        $mail->Password = 'Tumble@2022';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
 
-        // $mail->Host = 'smtp.office365.com';
+
+        // $mail->Host = 'mail.centuryfasteners.in';
         // $mail->SMTPAuth = true;
-        // $mail->Username = 'order_update@tumbledry.in';
-        // $mail->Password = 'Caz83967';
-        // $mail->SMTPSecure = 'tls';
-        // $mail->Port = 587;
+        // $mail->Username = 'admin@centuryfasteners.in';
+        // $mail->Password = 'B5]DIG&#OcNH';
+        // $mail->SMTPSecure = 'ssl';
+        // $mail->Port = 465;
 
-        
-        $mail->setFrom('admin@centuryfasteners.in', 'Factory Automation');
-        $mail->addReplyTo('admin@centuryfasteners.in', 'Factory Automation');
+        $mail->setFrom('order_update@tumbledry.in', 'Factory Automation');
+        $mail->addReplyTo('order_update@tumbledry.in', 'Factory Automation');
 
         // Add a recipient
 
