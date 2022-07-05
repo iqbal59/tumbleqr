@@ -1274,27 +1274,52 @@ foreach ($allusers as $user) {
                         </td>
                         <td><?php echo  $tdis;?>
                         </td>
-                        <td><?php echo number_format(($tdis/$td)*100, 2);?>
+                        <td><?php
+                        
+                        if ($td != 0) {
+                            echo number_format(($tdis/$td)*100, 2);
+                        } else {
+                            echo "0.00";
+                        }
+                        ?>
                         </td>
                         <td><?php echo  $tdc;?>
                         </td>
                         <td><?php echo  $tdcd;?>
                         </td>
-                        <td><?php echo number_format(($tdcd/$tdc)*100, 2);?>
+                        <td><?php
+                        if ($tdc != 0) {
+                            echo number_format(($tdcd/$tdc)*100, 2);
+                        } else {
+                            echo "0.00";
+                        }
+                        ?>
                         </td>
 
                         <td><?php echo  $l;?>
                         </td>
                         <td><?php echo  $ld;?>
                         </td>
-                        <td><?php echo number_format(($ld/$l)*100, 2); ?>
+                        <td><?php
+                        if ($l!= 0) {
+                            echo number_format(($ld/$l)*100, 2);
+                        } else {
+                            echo "0.00";
+                        }
+                        ?>
                         </td>
 
                         <td><?php echo  $s;?>
                         </td>
                         <td><?php echo  $sd;?>
                         </td>
-                        <td><?php echo number_format(($sd/$s)*100, 2);?>
+                        <td><?php
+                        if ($s != 0) {
+                            echo number_format(($sd/$s)*100, 2);
+                        } else {
+                            echo "0.00";
+                        }
+                        ?>
                         </td>
 
 
@@ -1446,27 +1471,51 @@ foreach ($allusers as $user) {
                         </td>
                         <td><?php echo  $tdis;?>
                         </td>
-                        <td><?php echo number_format(($tdis/$td)*100, 2);?>
+                        <td><?php
+                        if ($td != 0) {
+                            echo number_format(($tdis/$td)*100, 2);
+                        } else {
+                            echo "0.00";
+                        }
+                        ?>
                         </td>
                         <td><?php echo  $tdc;?>
                         </td>
                         <td><?php echo  $tdcd;?>
                         </td>
-                        <td><?php echo number_format(($tdcd/$tdc)*100, 2);?>
+                        <td><?php
+                        if ($tdc != 0) {
+                            echo number_format(($tdcd/$tdc)*100, 2);
+                        } else {
+                            echo "0.00";
+                        }
+                        ?>
                         </td>
 
                         <td><?php echo  $l;?>
                         </td>
                         <td><?php echo  $ld;?>
                         </td>
-                        <td><?php echo number_format(($ld/$l)*100, 2); ?>
+                        <td><?php
+                        if ($l != 0) {
+                            echo number_format(($ld/$l)*100, 2);
+                        } else {
+                            echo "0.00";
+                        }
+                        ?>
                         </td>
 
                         <td><?php echo  $s;?>
                         </td>
                         <td><?php echo  $sd;?>
                         </td>
-                        <td><?php echo number_format(($sd/$s)*100, 2);?>
+                        <td><?php
+                        if ($s != 0) {
+                            echo number_format(($sd/$s)*100, 2);
+                        } else {
+                            echo "0.00";
+                        }
+                        ?>
                         </td>
 
 
