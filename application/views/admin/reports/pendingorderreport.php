@@ -182,6 +182,7 @@
 									<th><strong>Order Date</strong></th>
 									<th><strong>Factory Due Date</strong></th>
                                     <th><strong>Garment</strong></th>
+                                    <th><strong>Service</strong></th>
                                     <th><strong>Current Status</strong></th>
                                     <th><strong>Incoming</strong></th>
                                     <th><strong>Spot</strong></th>
@@ -204,6 +205,8 @@
                                     <td><?php echo date('d-m-Y', strtotime($challan['Order_Date'])); ?>
                                      <td><?php echo date('d-m-Y', strtotime($challan['Due_on'].' -1 day')); ?>
                                     <td><?php echo $challan['Sub_Garment']; ?>
+                                    </td>
+                                    <td><?php echo $challan['Primary_Service']; ?>
                                     </td>
                                     <td><?php
 	                                     

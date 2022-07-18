@@ -85,8 +85,8 @@
                                                         <div class="controls">
                                                             <input type="date" name="s_from_date" class="form-control"
                                                                 placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
-    echo $condition['from_date'];
-} ?>">
+                                                                echo $condition['from_date'];
+                                                            } ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -96,8 +96,8 @@
                                                         <div class="controls">
                                                             <input type="date" name="s_to_date" class="form-control"
                                                                 placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
-    echo $condition['to_date'];
-}?>">
+                                                                echo $condition['to_date'];
+                                                            }?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -112,19 +112,19 @@
                                                             <select name="store_id" class="form-control">
                                                                 <option value="">--Select--</option>
                                                                 <?php
-                                                                   if (!empty($stores)) {
-                                                                       foreach ($stores as $store) {
-                                                                           $selected='';
-                                                                           if (!empty($condition)) {
-                                                                               if ($condition['store_id']==$store['store_id']) {
-                                                                                   $selected="selected";
-                                                                               }
-                                                                           }
+                                                                                                                                                                                           if (!empty($stores)) {
+                                                                                                                                                                                               foreach ($stores as $store) {
+                                                                                                                                                                                                   $selected='';
+                                                                                                                                                                                                   if (!empty($condition)) {
+                                                                                                                                                                                                       if ($condition['store_id']==$store['store_id']) {
+                                                                                                                                                                                                           $selected="selected";
+                                                                                                                                                                                                       }
+                                                                                                                                                                                                   }
                                                                            
-                                                                           echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
-                                                                       }
-                                                                   }
-                                                                   ?>
+                                                                                                                                                                                                   echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
+                                                                                                                                                                                               }
+                                                                                                                                                                                           }
+                        ?>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -200,6 +200,7 @@
                                     <th>Total Garment</th>
 
                                     <th>Packing Done</th>
+                                    <th>Packing Type</th>
                                     <th>Primary Service</th>
                                     <th>Due On</th>
                                     <th>Action</th>
@@ -208,8 +209,8 @@
                             </thead>
                             <tbody>
                                 <?php foreach ($challans as $challan) {
-                                                                       // if($challan['total_garment']!=$challan['psc'])
-                                                                       //continue;?>
+                                // if($challan['total_garment']!=$challan['psc'])
+                                //continue;?>
                                 <tr>
 
                                     <td><?php echo $challan['Store_Name']; ?>
@@ -222,6 +223,11 @@
 
                                     <td><?php echo $challan['psc']; ?>
                                     </td>
+
+                                    <td>Hanger: <?php echo $challan['hanger']; ?>
+                                        Fold: <?php echo $challan['fold']; ?>
+                                    </td>
+
                                     <td><?php echo $challan['Primary_Service']; ?>
                                     </td>
                                     <td><span
@@ -232,7 +238,7 @@
                                         ]</td>
                                 </tr>
                                 <?php
-                                                                   } ?>
+                            } ?>
                             </tbody>
                         </table>
 
