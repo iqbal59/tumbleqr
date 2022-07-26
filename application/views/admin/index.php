@@ -11,18 +11,22 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url() ?>assets/images/favicon.png">
-    <title> <?php echo isset($page_title)?$page_title:"tumbledry"; ?></title>
+    <title> <?php echo isset($page_title)?$page_title:"tumbledry"; ?>
+    </title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- chartist CSS -->
     <!--
-    <link href="<?php echo base_url() ?>assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
-    <link href="<?php echo base_url() ?>assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
--->
+    <link href="<?php echo base_url() ?>assets/plugins/chartist-js/dist/chartist.min.css"
+    rel="stylesheet">
+    <link
+        href="<?php echo base_url() ?>assets/plugins/chartist-js/dist/chartist-init.css"
+        rel="stylesheet">
+    -->
     <!--
     <link href="<?php echo base_url() ?>assets/plugins/chartist-plugin-tooltip-master/dist/
     chartist-plugin-tooltip.css" rel="stylesheet">
--->
+    -->
     <link href="<?php echo base_url() ?>assets/plugins/css-chart/css-chart.css" rel="stylesheet">
     <!--This page css - Morris CSS -->
     <link href="<?php echo base_url() ?>assets/plugins/morrisjs/morris.css" rel="stylesheet">
@@ -115,9 +119,10 @@
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
                             <!--
-                            <img src="<?php echo base_url() ?>assets/images/logo-icon.png" alt="homepage"
-                                class="dark-logo" />
--->
+                            <img src="<?php echo base_url() ?>assets/images/logo-icon.png"
+                            alt="homepage"
+                            class="dark-logo" />
+                            -->
                             <!-- Light Logo icon -->
                             <img src="<?php echo base_url() ?>assets/images/logo-light-icon.png" alt="homepage"
                                 class="light-logo" />
@@ -127,9 +132,10 @@
                         <span>
                             <!-- dark Logo text -->
                             <!--
-                            <img src="<?php echo base_url() ?>assets/images/logo-text.png" alt="homepage"
-                                class="dark-logo" />
--->
+                            <img src="<?php echo base_url() ?>assets/images/logo-text.png"
+                            alt="homepage"
+                            class="dark-logo" />
+                            -->
                             <!-- Light Logo text -->
                             <img src="<?php echo base_url() ?>assets/images/logo-light-text.png" class="light-logo"
                                 alt="homepage" />
@@ -189,18 +195,26 @@
                                         <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                             <div class="carousel-inner" role="listbox">
                                                 <div class="carousel-item active">
-                                                    <div class="container"> <img class="d-block img-fluid" src="<?php echo base_url() ?>assets/images/big/img1.jpg" alt="First slide"></div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <div class="container"><img class="d-block img-fluid" src="<?php echo base_url() ?>assets/images/big/img2.jpg" alt="Second slide"></div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <div class="container"><img class="d-block img-fluid" src="<?php echo base_url() ?>assets/images/big/img3.jpg" alt="Third slide"></div>
-                                                </div>
-                                            </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
-                                        </div> -->
+                                                    <div class="container"> <img class="d-block img-fluid" src="<?php echo base_url() ?>assets/images/big/img1.jpg"
+                                        alt="First slide">
+                            </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="container"><img class="d-block img-fluid"
+                            src="<?php echo base_url() ?>assets/images/big/img2.jpg"
+                            alt="Second slide"></div>
+                </div>
+                <div class="carousel-item">
+                    <div class="container"><img class="d-block img-fluid"
+                            src="<?php echo base_url() ?>assets/images/big/img3.jpg"
+                            alt="Third slide"></div>
+                </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span
+            class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span
+            class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+    </div> -->
                                         <!-- End CAROUSEL -->
                                     </li>
                                     <li class="col-lg-3 m-b-30">
@@ -431,7 +445,8 @@
                                                     src="<?php echo base_url() ?>assets/images/users/1.jpg" alt="user">
                                             </div>
                                             <div class="u-text">
-                                                <h4><?php echo $this->session->userdata('name'); ?></h4>
+                                                <h4><?php echo $this->session->userdata('name'); ?>
+                                                </h4>
                                                 <p class="text-muted"><?php echo $this->session->userdata('email'); ?>
                                                 </p><a href="profile.html"
                                                     class="btn btn-rounded btn-danger btn-sm">View Profile</a>
@@ -509,7 +524,6 @@
 
                             </ul>
                         </li>
-
 
 
                         <li>
@@ -590,15 +604,27 @@
                         <li>
                             <a class="waves-effect waves-dark"
                                 href="<?php echo base_url('admin/reports/pendingreport') ?>" aria-expanded="false"><i
-                                    class="mdi mdi-gauge"></i><span class="hide-menu">Pending Garment Report</span></a>
+                                    class="mdi mdi-gauge"></i><span class="hide-menu">Pending Garment
+                                    Report</span></a>
                         </li>
 
 
                         <li>
                             <a class="waves-effect waves-dark"
                                 href="<?php echo base_url('admin/reports/garmentreport') ?>" aria-expanded="false"><i
-                                    class="mdi mdi-gauge"></i><span class="hide-menu">Garment Report</span></a>
+                                    class="mdi mdi-gauge"></i><span class="hide-menu">Garment
+                                    Report</span></a>
                         </li>
+
+
+
+                        <li>
+                            <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/missingyn') ?>"
+                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Missing
+                                    Garment
+                                    Report</span></a>
+                        </li>
+
 
                         <li>
                             <a class="waves-effect waves-dark"
@@ -611,7 +637,8 @@
                         <li>
                             <a class="waves-effect waves-dark"
                                 href="<?php echo base_url('admin/reports/orderpriority') ?>" aria-expanded="false"><i
-                                    class="mdi mdi-gauge"></i><span class="hide-menu">Order Priority</span></a>
+                                    class="mdi mdi-gauge"></i><span class="hide-menu">Order
+                                    Priority</span></a>
                         </li>
 
                         <li>
@@ -814,85 +841,60 @@
 
     <!-- All Jquery -->
 
-    <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js">
+    </script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/popper.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/popper.min.js">
+    </script>
+    <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.min.js">
+    </script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="<?php echo base_url() ?>assets/js/jquery.slimscroll.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/jquery.slimscroll.js">
+    </script>
     <!--Wave Effects -->
     <script src="<?php echo base_url() ?>assets/js/waves.js"></script>
     <!--Menu sidebar -->
     <script src="<?php echo base_url() ?>assets/js/sidebarmenu.js"></script>
     <!--stickey kit -->
-    <script src="<?php echo base_url() ?>assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <!--Custom JavaScript -->
-    <script src="<?php echo base_url() ?>assets/js/custom.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/js/custom.js"></script>
-
-    <!-- This page plugins -->
-
-    <!-- chartist chart -->
-    <!--
-    <script src="<?php echo base_url() ?>assets/plugins/chartist-js/dist/chartist.min.js"></script>
-    <script
-        src="<?php echo base_url() ?>assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js">
+    <script src="<?php echo base_url() ?>assets/plugins/sticky-kit-master/dist/sticky-kit.min.js">
     </script>
--->
-    <!--     <script src="<?php echo base_url() ?>assets/plugins/echarts/echarts-all.js"></script> -->
+    <script src="<?php echo base_url() ?>assets/plugins/sparkline/jquery.sparkline.min.js">
+    </script>
+    <!--Custom JavaScript -->
+    <script src="<?php echo base_url() ?>assets/js/custom.js">
+    </script>
 
-    <!-- Vector map JavaScript -->
-    <!--
-    <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
--->
+
     <!-- Calendar JavaScript -->
-    <script src="<?php echo base_url() ?>assets/plugins/moment/moment.js"></script>
-    <script src='<?php echo base_url() ?>assets/plugins/calendar/dist/fullcalendar.min.js'></script>
-    <script src="<?php echo base_url() ?>assets/plugins/calendar/dist/jquery.fullcalendar.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/calendar/dist/cal-init.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/moment/moment.js">
+    </script>
+    <script src='<?php echo base_url() ?>assets/plugins/calendar/dist/fullcalendar.min.js'>
+    </script>
+    <script src="<?php echo base_url() ?>assets/plugins/calendar/dist/jquery.fullcalendar.js">
+    </script>
+    <script src="<?php echo base_url() ?>assets/plugins/calendar/dist/cal-init.js">
+    </script>
+
+    <script src="<?php echo base_url() ?>assets/plugins/bootstrap-daterangepicker/daterangepicker.js">
+    </script>
+
+
 
     <!-- sparkline chart -->
-    <script src="<?php echo base_url() ?>assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <!--     <script src="<?php echo base_url() ?>assets/js/dashboard4.js"></script> -->
+    <script src="<?php echo base_url() ?>assets/plugins/sparkline/jquery.sparkline.min.js">
+    </script>
 
     <!-- Sweet-Alert  -->
-    <script src="<?php echo base_url() ?>assets/plugins/sweetalert/sweetalert.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/sweetalert/sweetalert.min.js">
+    </script>
+    <script src="<?php echo base_url() ?>assets/plugins/sweetalert/jquery.sweet-alert.custom.js">
+    </script>
 
     <!-- toast notification CSS -->
-    <script src="<?php echo base_url() ?>assets/plugins/toast-master/js/jquery.toast.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/toast-master/js/jquery.toast.js">
+    </script>
     <script src="<?php echo base_url() ?>assets/js/toastr.js"></script>
 
-    <!-- google maps api -->
-    <!-- <script src="https://maps.google.com/maps/api/js?key=AIzaSyCUBL-6KdclGJ2a_UpmB2LXvq7VOcPT7K4&amp;sensor=true"></script> -->
-    <!-- <script src="<?php echo base_url() ?>assets/plugins/gmaps/gmaps.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/gmaps/jquery.gmaps.js"></script> -->
-
-    <!-- Vector map JavaScript -->
-    <!--
-    <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-in-mill.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-uk-mill-en.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/vectormap/jquery-jvectormap-au-mill.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/vectormap/jvectormap.custom.js"></script>
--->
-
-    <!--Morris JavaScript -->
-    <!--
-    <script src="<?php echo base_url() ?>assets/plugins/raphael/raphael-min.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/morrisjs/morris.js"></script>
-    <script src="<?php echo base_url() ?>assets/js/morris-data.js"></script>
--->
-    <!-- Chart JS -->
-
-    <!--
-    <script src="<?php echo base_url() ?>assets/plugins/Chart.js/chartjs.init.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/Chart.js/Chart.min.js"></script>
--->
 
     <!-- Invoice print JS -->
     <script src="<?php echo base_url() ?>assets/js/jquery.PrintArea.js" type="text/JavaScript"></script>
@@ -927,7 +929,8 @@
     <!-- Start Table js -->
 
     <!-- This is data table js -->
-    <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js">
+    </script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
     <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script> -->
@@ -960,7 +963,8 @@
                     }).data().each(function(group, i) {
                         if (last !== group) {
                             $(rows).eq(i).before(
-                                '<tr class="group"><td colspan="5">' + group +
+                                '<tr class="group"><td colspan="5">' +
+                                group +
                                 '</td></tr>');
                             last = group;
                         }
@@ -989,10 +993,14 @@
     </script>
 
     <!-- Editable datatable-->
-    <script src="<?php echo base_url() ?>assets/plugins/jquery-datatables-editable/jquery.dataTables.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/tiny-editable/mindmup-editabletable.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/tiny-editable/numeric-input-example.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/jquery-datatables-editable/jquery.dataTables.js">
+    </script>
+    <script src="<?php echo base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js">
+    </script>
+    <script src="<?php echo base_url() ?>assets/plugins/tiny-editable/mindmup-editabletable.js">
+    </script>
+    <script src="<?php echo base_url() ?>assets/plugins/tiny-editable/numeric-input-example.js">
+    </script>
     <script>
     $('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
     $('#editable-datatable').editableTableWidget().numericInputExample().find('td:first').focus();
@@ -1012,7 +1020,8 @@
     <!-- Start Forms js -->
 
     <script src="<?php echo base_url() ?>assets/js/validation.js"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/summernote/dist/summernote.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/summernote/dist/summernote.min.js">
+    </script>
     <script>
     ! function(window, document, $) {
         "use strict";
@@ -1023,12 +1032,14 @@
     }(window, document, jQuery);
     </script>
 
-    <script src="<?php echo base_url() ?>assets/plugins/switchery/dist/switchery.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/switchery/dist/switchery.min.js">
+    </script>
     <script src="<?php echo base_url() ?>assets/plugins/select2/dist/js/select2.full.min.js" type="text/javascript">
     </script>
     <script src="<?php echo base_url() ?>assets/plugins/bootstrap-select/bootstrap-select.min.js"
         type="text/javascript"></script>
-    <script src="<?php echo base_url() ?>assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js">
+    </script>
     <script src="<?php echo base_url() ?>assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"
         type="text/javascript"></script>
     <!--     <script type="text/javascript" src="../assets/plugins/multiselect/js/jquery.multi-select.js"></script> -->
@@ -1057,6 +1068,37 @@
 
 
     jQuery(document).ready(function() {
+
+        days = $('input[name="filter_days"]').val();
+
+        var start = moment().subtract(days, 'days');
+        var end = moment();
+
+        function cb(start, end) {
+            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+            $('input[name="s_from_date"]').val(start.format('YYYY-MM-D'));
+            $('input[name="s_to_date"]').val(end.format('YYYY-MM-D'));
+
+
+
+        }
+
+        $('#reportrange').daterangepicker({
+            startDate: start,
+            endDate: end,
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
+                    'month').endOf('month')]
+            }
+        }, cb);
+
+        cb(start, end);
 
 
         //ToolTip
@@ -1218,7 +1260,8 @@
 
     <!-- Style switcher -->
 
-    <script src="<?php echo base_url() ?>assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/styleswitcher/jQuery.style.switcher.js">
+    </script>
 
 
 </body>

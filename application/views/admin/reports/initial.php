@@ -25,9 +25,10 @@
                 <!-- <div class="d-flex m-r-20 m-l-10 hidden-md-down">
                     <div class="chart-text m-r-10">
                         <h6 class="m-b-0"><small>Inctive User</small></h6>
-                        <h4 class="m-t-0 text-primary"><?php echo $count->inactive_user; ?></h4>
-                    </div>
-                </div> -->
+                        <h4 class="m-t-0 text-primary"><?php echo $count->inactive_user; ?>
+                </h4>
+            </div>
+        </div> -->
 
             </div>
         </div>
@@ -39,7 +40,7 @@
 
     <!-- Start Page Content -->
 
-    <div class="row">
+    <div class="row page-titles">
         <div class="col-12">
 
             <?php $msg = $this->session->flashdata('msg'); ?>
@@ -60,19 +61,17 @@
             </div>
             <?php endif ?>
 
-            <div class="card">
-
-                <div class="card-body">
-                    <form method="get" action="<?php echo base_url('admin/reports/initial') ?>"
-                        class="form-horizontal" novalidate>
+            <div class="card card-outline-info">
+                <div class="card-header">
+                    <h4 class="m-b-0 text-white">Search</h4>
+                </div>
+                <div class="card-body pb-0">
+                    <form method="get" action="<?php echo base_url('admin/reports/initial') ?>" class="form-horizontal"
+                        novalidate>
                         <div class="form-body">
-                            <br>
-
-
-
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group row">
+                                    <div class="row">
 
                                         <div class="col-md-12 controls">
 
@@ -83,8 +82,9 @@
                                                         <h5>Enter From Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="date" name="s_from_date" class="form-control"
-                                                                placeholder="MM/DD/YYYY" 
-                                                                value="<?php if(!empty($condition)){echo $condition['from_date'];} ?>">
+                                                                placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
+                                                                echo $condition['from_date'];
+                                                            } ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -93,8 +93,9 @@
                                                         <h5>Enter To Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="date" name="s_to_date" class="form-control"
-                                                                placeholder="MM/DD/YYYY" 
-                                                                value="<?php if(!empty($condition)){echo $condition['to_date'];}?>">
+                                                                placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
+                                                                echo $condition['to_date'];
+                                                            }?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -102,23 +103,27 @@
 
 
 
-												<div class="col-md-4">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <h5>Store Name</h5>
                                                         <div class="controls">
-                                                           <select  name="store_id" class="form-control">
-	                                                           <option value="">--Select--</option>
-	                                                           <?php
-		                                                           if(!empty($stores)){
-			                                                           foreach($stores as $store){
-				                                                           $selected='';
-				                                                            if(!empty($condition)){if($condition['store_id']==$store['store_id']) {$selected="selected";}}
-				                                                           
-				                                                           echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
-			                                                           }
-		                                                           }
-		                                                           ?>
-                                                           </select>
+                                                            <select name="store_id" class="form-control select2">
+                                                                <option value="">--Select--</option>
+                                                                <?php
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       if (!empty($stores)) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           foreach ($stores as $store) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               $selected='';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               if (!empty($condition)) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   if ($condition['store_id']==$store['store_id']) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       $selected="selected";
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }
+                                                                           
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       }
+                        ?>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -168,7 +173,7 @@
                     </form>
                 </div>
             </div>
-            <?php if(!empty($challans)) {?>
+            <?php if (!empty($challans)) {?>
             <div class="card">
 
                 <div class="card-body">
@@ -197,22 +202,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($challans as $challan){ ?>
+                                <?php foreach ($challans as $challan) { ?>
                                 <tr>
 
-                                    <td><?php echo $challan['Store_Name']; ?></td>
-                                    <td><?php echo $challan['Order_No']; ?></td>
+                                    <td><?php echo $challan['Store_Name']; ?>
+                                    </td>
+                                    <td><?php echo $challan['Order_No']; ?>
+                                    </td>
                                     <td><span
                                             style="display:none;"><?php echo strtotime($challan['Order_Date']);?></span><?php echo date("d-m-Y", strtotime($challan['Order_Date'])); ?>
                                     </td>
-                                    <td><?php echo $challan['total_clothes']; ?></td>
-                                    <td><?php echo $challan['incomplete_cloth']; ?></td>
+                                    <td><?php echo $challan['total_clothes']; ?>
+                                    </td>
+                                    <td><?php echo $challan['incomplete_cloth']; ?>
+                                    </td>
 
-                                    <td><?php echo $challan['Primary_Service']; ?></td>
+                                    <td><?php echo $challan['Primary_Service']; ?>
+                                    </td>
                                     <td><span
                                             style="display:none;"><?php echo strtotime($challan['Due_on']);?></span><?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
                                     </td>
-                                    <td><?php if($challan['incomplete_cloth']==0){echo "<span class='btn btn-success'>Complete</span>";} else{echo "<span class='btn btn-danger'>Incomplete</span>";}?>
+                                    <td><?php if ($challan['incomplete_cloth']==0) {
+                                    echo "<span class='btn btn-success'>Complete</span>";
+                                } else {
+                                    echo "<span class='btn btn-danger'>Incomplete</span>";
+                                }?>
                                     </td>
                                 </tr>
                                 <?php } ?>

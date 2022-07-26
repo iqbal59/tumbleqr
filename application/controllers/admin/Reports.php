@@ -12,9 +12,9 @@ class Reports extends CI_Controller
         $this->load->model('common_model');
         $this->load->model('store_model');
     }
-    
-    
-    
+
+
+
     public function initial()
     {
         $data = array();
@@ -32,12 +32,12 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/initial', $data, true);
         $this->load->view('admin/index', $data);
     }
 
-    
+
     public function initialcomplete()
     {
         $data = array();
@@ -55,13 +55,13 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/initialcomplete', $data, true);
         $this->load->view('admin/index', $data);
     }
-    
-    
-    
+
+
+
     public function initialtotal()
     {
         $data = array();
@@ -80,15 +80,15 @@ class Reports extends CI_Controller
             $data['initial_stations']=$this->common_model->getInitialStations();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/initialtotalreport', $data, true);
         $this->load->view('admin/index', $data);
     }
-    
-    
-    
-    
-    
+
+
+
+
+
     public function initialhourly()
     {
         $data = array();
@@ -107,13 +107,49 @@ class Reports extends CI_Controller
             $data['initial_stations']=$this->common_model->getInitialStations();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/initialhourly', $data, true);
         $this->load->view('admin/index', $data);
     }
-    
-    
-    
+
+
+
+
+    /*************MISSING GARMENT START**********************/
+
+    public function missingyn()
+    {
+        $data = array();
+        $data['page_title'] = 'Missing Garment Report';
+        if ($this->input->server('REQUEST_METHOD') === 'GET') {
+            // echo "POST";
+            // die();
+            $data['condition']=array(
+               'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d', strtotime('-3 days')),
+               'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+               'store_id'=> $this->input->get('store_id'),
+               'filter_type'=> $this->input->get('filter_type')?$this->input->get('filter_type'):1
+           );
+
+            $diff=date_diff(date_create($data['condition']['from_date']), date_create($data['condition']['to_date']));
+
+            $data['days']=$diff->format('%a');
+
+            $data['condition'] = $this->security->xss_clean($data['condition']);
+            $data['challans']=$this->common_model->missingyn($data['condition']);
+            // echo $this->db->last_query();
+            $data['stores']=$this->store_model->get_all_stores();
+        }
+
+
+        $data['main_content'] = $this->load->view('admin/reports/missingyn', $data, true);
+        $this->load->view('admin/index', $data);
+    }
+
+    /********************MISSING GARMENT END****************/
+
+
+
     /*********SPot******/
     public function spotcomplete()
     {
@@ -132,13 +168,13 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/spotcomplete', $data, true);
         $this->load->view('admin/index', $data);
     }
-    
-    
-    
+
+
+
     public function spottotal()
     {
         $data = array();
@@ -159,12 +195,12 @@ class Reports extends CI_Controller
             $data['spot_stations']=$this->store_model->get_all_stations();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/spottotal', $data, true);
         $this->load->view('admin/index', $data);
     }
-    
-    
+
+
     public function spothourly()
     {
         $data = array();
@@ -185,18 +221,18 @@ class Reports extends CI_Controller
             $data['stations']=$this->common_model->getSpotStationId();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/spothourly', $data, true);
         $this->load->view('admin/index', $data);
     }
-    
+
 
     /*******Spot End ********/
-    
-    
-    
-    
-   
+
+
+
+
+
     public function qccomplete()
     {
         $data = array();
@@ -214,7 +250,7 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/qccomplete', $data, true);
         $this->load->view('admin/index', $data);
     }
@@ -237,13 +273,13 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/qcreport', $data, true);
         $this->load->view('admin/index', $data);
     }
 
-   
-   
+
+
     public function qcreporthourly()
     {
         $data = array();
@@ -261,14 +297,14 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/qcreporthourly', $data, true);
         $this->load->view('admin/index', $data);
     }
-   
-   
-   
-   
+
+
+
+
     public function packagingcomplete()
     {
         $data = array();
@@ -286,15 +322,15 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/packagingcomplete', $data, true);
         $this->load->view('admin/index', $data);
     }
-   
-   
-   
-   
-   
+
+
+
+
+
     public function packagingall()
     {
         $data = array();
@@ -313,11 +349,11 @@ class Reports extends CI_Controller
             $data['packing_stations']=$this->common_model->getPackingStations();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/packagingall', $data, true);
         $this->load->view('admin/index', $data);
     }
-   
+
     public function packaging()
     {
         $data = array();
@@ -336,14 +372,14 @@ class Reports extends CI_Controller
             $data['packing_stations']=$this->common_model->getPackingStations();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/packaging', $data, true);
         $this->load->view('admin/index', $data);
     }
-   
-   
-   
-   
+
+
+
+
     public function pendingreport()
     {
         $data = array();
@@ -361,7 +397,7 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/pendingreport', $data, true);
         $this->load->view('admin/index', $data);
     }
@@ -385,7 +421,7 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/garmentreport', $data, true);
         $this->load->view('admin/index', $data);
     }
@@ -407,18 +443,18 @@ class Reports extends CI_Controller
                'till_date'=> $this->input->get('till_date'),
                'till_time'=> $this->input->get('till_time'),
                'primary_service'=>"'" . implode("','", $this->input->get('primary_service')) . "'"
-               
-               
+
+
            );
             $data['condition'] = $this->security->xss_clean($data['condition']);
-           
+
             if ($data['condition']['from_station']==1 && $data['condition']['to_station']==2) {
                 $start_dt=$data['condition']['from_date'].' '.$data['condition']['from_time'].':00';
                 $to_dt=$data['condition']['to_date'].' '.$data['condition']['to_time'].':00';
                 $till_dt=$data['condition']['till_date'].' '.$data['condition']['till_time'].':00';
                 $data['challans']=$this->common_model->incomingtospot1am($start_dt, $to_dt, $till_dt, $data['condition']['primary_service']);
             }
-           
+
             if ($data['condition']['from_station']==2 && $data['condition']['to_station']==3) {
                 $start_dt=$data['condition']['from_date'].' '.$data['condition']['from_time'].':00';
                 $to_dt=$data['condition']['to_date'].' '.$data['condition']['to_time'].':00';
@@ -435,12 +471,12 @@ class Reports extends CI_Controller
         }
 
         $data['services']=$this->common_model->get_all_Service();
-        
+
         $data['main_content'] = $this->load->view('admin/reports/exceptionreport', $data, true);
         $this->load->view('admin/index', $data);
     }
 
-   
+
     public function pendingorderreport()
     {
         $data = array();
@@ -457,11 +493,11 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/pendingorderreport', $data, true);
         $this->load->view('admin/index', $data);
     }
-   
+
 
     public function orderstatuspriority()
     {
@@ -480,11 +516,11 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/orderstatuspriority', $data, true);
         $this->load->view('admin/index', $data);
     }
-   
+
     public function orderpriority()
     {
         $data = array();
@@ -503,7 +539,7 @@ class Reports extends CI_Controller
             redirect("admin/reports/orderpriority");
         }
         $data['stores']=$this->store_model->get_all_stores();
-        
+
         $data['main_content'] = $this->load->view('admin/reports/orderpriority', $data, true);
         $this->load->view('admin/index', $data);
     }
@@ -526,16 +562,16 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/packingdetail', $data, true);
         $this->load->view('admin/index', $data);
     }
-   
 
-   
-   
-   
-   
+
+
+
+
+
     public function readytodispatch()
     {
         $data = array();
@@ -553,7 +589,7 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/readytodispatch', $data, true);
         $this->load->view('admin/index', $data);
     }
@@ -577,7 +613,7 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/quickwing', $data, true);
         $this->load->view('admin/index', $data);
     }
@@ -603,7 +639,7 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/otherreadytodispatch', $data, true);
         $this->load->view('admin/index', $data);
     }
@@ -626,7 +662,7 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/dispatchreport', $data, true);
         $this->load->view('admin/index', $data);
     }
@@ -649,7 +685,7 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/cancelledorder', $data, true);
         $this->load->view('admin/index', $data);
     }
@@ -686,24 +722,24 @@ class Reports extends CI_Controller
     {
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             $store_id=$this->input->post('store_id');
-            
-            
-            
+
+
+
             $htmlData = file_get_contents("http://centuryfasteners.in/tumbleqr/admin/mailsend/challanmail?store_id=$store_id");
-            
-            
+
+
             $storeData=$this->common_model->get_store_email($store_id, "tbl_store");
-            
+
             //print_r($storeData);
-            
+
             $email=$storeData->email_id;
             if (!$email) {
                 $email='iqbal.alam59@gmail.com';
             }
             if ($this->send($htmlData, $email)) {
                 $this->common_model->updatedispatchchallan($store_id);
-            
-            
+
+
                 $this->session->set_flashdata('msg', 'Mail sent Successfully');
             } else {
                 $this->session->set_flashdata('error_msg', 'Error');
@@ -753,7 +789,7 @@ class Reports extends CI_Controller
 
         // Email body content
         $mailContent = $content;
-            
+
         $mail->Body = $mailContent;
 
         // Send email
@@ -808,12 +844,12 @@ class Reports extends CI_Controller
             } else {
                 $this->session->set_flashdata('error_msg', 'Error');
             }
-            
+
             // redirect("admin/reports/cancelledorder?s_from_date=$from&s_to_date=$to&store_id=$store_id");
             redirect("admin/reports/cancelledorder");
         }
     }
-    
+
     public function mobileorderstatus()
     {
         $data = array();
@@ -830,7 +866,7 @@ class Reports extends CI_Controller
             $data['stores']=$this->store_model->get_all_stores();
         }
 
-        
+
         $data['main_content'] = $this->load->view('admin/reports/mobileorderstatus', $data, true);
         $this->load->view('admin/index_mobile', $data);
     }
@@ -841,10 +877,10 @@ class Reports extends CI_Controller
     {
         $data = array();
         $data['page_title'] = 'Print Packing Label';
-                 
-           
 
-        
+
+
+
         $data['main_content'] = $this->load->view('admin/reports/printpackinglabel', $data, true);
         $this->load->view('admin/index', $data);
     }
