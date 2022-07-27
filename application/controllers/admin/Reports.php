@@ -157,7 +157,7 @@ class Reports extends CI_Controller
             // echo "POST";
             // die();
             $data['condition']=array(
-               'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d', strtotime('-1 days')),
+               'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d', strtotime('-0 days')),
                'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
                'store_id'=> $this->input->get('store_id'),
                'filter_type'=> $this->input->get('filter_type')?$this->input->get('filter_type'):1
