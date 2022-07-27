@@ -1518,4 +1518,36 @@ class Common_model extends CI_Model
         $query = $this->db->query($sql)->result();
         return $query;
     }
+
+
+    /******Image GARMENT*****/
+
+    public function imgreport($param)
+    {
+        $search_query='';
+        $search_sub_query='';
+
+        if (!empty($param['from_date']) && !empty($param['to_date'])) {
+            $search_sub_query=" and date(tbl_picture.create_date) between '".$param['from_date']."' and '".$param['to_date']."'";
+        } else {
+            $search_sub_query='';
+        }
+
+
+        if (!empty($param['store_id'])) {
+            $search_query.=" and store_id='".$param['store_id']."'";
+        }
+
+
+        $sql="SELECT tbl_picture.*, tbl_challan_data.* from tbl_picture  join tbl_challan_data on (tbl_picture.Barcode=tbl_challan_data.Barcode) where id in(SELECT id FROM tbl_picture where 1  $search_sub_query group by Barcode HAVING min(create_date)) $search_query";
+        $query = $this->db->query($sql)->result();
+        return $query;
+    }
+
+
+    public function getImageByBarcode($barcode){ $sql="select * from tbl_picture where Barcode='".$barcode."'";
+
+        $query = $this->db->query($sql)->result();
+        return $query;
+    }
 }

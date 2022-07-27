@@ -148,6 +148,51 @@ class Reports extends CI_Controller
 
     /********************MISSING GARMENT END****************/
 
+    /********************IMAGE REPORT***********/
+    public function imgreport()
+    {
+        $data = array();
+        $data['page_title'] = 'Image Report';
+        if ($this->input->server('REQUEST_METHOD') === 'GET') {
+            // echo "POST";
+            // die();
+            $data['condition']=array(
+               'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d', strtotime('-3 days')),
+               'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+               'store_id'=> $this->input->get('store_id'),
+               'filter_type'=> $this->input->get('filter_type')?$this->input->get('filter_type'):1
+           );
+
+            $diff=date_diff(date_create($data['condition']['from_date']), date_create($data['condition']['to_date']));
+
+            $data['days']=$diff->format('%a');
+
+            $data['condition'] = $this->security->xss_clean($data['condition']);
+            $data['challans']=$this->common_model->imgreport($data['condition']);
+            //echo $this->db->last_query();
+            $data['stores']=$this->store_model->get_all_stores();
+        }
+
+
+        $data['main_content'] = $this->load->view('admin/reports/imgreport', $data, true);
+        $this->load->view('admin/index', $data);
+    }
+
+
+
+    public function getimage()
+    {
+        $data = array();
+        $data['page_title'] = 'Image Report';
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+            $data['challans']=$this->common_model->getImageByBarcode($this->input->post('barcode'));
+            // echo $this->db->last_query();
+        }
+
+
+        $this->load->view('admin/reports/imageview', $data);
+    }
+    /***************IMAGE REPORT END************/
 
 
     /*********SPot******/

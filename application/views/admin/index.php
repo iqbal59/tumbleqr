@@ -80,8 +80,7 @@
     <!-- Daterange picker plugins css -->
     <link href="<?php echo base_url() ?>assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
-
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/prettyPhoto.css" media="screen" />
     <!-- Custom CSS -->
     <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
@@ -626,6 +625,16 @@
                         </li>
 
 
+
+                        <li>
+                            <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/imgreport') ?>"
+                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Garment
+                                    Image</span></a>
+                        </li>
+
+
+
+
                         <li>
                             <a class="waves-effect waves-dark"
                                 href="<?php echo base_url('admin/reports/pendingorderreport') ?>"
@@ -1042,6 +1051,8 @@
     </script>
     <script src="<?php echo base_url() ?>assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"
         type="text/javascript"></script>
+
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.prettyPhoto.js"></script>
     <!--     <script type="text/javascript" src="../assets/plugins/multiselect/js/jquery.multi-select.js"></script> -->
     <script>
     function clotheDetails() {
@@ -1069,6 +1080,7 @@
 
     jQuery(document).ready(function() {
 
+        $("a[rel^='prettyPhoto']").prettyPhoto();
         days = $('input[name="filter_days"]').val();
 
         var start = moment().subtract(days, 'days');
@@ -1254,6 +1266,28 @@
     $(document).ready(function() {
         $('.delete_msg').delay(3000).slideUp();
     });
+
+
+
+    function clickImage(barcode, garment = '') {
+        // alert(barcode);
+        $.ajax({
+            url: '<?php echo base_url('admin/reports/getimage')?>',
+            type: 'post',
+            data: {
+                barcode: barcode,
+                <?php echo $this->security->get_csrf_token_name();?>: '<?php echo $this->security->get_csrf_hash();?>'
+            },
+            success: function(response) {
+                // Add response in Modal body
+                $('.modal-body').html(response);
+                $('.modal-title').html(garment + ' ' + barcode);
+
+                // Display Modal
+                $('#responsive-modal').modal('show');
+            }
+        });
+    }
     </script>
 
 
