@@ -112,18 +112,18 @@
                                                             <select name="store_id" class="form-control">
                                                                 <option value="">--Select--</option>
                                                                 <?php
-                                                                                                                                                                                           if (!empty($stores)) {
-                                                                                                                                                                                               foreach ($stores as $store) {
-                                                                                                                                                                                                   $selected='';
-                                                                                                                                                                                                   if (!empty($condition)) {
-                                                                                                                                                                                                       if ($condition['store_id']==$store['store_id']) {
-                                                                                                                                                                                                           $selected="selected";
-                                                                                                                                                                                                       }
-                                                                                                                                                                                                   }
-                                                                           
-                                                                                                                                                                                                   echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
-                                                                                                                                                                                               }
-                                                                                                                                                                                           }
+                                                                                                                                                                                                                                                       if (!empty($stores)) {
+                                                                                                                                                                                                                                                           foreach ($stores as $store) {
+                                                                                                                                                                                                                                                               $selected='';
+                                                                                                                                                                                                                                                               if (!empty($condition)) {
+                                                                                                                                                                                                                                                                   if ($condition['store_id']==$store['store_id']) {
+                                                                                                                                                                                                                                                                       $selected="selected";
+                                                                                                                                                                                                                                                                   }
+                                                                                                                                                                                                                                                               }
+
+                                                                                                                                                                                                                                                               echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
+                                                                                                                                                                                                                                                           }
+                                                                                                                                                                                                                                                       }
                         ?>
                                                             </select>
                                                         </div>
@@ -197,6 +197,7 @@
 
                                     <th>Store Name</th>
                                     <th>Order No.</th>
+                                    <th>Order Date</th>
                                     <th>Total Garment</th>
 
                                     <th>Packing Done</th>
@@ -217,6 +218,8 @@
                                     </td>
                                     <td><a href="<?php echo base_url('admin/reports/packingdetail?order_no='.$challan['Order_No'].'&store_id='.$challan['store_id'])?>"
                                             target="_blank"><?php echo $challan['Order_No']; ?></a>
+                                    </td>
+                                    <td><?php echo $challan['Order_Date']?>
                                     </td>
                                     <td><?php echo $challan['total_garment']; ?>
                                     </td>
