@@ -1,8 +1,6 @@
 <?php
 class Common_model extends CI_Model
 {
-
-
     /**************REPORTS***************/
 
     public function getInitialData($param)
@@ -913,6 +911,12 @@ class Common_model extends CI_Model
         return $this->db->query("select Primary_Service from tbl_challan_data group by Primary_Service")->result_array();
     }
 
+    public function get_all_garment()
+    {
+        return $this->db->query("SELECT Sub_Garment FROM `tbl_challan_data` WHERE 1 group by Sub_Garment order by Sub_Garment asc")->result_array();
+    }
+
+
 
 
 
@@ -1228,7 +1232,6 @@ class Common_model extends CI_Model
     //-- image upload function with resize option
     public function upload_image($max_size)
     {
-
         //-- set upload path
         $config['upload_path']  = "./assets/images/";
         $config['allowed_types']= 'gif|jpg|png|jpeg';
@@ -1538,6 +1541,13 @@ class Common_model extends CI_Model
             $search_query.=" and store_id='".$param['store_id']."'";
         }
 
+        if (!empty($param['garment_type'])) {
+            $search_query.=" and Sub_Garment='".$param['garment_type']."'";
+        }
+
+        if (!empty($param['primary_service'])) {
+            $search_query.=" and Primary_Service='".$param['primary_service']."'";
+        }
 
         $sql="SELECT tbl_picture.*, tbl_challan_data.* from tbl_picture  join tbl_challan_data on (tbl_picture.Barcode=tbl_challan_data.Barcode) where id in(SELECT id FROM tbl_picture where 1  $search_sub_query group by Barcode HAVING min(create_date)) $search_query";
         $query = $this->db->query($sql)->result();

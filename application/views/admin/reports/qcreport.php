@@ -25,9 +25,10 @@
                 <!-- <div class="d-flex m-r-20 m-l-10 hidden-md-down">
                     <div class="chart-text m-r-10">
                         <h6 class="m-b-0"><small>Inctive User</small></h6>
-                        <h4 class="m-t-0 text-primary"><?php echo $count->inactive_user; ?></h4>
-                    </div>
-                </div> -->
+                        <h4 class="m-t-0 text-primary"><?php echo $count->inactive_user; ?>
+                </h4>
+            </div>
+        </div> -->
 
             </div>
         </div>
@@ -63,8 +64,8 @@
             <div class="card">
 
                 <div class="card-body">
-                    <form method="get" action="<?php echo base_url('admin/reports/qcreport') ?>"
-                        class="form-horizontal" novalidate>
+                    <form method="get" action="<?php echo base_url('admin/reports/qcreport') ?>" class="form-horizontal"
+                        novalidate>
                         <div class="form-body">
                             <br>
 
@@ -83,8 +84,9 @@
                                                         <h5>From Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="date" name="s_from_date" class="form-control"
-                                                                placeholder="MM/DD/YYYY" 
-                                                                value="<?php if(!empty($condition)){echo $condition['from_date'];} ?>">
+                                                                placeholder="MM/DD/YYYY" value="<?php if(!empty($condition)) {
+                                                                echo $condition['from_date'];
+                                                            } ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -93,13 +95,14 @@
                                                         <h5>To Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="date" name="s_to_date" class="form-control"
-                                                                placeholder="MM/DD/YYYY" 
-                                                                value="<?php if(!empty($condition)){echo $condition['to_date'];}?>">
+                                                                placeholder="MM/DD/YYYY" value="<?php if(!empty($condition)) {
+                                                                echo $condition['to_date'];
+                                                            }?>">
                                                         </div>
                                                     </div>
                                                 </div>
 
-<!--
+                                                <!--
 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <h5>Store Name</h5>
@@ -107,20 +110,24 @@
                                                            <select  name="store_id" class="form-control">
 	                                                           <option value="">--Select--</option>
 	                                                           <?php
-		                                                           if(!empty($stores)){
-			                                                           foreach($stores as $store){
-				                                                           $selected='';
-				                                                            if(!empty($condition)){if($condition['store_id']==$store['store_id']) {$selected="selected";}}
-				                                                           
-				                                                           echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
-			                                                           }
-		                                                           }
-		                                                           ?>
-                                                           </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
--->
+                                                                   if(!empty($stores)) {
+                                                                       foreach($stores as $store) {
+                                                                           $selected='';
+                                                                           if(!empty($condition)) {
+                                                                               if($condition['store_id']==$store['store_id']) {
+                                                                                   $selected="selected";
+                                                                               }
+                                                                           }
+
+                                                                           echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
+                                                                       }
+                                                                   }
+                        ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                -->
 
 
 
@@ -186,7 +193,8 @@
                             cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-									<th>Station ID</th>
+                                    <th>Date</th>
+                                    <th>Station ID</th>
                                     <th>Total</th>
                                     <th>Pass Total</th>
                                     <th>Fail Total</th>
@@ -194,24 +202,34 @@
                                     <th>Pass (%)</th>
                                     <th>Fail (%)</th>
                                     <th>Sorry (%)</th>
-                                  
-                                  
+
+
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($challans as $challan){ ?>
+                                <?php foreach($challans as $challan) { ?>
                                 <tr>
-<td><?php echo $challan['qc_station_id']; ?></td>
-                                    <td><?php echo $challan['total']; ?></td>
-                                    <td><?php echo $challan['pass_count']; ?></td>
-                                    
-                                    <td><?php echo $challan['fail_count']; ?></td>
-                                    <td><?php echo $challan['sorry_count']; ?></td>
-                                     
-									<td><?php echo number_format(($challan['pass_count']/$challan['total'])*100,2); ?></td>
-                                    <td><?php echo number_format(($challan['fail_count']/$challan['total'])*100,2); ?></td>
-                                    <td><?php echo number_format(($challan['sorry_count']/$challan['total'])*100,2); ?></td>
-                                   
+                                    <td><?php echo date('d-m-Y', strtotime($challan['date'])); ?>
+                                    </td>
+                                    <td><?php echo $challan['qc_station_id']; ?>
+                                    </td>
+                                    <td><?php echo $challan['total']; ?>
+                                    </td>
+                                    <td><?php echo $challan['pass_count']; ?>
+                                    </td>
+
+                                    <td><?php echo $challan['fail_count']; ?>
+                                    </td>
+                                    <td><?php echo $challan['sorry_count']; ?>
+                                    </td>
+
+                                    <td><?php echo number_format(($challan['pass_count']/$challan['total'])*100, 2); ?>
+                                    </td>
+                                    <td><?php echo number_format(($challan['fail_count']/$challan['total'])*100, 2); ?>
+                                    </td>
+                                    <td><?php echo number_format(($challan['sorry_count']/$challan['total'])*100, 2); ?>
+                                    </td>
+
                                 </tr>
                                 <?php } ?>
                             </tbody>

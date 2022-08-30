@@ -160,6 +160,8 @@ class Reports extends CI_Controller
                'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d', strtotime('-0 days')),
                'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
                'store_id'=> $this->input->get('store_id'),
+               'primary_service'=> $this->input->get('primary_service'),
+               'garment_type'=> $this->input->get('garment_type'),
                'filter_type'=> $this->input->get('filter_type')?$this->input->get('filter_type'):1
            );
 
@@ -171,6 +173,8 @@ class Reports extends CI_Controller
             $data['challans']=$this->common_model->imgreport($data['condition']);
             //echo $this->db->last_query();
             $data['stores']=$this->store_model->get_all_stores();
+            $data['services']=$this->common_model->get_all_services();
+            $data['garment']=$this->common_model->get_all_garment();
         }
 
 
