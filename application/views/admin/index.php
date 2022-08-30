@@ -600,6 +600,32 @@
                         </li>
 
 
+
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Photo</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+
+
+                                <li><a href="<?php echo base_url('admin/reports/photocomplete') ?>"><i
+                                            class="fa fa-angle-right"></i> Complete</a></li>
+
+
+                                <li><a href="<?php echo base_url('admin/reports/photoall') ?>"><i
+                                            class="fa fa-angle-right"></i>Total Report</a></li>
+
+                                <li><a href="<?php echo base_url('admin/reports/photo') ?>"><i
+                                            class="fa fa-angle-right"></i> Photo Hourly</a></li>
+
+
+
+
+                            </ul>
+                        </li>
+
+
                         <li>
                             <a class="waves-effect waves-dark"
                                 href="<?php echo base_url('admin/reports/pendingreport') ?>" aria-expanded="false"><i

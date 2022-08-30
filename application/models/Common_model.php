@@ -442,6 +442,31 @@ class Common_model extends CI_Model
     }
 
 
+/***************Photo start****************/
+public function getPhotoData($param)
+{
+    // print_r($param);
+
+    if (!empty($param['from_date']) && !empty($param['to_date'])) {
+        $search_query=" and date(CONVERT_TZ(tbl_picture.create_date, @@session.time_zone, '+05:30') )  between '".$param['from_date']."' and '".$param['to_date']."'";
+    } else {
+        $search_query='';
+    }
+
+    if (!empty($param['store_id'])) {
+        $search_query.=" and substring_index(tbl_picture.Barcode, '-', 3)='".$param['store_id']."'";
+    }
+
+
+   $sql="SELECT * FROM `tbl_picture` left join tbl_challan_data on (tbl_picture.Barcode=tbl_challan_data.Barcode) WHERE 1 $search_query order by create_date desc";
+    $query = $this->db->query($sql)->result_array();
+    //$query="";
+    return $query;
+}
+
+
+/**********************Photo End**** */
+
 
     public function getQcCompleteData($param)
     {

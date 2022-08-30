@@ -427,7 +427,81 @@ class Reports extends CI_Controller
     }
 
 
+    /**********photo section***********/
 
+    public function photocomplete()
+    {
+        $data = array();
+        $data['page_title'] = 'Photo Complete Report';
+        if ($this->input->server('REQUEST_METHOD') === 'GET') {
+            // echo "POST";
+            // die();
+            $data['condition']=array(
+               'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+               'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+               'store_id'=> $this->input->get('store_id')
+           );
+            $data['condition'] = $this->security->xss_clean($data['condition']);
+            $data['challans']=$this->common_model->getPhotoData($data['condition']);
+            $data['stores']=$this->store_model->get_all_stores();
+        }
+
+
+        $data['main_content'] = $this->load->view('admin/reports/photocomplete', $data, true);
+        $this->load->view('admin/index', $data);
+    }
+
+
+
+
+
+    public function photoall()
+    {
+        $data = array();
+        $data['page_title'] = 'Photo Report';
+        if ($this->input->server('REQUEST_METHOD') === 'GET') {
+            // echo "POST";
+            // die();
+            $data['condition']=array(
+               'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+               'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+               'store_id'=> $this->input->get('store_id')
+           );
+            $data['condition'] = $this->security->xss_clean($data['condition']);
+            $data['challans']=$this->common_model->getPackageDataTotalMailReport($data['condition']);
+            $data['stores']=$this->store_model->get_all_stores();
+            $data['packing_stations']=$this->common_model->getPackingStations();
+        }
+
+
+        $data['main_content'] = $this->load->view('admin/reports/photoall', $data, true);
+        $this->load->view('admin/index', $data);
+    }
+
+    public function photo()
+    {
+        $data = array();
+        $data['page_title'] = 'Pending Report';
+        if ($this->input->server('REQUEST_METHOD') === 'GET') {
+            // echo "POST";
+            // die();
+            $data['condition']=array(
+               'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+               'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+               'store_id'=> $this->input->get('store_id')
+           );
+            $data['condition'] = $this->security->xss_clean($data['condition']);
+            $data['challans']=$this->common_model->getPackageDataHourly($data['condition']);
+            $data['stores']=$this->store_model->get_all_stores();
+            $data['packing_stations']=$this->common_model->getPackingStations();
+        }
+
+
+        $data['main_content'] = $this->load->view('admin/reports/packaging', $data, true);
+        $this->load->view('admin/index', $data);
+    }
+
+/**********photo section end***********/
 
     public function pendingreport()
     {
