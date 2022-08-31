@@ -199,6 +199,9 @@
                                     <th>Primary Service</th>
                                     <th>Due On</th>
                                     <th>Scan Time</th>
+                                    <th>Count Photo</th>
+                                    <th>Remarks</th>
+
                                     <!--                                      <th>Print</th> -->
 
                                 </tr>
@@ -227,9 +230,13 @@
                                             style="display:none;"><?php echo strtotime($challan['Due_on']);?></span><?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
                                     </td>
                                     <td><span
-                                            style="display:none;"><?php echo strtotime($challan['create_date']);?></span><?php echo date("d-m-Y H:i:s", strtotime($challan['Photo_time']." + 330 mins")); ?>
+                                            style="display:none;"><?php echo strtotime($challan['create_date']);?></span><?php echo date("d-m-Y H:i:s", strtotime($challan['create_date']." + 330 mins")); ?>
                                     </td>
 
+                                    <td><?php echo $challan['total_image'];?>
+                                    </td>
+                                    <td><?php echo $challan['img_remarks'];?>
+                                    </td>
                                     <!--                                     <td><a target="_blank" href="<?php echo base_url('admin/reports/printbarcode/'.$challan['Barcode'])?>">Print</a>
                                 </td> -->
                                 </tr>

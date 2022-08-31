@@ -458,7 +458,10 @@ public function getPhotoData($param)
     }
 
 
-   $sql="SELECT * FROM `tbl_picture` left join tbl_challan_data on (tbl_picture.Barcode=tbl_challan_data.Barcode) WHERE 1 $search_query order by create_date desc";
+
+
+
+    $sql="select station_id, tbl_challan_data.Barcode, img_remarks, total_image, create_date, Store_Name, Order_No, Order_Date, Primary_Service, Due_on,Sub_Garment from (SELECT station_id, Barcode, remarks, count(Barcode) as total_image, GROUP_CONCAT(tbl_picture.remarks) as img_remarks, create_date FROM `tbl_picture` WHERE 1  $search_query group by Barcode HAVING min(create_date) ) as tbl_picture_temp  join tbl_challan_data on (tbl_picture_temp.Barcode=tbl_challan_data.Barcode)";
     $query = $this->db->query($sql)->result_array();
     //$query="";
     return $query;
