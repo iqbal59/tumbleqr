@@ -599,9 +599,6 @@
                             </ul>
                         </li>
 
-
-
-
                         <li>
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
                                     class="fa fa-pencil-square-o"></i><span class="hide-menu">Photo</span></a>
@@ -619,8 +616,134 @@
                                 <li><a href="<?php echo base_url('admin/reports/photo') ?>"><i
                                             class="fa fa-angle-right"></i> Photo Hourly</a></li>
 
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Tailor</span></a>
+                            <ul aria-expanded="false" class="collapse">
 
 
+
+                                <li><a href="<?php echo base_url('admin/reports/tailorcomplete') ?>"><i
+                                            class="fa fa-angle-right"></i> Complete</a></li>
+
+
+                                <li><a href="<?php echo base_url('admin/reports/tailorall') ?>"><i
+                                            class="fa fa-angle-right"></i>Total Report</a></li>
+
+                                <li><a href="<?php echo base_url('admin/reports/tailor') ?>"><i
+                                            class="fa fa-angle-right"></i> Tailor Hourly</a></li>
+
+                            </ul>
+                        </li>
+
+
+
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Lot Making</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+
+
+                                <li><a href="<?php echo base_url('admin/reports/lotcomplete') ?>"><i
+                                            class="fa fa-angle-right"></i> Complete</a></li>
+
+
+                                <li><a href="<?php echo base_url('admin/reports/lotall') ?>"><i
+                                            class="fa fa-angle-right"></i>Total Report</a></li>
+
+                                <li><a href="<?php echo base_url('admin/reports/lot') ?>"><i
+                                            class="fa fa-angle-right"></i> Lot Hourly</a></li>
+
+                            </ul>
+                        </li>
+
+
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Washing</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+
+
+                                <li><a href="<?php echo base_url('admin/reports/washcomplete') ?>"><i
+                                            class="fa fa-angle-right"></i> Complete</a></li>
+
+
+                                <li><a href="<?php echo base_url('admin/reports/washall') ?>"><i
+                                            class="fa fa-angle-right"></i>Total Report</a></li>
+
+                                <li><a href="<?php echo base_url('admin/reports/wash') ?>"><i
+                                            class="fa fa-angle-right"></i> Wash Hourly</a></li>
+
+                            </ul>
+                        </li>
+
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Dry</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+
+
+                                <li><a href="<?php echo base_url('admin/reports/drycomplete') ?>"><i
+                                            class="fa fa-angle-right"></i> Complete</a></li>
+
+
+                                <li><a href="<?php echo base_url('admin/reports/dryall') ?>"><i
+                                            class="fa fa-angle-right"></i>Total Report</a></li>
+
+                                <li><a href="<?php echo base_url('admin/reports/dry') ?>"><i
+                                            class="fa fa-angle-right"></i> Dry Hourly</a></li>
+
+                            </ul>
+                        </li>
+
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Iron Lot</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+
+
+                                <li><a href="<?php echo base_url('admin/reports/ironlotcomplete') ?>"><i
+                                            class="fa fa-angle-right"></i> Complete</a></li>
+
+
+                                <li><a href="<?php echo base_url('admin/reports/ironlotall') ?>"><i
+                                            class="fa fa-angle-right"></i>Total Report</a></li>
+
+                                <li><a href="<?php echo base_url('admin/reports/ironlot') ?>"><i
+                                            class="fa fa-angle-right"></i> Iron Lot Hourly</a></li>
+
+                            </ul>
+                        </li>
+
+
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Iron</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+
+
+                                <li><a href="<?php echo base_url('admin/reports/ironcomplete') ?>"><i
+                                            class="fa fa-angle-right"></i> Complete</a></li>
+
+
+                                <li><a href="<?php echo base_url('admin/reports/ironall') ?>"><i
+                                            class="fa fa-angle-right"></i>Total Report</a></li>
+
+                                <li><a href="<?php echo base_url('admin/reports/iron') ?>"><i
+                                            class="fa fa-angle-right"></i> Iron Hourly</a></li>
 
                             </ul>
                         </li>
@@ -1115,8 +1238,8 @@
         function cb(start, end) {
             $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 
-            $('input[name="s_from_date"]').val(start.format('YYYY-MM-D'));
-            $('input[name="s_to_date"]').val(end.format('YYYY-MM-D'));
+            $('input[name="ss_from_date"]').val(start.format('YYYY-MM-D'));
+            $('input[name="ss_to_date"]').val(end.format('YYYY-MM-D'));
 
 
 

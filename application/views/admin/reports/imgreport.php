@@ -56,11 +56,19 @@
 
 
                             <form method="get" class="mb-0" action="<?php echo base_url('admin/reports/imgreport') ?>">
+
+
+
+                                <!-- CSRF token -->
+                                <!-- <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>"
+                                value="<?=$this->security->get_csrf_hash();?>"
+                                /> -->
+
                                 <input type="hidden" name="filter_days" value="<?php echo $days?>" />
-                                <input type="hidden" name="s_from_date" value="<?php if (!empty($condition)) {
+                                <input type="hidden" name="ss_from_date" value="<?php if (!empty($condition)) {
                                     echo $condition['from_date'];
                                 } ?>">
-                                <input type="hidden" name="s_to_date" value="<?php if (!empty($condition)) {
+                                <input type="hidden" name="ss_to_date" value="<?php if (!empty($condition)) {
                                     echo $condition['to_date'];
                                 }?>" />
 
@@ -68,18 +76,9 @@
 
                                 <div class="form-row align-items-center">
 
-                                    <div class="col-3">
-
-
-                                        <!-- CSRF token -->
-                                        <!-- <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>"
-                                        value="<?=$this->security->get_csrf_hash();?>"
-                                        /> -->
-
-
-
+                                    <div class="col-2">
                                         <div class="input-group input-group-sm ">
-                                            <div class="input-group-addon">Store Code</div>
+                                            <!-- <div class="input-group-addon">Store Code</div> -->
                                             <select name="store_id" class="form-control input-sm">
                                                 <option value="">--Select Store--</option>
 
@@ -107,7 +106,7 @@
 
 
 
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         <div id="reportrange"
                                             style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
                                             <i class="fa fa-calendar"></i>&nbsp;
@@ -115,9 +114,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-3">
+                                    <div class="col-2">
                                         <div class="input-group input-group-sm ">
-                                            <div class="input-group-addon">Primary Service</div>
+                                            <!-- <div class="input-group-addon">Primary Service</div> -->
                                             <select name="primary_service" class="form-control input-sm">
                                                 <option value="">--Select Primary Service--</option>
 
@@ -139,9 +138,9 @@
 
 
 
-                                    <div class="col-3">
+                                    <div class="col-2">
                                         <div class="input-group input-group-sm ">
-                                            <div class="input-group-addon">Garment Type</div>
+                                            <!-- <div class="input-group-addon">Garment Type</div> -->
                                             <select name="garment_type" class="form-control input-sm select2">
                                                 <option value="">--Garment Type--</option>
 
@@ -159,7 +158,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 m-t-10 text-center">
+                                    <div class="col-md-2">
                                         <button type="submit" class="btn btn-sm btn-success">Search</button>
                                     </div>
                                 </div>

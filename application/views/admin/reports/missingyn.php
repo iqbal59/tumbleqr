@@ -56,10 +56,10 @@
 
                             <form method="get" class="mb-0" action="<?php echo base_url('admin/reports/missingyn') ?>">
                                 <input type="hidden" name="filter_days" value="<?php echo $days?>" />
-                                <input type="hidden" name="s_from_date" value="<?php if (!empty($condition)) {
+                                <input type="hidden" name="ss_from_date" value="<?php if (!empty($condition)) {
                                     echo $condition['from_date'];
                                 } ?>">
-                                <input type="hidden" name="s_to_date" value="<?php if (!empty($condition)) {
+                                <input type="hidden" name="ss_to_date" value="<?php if (!empty($condition)) {
                                     echo $condition['to_date'];
                                 }?>" />
 

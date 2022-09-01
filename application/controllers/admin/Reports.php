@@ -11,6 +11,7 @@ class Reports extends CI_Controller
         check_login_user();
         $this->load->model('common_model');
         $this->load->model('store_model');
+        $this->load->model('report_model');
     }
 
 
@@ -125,8 +126,8 @@ class Reports extends CI_Controller
             // echo "POST";
             // die();
             $data['condition']=array(
-               'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d', strtotime('-3 days')),
-               'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+               'from_date'=> $this->input->get('ss_from_date')?$this->input->get('ss_from_date'):date('Y-m-d', strtotime('-3 days')),
+               'to_date'=> $this->input->get('ss_to_date')?$this->input->get('ss_to_date'):date('Y-m-d'),
                'store_id'=> $this->input->get('store_id'),
                'filter_type'=> $this->input->get('filter_type')?$this->input->get('filter_type'):1
            );
@@ -157,8 +158,8 @@ class Reports extends CI_Controller
             // echo "POST";
             // die();
             $data['condition']=array(
-               'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d', strtotime('-0 days')),
-               'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+               'from_date'=> $this->input->get('ss_from_date')?$this->input->get('ss_from_date'):date('Y-m-d', strtotime('-0 days')),
+               'to_date'=> $this->input->get('ss_to_date')?$this->input->get('ss_to_date'):date('Y-m-d'),
                'store_id'=> $this->input->get('store_id'),
                'primary_service'=> $this->input->get('primary_service'),
                'garment_type'=> $this->input->get('garment_type'),
@@ -502,6 +503,249 @@ class Reports extends CI_Controller
     }
 
 /**********photo section end***********/
+
+/**************TAILOR START*************/
+public function tailorcomplete()
+{
+    $data = array();
+    $data['page_title'] = 'Tailor Report';
+    if ($this->input->server('REQUEST_METHOD') === 'GET') {
+        // echo "POST";
+        // die();
+        $data['condition']=array(
+           'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+           'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+           'Primary_Service'=> $this->input->get('Primary_Service'),
+           'store_id'=> $this->input->get('store_id')
+       );
+        $data['condition'] = $this->security->xss_clean($data['condition']);
+        $data['challans']=$this->report_model->getTailorCompleteData($data['condition']);
+        $data['stores']=$this->store_model->get_all_stores();
+        $data['services']=$this->common_model->get_all_services();
+    }
+
+
+    $data['main_content'] = $this->load->view('admin/reports/tailorcomplete', $data, true);
+    $this->load->view('admin/index', $data);
+}
+
+
+
+public function tailorall()
+{
+    $data = array();
+    $data['page_title'] = 'Tailor All Report';
+    if ($this->input->server('REQUEST_METHOD') === 'GET') {
+        // echo "POST";
+        // die();
+        $data['condition']=array(
+           'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+           'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+           'station_id'=> $this->input->get('station_id'),
+           'Primary_Service'=> $this->input->get('Primary_Service')
+       );
+        $data['condition'] = $this->security->xss_clean($data['condition']);
+        $data['challans']=$this->report_model->getTailorTotalData($data['condition']);
+        // $data['stations']=$this->common_model->getSpotStationId();
+        $data['services']=$this->store_model->get_all_service();
+        $data['tailor_stations']=$this->report_model->get_all_tailor_stations();
+    }
+
+
+    $data['main_content'] = $this->load->view('admin/reports/tailortotal', $data, true);
+    $this->load->view('admin/index', $data);
+}
+
+
+public function tailor()
+{
+    $data = array();
+    $data['page_title'] = 'Tailor Hourly Report';
+    if ($this->input->server('REQUEST_METHOD') === 'GET') {
+        // echo "POST";
+        // die();
+        $data['condition']=array(
+           'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+           'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+           'station_id'=> $this->input->get('station_id'),
+           'Primary_Service'=> $this->input->get('Primary_Service')
+       );
+        $data['condition'] = $this->security->xss_clean($data['condition']);
+        $data['challans']=$this->report_model->getToilorTotalHourly($data['condition']);
+        $data['tailor_stations']=$this->report_model->get_all_tailor_stations();
+        $data['services']=$this->store_model->get_all_service();
+    }
+
+
+    $data['main_content'] = $this->load->view('admin/reports/tailorhourly', $data, true);
+    $this->load->view('admin/index', $data);
+}
+
+/**************TAILOR END*************/
+
+
+
+/**************Garment LOT START*************/
+public function lotcomplete()
+{
+    $data = array();
+    $data['page_title'] = 'LOT Report';
+    if ($this->input->server('REQUEST_METHOD') === 'GET') {
+        // echo "POST";
+        // die();
+        $data['condition']=array(
+           'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+           'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+           'Primary_Service'=> $this->input->get('Primary_Service'),
+           'store_id'=> $this->input->get('store_id')
+       );
+        $data['condition'] = $this->security->xss_clean($data['condition']);
+        $data['challans']=$this->report_model->getLotCompleteData($data['condition']);
+        $data['stores']=$this->store_model->get_all_stores();
+        $data['services']=$this->common_model->get_all_services();
+    }
+
+
+    $data['main_content'] = $this->load->view('admin/reports/lotcomplete', $data, true);
+    $this->load->view('admin/index', $data);
+}
+
+
+
+public function lotall()
+{
+    $data = array();
+    $data['page_title'] = 'LOT All Report';
+    if ($this->input->server('REQUEST_METHOD') === 'GET') {
+        // echo "POST";
+        // die();
+        $data['condition']=array(
+           'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+           'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+           'station_id'=> $this->input->get('station_id'),
+           'Primary_Service'=> $this->input->get('Primary_Service')
+       );
+        $data['condition'] = $this->security->xss_clean($data['condition']);
+        $data['challans']=$this->report_model->getLotTotalData($data['condition']);
+        // $data['stations']=$this->common_model->getSpotStationId();
+        $data['services']=$this->store_model->get_all_service();
+        $data['lot_stations']=$this->report_model->get_all_lot_stations();
+    }
+
+
+    $data['main_content'] = $this->load->view('admin/reports/lottotal', $data, true);
+    $this->load->view('admin/index', $data);
+}
+
+
+public function lot()
+{
+    $data = array();
+    $data['page_title'] = 'Lot Hourly Report';
+    if ($this->input->server('REQUEST_METHOD') === 'GET') {
+        // echo "POST";
+        // die();
+        $data['condition']=array(
+           'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+           'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+           'station_id'=> $this->input->get('station_id'),
+           'Primary_Service'=> $this->input->get('Primary_Service')
+       );
+        $data['condition'] = $this->security->xss_clean($data['condition']);
+        $data['challans']=$this->report_model->getLotTotalHourly($data['condition']);
+        $data['lot_stations']=$this->report_model->get_all_lot_stations();
+        $data['services']=$this->store_model->get_all_service();
+    }
+
+
+    $data['main_content'] = $this->load->view('admin/reports/lothourly', $data, true);
+    $this->load->view('admin/index', $data);
+}
+
+/**************GARMENT LOT END*************/
+
+
+
+
+
+/**************Garment Washing START*************/
+public function washcomplete()
+{
+    $data = array();
+    $data['page_title'] = 'Washing Report';
+    if ($this->input->server('REQUEST_METHOD') === 'GET') {
+        // echo "POST";
+        // die();
+        $data['condition']=array(
+           'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+           'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+           'Primary_Service'=> $this->input->get('Primary_Service'),
+           'store_id'=> $this->input->get('store_id')
+       );
+        $data['condition'] = $this->security->xss_clean($data['condition']);
+        $data['challans']=$this->report_model->getWashingCompleteData($data['condition']);
+        $data['stores']=$this->store_model->get_all_stores();
+        $data['services']=$this->common_model->get_all_services();
+    }
+
+
+    $data['main_content'] = $this->load->view('admin/reports/washingcomplete', $data, true);
+    $this->load->view('admin/index', $data);
+}
+
+
+
+public function washall()
+{
+    $data = array();
+    $data['page_title'] = 'Washing All Report';
+    if ($this->input->server('REQUEST_METHOD') === 'GET') {
+        // echo "POST";
+        // die();
+        $data['condition']=array(
+           'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+           'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+           'station_id'=> $this->input->get('station_id'),
+           'Primary_Service'=> $this->input->get('Primary_Service')
+       );
+        $data['condition'] = $this->security->xss_clean($data['condition']);
+        $data['challans']=$this->report_model->getWashingTotalData($data['condition']);
+        // $data['stations']=$this->common_model->getSpotStationId();
+        $data['services']=$this->store_model->get_all_service();
+        $data['wash_stations']=$this->report_model->get_all_washing_stations();
+    }
+
+
+    $data['main_content'] = $this->load->view('admin/reports/washtotal', $data, true);
+    $this->load->view('admin/index', $data);
+}
+
+
+public function wash()
+{
+    $data = array();
+    $data['page_title'] = 'Washing Hourly Report';
+    if ($this->input->server('REQUEST_METHOD') === 'GET') {
+        // echo "POST";
+        // die();
+        $data['condition']=array(
+           'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+           'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+           'station_id'=> $this->input->get('station_id'),
+           'Primary_Service'=> $this->input->get('Primary_Service')
+       );
+        $data['condition'] = $this->security->xss_clean($data['condition']);
+        $data['challans']=$this->report_model->getWashingTotalHourly($data['condition']);
+        $data['wash_stations']=$this->report_model->get_all_washing_stations();
+        $data['services']=$this->store_model->get_all_service();
+    }
+
+
+    $data['main_content'] = $this->load->view('admin/reports/washhourly', $data, true);
+    $this->load->view('admin/index', $data);
+}
+
+/**************GARMENT Washing END*************/
 
     public function pendingreport()
     {
