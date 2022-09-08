@@ -749,6 +749,41 @@
                         </li>
 
 
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Vendor</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+
+
+                                <li><a href="<?php echo base_url('admin/reports/shoes') ?>"><i
+                                            class="fa fa-angle-right"></i> Shoes</a></li>
+
+                                <li><a href="<?php echo base_url('admin/reports/shoeschallan') ?>"><i
+                                            class="fa fa-angle-right"></i> Shoes Challan</a></li>
+
+
+                                <li><a href="<?php echo base_url('admin/reports/carpet') ?>"><i
+                                            class="fa fa-angle-right"></i> Carpet</a></li>
+
+                                <li><a href="<?php echo base_url('admin/reports/carpetchallan') ?>"><i
+                                            class="fa fa-angle-right"></i> Carpet Challan</a></li>
+
+                                <li><a href="<?php echo base_url('admin/reports/raffu') ?>"><i
+                                            class="fa fa-angle-right"></i> Raffu</a></li>
+
+                                <li><a href="<?php echo base_url('admin/reports/raffuchallan') ?>"><i
+                                            class="fa fa-angle-right"></i> Raffu Challan</a></li>
+
+
+
+
+                            </ul>
+                        </li>
+
+
+
                         <li>
                             <a class="waves-effect waves-dark"
                                 href="<?php echo base_url('admin/reports/pendingreport') ?>" aria-expanded="false"><i

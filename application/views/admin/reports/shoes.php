@@ -6,10 +6,10 @@
 
     <div class="row page-titles">
         <div class="col-md-5 col-8 align-self-center">
-            <h3 class="text-themecolor m-b-0 m-t-0">LOT Garment Complete Report</h3>
+            <h3 class="text-themecolor m-b-0 m-t-0">Shoes Vendor Report</h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">LOT Garment Complete Report</li>
+                <li class="breadcrumb-item active">Shoes Vendor Report</li>
             </ol>
         </div>
 
@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <form method="get" class="mb-0" action="<?php echo base_url('admin/reports/lotcomplete') ?>"
+                            <form method="get" class="mb-0" action="<?php echo base_url('admin/reports/shoes') ?>"
                                 class="form-horizontal" novalidate>
 
                                 <!-- CSRF token -->
@@ -58,7 +58,7 @@
                                     value="<?=$this->security->get_csrf_hash();?>" />
 
                                 <div class="row">
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <h5 class="text-white">Enter From Date <span class="text-danger">*</span>
                                             </h5>
@@ -70,7 +70,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <h5 class="text-white">Enter To Date <span class="text-danger">*</span>
                                             </h5>
@@ -85,59 +85,22 @@
 
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <h5 class="text-white">Store Name</h5>
+                                            <h5 class="text-white">Station Id</h5>
                                             <div class="controls">
-                                                <select name="store_id" class="form-control">
+                                                <select name="station_id" class="form-control">
                                                     <option value="">--Select--</option>
-                                                    <?php
-                                                           if(!empty($stores)) {
-                                                               foreach($stores as $store) {
-                                                                   $selected='';
-                                                                   if(!empty($condition)) {
-                                                                       if($condition['store_id']==$store['store_id']) {
-                                                                           $selected="selected";
-                                                                       }
-                                                                   }
+                                                    <option value="429"
+                                                        <?php echo $condition['station_id']=='429'?"selected":""; ?>>429
+                                                    </option>
+                                                    <option value="439"
+                                                        <?php echo $condition['station_id']=='439'?"selected":""; ?>>439
+                                                    </option>
 
-                                                                   echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
-                                                               }
-                                                           }
-            ?>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-
-
-
                                     <div class="col-md-3">
-                                        <div class="form-group">
-                                            <h5 class="text-white">Services</h5>
-                                            <div class="controls">
-                                                <select name="Primary_Service" class="form-control">
-                                                    <option value="">--Select--</option>
-                                                    <?php
-            if(!empty($services)) {
-                foreach($services as $service) {
-                    $selected='';
-                    if(!empty($condition)) {
-                        if($condition['Primary_Service']==$service['Primary_Service']) {
-                            $selected="selected";
-                        }
-                    }
-
-                    echo '<option value="'.$service['Primary_Service'].'"   '.$selected.'>'.$service['Primary_Service'].'</option>';
-                }
-            }
-            ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <h5>&nbsp;</h5>
                                             <div class="controls">
@@ -159,24 +122,38 @@
                         cellspacing="0" width="100%">
                         <thead>
                             <tr>
-
+                                <th>Store Code</th>
                                 <th>Store Name</th>
                                 <th>Order No.</th>
                                 <th>Order Date</th>
                                 <th>Cloth No.</th>
                                 <th>Garment</th>
-                                <th>Station Id</th>
-
                                 <th>Primary Service</th>
                                 <th>Due On</th>
-                                <th>Scan Time</th>
-                                <th>Lot Description</th>
+                                <th>Incoming Time</th>
+                                <th>Date Sent to Vendor</th>
+                                <th>Vendor Due Date</th>
+                                <th>Date Received from Vendor</th>
+                                <th>TAT</th>
+                                <th>Processed AT</th>
+                                <th>QC Date</th>
+                                <th>QC Status</th>
+                                <th>Packing Date</th>
+                                <th>Dispatch Date</th>
+                                <th>Delayed By</th>
+                                <th>Deduction</th>
+
 
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($challans as $challan) { ?>
+                            <?php
+                           // print_r($challans);
+                        foreach($challans as $challan) {
+                            ?>
                             <tr>
+                                <td><?php echo $challan['store_id']?>
+                                </td>
 
                                 <td><?php echo $challan['Store_Name']; ?>
                                 </td>
@@ -189,33 +166,30 @@
                                 </td>
                                 <td><?php echo $challan['Sub_Garment']; ?>
                                 </td>
-
-                                <td><?php echo $challan['station_id']; ?>
-                                </td>
                                 <td><?php echo $challan['Primary_Service']; ?>
                                 </td>
                                 <td><span
                                         style="display:none;"><?php echo strtotime($challan['Due_on']);?></span><?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
                                 </td>
                                 <td><span
-                                        style="display:none;"><?php echo strtotime($challan['lot_time']);?></span><?php echo $challan['lot_time']; ?>
+                                        style="display:none;"><?php echo strtotime($challan['initial_time']);?></span><?php echo $challan['initial_time']; ?>
                                 </td>
 
-                                <td>
-
-                                    <?php
-                                $remarks=json_decode($challan['remarks']);
-                                ?>
-                                    <p>
-                                        <?php echo $remarks->wash_machine;?><br />
-                                        <?php echo $remarks->for_wash;?><br />
-                                        <?php echo implode(",", $remarks->wash_instruction);?><br />
-                                        <?php echo $remarks->dry_machine;?><br />
-                                        <?php echo $remarks->for_dry;?><br />
-                                        <?php echo implode(",", $remarks->dry_instruction);?>
-
-                                    </p>
+                                <td><span
+                                        style="display:none;"><?php echo strtotime($challan['spot_time']);?></span><?php echo $challan['spot_time']; ?>
                                 </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+
 
                             </tr>
                             <?php } ?>

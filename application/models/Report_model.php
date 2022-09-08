@@ -129,7 +129,7 @@ class Report_model extends CI_Model
          }
 
 
-         $sql="SELECT Store_Name, Order_No, Order_Date, Sub_Garment, Primary_Service, Due_on, date_format(CONVERT_TZ(lot_time, @@session.time_zone, '+05:30'),  '%d-%m-%Y %H:%i:%s') as lot_time, tbl_garment_lot.Barcode, station_id FROM `tbl_garment_lot` inner join tbl_challan_data on (tbl_garment_lot.Barcode=tbl_challan_data.Barcode) WHERE 1 $search_query order by lot_time desc" ;
+         $sql="SELECT Store_Name, remarks, Order_No, Order_Date, Sub_Garment, Primary_Service, Due_on, date_format(CONVERT_TZ(lot_time, @@session.time_zone, '+05:30'),  '%d-%m-%Y %H:%i:%s') as lot_time, tbl_garment_lot.Barcode, station_id FROM `tbl_garment_lot` inner join tbl_challan_data on (tbl_garment_lot.Barcode=tbl_challan_data.Barcode) WHERE 1 $search_query order by lot_time desc" ;
          $query = $this->db->query($sql)->result_array();
          return $query;
      }
@@ -308,6 +308,30 @@ class Report_model extends CI_Model
               }
 
               $sql="SELECT $sql_query date_format(CONVERT_TZ(wash_start_time, @@session.time_zone, '+05:30'),  '%H') as hr_no, COUNT(tbl_washing.Barcode) as total FROM `tbl_washing` WHERE 1  $search_query GROUP by  hour(CONVERT_TZ(wash_start_time, @@session.time_zone, '+05:30')), day(CONVERT_TZ(wash_start_time, @@session.time_zone, '+05:30')) ";
+              $query = $this->db->query($sql)->result_array();
+              return $query;
+          }
+
+
+//GET VENDORS
+          public function getShoes($param)
+          {
+              // print_r($param);
+              if (!empty($param['from_date']) && !empty($param['to_date'])) {
+                  $search_query=" and date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30') )  between '".$param['from_date']."' and '".$param['to_date']."'";
+              } else {
+                  $search_query='';
+              }
+
+              if (!empty($param['station_id'])) {
+                  $search_query.=" and station_id='".$param['station_id']."'";
+              } else {
+                  $search_query.=" and (station_id='429' or station_id='439')";
+              }
+
+
+
+              $sql="select * from (SELECT Barcode, date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30') ) as spot_time, station_id as spot_station_id FROM `tbl_spot` WHERE 1  $search_query GROUP by Barcode) as temp join tbl_challan_data on (temp.Barcode=tbl_challan_data.Barcode) ";
               $query = $this->db->query($sql)->result_array();
               return $query;
           }

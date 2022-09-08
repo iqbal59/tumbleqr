@@ -1270,4 +1270,29 @@ public function wash()
     public function mailReport()
     {
     }
+
+    /*************Vendor Report***************** */
+
+ public function shoes()
+ {
+     $data = array();
+     $data['page_title'] = 'Shoes Report';
+     if ($this->input->server('REQUEST_METHOD') === 'GET') {
+         // echo "POST";
+         // die();
+         $data['condition']=array(
+            'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+            'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+            'station_id'=> $this->input->get('station_id')
+           );
+         $data['condition'] = $this->security->xss_clean($data['condition']);
+         $data['challans']=$this->report_model->getShoes($data['condition']);
+         // $data['stores']=$this->store_model->get_all_stores();
+     }
+
+
+     $data['main_content'] = $this->load->view('admin/reports/shoes', $data, true);
+     $this->load->view('admin/index', $data);
+ }
+    /************Vendor Report End***************** */
 }
