@@ -1145,7 +1145,7 @@ public function wash()
                 $mail->addCC('Gaurav.Teotia@tumbledry.in');
                 $mail->addCC('gaurishankarm@gmail.com');
         */
-        $mail->addAddress('Gaurav.Nigam@tumbledry.in');
+        //$mail->addAddress('Gaurav.Nigam@tumbledry.in');
         $mail->addBCC('gaurishankarm@gmail.com');
 
         // Email subject
