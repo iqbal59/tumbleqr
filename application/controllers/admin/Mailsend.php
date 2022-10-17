@@ -838,7 +838,7 @@ class Mailsend extends CI_Controller
         //$this->sendEmail($htmlData, "Exception Report", "Gaurav.Nigam@tumbledry.in");
     }
 
-    public function sendEmail($content, $subject, $to, $cc = array(), $bcc = '')
+    public function sendEmail($content, $subject, $to, $cc = array(), $attachmentFile = '')
     {
         // Load PHPMailer library
         $this->load->library('PHPMailer_Lib');
@@ -878,6 +878,9 @@ class Mailsend extends CI_Controller
         // $mail->addAddress('iqbal.alam59@gmail.com');
         $mail->addBCC('iqbal.alam59@gmail.com');
 
+        if ($attachmentFile) {
+            $mail->AddAttachment($attachmentFile);
+        }
         // Email subject
         $mail->Subject = $subject;
 
@@ -960,5 +963,7 @@ public function sendClothReport()
 
 
     fclose($file);
+
+    $this->sendEmail("Pending Clothes Report", "Pending Report", "Akash.patel@tumbledry.in", array('Gaurav.Teotia@tumbledry.in'), $file_name);
 }
 }
