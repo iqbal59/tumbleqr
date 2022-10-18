@@ -911,48 +911,45 @@ public function sendClothReport()
 
     //SPOT
     fputcsv($file, array("Spotting"));
-    fputcsv($file, array());
-    fputcsv($file, array());
     fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On'));
     $clothes = $this->report_model->getSpotPendingClothes();
     foreach ($clothes as $c) {
         fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on']));
     }
+    fputcsv($file, array());
+    fputcsv($file, array());
 
     //QC
     fputcsv($file, array("QC"));
-    fputcsv($file, array());
-    fputcsv($file, array());
     fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On'));
     $clothes = $this->report_model->getQcPendingClothes();
     foreach ($clothes as $c) {
         fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on']));
     }
+    fputcsv($file, array());
+    fputcsv($file, array());
 
     //IRON
     fputcsv($file, array("Iron"));
-    fputcsv($file, array());
-    fputcsv($file, array());
     fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On'));
     $clothes = $this->report_model->getIronPendingClothes();
     foreach ($clothes as $c) {
         fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on']));
     }
+    fputcsv($file, array());
+    fputcsv($file, array());
 
     //Packing
     fputcsv($file, array("Packing"));
-    fputcsv($file, array());
-    fputcsv($file, array());
     fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On'));
     $clothes = $this->report_model->getPackingPendingClothes();
     foreach ($clothes as $c) {
         fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on']));
     }
-
+    fputcsv($file, array());
+    fputcsv($file, array());
     //Ready to Dispatch
     fputcsv($file, array("Ready to Dispatch"));
-    fputcsv($file, array());
-    fputcsv($file, array());
     fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On'));
     $clothes = $this->report_model->getRtdPendindClothes();
     foreach ($clothes as $c) {
