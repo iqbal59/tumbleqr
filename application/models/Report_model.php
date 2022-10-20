@@ -342,14 +342,14 @@ class Report_model extends CI_Model
 
 public function getSpotPendingClothes()
 {
-    $sql="SELECT Barcode,Store_Name,  Sub_Garment, DATE_SUB(Due_on, INTERVAL 1 day) as Due_on from tbl_challan_data where Barcode in (SELECT Barcode FROM tbl_garment_lot WHERE 1 and tbl_garment_lot.lot_time BETWEEN  DATE_SUB(now(), INTERVAL 1 DAY) and DATE_SUB(now(), INTERVAL 2 HOUR)   and Barcode not in (SELECT Barcode from tbl_spot where tbl_spot.spot_time > DATE_SUB(now(), INTERVAL 1 DAY) )) order by Due_on asc";
+    $sql="SELECT Barcode,Store_Name,  Sub_Garment, DATE_SUB(Due_on, INTERVAL 1 day) as Due_on, CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')  as initial_time from tbl_challan_data where Barcode in (SELECT Barcode FROM tbl_garment_lot WHERE 1 and tbl_garment_lot.lot_time BETWEEN  DATE_SUB(now(), INTERVAL 1 DAY) and DATE_SUB(now(), INTERVAL 2 HOUR)   and Barcode not in (SELECT Barcode from tbl_spot where tbl_spot.spot_time > DATE_SUB(now(), INTERVAL 1 DAY) )) order by Due_on asc";
     $query = $this->db->query($sql)->result_array();
     return $query;
 }
 
 public function getQcPendingClothes()
 {
-    $sql="SELECT Barcode,Store_Name,  Sub_Garment, DATE_SUB(Due_on, INTERVAL 1 day) as Due_on from tbl_challan_data where Barcode in (SELECT Barcode FROM tbl_spot WHERE 1 and tbl_spot.spot_time BETWEEN  DATE_SUB(now(), INTERVAL 1 DAY) and DATE_SUB(now(), INTERVAL 2 HOUR)   and Barcode not in (SELECT Barcode from tbl_qc where tbl_qc.qc_time > DATE_SUB(now(), INTERVAL 1 DAY) )) order by Due_on asc";
+    $sql="SELECT Barcode,Store_Name,  Sub_Garment, DATE_SUB(Due_on, INTERVAL 1 day) as Due_on, CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')  as initial_time from tbl_challan_data where Barcode in (SELECT Barcode FROM tbl_spot WHERE 1 and tbl_spot.spot_time BETWEEN  DATE_SUB(now(), INTERVAL 1 DAY) and DATE_SUB(now(), INTERVAL 2 HOUR)   and Barcode not in (SELECT Barcode from tbl_qc where tbl_qc.qc_time > DATE_SUB(now(), INTERVAL 1 DAY) )) order by Due_on asc";
     $query = $this->db->query($sql)->result_array();
     return $query;
 }
@@ -357,7 +357,7 @@ public function getQcPendingClothes()
 
 public function getIronPendingClothes()
 {
-    $sql="SELECT Barcode,Store_Name,  Sub_Garment, DATE_SUB(Due_on, INTERVAL 1 day) as Due_on from tbl_challan_data where Barcode in (SELECT Barcode FROM tbl_qc WHERE 1 and tbl_qc.qc_time BETWEEN  DATE_SUB(now(), INTERVAL 1 DAY) and DATE_SUB(now(), INTERVAL 2 HOUR)   and Barcode not in (SELECT Barcode from tbl_ironing where tbl_ironing.ironing_time > DATE_SUB(now(), INTERVAL 1 DAY) )) order by Due_on asc";
+    $sql="SELECT Barcode,Store_Name,  Sub_Garment, DATE_SUB(Due_on, INTERVAL 1 day) as Due_on, CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')  as initial_time from tbl_challan_data where Barcode in (SELECT Barcode FROM tbl_qc WHERE 1 and tbl_qc.qc_time BETWEEN  DATE_SUB(now(), INTERVAL 1 DAY) and DATE_SUB(now(), INTERVAL 2 HOUR)   and Barcode not in (SELECT Barcode from tbl_ironing where tbl_ironing.ironing_time > DATE_SUB(now(), INTERVAL 1 DAY) )) order by Due_on asc";
     $query = $this->db->query($sql)->result_array();
     return $query;
 }
@@ -365,7 +365,7 @@ public function getIronPendingClothes()
 
 public function getPackingPendingClothes()
 {
-    $sql="SELECT Barcode,Store_Name,  Sub_Garment, DATE_SUB(Due_on, INTERVAL 1 day) as Due_on from tbl_challan_data where 1 and packaging_stage=0 and Barcode in (SELECT Barcode FROM tbl_ironing WHERE 1 and tbl_ironing.ironing_time BETWEEN DATE_SUB(now(), INTERVAL 1 DAY) and DATE_SUB(now(), INTERVAL 2 HOUR)) order by Due_on asc";
+    $sql="SELECT Barcode,Store_Name,  Sub_Garment, DATE_SUB(Due_on, INTERVAL 1 day) as Due_on, CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')  as initial_time from tbl_challan_data where 1 and packaging_stage=0 and Barcode in (SELECT Barcode FROM tbl_ironing WHERE 1 and tbl_ironing.ironing_time BETWEEN DATE_SUB(now(), INTERVAL 1 DAY) and DATE_SUB(now(), INTERVAL 2 HOUR)) order by Due_on asc";
     $query = $this->db->query($sql)->result_array();
     return $query;
 }
@@ -373,7 +373,7 @@ public function getPackingPendingClothes()
 
 public function getRtdPendindClothes()
 {
-    $sql="SELECT Barcode,Store_Name, Sub_Garment, DATE_SUB(Due_on, INTERVAL 1 day) as Due_on from tbl_challan_data where 1 and packaging_time BETWEEN DATE_SUB(now(), INTERVAL 1 DAY) and DATE_SUB(now(), INTERVAL 2 HOUR) and dispatch_status=0 order by Due_on asc";
+    $sql="SELECT Barcode,Store_Name, Sub_Garment, DATE_SUB(Due_on, INTERVAL 1 day) as Due_on, CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')  as initial_time from tbl_challan_data where 1 and packaging_time BETWEEN DATE_SUB(now(), INTERVAL 1 DAY) and DATE_SUB(now(), INTERVAL 2 HOUR) and dispatch_status=0 order by Due_on asc";
     $query = $this->db->query($sql)->result_array();
     return $query;
 }

@@ -911,49 +911,49 @@ public function sendClothReport()
 
     //SPOT
     fputcsv($file, array("Spotting"));
-    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On'));
+    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
     $clothes = $this->report_model->getSpotPendingClothes();
     foreach ($clothes as $c) {
-        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on']));
+        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
     }
     fputcsv($file, array());
     fputcsv($file, array());
 
     //QC
     fputcsv($file, array("QC"));
-    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On'));
+    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
     $clothes = $this->report_model->getQcPendingClothes();
     foreach ($clothes as $c) {
-        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on']));
+        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
     }
     fputcsv($file, array());
     fputcsv($file, array());
 
     //IRON
     fputcsv($file, array("Iron"));
-    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On'));
+    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
     $clothes = $this->report_model->getIronPendingClothes();
     foreach ($clothes as $c) {
-        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on']));
+        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
     }
     fputcsv($file, array());
     fputcsv($file, array());
 
     //Packing
     fputcsv($file, array("Packing"));
-    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On'));
+    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
     $clothes = $this->report_model->getPackingPendingClothes();
     foreach ($clothes as $c) {
-        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on']));
+        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
     }
     fputcsv($file, array());
     fputcsv($file, array());
     //Ready to Dispatch
     fputcsv($file, array("Ready to Dispatch"));
-    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On'));
+    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
     $clothes = $this->report_model->getRtdPendindClothes();
     foreach ($clothes as $c) {
-        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on']));
+        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
     }
 
 
@@ -961,6 +961,6 @@ public function sendClothReport()
 
     fclose($file);
 
-    $this->sendEmail("Pending Clothes Report", "Pending Report", "Akash.patel@tumbledry.in", array('Gaurav.Teotia@tumbledry.in'), $file_name);
+    $this->sendEmail("Pending Clothes Report", "Pending Report", "Akash.patel@tumbledry.in", array('Gaurav.Teotia@tumbledry.in', 'tumbledryfactory@gmail.com'), $file_name);
 }
 }
