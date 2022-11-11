@@ -191,7 +191,7 @@ class Mailsend extends CI_Controller
         $mail->Password = 'Tumble@2022';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
-
+        $mail->SMTPDebug = 2;
 
         // $mail->Host = 'mail.centuryfasteners.in';
         // $mail->SMTPAuth = true;
