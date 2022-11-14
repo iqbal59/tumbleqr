@@ -188,7 +188,7 @@ class Mailsend extends CI_Controller
         $mail->Host = 'smtp.office365.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'order_update@tumbledry.in';
-        $mail->Password = 'Tumble@2022';
+        $mail->Password = 'Fuw39630';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
         $mail->SMTPDebug = 2;
@@ -851,7 +851,7 @@ class Mailsend extends CI_Controller
         $mail->Host = 'smtp.office365.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'order_update@tumbledry.in';
-        $mail->Password = 'Tumble@2022';
+        $mail->Password = 'Fuw39630';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
