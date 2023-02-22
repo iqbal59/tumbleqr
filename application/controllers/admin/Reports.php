@@ -1188,9 +1188,9 @@ public function wash()
                 $this->session->set_flashdata('error_msg', 'Error');
             }
             if ($flg=='other') {
-                redirect("admin/reports/otherreadytodispatch?s_from_date=$from&s_to_date=$to&store_id=$store_id");
+                redirect("admin/reports/otherreadytodispatch?s_from_date=$from&s_to_date=$to");
             } else {
-                redirect("admin/reports/readytodispatch?s_from_date=$from&s_to_date=$to&store_id=$store_id");
+                redirect("admin/reports/readytodispatch?s_from_date=$from&s_to_date=$to");
             }
         }
     }
