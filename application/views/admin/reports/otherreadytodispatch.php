@@ -237,7 +237,7 @@
                                             style="display:none;"><?php echo strtotime($challan['Due_on']. ' - 1 days'); ?></span><?php echo date("d-m-Y", strtotime($challan['Due_on']. ' - 1 days')); ?>
                                     </td>
                                     <td>[ <a
-                                            href="<?php echo base_url('admin/reports/dispatchorder'); ?>?store_id=<?php echo $challan['store_id']; ?>&order_no=<?php echo $challan['Order_No']; ?>&from=<?php echo $condition['from_date']; ?>&to=<?php echo $condition['to_date']; ?>&flg=other">Dispatch</a>
+                                            href="<?php echo base_url('admin/reports/dispatchorder'); ?>?store_id=<?php //echo $challan['store_id']; ?>&order_no=<?php echo $challan['Order_No']; ?>&from=<?php echo $condition['from_date']; ?>&to=<?php echo $condition['to_date']; ?>&flg=other">Dispatch</a>
                                         ]</td>
                                 </tr>
                                 <?php
