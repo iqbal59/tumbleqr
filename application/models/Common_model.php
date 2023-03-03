@@ -761,7 +761,7 @@ public function getPhotoData($param)
         }
 
 
-        $sql="SELECT store_id, Store_Name, Order_Date, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, sum(case when color_new = 'Fold' then 1 else 0 end) as fold, sum(case when color_new = 'Hanger' then 1 else 0 end) as hanger, Due_on, Primary_Service  FROM (select *, case when Color != '' then Color else (SELECT packing_type FROM `tbl_default_packing` WHERE 1 and concat(category_name, ' - ', garment_name)=Garment limit 0,1) end as color_new from tbl_challan_data WHERE 1 and dispatch_status=0 $search_query group by store_id, Order_No) as tbl_challan_data";
+        $sql="SELECT store_id, Store_Name, Order_Date, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, sum(case when color_new = 'Fold' then 1 else 0 end) as fold, sum(case when color_new = 'Hanger' then 1 else 0 end) as hanger, Due_on, Primary_Service  FROM (select *, case when Color != '' then Color else (SELECT packing_type FROM `tbl_default_packing` WHERE 1 and concat(category_name, ' - ', garment_name)=Garment limit 0,1) end as color_new from tbl_challan_data) as tbl_challan_data WHERE 1 and dispatch_status=0 $search_query group by store_id, Order_No ";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
