@@ -913,7 +913,7 @@ public function getPhotoData($param)
         $search_query='';
 
         if ($query[0]['create_date']) {
-            $search_query=" and dispatch_time > '".$query[0]['create_date']."'";
+            $search_query=" and dispatch_time > date_sub('".$query[0]['create_date']."', 330 minute)";
         }
 
 
