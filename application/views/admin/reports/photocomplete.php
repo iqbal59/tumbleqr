@@ -230,7 +230,7 @@
                                             style="display:none;"><?php echo strtotime($challan['Due_on']);?></span><?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
                                     </td>
                                     <td><span
-                                            style="display:none;"><?php echo strtotime($challan['create_date']);?></span><?php echo date("d-m-Y H:i:s", strtotime($challan['create_date']." + 330 mins")); ?>
+                                            style="display:none;"><?php echo strtotime($challan['create_date']);?></span><?php echo date("d-m-Y H:i:s", strtotime($challan['create_date']." + 0 mins")); ?>
                                     </td>
 
                                     <td><?php echo $challan['total_image'];?>
