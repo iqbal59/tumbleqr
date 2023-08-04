@@ -458,24 +458,24 @@ class Reports extends CI_Controller
 
     public function photoall()
     {
-        $data = array();
-        $data['page_title'] = 'Photo Report';
-        if ($this->input->server('REQUEST_METHOD') === 'GET') {
-            // echo "POST";
-            // die();
-            $data['condition']=array(
-               'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
-               'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
-               'store_id'=> $this->input->get('store_id')
-           );
-            $data['condition'] = $this->security->xss_clean($data['condition']);
-            $data['challans']=$this->common_model->getPackageDataTotalMailReport($data['condition']);
-            $data['stores']=$this->store_model->get_all_stores();
-            $data['packing_stations']=$this->common_model->getPackingStations();
-        }
+        // $data = array();
+        // $data['page_title'] = 'Photo Report';
+        // if ($this->input->server('REQUEST_METHOD') === 'GET') {
+        //     // echo "POST";
+        //     // die();
+        //     $data['condition']=array(
+        //        'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
+        //        'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
+        //        'store_id'=> $this->input->get('store_id')
+        //    );
+        //     $data['condition'] = $this->security->xss_clean($data['condition']);
+        //     $data['challans']=$this->common_model->getPackageDataTotalMailReport($data['condition']);
+        //     $data['stores']=$this->store_model->get_all_stores();
+        //     $data['packing_stations']=$this->common_model->getPackingStations();
+        // }
 
 
-        $data['main_content'] = $this->load->view('admin/reports/photoall', $data, true);
+        $data['main_content'] = $this->load->view('admin/reports/photoall', $data, true);    
         $this->load->view('admin/index', $data);
     }
 
@@ -1294,5 +1294,138 @@ public function wash()
      $data['main_content'] = $this->load->view('admin/reports/shoes', $data, true);
      $this->load->view('admin/index', $data);
  }
+
+ public function shoeschallan()
+ {
+        $data = array();
+        $data['page_title'] = 'Shoes challan Report';
+        $data['main_content'] = $this->load->view('admin/reports/shoeschallan', $data, true);
+        $this->load->view('admin/index',$data);
+ }
+
+ public function carpet()
+ {
+        $data = array();
+        $data['page_title'] = 'Carpet Report';
+        $data['main_content'] = $this->load->view('admin/reports/carpet', $data, true);
+        $this->load->view('admin/index',$data);
+ }
+
+ public function carpetchallan()
+ {
+        $data = array();
+        $data['page_title'] = 'Carpet Challan Report';
+        $data['main_content'] = $this->load->view('admin/reports/carpetchallan', $data, true);
+        $this->load->view('admin/index',$data);
+ }
+
+ public function raffu()
+ {
+        $data = array();
+        $data['page_title'] = 'Raffu Report';
+        $data['main_content'] = $this->load->view('admin/reports/raffu', $data, true);
+        $this->load->view('admin/index',$data);
+ }
+
+ public function raffuchallan()
+ {
+        $data = array();
+        $data['page_title'] = 'Raffu Challan Report';
+        $data['main_content'] = $this->load->view('admin/reports/raffuchallan', $data, true);
+        $this->load->view('admin/index',$data);
+ }
+
     /************Vendor Report End***************** */
+
+
+
+
+    /************Iron Report***************** */
+
+    public function ironcomplete()
+    {
+        $data = array();
+        $data['page_title'] = 'Iron Report';
+        $data['main_content'] = $this->load->view('admin/reports/ironcomplete', $data, true);
+         $this->load->view('admin/index',$data);
+    }
+
+    public function ironall()
+    {
+        $data = array();
+        $data['page_title'] = 'Iron All Report';
+        $data['main_content'] = $this->load->view('admin/reports/ironall', $data, true);
+        $this->load->view('admin/index',$data);
+    }
+
+    public function iron()
+    {
+        $data = array();
+        $data['page_title'] = 'Tron Hourly Report';
+        $data['main_content'] = $this->load->view('admin/reports/iron', $data, true);
+        $this->load->view('admin/index',$data);
+    }
+
+    /************Iron Report End***************** */
+
+
+
+    /************Iron Lot Report***************** */
+
+    public function ironlotcomplete()
+    {
+        $data = array();
+        $data['page_title'] = 'Iron LOT Report';
+        $data['main_content'] = $this->load->view('admin/reports/ironlotcomplete', $data, true);
+        $this->load->view('admin/index',$data);
+    }
+
+    public function ironlotall()
+    {
+        $data = array();
+        $data['page_title'] = 'Iron LOT All Report';
+        $data['main_content'] = $this->load->view('admin/reports/ironlotall', $data, true);
+        $this->load->view('admin/index',$data);
+    }
+
+    public function ironlot()
+    {
+        $data = array();
+        $data['page_title'] = 'Iron LOT Hourly Report';
+        $data['main_content'] = $this->load->view('admin/reports/ironlot', $data, true);
+        $this->load->view('admin/index',$data);
+    }
+
+    /************Iron Report End***************** */
+
+
+    /************Dry section start***************** */
+
+    public function drycomplete()
+    {
+        $data = array();
+        $data['page_title'] = 'Dry Report';
+        $data['main_content'] = $this->load->view('admin/reports/drycomplete', $data, true);
+        $this->load->view('admin/index',$data);
+    }
+
+    public function dryall()
+    {
+        $data = array();
+        $data['page_title'] = 'Dry All Report';
+        $data['main_content'] = $this->load->view('admin/reports/dryall', $data, true);
+        $this->load->view('admin/index',$data);
+    }
+
+    public function dry()
+    {
+        $data = array();
+        $data['page_title'] = 'Dry Hourly Report';
+        $data['main_content'] = $this->load->view('admin/reports/dry', $data, true);
+        $this->load->view('admin/index',$data);
+    }
+
+
+    /************Dry section end***************** */
+
 }
