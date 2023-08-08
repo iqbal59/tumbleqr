@@ -866,7 +866,7 @@ public function getPhotoData($param)
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
             $date=date('Y-m-d', strtotime($param['from_date']." -1 days"));
 
-            $search_query=" and Due_on >='".date('Y-m-02', strtotime($date))."' and Due_on <='".date('Y-m-d', strtotime(" +330 mins"))."'";
+            $search_query=" and Due_on >='".date('Y-m-02', strtotime($date))."' and Due_on <='".date('Y-m-d', strtotime(" +0 mins"))."'";
         } else {
             $search_query='';
         }
