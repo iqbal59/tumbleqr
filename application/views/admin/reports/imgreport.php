@@ -26,20 +26,20 @@
 
             <?php $msg = $this->session->flashdata('msg'); ?>
             <?php if (isset($msg)): ?>
-            <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
-                <?php echo $msg; ?> &nbsp;
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                        aria-hidden="true">×</span> </button>
-            </div>
+                <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
+                    <?php echo $msg; ?> &nbsp;
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                            aria-hidden="true">×</span> </button>
+                </div>
             <?php endif ?>
 
             <?php $error_msg = $this->session->flashdata('error_msg'); ?>
             <?php if (isset($error_msg)): ?>
-            <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
-                <?php echo $error_msg; ?> &nbsp;
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                        aria-hidden="true">×</span> </button>
-            </div>
+                <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
+                    <?php echo $error_msg; ?> &nbsp;
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                            aria-hidden="true">×</span> </button>
+                </div>
             <?php endif ?>
 
 
@@ -60,17 +60,17 @@
 
 
                                 <!-- CSRF token -->
-                                <!-- <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>"
-                                value="<?=$this->security->get_csrf_hash();?>"
+                                <!-- <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>"
+                                value="<?= $this->security->get_csrf_hash(); ?>"
                                 /> -->
 
-                                <input type="hidden" name="filter_days" value="<?php echo $days?>" />
+                                <input type="hidden" name="filter_days" value="<?php echo $days ?>" />
                                 <input type="hidden" name="ss_from_date" value="<?php if (!empty($condition)) {
                                     echo $condition['from_date'];
                                 } ?>">
                                 <input type="hidden" name="ss_to_date" value="<?php if (!empty($condition)) {
                                     echo $condition['to_date'];
-                                }?>" />
+                                } ?>" />
 
 
 
@@ -82,17 +82,17 @@
                                             <select name="store_id" class="form-control input-sm">
                                                 <option value="">--Select Store--</option>
 
-                                                <?php if(!empty($stores)) {
-                                                    foreach($stores as $store) {
-                                                        $selected='';
-                                                        if(!empty($condition)) {
-                                                            if($condition['store_id']==$store['store_id']) {
-                                                                $selected="selected";
+                                                <?php if (!empty($stores)) {
+                                                    foreach ($stores as $store) {
+                                                        $selected = '';
+                                                        if (!empty($condition)) {
+                                                            if ($condition['store_id'] == $store['store_id']) {
+                                                                $selected = "selected";
                                                             }
                                                         }
-                                                        echo'<option value="'.$store['store_id'].'" '.$selected.'>'.$store['Store_Name'].'</option>';
+                                                        echo '<option value="' . $store['store_id'] . '" ' . $selected . '>' . $store['Store_Name'] . '</option>';
                                                     }
-                                                }?>
+                                                } ?>
                                             </select>
 
                                         </div>
@@ -120,17 +120,17 @@
                                             <select name="primary_service" class="form-control input-sm">
                                                 <option value="">--Select Primary Service--</option>
 
-                                                <?php if(!empty($services)) {
-                                                    foreach($services as $s) {
-                                                        $selected='';
-                                                        if(!empty($condition)) {
-                                                            if($condition['primary_service']==$s['Primary_Service']) {
-                                                                $selected="selected";
+                                                <?php if (!empty($services)) {
+                                                    foreach ($services as $s) {
+                                                        $selected = '';
+                                                        if (!empty($condition)) {
+                                                            if ($condition['primary_service'] == $s['Primary_Service']) {
+                                                                $selected = "selected";
                                                             }
                                                         }
-                                                        echo'<option value="'.$s['Primary_Service'].'" '.$selected.'>'.$s['Primary_Service'].'</option>';
+                                                        echo '<option value="' . $s['Primary_Service'] . '" ' . $selected . '>' . $s['Primary_Service'] . '</option>';
                                                     }
-                                                }?>
+                                                } ?>
                                             </select>
                                         </div>
                                     </div>
@@ -144,17 +144,17 @@
                                             <select name="garment_type" class="form-control input-sm select2">
                                                 <option value="">--Garment Type--</option>
 
-                                                <?php if(!empty($garment)) {
-                                                    foreach($garment as $g) {
-                                                        $selected='';
-                                                        if(!empty($condition)) {
-                                                            if($condition['garment_type']==$g['Sub_Garment']) {
-                                                                $selected="selected";
+                                                <?php if (!empty($garment)) {
+                                                    foreach ($garment as $g) {
+                                                        $selected = '';
+                                                        if (!empty($condition)) {
+                                                            if ($condition['garment_type'] == $g['Sub_Garment']) {
+                                                                $selected = "selected";
                                                             }
                                                         }
-                                                        echo'<option value="'.$g['Sub_Garment'].'" '.$selected.'>'.$g['Sub_Garment'].'</option>';
+                                                        echo '<option value="' . $g['Sub_Garment'] . '" ' . $selected . '>' . $g['Sub_Garment'] . '</option>';
                                                     }
-                                                }?>
+                                                } ?>
                                             </select>
                                         </div>
                                     </div>
@@ -170,75 +170,83 @@
                 </div>
 
 
-                <?php if (!empty($challans)) {?>
+                <?php if (!empty($challans)) { ?>
+
 
 
                 <div class="card-body pt-1">
 
 
 
-                    <table id="example23" class="table table-hover table-striped table-bordered" cellspacing="0"
-                        width="100%">
-                        <thead>
-                            <tr>
+                        <table id="example23" class="table table-hover table-striped table-bordered" cellspacing="0"
+                            width="100%">
+                            <thead>
+                                <tr>
 
-                                <th>Store Name</th>
-                                <th>Order No.</th>
-                                <th>Order Date</th>
-                                <th>Garment</th>
-                                <th>Barcode</th>
+                                    <th>Store Name</th>
+                                    <th>Order No.</th>
+                                    <th>Order Date</th>
+                                    <th>Garment</th>
+                                    <th>Barcode</th>
 
-                                <th>Primary Service</th>
-                                <th>Due On</th>
-                                <th>Station Id</th>
-                                <th>Action</th>
+                                    <th>Primary Service</th>
+                                    <th>Due On</th>
+                                    <th>Station Id</th>
+                                    <th>Action</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($challans as $challan) {
-                                ?>
-                            <tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($challans as $challan) {
+                                    ?>
+                                    <tr>
 
-                                <td><?php echo $challan->Store_Name; ?>
-                                </td>
-                                <td><?php echo $challan->Order_No; ?>
-                                </td>
-                                <td><?php echo date('d-m-Y', strtotime($challan->Order_Date)); ?>
-                                </td>
-                                <td><?php echo $challan->Sub_Garment; ?>
-                                </td>
-                                <td><?php echo $challan->Barcode; ?>
-                                </td>
-
-
-                                <td><?php echo $challan->Primary_Service; ?>
-                                </td>
-                                <td><span
-                                        style="display:none;"><?php echo strtotime($challan->Due_on. ' - 1 days'); ?></span><?php echo date("d-m-Y", strtotime($challan->Due_on. ' - 1 days')); ?>
-                                </td>
-
-                                <td><?php echo $challan->station_id; ?>
-                                </td>
-
-                                <td><a href="javascript:void(0)" title="<?php echo $challan->Sub_Garment; ?>"
-                                        onClick="clickImage('<?php echo $challan->Barcode; ?>', '<?php echo $challan->Sub_Garment; ?>')">
-                                        <img style="height: 75px"
-                                            src="https://thelawtimes.in/upload/<?php echo $challan->picture; ?>"
-                                            class="img-thumbnail" height="100"></a>
-                                </td>
-
-                            </tr>
-                            <?php
-                            } ?>
-                        </tbody>
-                    </table>
+                                        <td>
+                                            <?php echo $challan->Store_Name; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $challan->Order_No; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo date('d-m-Y', strtotime($challan->Order_Date)); ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $challan->Sub_Garment; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $challan->Barcode; ?>
+                                        </td>
 
 
+                                        <td>
+                                            <?php echo $challan->Primary_Service; ?>
+                                        </td>
+                                        <td><span style="display:none;"><?php echo strtotime($challan->Due_on . ' - 1 days'); ?></span>
+                                            <?php echo date("d-m-Y", strtotime($challan->Due_on . ' - 1 days')); ?>
+                                        </td>
 
-                </div>
+                                        <td>
+                                            <?php echo $challan->station_id; ?>
+                                        </td>
 
-                <?php }?>
+                                        <td><a href="javascript:void(0)" title="<?php echo $challan->Sub_Garment; ?>"
+                                                onClick="clickImage('<?php echo $challan->Barcode; ?>', '<?php echo $challan->Sub_Garment; ?>')">
+                                                <img style="height: 75px"
+                                                    src="https://swatinfosystems.com/upload/<?php echo $challan->picture; ?>"
+                                                    class="img-thumbnail" height="100"></a>
+                                        </td>
+
+                                    </tr>
+                                    <?php
+                                } ?>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+
+                <?php } ?>
             </div>
         </div>
 
