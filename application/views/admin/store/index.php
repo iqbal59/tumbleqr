@@ -4,7 +4,7 @@
 
     <!-- Bread crumb and right sidebar toggle -->
 
-    <div class="row page-titles">
+    <div class="row page-titles p-1">
         <div class="col-md-5 col-8 align-self-center">
             <h3 class="text-themecolor m-b-0 m-t-0">Store</h3>
             <ol class="breadcrumb">
@@ -39,7 +39,7 @@
 
     <!-- Start Page Content -->
 
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-12">
 
             <?php $msg = $this->session->flashdata('msg'); ?>
@@ -78,7 +78,7 @@
                     <?php endif ?>
 
 
-                    <div class="table-responsive m-t-40">
+                    <div class="table-responsive">
 
                         <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
                             cellspacing="0" width="100%">

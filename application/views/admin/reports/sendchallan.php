@@ -4,7 +4,7 @@
 
     <!-- Bread crumb and right sidebar toggle -->
 
-    <div class="row page-titles">
+    <div class="row page-titles p-1">
         <div class="col-md-5 col-8 align-self-center">
             <h3 class="text-themecolor m-b-0 m-t-0">Send Challan</h3>
             <ol class="breadcrumb">
@@ -15,7 +15,7 @@
         <div class="col-md-7 col-4 align-self-center">
 
 
-            <div class="d-flex m-t-10 justify-content-end">
+            <div class="d-flex justify-content-end">
                 <!-- <div class="d-flex m-r-20 m-l-10 hidden-md-down">
                     <div class="chart-text m-r-10">
                         <h6 class="m-b-0"><small>Active Store</small></h6>
@@ -39,8 +39,8 @@
 
     <!-- Start Page Content -->
 
-    <div class="row">
-        <div class="col-12">
+    <div class="row p-1">
+        <div class="col-12 pt-1">
 
             <?php $msg = $this->session->flashdata('msg'); ?>
             <?php if (isset($msg)): ?>
@@ -60,13 +60,13 @@
             </div>
             <?php endif ?>
 
-            <div class="card">
+            <div class="card card-outline-info mb-2">
 
-                <div class="card-body">
+                <div class="card-body py-1 pt-2">
                     <form method="post" id="challan_form" action="<?php echo base_url('admin/reports/sendchallan') ?>"
                         class="form-horizontal" novalidate>
                         <div class="form-body">
-                            <br>
+                            
 
                             <input type="hidden" name="sendchallanurl" id="sendchallanurl"
                                 value="<?php echo base_url('admin/reports/sendchallan');?>" />
@@ -77,7 +77,7 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group row">
+                                    <div class="row">
 
                                         <div class="col-md-12 controls">
 
@@ -88,10 +88,10 @@
 
 
                                                 <div class="col-md-4">
-                                                    <div class="form-group">
+                                                    <div class="form-group m-0">
                                                         <h5>Store Name</h5>
                                                         <div class="controls">
-                                                            <select name="store_id" id="store_id" class="form-control">
+                                                            <select name="store_id" id="store_id" class="form-control form-control-sm">
                                                                 <option value="">--Select--</option>
                                                                 <?php
 		                                                           if(!empty($stores)){
@@ -113,33 +113,33 @@
 
 
                                                 <div class="col-md-1">
-                                                    <div class="form-group">
+                                                    <div class="form-group mt-1">
                                                         <label class="control-label text-left col-md-3"></label>
                                                         <div class="controls">
                                                             <button type="button" id="showchallan"
-                                                                class="btn btn-success">Show</button>
+                                                                class="btn btn-sm btn-success">Show</button>
 
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-1">
-                                                    <div class="form-group">
+                                                    <div class="form-group mt-1">
                                                         <label class="control-label text-left col-md-3"></label>
                                                         <div class="controls">
                                                             <button type="button" id="printchallan"
-                                                                class="btn btn-success">Print</button>
+                                                                class="btn btn-sm btn-success">Print</button>
 
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-1">
-                                                    <div class="form-group">
+                                                    <div class="form-group mt-1">
                                                         <label class="control-label text-left col-md-3"></label>
                                                         <div class="controls">
                                                             <button type="button" id="sendchallan"
-                                                                class="btn btn-success">Send Challan</button>
+                                                                class="btn btn-sm btn-success">Send Challan</button>
 
                                                         </div>
                                                     </div>
@@ -185,17 +185,12 @@
             <?php if(!empty($challans)) {?>
             <div class="card">
 
-                <div class="card-body">
+                <div class="card-body pt-1">
 
+                    <div class="table-responsive">
 
-
-                    <div class="table-responsive m-t-40">
-
-
-
-
-                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
-                            cellspacing="0" width="100%">
+                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered table-sm"
+                            cellspacing="0" cellpadding="0" width="100%">
                             <thead>
                                 <tr>
 

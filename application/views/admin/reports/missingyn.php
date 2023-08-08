@@ -21,8 +21,8 @@
 
     <!-- Start Page Content -->
 
-    <div class="row page-titles">
-        <div class="col-12">
+    <div class="row p-1">
+        <div class="col-12 pt-1">
 
             <?php $msg = $this->session->flashdata('msg'); ?>
             <?php if (isset($msg)): ?>

@@ -4,7 +4,7 @@
 
     <!-- Bread crumb and right sidebar toggle -->
 
-    <div class="row page-titles">
+    <div class="row page-titles p-1">
         <div class="col-md-5 col-8 align-self-center">
             <h3 class="text-themecolor m-b-0 m-t-0">Import</h3>
             <ol class="breadcrumb">
@@ -21,8 +21,8 @@
 
     <!-- Start Page Content -->
 
-    <div class="row">
-        <div class="col-lg-12">
+    <div class="row mt-3">
+        <div class="col-lg-12 pt-1">
 
             <?php $error_msg = $this->session->flashdata('error_msg'); ?>
             <?php if (isset($error_msg)): ?>
@@ -45,9 +45,9 @@
 
 
             <div class="card card-outline-info">
-                <div class="card-header">
+                <div class="card-header p-4">
                     <h4 class="m-b-0 text-white"> Import Data <a
-                            href="<?php echo base_url('admin/import/challandata');?>" class="btn btn-info pull-right"><i
+                            href="<?php echo base_url('admin/import/challandata');?>" class="btn p-0 btn-info pull-right"><i
                                 class="fa fa-list"></i> All Challan Data </a></h4>
 
                 </div>
@@ -111,7 +111,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-md-9">
-                                    <div class="form-group row">
+                                    <div class=" row">
                                         <label class="control-label text-right col-md-3"></label>
                                         <div class="controls">
                                             <button type="submit" class="btn btn-success">Import</button>

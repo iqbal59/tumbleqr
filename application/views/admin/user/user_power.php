@@ -6,7 +6,7 @@
     
     <!-- Bread crumb and right sidebar toggle -->
     
-    <div class="row page-titles">
+    <div class="row page-titles p-1">
         <div class="col-md-5 col-8 align-self-center">
             <h3 class="text-themecolor m-b-0 m-t-0">User</h3>
             <ol class="breadcrumb">
@@ -23,7 +23,7 @@
     
     <!-- Start Page Content -->
 
-    <div class="row">
+    <div class="row mt-3">
 
         <div class="col-md-12">
             <?php $msg = $this->session->flashdata('msg'); ?>
@@ -69,7 +69,7 @@
                                     <div class="form-group row">
                                         <label class="control-label text-right col-md-5">Power Id <span class="text-danger">*</span></label>
                                         <div class="col-md-7 controls">
-                                           <div class="form-group">
+                                           <div class="">
                                                 <input  class="vertical-spin" type="text" name="power_id" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" value="" name="vertical-spin" required data-validation-required-message="Power Id is required"> </div>
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-md-9">
-                                    <div class="form-group row">
+                                    <div class="form-group mb-1 row">
                                         <label class="control-label text-right col-md-5"></label>
                                         <div class="controls">
                                             <button type="submit" class="btn btn-success">Add Power</button>
@@ -105,7 +105,7 @@
 
 
         <div class="col-lg-7">
-            <div class="card card-outline-info">
+            <div class="card card-outline-info ">
                 <div class="card-header">
                     <h4 class="m-b-0 text-white"> All Power List</h4>
                 </div>

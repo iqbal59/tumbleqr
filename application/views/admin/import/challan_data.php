@@ -4,7 +4,7 @@
 
     <!-- Bread crumb and right sidebar toggle -->
 
-    <div class="row page-titles">
+    <div class="row page-titles p-1">
         <div class="col-md-5 col-8 align-self-center">
             <h3 class="text-themecolor m-b-0 m-t-0">Challan Data</h3>
             <ol class="breadcrumb">
@@ -39,8 +39,8 @@
 
     <!-- Start Page Content -->
 
-    <div class="row">
-        <div class="col-12">
+    <div class="row p-1">
+        <div class="col-12 pt-1">
 
             <?php $msg = $this->session->flashdata('msg'); ?>
             <?php if (isset($msg)): ?>
@@ -60,39 +60,36 @@
             </div>
             <?php endif ?>
 
-            <div class="card">
+            <div class="card card-outline-info mb-2">
 
-                <div class="card-body">
+                <div class="card-body py-1 pt-2">
                     <form method="get" action="<?php echo base_url('admin/import/challandata') ?>"
                         class="form-horizontal" novalidate>
                         <div class="form-body">
-                            <br>
-
-
-
+                            
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group row">
+                                    <div class="row">
 
                                         <div class="col-md-12 controls">
 
 
                                             <div class="row">
                                                 <div class="col-md-5">
-                                                    <div class="form-group">
+                                                    <div class="form-group m-0">
                                                         <h5>Enter From Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="date" name="s_from_date" class="form-control"
+                                                            <input type="date" name="s_from_date" class="form-control form-control-sm"
                                                                 placeholder="MM/DD/YYYY" required
                                                                 value="<?php if(!empty($condition)){echo $condition['from_date'];} ?>">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <div class="form-group">
+                                                    <div class="form-group m-0">
                                                         <h5>Enter To Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="date" name="s_to_date" class="form-control"
+                                                            <input type="date" name="s_to_date" class="form-control form-control-sm"
                                                                 placeholder="MM/DD/YYYY" required
                                                                 value="<?php if(!empty($condition)){echo $condition['to_date'];}?>">
                                                         </div>
@@ -101,10 +98,10 @@
 
 
                                                 <div class="col-md-2">
-                                                    <div class="form-group">
+                                                    <div class="form-group mt-1">
                                                         <label class="control-label text-right col-md-3"></label>
                                                         <div class="controls">
-                                                            <button type="submit" class="btn btn-success">Show</button>
+                                                            <button type="submit" class="btn btn-sm btn-success">Show</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -147,17 +144,12 @@
             <?php if(!empty($challans)) {?>
             <div class="card">
 
-                <div class="card-body">
+                <div class="card-body pt-1">
 
+                    <div class="table-responsive">
 
-
-                    <div class="table-responsive m-t-40">
-
-
-
-
-                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
-                            cellspacing="0" width="100%">
+                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered table-sm"
+                            cellspacing="0" cellpadding="0" width="100%">
                             <thead>
                                 <tr>
 
