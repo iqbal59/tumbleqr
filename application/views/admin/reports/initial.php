@@ -4,7 +4,7 @@
 
     <!-- Bread crumb and right sidebar toggle -->
 
-    <div class="row page-titles">
+    <div class="row page-titles p-1">
         <div class="col-md-5 col-8 align-self-center">
             <h3 class="text-themecolor m-b-0 m-t-0">Initial Stage</h3>
             <ol class="breadcrumb">
@@ -15,7 +15,7 @@
         <div class="col-md-7 col-4 align-self-center">
 
 
-            <div class="d-flex m-t-10 justify-content-end">
+            <div class="d-flex justify-content-end">
                 <!-- <div class="d-flex m-r-20 m-l-10 hidden-md-down">
                     <div class="chart-text m-r-10">
                         <h6 class="m-b-0"><small>Active Store</small></h6>
@@ -40,8 +40,8 @@
 
     <!-- Start Page Content -->
 
-    <div class="row page-titles">
-        <div class="col-12">
+    <div class="row p-1">
+        <div class="col-12 pt-1">
 
             <?php $msg = $this->session->flashdata('msg'); ?>
             <?php if (isset($msg)): ?>
@@ -61,11 +61,11 @@
             </div>
             <?php endif ?>
 
-            <div class="card card-outline-info">
-                <div class="card-header">
-                    <h4 class="m-b-0 text-white">Search</h4>
-                </div>
-                <div class="card-body pb-0">
+            <div class="card card-outline-info mb-2">
+                <!-- <div class="card-header p-1 pl-3">
+                    <h5 class="m-b-0 text-white">Search</h5>
+                </div> -->
+                <div class="card-body py-1 pt-2">
                     <form method="get" action="<?php echo base_url('admin/reports/initial') ?>" class="form-horizontal"
                         novalidate>
                         <div class="form-body">
@@ -75,13 +75,12 @@
 
                                         <div class="col-md-12 controls">
 
-
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <div class="form-group">
+                                                    <div class="form-group m-0">
                                                         <h5>Enter From Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="date" name="s_from_date" class="form-control"
+                                                            <input type="date" name="s_from_date" class="form-control form-control-sm"
                                                                 placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
                                                                 echo $condition['from_date'];
                                                             } ?>">
@@ -89,10 +88,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <div class="form-group">
+                                                    <div class="form-group m-0">
                                                         <h5>Enter To Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="date" name="s_to_date" class="form-control"
+                                                            <input type="date" name="s_to_date" class="form-control form-control-sm"
                                                                 placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
                                                                 echo $condition['to_date'];
                                                             }?>">
@@ -103,26 +102,26 @@
 
 
 
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
+                                                <div class="col-md-3">
+                                                    <div class="form-group m-0">
                                                         <h5>Store Name</h5>
                                                         <div class="controls">
-                                                            <select name="store_id" class="form-control select2">
+                                                            <select name="store_id" class="form-control form-control-sm select2">
                                                                 <option value="">--Select--</option>
                                                                 <?php
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       if (!empty($stores)) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           foreach ($stores as $store) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               $selected='';
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               if (!empty($condition)) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   if ($condition['store_id']==$store['store_id']) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       $selected="selected";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }
-                                                                           
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       }
-                        ?>
+                                                                     if (!empty($stores)) {
+                                                                        foreach ($stores as $store) {
+                                                                            $selected='';
+                                                                            if (!empty($condition)) {
+                                                                                if ($condition['store_id']==$store['store_id']) {
+                                                                                    $selected="selected";
+                                                                                }
+                                                                            }
+
+                                                                            echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
+                                                                        }
+                                                                    }                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                ?>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -130,10 +129,10 @@
 
 
                                                 <div class="col-md-2">
-                                                    <div class="form-group">
+                                                    <div class="form-group mt-1">
                                                         <label class="control-label text-right col-md-3"></label>
                                                         <div class="controls">
-                                                            <button type="submit" class="btn btn-success">Show</button>
+                                                            <button type="submit" class="btn btn-success btn-sm">Show</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -175,18 +174,10 @@
             </div>
             <?php if (!empty($challans)) {?>
             <div class="card">
-
-                <div class="card-body">
-
-
-
-                    <div class="table-responsive m-t-40">
-
-
-
-
-                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
-                            cellspacing="0" width="100%">
+                <div class="card-body pt-1">
+                    <div class="table-responsive">
+                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered table-sm"
+                            cellspacing="0" cellpadding="0" width="100%">
                             <thead>
                                 <tr>
 
@@ -223,9 +214,9 @@
                                             style="display:none;"><?php echo strtotime($challan['Due_on']);?></span><?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
                                     </td>
                                     <td><?php if ($challan['incomplete_cloth']==0) {
-                                    echo "<span class='btn btn-success'>Complete</span>";
+                                    echo "<span class='btn btn-success btn-xs m-0'>Complete</span>";
                                 } else {
-                                    echo "<span class='btn btn-danger'>Incomplete</span>";
+                                    echo "<span class='btn btn-danger btn-xs m-0'>Incomplete</span>";
                                 }?>
                                     </td>
                                 </tr>
