@@ -273,7 +273,7 @@
 
 
 
-                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
+                        <table id="example23" class="display text-dark nowrap table table-hover table-striped table-bordered"
                             cellspacing="0" cellpadding="4" align="center" border="1" width="80%">
                             <thead>
                                 <tr>

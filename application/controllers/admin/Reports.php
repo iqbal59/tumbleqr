@@ -1334,6 +1334,13 @@ public function wash()
         $data['main_content'] = $this->load->view('admin/reports/raffuchallan', $data, true);
         $this->load->view('admin/index',$data);
  }
+ public function report()
+ {
+        $data = array();
+        $data['page_title'] = 'Report';
+        $data['main_content'] = $this->load->view('admin/reports/report', $data, true);
+        $this->load->view('admin/index',$data);
+ }
 
     /************Vendor Report End***************** */
 

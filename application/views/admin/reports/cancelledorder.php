@@ -68,7 +68,7 @@
 
                     <div class="table-responsive">
 
-                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered"
+                        <table id="example23" class="display text-dark nowrap table table-hover table-striped table-bordered"
                             cellspacing="0" width="100%">
                             <thead>
                                 <tr>

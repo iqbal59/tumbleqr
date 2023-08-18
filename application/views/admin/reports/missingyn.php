@@ -165,7 +165,7 @@
                     }?>
 
 
-                    <table id="example23" class="table table-hover table-striped table-bordered" cellspacing="0"
+                    <table id="example23" class="table text-dark table-hover table-striped table-bordered" cellspacing="0"
                         width="100%">
                         <thead>
                             <tr>

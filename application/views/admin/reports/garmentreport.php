@@ -39,7 +39,7 @@
 
     <!-- Start Page Content -->
 
-    <div class="row p-1">
+    <div class="row pt-1">
         <div class="col-12 pt-1">
 
             <?php $msg = $this->session->flashdata('msg'); ?>
@@ -145,7 +145,7 @@
             <div class="card">
                 <div class="card-body pt-1">
                     <div class="table-responsive">
-                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered table-sm"
+                        <table id="example23" class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
                             cellspacing="0" cellpadding="0" width="100%">
                             <thead>
                                 <tr>
@@ -164,6 +164,10 @@
                                     <th>QC Time</th>
                                     <th>Packing Time</th>
                                     <th>Dispatch Time</th>
+                                    <th>Iron</th>
+                                    <th>Washing</th>
+                                    <th>LOT Making</th>
+                                    <th>Incoming Photo</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -226,6 +230,10 @@
                                     </td>
                                     <td><?php if(!empty($challan['dispatch_time'])){ echo date('d-m-Y H:i:s', strtotime($challan['dispatch_time'].' +330 mins')); }?>
                                     </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
 
                                 </tr>
                                 <?php } ?>
