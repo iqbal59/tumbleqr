@@ -89,6 +89,14 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
+    <!-- Font Awesome Icon -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/fontawesome-free-6.4.2-web/css/all.min.css">
+    <style>
+        .con{
+            font-size:14px !important;
+        }
+    </style>
 </head>
 
 <body class="fix-header fix-sidebar card-no-border ">
@@ -504,9 +512,9 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Initial Stage</span></a>
+                                    class="fa fa-pencil-square-o con"></i><span class="hide-menu">Initial Stage</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
@@ -528,11 +536,10 @@
                         </li>
 
 
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Spotting Stage</span></a>
+                        <li class="m-0 p-0">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
+                            class="fa-solid fa-arrows-to-circle con"></i><span class="hide-menu">Spotting Stage</span></a>
                             <ul aria-expanded="false" class="collapse">
-
 
 
                                 <li><a href="<?php echo base_url('admin/reports/spotcomplete') ?>"><i
@@ -552,9 +559,9 @@
 
 
 
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Quality
+                        <li class="m-0 p-0">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
+                            class="fa-solid fa-medal con"></i><span class="hide-menu">Quality
                                     Checking</span></a>
                             <ul aria-expanded="false" class="collapse">
 
@@ -579,9 +586,9 @@
 
 
 
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Packaging</span></a>
+                        <li class="m-0 p-0">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
+                            class="fa-solid fa-suitcase con"></i><span class="hide-menu">Packaging</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
@@ -602,9 +609,9 @@
                             </ul>
                         </li>
 
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Photo</span></a>
+                        <li class="m-0 p-0">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
+                            class="fa-solid fa-camera con"></i><span class="hide-menu">Photo</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
@@ -622,9 +629,9 @@
                             </ul>
                         </li>
 
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Tailor</span></a>
+                        <li class="m-0 p-0">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
+                            class="fa-solid fa-vest-patches con"></i><span class="hide-menu">Tailor</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
@@ -645,9 +652,9 @@
 
 
 
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Lot Making</span></a>
+                        <li class="m-0 p-0">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
+                            class="fa-solid fa-arrows-rotate con"></i><span class="hide-menu">Lot Making</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
@@ -667,9 +674,9 @@
 
 
 
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Washing</span></a>
+                        <li class="m-0 p-0">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
+                            class="fa-solid fa-jug-detergent con"></i><span class="hide-menu">Washing</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
@@ -688,9 +695,9 @@
                         </li>
 
 
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Dry</span></a>
+                        <li class="m-0 p-0">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
+                            class="fa-solid fa-wind con"></i><span class="hide-menu">Dry</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
@@ -709,9 +716,9 @@
                         </li>
 
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Iron Lot</span></a>
+                                    class="fa fa-pencil-square-o con"></i><span class="hide-menu">Iron Lot</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
@@ -731,9 +738,9 @@
 
 
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Iron</span></a>
+                                    class="fa fa-pencil-square-o con"></i><span class="hide-menu">Iron</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
@@ -753,14 +760,14 @@
 
 
 
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Vendor</span></a>
+                        <li class="m-0 p-0">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
+                            class="fa-solid fa-store con"></i><span class="hide-menu">Vendor</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
 
-                                <li><a href="<?php echo base_url('admin/reports/shoes') ?>"><i
+                                <!-- <li><a href="<?php echo base_url('admin/reports/shoes') ?>"><i
                                             class="fa fa-angle-right"></i> Shoes</a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/shoeschallan') ?>"><i
@@ -777,9 +784,10 @@
                                             class="fa fa-angle-right"></i> Raffu</a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/raffuchallan') ?>"><i
-                                            class="fa fa-angle-right"></i> Raffu Challan</a></li>
+                                            class="fa fa-angle-right"></i> Raffu Challan</a></li> -->
 
-
+                                <li><a href="<?php echo base_url('admin/reports/report') ?>"><i
+                                            class="fa fa-angle-right"></i> Report</a></li>
 
 
                             </ul>
@@ -787,81 +795,80 @@
 
 
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
-                                href="<?php echo base_url('admin/reports/pendingreport') ?>" aria-expanded="false"><i
-                                    class="mdi mdi-gauge"></i><span class="hide-menu">Pending Garment
+                                href="<?php echo base_url('admin/reports/pendingreport') ?>" aria-expanded="false"><i 
+                                class="fa-solid fa-file-circle-exclamation con"></i><span class="hide-menu">Pending Garment
                                     Report</span></a>
                         </li>
 
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
-                                href="<?php echo base_url('admin/reports/garmentreport') ?>" aria-expanded="false"><i
-                                    class="mdi mdi-gauge"></i><span class="hide-menu">Garment
+                                href="<?php echo base_url('admin/reports/garmentreport') ?>" aria-expanded="false"><i 
+                                class="fa-solid fa-file-lines con"></i><span class="hide-menu">Garment
                                     Report</span></a>
                         </li>
 
 
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/missingyn') ?>"
-                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Missing
-                                    Garment
-                                    Report</span></a>
+                                aria-expanded="false"><i class="fa-regular fa-circle-question con"></i><span class="hide-menu">Missing
+                                    Garment Report</span></a>
                         </li>
 
 
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/imgreport') ?>"
-                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Garment
+                                aria-expanded="false"><i class="fa-solid fa-image con"></i><span class="hide-menu">Garment
                                     Image</span></a>
                         </li>
 
 
 
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
                                 href="<?php echo base_url('admin/reports/pendingorderreport') ?>"
-                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Order
+                                aria-expanded="false"><i class="fa-solid fa-clock-rotate-left con"></i><span class="hide-menu">Order
                                     Status</span></a>
                         </li>
 
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
-                                href="<?php echo base_url('admin/reports/orderpriority') ?>" aria-expanded="false"><i
-                                    class="mdi mdi-gauge"></i><span class="hide-menu">Order
+                                href="<?php echo base_url('admin/reports/orderpriority') ?>" aria-expanded="false"><i 
+                                class="fa-solid fa-list-ol con"></i><span class="hide-menu">Order
                                     Priority</span></a>
                         </li>
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
                                 href="<?php echo base_url('admin/reports/orderstatuspriority') ?>"
-                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Order Status
+                                aria-expanded="false"><i class="mdi mdi-gauge con"></i><span class="hide-menu">Order Status
                                     Priority</span></a>
                         </li>
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
                                 href="<?php echo base_url('admin/reports/printpackinglabel') ?>"
-                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Print Packing
+                                aria-expanded="false"><i class="fa-solid fa-barcode con"></i><span class="hide-menu">Print Packing
                                     Label</span></a>
                         </li>
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
-                                href="<?php echo base_url('admin/reports/exceptionreport') ?>" aria-expanded="false"><i
-                                    class="mdi mdi-gauge"></i><span class="hide-menu">Exception
+                                href="<?php echo base_url('admin/reports/exceptionreport') ?>" aria-expanded="false"><i 
+                                class="fa-solid fa-triangle-exclamation con"></i><span class="hide-menu">Exception
                                     Report</span></a>
                         </li>
 
 
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Dispatch</span></a>
+                        <li class="m-0 p-0">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
+                            class="fa-solid fa-truck-fast con"></i><span class="hide-menu">Dispatch</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
@@ -893,9 +900,9 @@
                         </li>
 
 
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o"></i><span class="hide-menu">Import</span></a>
+                        <li class="m-0 p-0">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
+                            class="fa-solid fa-file-import con"></i><span class="hide-menu">Import</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
@@ -914,43 +921,43 @@
 
 
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="waves-effect waves-dark" href="<?php echo base_url('admin/dashboard') ?>"
-                                aria-expanded="false"><i class="mdi mdi-gauge"></i><span
+                                aria-expanded="false"><i class="fa-solid fa-chart-pie con"></i><span
                                     class="hide-menu">Dashboard</span></a>
                         </li>
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="has-arrow waves-effect waves-dark"
                                 href="<?php echo base_url('admin/user/all_user_list') ?>" aria-expanded="false"><i
-                                    class="fa fa-user"></i><span class="hide-menu">User</span></a>
+                                    class="fa fa-user con"></i><span class="hide-menu">User</span></a>
                             <ul aria-expanded="false" class="collapse">
 
                                 <?php if ($this->session->userdata('role') == 'admin'): ?>
-                                <li><a href="<?php echo base_url('admin/user') ?>"><i class="fa fa-angle-right"></i> Add
+                                <li><a href="<?php echo base_url('admin/user') ?>"><i class="fa fa-angle-right con"></i> Add
                                         User </a></li>
                                 <li><a href="<?php echo base_url('admin/user/power') ?>"><i
-                                            class="fa fa-angle-right"></i> Add User Power</a></li>
+                                            class="fa fa-angle-right con"></i> Add User Power</a></li>
                                 <?php else: ?>
+
                                 <?php if (check_power(1)): ?>
-                                <li><a href="<?php echo base_url('admin/user') ?>"><i class="fa fa-angle-right"></i> Add
-                                        User </a></li>
+                                <li><a href="<?php echo base_url('admin/user') ?>"><i class="fa fa-angle-right"></i> Add User </a></li>
                                 <?php endif; ?>
                                 <?php endif ?>
 
                                 <li><a href="<?php echo base_url('admin/user/all_user_list') ?>"><i
-                                            class="fa fa-angle-right"></i> All Users</a></li>
+                                            class="fa fa-angle-right con"></i> All Users</a></li>
                             </ul>
                         </li>
 
 
-                        <li>
+                        <li class="m-0 p-0">
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-shopping-cart"></i><span class="hide-menu">Master</span></a>
+                                    class="fa fa-shopping-cart con"></i><span class="hide-menu">Master</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
-                                <li><a href="<?php echo base_url('admin/store') ?>"><i class="fa fa-angle-right"></i>
+                                <li><a href="<?php echo base_url('admin/store') ?>"><i class="fa fa-angle-right con"></i>
                                         Stores</a></li>
 
 

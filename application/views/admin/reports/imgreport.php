@@ -178,10 +178,17 @@
 
 
 
+<<<<<<< HEAD
+                    <table id="example23" class="table text-dark table-hover table-striped table-bordered" cellspacing="0"
+                        width="100%">
+                        <thead>
+                            <tr>
+=======
                         <table id="example23" class="table table-hover table-striped table-bordered" cellspacing="0"
                             width="100%">
                             <thead>
                                 <tr>
+>>>>>>> 7202032b3325134e9a0e55523f65012f04885558
 
                                     <th>Store Name</th>
                                     <th>Order No.</th>

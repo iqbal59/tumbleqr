@@ -165,7 +165,7 @@
                     <div class="card">
                     <div class="card-body pt-1">
                     <div class="table-reponsive">
-                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered table-sm"
+                    <table id="example23" class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
                         cellspacing="0" cellpadding="0" width="100%">
                         <thead>
                             <tr>

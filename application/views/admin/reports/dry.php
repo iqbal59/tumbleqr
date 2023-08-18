@@ -176,7 +176,7 @@
                 <div class="card-body pt-1">
                     <div class="table-responsive">
 
-                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered table-sm"
+                        <table id="example23" class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
                             cellspacing="0" cellpadding="0" width="100%">
                             <thead>
                                 <tr>
@@ -195,7 +195,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php // foreach ($challans as $challan) {?>
+                                <?php  foreach ($challans as $challan) {?>
                                 <tr>
 
                                     <td><?php echo $challan['Store_Name']; ?>
@@ -229,7 +229,7 @@
                                     </td>
 
                                 </tr>
-                                <?php // }?>
+                                <?php  }?>
                             </tbody>
                         </table>
 

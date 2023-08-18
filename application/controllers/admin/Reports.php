@@ -1333,8 +1333,17 @@ class Reports extends CI_Controller
         $data = array();
         $data['page_title'] = 'Raffu Challan Report';
         $data['main_content'] = $this->load->view('admin/reports/raffuchallan', $data, true);
-        $this->load->view('admin/index', $data);
+        $this->load->view('admin/index',$data);
     }
+  
+ public function report()
+ {
+        $data = array();
+        $data['page_title'] = 'Report';
+        $data['main_content'] = $this->load->view('admin/reports/report', $data, true);
+        $this->load->view('admin/index',$data);
+ }
+
 
     /************Vendor Report End***************** */
 
