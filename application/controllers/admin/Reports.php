@@ -785,6 +785,7 @@ class Reports extends CI_Controller
             );
             $data['condition'] = $this->security->xss_clean($data['condition']);
             $data['challans'] = $this->common_model->garmentreport($data['condition']);
+            echo $this->db->last_query();
             $data['stores'] = $this->store_model->get_all_stores();
         }
 
@@ -1333,16 +1334,30 @@ class Reports extends CI_Controller
         $data = array();
         $data['page_title'] = 'Raffu Challan Report';
         $data['main_content'] = $this->load->view('admin/reports/raffuchallan', $data, true);
-        $this->load->view('admin/index',$data);
+        $this->load->view('admin/index', $data);
     }
-  
- public function report()
- {
-        $data = array();
-        $data['page_title'] = 'Report';
+
+    public function report()
+    {
+        $data['page_title'] = 'Vendor Report';
+        if ($this->input->server('REQUEST_METHOD') === 'GET') {
+            // echo "POST";
+            // die();
+            $data['condition'] = array(
+                'from_date' => $this->input->get('s_from_date') ? $this->input->get('s_from_date') : date('Y-m-d'),
+                'to_date' => $this->input->get('s_to_date') ? $this->input->get('s_to_date') : date('Y-m-d'),
+                'store_id' => $this->input->get('station_id'),
+                'services' => $this->input->get('services')
+            );
+            $data['condition'] = $this->security->xss_clean($data['condition']);
+            $data['challans'] = $this->common_model->vendorreport($data['condition']);
+            $data['stores'] = $this->store_model->get_all_stores();
+        }
+
+
         $data['main_content'] = $this->load->view('admin/reports/report', $data, true);
-        $this->load->view('admin/index',$data);
- }
+        $this->load->view('admin/index', $data);
+    }
 
 
     /************Vendor Report End***************** */
