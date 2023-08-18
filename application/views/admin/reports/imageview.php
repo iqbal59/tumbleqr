@@ -4,9 +4,9 @@ if (!empty($challans)) {
         ?>
 <div class="card text-center">
 
-    <a href="https://thelawtimes.in/upload/<?php echo $ch->picture; ?>" rel="prettyPhoto"
+    <a href="https://swatinfosystems.com/upload/<?php echo $ch->picture; ?>" rel="prettyPhoto"
         title="<?php echo $ch->remarks; ?>" target="_blank">
-        <img class="card-img-top" src="https://thelawtimes.in/upload/<?php echo $ch->picture; ?>" />
+        <img class="card-img-top" src="https://swatinfosystems.com/upload/<?php echo $ch->picture; ?>" />
     </a>
 
 

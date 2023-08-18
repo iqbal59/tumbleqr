@@ -158,12 +158,12 @@
                     <?php foreach ($pictures as $p){ ?>
                     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                         <!-- Link to the big image, not mandatory, but usefull when there is no JS -->
-                        <a href="https://thelawtimes.in/upload/<?php echo $p['picture'];?>"
+                        <a href="https://swatinfosystems.com/upload/<?php echo $p['picture'];?>"
                             data-caption="<?php echo $p['Sub_Garment']?> (<?php echo $p['remarks']?>) <br><em class='text-muted'><?php echo $p['Store_Name']?></em>"
                             data-width="0" data-height="0" itemprop="contentUrl">
                             <!-- Thumbnail -->
-                            <img src="https://thelawtimes.in/upload/<?php echo $p['picture'];?>" itemprop="thumbnail"
-                                alt="Image description">
+                            <img src="https://swatinfosystems.com/upload/<?php echo $p['picture'];?>"
+                                itemprop="thumbnail" alt="Image description">
 
                         </a>
                         <p><?php echo $p['Sub_Garment']?> (<?php echo $p['remarks']?>)
