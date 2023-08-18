@@ -1,10 +1,10 @@
 <!-- Container fluid  -->
 
-<div class="container-fluid">
+<div class="container-fluid p-0">
 
     <!-- Bread crumb and right sidebar toggle -->
 
-    <div class="row page-titles p-1">
+    <div class="row page-titles mx-1 p-2">
         <div class="col-md-5 col-8 align-self-center">
             <h3 class="text-themecolor m-b-0 m-t-0">Vendor Report</h3>
             <ol class="breadcrumb">
@@ -154,7 +154,6 @@
                                             </div>
 
 
-
                                         </div>
                                     </div>
                                 </div>
@@ -173,7 +172,7 @@
             </div>
             <?php // if (!empty($challans)) {?>
             <div class="card">
-                <div class="card-body pt-1">
+                <div class="card-body px-2 pt-0">
                     <div class="table-responsive">
 
                         <table id="example23" class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"

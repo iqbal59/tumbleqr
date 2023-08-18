@@ -4324,6 +4324,7 @@ Table-Data Table
   background: #009efb;
   color: #ffffff;
   margin-right: 3px;
+  border: none !important;
 }
 .dt-buttons .dt-button:hover {
   background: #2f3d4a;

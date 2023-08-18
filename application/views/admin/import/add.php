@@ -44,7 +44,7 @@
             <?php endif ?>
 
 
-            <div class="card card-outline-info">
+            <div class="card card-outline-info mx-1">
                 <div class="card-header p-4">
                     <h4 class="m-b-0 text-white"> Import Data <a
                             href="<?php echo base_url('admin/import/challandata');?>" class="btn p-0 btn-info pull-right"><i

@@ -33,7 +33,7 @@
                 </div>
             <?php endif ?>
             
-            <div class="card card-outline-info ">
+            <div class="card card-outline-info mx-1 ">
                 <div class="card-header">
                     <h4 class="m-b-0 p-1 text-white"> Add New User <a href="<?php echo base_url('admin/user/all_user_list') ?>" class="btn b-line p-1 btn-info pull-right"><i class="fa fa-list"></i> All Users </a></h4>
 

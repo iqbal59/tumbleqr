@@ -58,7 +58,7 @@
                 </div>
             <?php endif ?>
 
-            <div class="card">
+            <div class="card mx-1">
 
                 <div class="card-body">
 

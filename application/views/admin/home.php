@@ -47,7 +47,7 @@
     <!-- ============================================================== -->
     
     <a href="<?php echo base_url('admin/user/all_user_list') ?>">
-    <div class="row mt-3">
+    <div class="row mt-3 mx-1">
         <!-- Column -->
         <div class="col-lg-3 col-md-6">
             <div class="card">

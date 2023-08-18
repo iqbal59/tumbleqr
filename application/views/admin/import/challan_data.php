@@ -144,11 +144,11 @@
             <?php if(!empty($challans)) {?>
             <div class="card">
 
-                <div class="card-body pt-1">
+                <div class="card-body">
 
                     <div class="table-responsive">
 
-                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered table-sm"
+                        <table id="example23" class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
                             cellspacing="0" cellpadding="0" width="100%">
                             <thead>
                                 <tr>
@@ -156,7 +156,6 @@
                                     <th>Store Name</th>
                                     <th>Order No.</th>
                                     <th>Date</th>
-
                                     <th>Garment</th>
                                     <th>Sub Garment</th>
                                     <th>Barcode</th>
