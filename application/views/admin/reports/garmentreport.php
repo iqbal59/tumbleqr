@@ -44,20 +44,20 @@
 
             <?php $msg = $this->session->flashdata('msg'); ?>
             <?php if (isset($msg)): ?>
-            <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
-                <?php echo $msg; ?> &nbsp;
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                        aria-hidden="true">×</span> </button>
-            </div>
+                <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
+                    <?php echo $msg; ?> &nbsp;
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                            aria-hidden="true">×</span> </button>
+                </div>
             <?php endif ?>
 
             <?php $error_msg = $this->session->flashdata('error_msg'); ?>
             <?php if (isset($error_msg)): ?>
-            <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
-                <?php echo $error_msg; ?> &nbsp;
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                        aria-hidden="true">×</span> </button>
-            </div>
+                <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
+                    <?php echo $error_msg; ?> &nbsp;
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                            aria-hidden="true">×</span> </button>
+                </div>
             <?php endif ?>
 
             <div class="card card-outline-info mb-2">
@@ -78,9 +78,12 @@
                                                     <div class="form-group m-0">
                                                         <h5>Enter From Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="date" name="s_from_date" class="form-control form-control-sm"
+                                                            <input type="date" name="s_from_date"
+                                                                class="form-control form-control-sm"
                                                                 placeholder="MM/DD/YYYY"
-                                                                value="<?php if(!empty($condition)){echo $condition['from_date'];} ?>">
+                                                                value="<?php if (!empty($condition)) {
+                                                                    echo $condition['from_date'];
+                                                                } ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -88,9 +91,12 @@
                                                     <div class="form-group m-0">
                                                         <h5>Enter To Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="date" name="s_to_date" class="form-control form-control-sm"
+                                                            <input type="date" name="s_to_date"
+                                                                class="form-control form-control-sm"
                                                                 placeholder="MM/DD/YYYY"
-                                                                value="<?php if(!empty($condition)){echo $condition['to_date'];}?>">
+                                                                value="<?php if (!empty($condition)) {
+                                                                    echo $condition['to_date'];
+                                                                } ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -101,7 +107,8 @@
                                                     <div class="form-group mt-1">
                                                         <label class="control-label text-right col-md-3"></label>
                                                         <div class="controls">
-                                                            <button type="submit" class="btn btn-sm btn-success">Show</button>
+                                                            <button type="submit"
+                                                                class="btn btn-sm btn-success">Show</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -130,8 +137,8 @@
 
 
                             <!-- CSRF token -->
-                            <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>"
-                                value="<?=$this->security->get_csrf_hash();?>" />
+                            <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>"
+                                value="<?= $this->security->get_csrf_hash(); ?>" />
 
 
 
@@ -155,7 +162,6 @@
                                     <th>Order Date</th>
                                     <th>Garment</th>
                                     <th>Barcode</th>
-
                                     <th>Primary Service</th>
                                     <th>Due On</th>
                                     <th>Status</th>
@@ -239,12 +245,10 @@
                                 <?php } ?>
                             </tbody>
                         </table>
-
-
+                        </div>
                     </div>
                 </div>
-            </div>
-            <?php }?>
+            <?php } ?>
         </div>
     </div>
 

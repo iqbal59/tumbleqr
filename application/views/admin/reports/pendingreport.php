@@ -203,10 +203,10 @@
                                     
 
                                     </td>
-                                      <td><?php if(!empty($challan['initial_time'])){echo date('d-m-Y H:i:s', strtotime($challan['initial_time'].' +330 mins')); }?></td>
-                                        <td><?php if(!empty($challan['qc_time'])){ echo date('d-m-Y H:i:s', strtotime($challan['qc_time'].' +330 mins'));} ?></td>
+                                      <td><?php if(!empty($challan['initial_time'])){echo date('d-m-Y H:i:s', strtotime($challan['initial_time'].' +0 mins')); }?></td>
+                                        <td><?php if(!empty($challan['qc_time'])){ echo date('d-m-Y H:i:s', strtotime($challan['qc_time'].' +0 mins'));} ?></td>
 
-										<td><?php if(!empty($challan['packaging_time'])){ echo date('d-m-Y H:i:s', strtotime($challan['packaging_time'].' +330 mins'));} ?></td>
+										<td><?php if(!empty($challan['packaging_time'])){ echo date('d-m-Y H:i:s', strtotime($challan['packaging_time'].' +0 mins'));} ?></td>
 
                                    
                                 </tr>

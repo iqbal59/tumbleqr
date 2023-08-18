@@ -11,7 +11,8 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url() ?>assets/images/favicon.png">
-    <title> <?php echo isset($page_title)?$page_title:"tumbledry"; ?>
+    <title>
+        <?php echo isset($page_title) ? $page_title : "tumbledry"; ?>
     </title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -452,9 +453,11 @@
                                                     src="<?php echo base_url() ?>assets/images/users/1.jpg" alt="user">
                                             </div>
                                             <div class="u-text">
-                                                <h4><?php echo $this->session->userdata('name'); ?>
+                                                <h4>
+                                                    <?php echo $this->session->userdata('name'); ?>
                                                 </h4>
-                                                <p class="text-muted"><?php echo $this->session->userdata('email'); ?>
+                                                <p class="text-muted">
+                                                    <?php echo $this->session->userdata('email'); ?>
                                                 </p><a href="profile.html"
                                                     class="btn btn-rounded btn-danger btn-sm">View Profile</a>
                                             </div>
@@ -936,9 +939,9 @@
                                 <li><a href="<?php echo base_url('admin/user/power') ?>"><i
                                             class="fa fa-angle-right con"></i> Add User Power</a></li>
                                 <?php else: ?>
-                                <?php if (check_power(1)):?>
-                                <li><a href="<?php echo base_url('admin/user') ?>"><i class="fa fa-angle-right con"></i> Add
-                                        User </a></li>
+
+                                <?php if (check_power(1)): ?>
+                                <li><a href="<?php echo base_url('admin/user') ?>"><i class="fa fa-angle-right"></i> Add User </a></li>
                                 <?php endif; ?>
                                 <?php endif ?>
 
@@ -1131,13 +1134,13 @@
     <!-- This is data table js -->
     <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js">
     </script>
-    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/datatables/buttons-2.4.1/js/dataTables.buttons.min.js"></script>
+    <!-- <script src="<?php echo base_url() ?>assets/plugins/datatables/buttons-2.4.1/js/buttons.flash.min.js"></script> -->
     <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script> -->
-    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <!-- <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script> -->
+    <script src="<?php echo base_url() ?>assets/plugins/datatables/buttons-2.4.1/js/buttons.html5.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/datatables/buttons-2.4.1/js/buttons.print.min.js"></script>
 
     <script>
     $(document).ready(function() {
@@ -1464,11 +1467,11 @@
     function clickImage(barcode, garment = '') {
         // alert(barcode);
         $.ajax({
-            url: '<?php echo base_url('admin/reports/getimage')?>',
+            url: '<?php echo base_url('admin/reports/getimage') ?>',
             type: 'post',
             data: {
                 barcode: barcode,
-                <?php echo $this->security->get_csrf_token_name();?>: '<?php echo $this->security->get_csrf_hash();?>'
+                <?php echo $this->security->get_csrf_token_name(); ?>: '<?php echo $this->security->get_csrf_hash(); ?>'
             },
             success: function(response) {
                 // Add response in Modal body
