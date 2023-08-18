@@ -33,20 +33,20 @@
 
             <?php $msg = $this->session->flashdata('msg'); ?>
             <?php if (isset($msg)): ?>
-            <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
-                <?php echo $msg; ?> &nbsp;
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                        aria-hidden="true">×</span> </button>
-            </div>
+                <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
+                    <?php echo $msg; ?> &nbsp;
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                            aria-hidden="true">×</span> </button>
+                </div>
             <?php endif ?>
 
             <?php $error_msg = $this->session->flashdata('error_msg'); ?>
             <?php if (isset($error_msg)): ?>
-            <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
-                <?php echo $error_msg; ?> &nbsp;
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                        aria-hidden="true">×</span> </button>
-            </div>
+                <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
+                    <?php echo $error_msg; ?> &nbsp;
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                            aria-hidden="true">×</span> </button>
+                </div>
             <?php endif ?>
 
             <div class="card card-outline-info mb-2">
@@ -178,88 +178,88 @@
 
                 // print_r($challans);
                 ?>
-            <div class="card">
-                <div class="card-body pt-1">
-                    <div class="table-responsive">
+                <div class="card">
+                    <div class="card-body pt-1">
+                        <div class="table-responsive">
 
-                        <table id="example23"
-                            class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
-                            cellspacing="0" cellpadding="0" width="100%">
-                            <thead>
-                                <tr>
-                                    <th>Store Name</th>
-                                    <th>Order No.</th>
-                                    <th>Barcode</th>
-                                    <th>Garment Name</th>
-                                    <th>Service</th>
-                                    <th>Vendor Name</th>
-                                    <th>Check-Out</th>
-                                    <th>check-Out Station Id</th>
-                                    <th>Check-In</th>
-                                    <th>Check-In Station Id</th>
+                            <table id="example23"
+                                class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
+                                cellspacing="0" cellpadding="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Store Name</th>
+                                        <th>Order No.</th>
+                                        <th>Barcode</th>
+                                        <th>Garment Name</th>
+                                        <th>Service</th>
+                                        <th>Vendor Name</th>
+                                        <th>Check-Out</th>
+                                        <th>check-Out SID</th>
+                                        <th>Check-In</th>
+                                        <th>Check-In SID </th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($challans as $challan) { ?>
-                                <tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($challans as $challan) { ?>
+                                        <tr>
 
-                                    <td>
-                                        <?php echo $challan['Store_Name']; ?>
+                                            <td>
+                                                <?php echo $challan['Store_Name']; ?>
 
-                                    </td>
-                                    <td>
-                                        <?php echo $challan['Order_No']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['Order_No']; ?>
 
-                                    </td>
-                                    <td>
-                                        <?php echo $challan['Barcode']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['Barcode']; ?>
 
-                                    </td>
-                                    <td>
-                                        <?php echo $challan['Sub_Garment']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['Sub_Garment']; ?>
 
-                                    </td>
+                                            </td>
 
-                                    <td>
-                                        <?php echo $challan['Primary_Service']; ?>
+                                            <td>
+                                                <?php echo $challan['Primary_Service']; ?>
 
-                                    </td>
+                                            </td>
 
-                                    <td>
-                                        <?php echo $challan['vendor_name']; ?>
+                                            <td>
+                                                <?php echo $challan['vendor_name']; ?>
 
-                                    </td>
-                                    <td>
-                                        <?php echo $challan['out_time']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['out_time']; ?>
 
-                                    </td>
+                                            </td>
 
-                                    <td>
-                                        <?php echo $challan['out_station_id']; ?>
+                                            <td>
+                                                <?php echo $challan['out_station_id']; ?>
 
-                                    </td>
+                                            </td>
 
-                                    <td>
-                                        <?php echo $challan['in_time']; ?>
+                                            <td>
+                                                <?php echo $challan['in_time']; ?>
 
-                                    </td>
+                                            </td>
 
-                                    <td>
-                                        <?php echo $challan['in_station_id']; ?>
+                                            <td>
+                                                <?php echo $challan['in_station_id']; ?>
 
-                                    </td>
+                                            </td>
 
 
 
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
 
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php } ?>
         </div>
     </div>
