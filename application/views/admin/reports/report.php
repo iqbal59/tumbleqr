@@ -31,31 +31,31 @@
     <div class="row p-1">
         <div class="col-12 pt-1">
 
-            <?php $msg = $this->session->flashdata('msg');?>
+            <?php $msg = $this->session->flashdata('msg'); ?>
             <?php if (isset($msg)): ?>
-            <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
-                <?php echo $msg; ?> &nbsp;
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                        aria-hidden="true">×</span> </button>
-            </div>
-            <?php endif?>
+                <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
+                    <?php echo $msg; ?> &nbsp;
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                            aria-hidden="true">×</span> </button>
+                </div>
+            <?php endif ?>
 
-            <?php $error_msg = $this->session->flashdata('error_msg');?>
+            <?php $error_msg = $this->session->flashdata('error_msg'); ?>
             <?php if (isset($error_msg)): ?>
-            <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
-                <?php echo $error_msg; ?> &nbsp;
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                        aria-hidden="true">×</span> </button>
-            </div>
-            <?php endif?>
+                <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
+                    <?php echo $error_msg; ?> &nbsp;
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                            aria-hidden="true">×</span> </button>
+                </div>
+            <?php endif ?>
 
             <div class="card card-outline-info mb-2">
                 <!-- <div class="card-header">
                     <h4 class="m-b-0 text-white">Search</h4>
                 </div> -->
                 <div class="card-body py-1 pt-2">
-                    <form method="get" action="<?php echo base_url('admin/reports/report') ?>"
-                        class="form-horizontal" novalidate>
+                    <form method="get" action="<?php echo base_url('admin/reports/report') ?>" class="form-horizontal"
+                        novalidate>
                         <div class="form-body">
                             <div class="row">
                                 <div class="col-md-12">
@@ -68,10 +68,11 @@
                                                     <div class="form-group m-0">
                                                         <h5>Enter From Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="date" name="s_from_date" class="form-control form-control-sm"
+                                                            <input type="date" name="s_from_date"
+                                                                class="form-control form-control-sm"
                                                                 placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
-                                                                                                    echo $condition['from_date'];
-                                                                                                }?>">
+                                                                    echo $condition['from_date'];
+                                                                } ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -79,10 +80,11 @@
                                                     <div class="form-group m-0">
                                                         <h5>Enter To Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="date" name="s_to_date" class="form-control form-control-sm"
+                                                            <input type="date" name="s_to_date"
+                                                                class="form-control form-control-sm"
                                                                 placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
-                                                                                                    echo $condition['to_date'];
-                                                                                                }?>">
+                                                                    echo $condition['to_date'];
+                                                                } ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -94,19 +96,19 @@
                                                             <select name="store_id" class="form-control select2">
                                                                 <option value="">--Select--</option>
                                                                 <?php
-                                                                    if (!empty($stores)) {
-                                                                        foreach ($stores as $store) {
-                                                                            $selected = '';
-                                                                            if (!empty($condition)) {
-                                                                                if ($condition['store_id'] == $store['store_id']) {
-                                                                                    $selected = "selected";
-                                                                                }
+                                                                if (!empty($stores)) {
+                                                                    foreach ($stores as $store) {
+                                                                        $selected = '';
+                                                                        if (!empty($condition)) {
+                                                                            if ($condition['store_id'] == $store['store_id']) {
+                                                                                $selected = "selected";
                                                                             }
-
-                                                                            echo '<option value="' . $store['store_id'] . '"   ' . $selected . '>' . $store['Store_Name'] . '</option>';
                                                                         }
+
+                                                                        echo '<option value="' . $store['store_id'] . '"   ' . $selected . '>' . $store['Store_Name'] . '</option>';
                                                                     }
-                                                                    ?>
+                                                                }
+                                                                ?>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -121,18 +123,18 @@
                                                             <select name="services" class="form-control select2">
                                                                 <option value="">--Select--</option>
                                                                 <?php
-                                                                    if (!empty($services)) {
-                                                                        foreach ($services as $service) {
-                                                                            $selected = '';
-                                                                            if (!empty($condition)) {
-                                                                                if ($condition['services'] == $service['Primary_Service']) {
-                                                                                    $selected = "selected";
-                                                                                }
+                                                                if (!empty($services)) {
+                                                                    foreach ($services as $service) {
+                                                                        $selected = '';
+                                                                        if (!empty($condition)) {
+                                                                            if ($condition['services'] == $service['Primary_Service']) {
+                                                                                $selected = "selected";
                                                                             }
-
-                                                                            echo '<option value="' . $service['Primary_Service'] . '"   ' . $selected . '>' . $service['Primary_Service'] . '</option>';
                                                                         }
+
+                                                                        echo '<option value="' . $service['Primary_Service'] . '"   ' . $selected . '>' . $service['Primary_Service'] . '</option>';
                                                                     }
+                                                                }
                                                                 ?>
                                                             </select>
                                                         </div>
@@ -145,7 +147,8 @@
                                                     <div class="form-group mt-1">
                                                         <label class="control-label text-right col-md-3"></label>
                                                         <div class="controls">
-                                                            <button type="submit" class="btn btn-sm btn-success">Show</button>
+                                                            <button type="submit"
+                                                                class="btn btn-sm btn-success">Show</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -162,72 +165,102 @@
 
 
                             <!-- CSRF token -->
-                            <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>"
-                                value="<?=$this->security->get_csrf_hash();?>" />
+                            <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>"
+                                value="<?= $this->security->get_csrf_hash(); ?>" />
 
                         </div>
 
                     </form>
                 </div>
             </div>
-            <?php // if (!empty($challans)) {?>
-            <div class="card">
-                <div class="card-body px-2 pt-0">
-                    <div class="table-responsive">
+            <?php if (!empty($challans)) {
 
-                        <table id="example23" class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
-                            cellspacing="0" cellpadding="0" width="100%">
-                            <thead>
-                                <tr>
+                // print_r($challans);
+                ?>
+                <div class="card">
+                    <div class="card-body pt-1">
+                        <div class="table-responsive">
 
-                                    <th>Barcode</th>
-                                    <th>Garment Name</th>
-                                    <th>Check-In</th>
-                                    <th>Vendor Name</th>
-                                    <th>Check-In Station Id</th>
-                                    <th>Check-Out</th>
-                                    <th>check-Out Station Id</th>
-                                    
+                            <table id="example23"
+                                class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
+                                cellspacing="0" cellpadding="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Store Name</th>
+                                        <th>Order No.</th>
+                                        <th>Barcode</th>
+                                        <th>Garment Name</th>
+                                        <th>Service</th>
+                                        <th>Vendor Name</th>
+                                        <th>Check-Out</th>
+                                        <th>check-Out SID</th>
+                                        <th>Check-In</th>
+                                        <th>Check-In SID </th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php // foreach ($challans as $challan) {?>
-                                <tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($challans as $challan) { ?>
+                                        <tr>
 
-                                    <td><?php echo $challan['Store_Name']; ?>
-                                    Test
-                                    </td>
-                                    <td><?php echo $challan['Order_No']; ?>
-                                    test
-                                    </td>
-                                    <td><?php echo $challan['Order_No']; ?>
-                                    test
-                                    </td>
-                                    <td><?php echo $challan['Barcode']; ?>
-                                    test
-                                    </td>
-                                    <td><?php echo $challan['Sub_Garment']; ?>
-                                    test
-                                    </td>
+                                            <td>
+                                                <?php echo $challan['Store_Name']; ?>
 
-                                    <td><?php echo $challan['incoming_station_id']; ?>
-                                    test
-                                    </td>
-                                    <td><?php echo $challan['Primary_Service']; ?>
-                                    test
-                                    </td>
-                                    
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['Order_No']; ?>
 
-                                </tr>
-                                <?php // }?>
-                            </tbody>
-                        </table>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['Barcode']; ?>
 
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['Sub_Garment']; ?>
+
+                                            </td>
+
+
+                                            <td>
+                                                <?php echo $challan['Primary_Service']; ?>
+
+                                            </td>
+
+                                            <td>
+                                                <?php echo $challan['vendor_name']; ?>
+
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['out_time']; ?>
+
+                                            </td>
+
+                                            <td>
+                                                <?php echo $challan['out_station_id']; ?>
+
+                                            </td>
+
+                                            <td>
+                                                <?php echo $challan['in_time']; ?>
+
+                                            </td>
+
+                                            <td>
+                                                <?php echo $challan['in_station_id']; ?>
+
+                                            </td>
+
+
+
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-            <?php // }?>
+            <?php } ?>
         </div>
     </div>
 

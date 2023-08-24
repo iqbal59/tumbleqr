@@ -6,16 +6,16 @@ class Common_model extends CI_Model
     public function getInitialData($param)
     {
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and Order_Date between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and Order_Date between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
-        $sql="SELECT *, count(Order_No) as total_clothes, SUM(Case when initial_stage=0 then 1 else 0 end) as incomplete_cloth, GROUP_CONCAT(Garment) as grament, GROUP_CONCAT(Case when initial_stage=0 then Garment else '' end) as incomplete_garment FROM `tbl_challan_data` WHERE 1 $search_query group by store_id, Order_No";
+        $sql = "SELECT *, count(Order_No) as total_clothes, SUM(Case when initial_stage=0 then 1 else 0 end) as incomplete_cloth, GROUP_CONCAT(Garment) as grament, GROUP_CONCAT(Case when initial_stage=0 then Garment else '' end) as incomplete_garment FROM `tbl_challan_data` WHERE 1 $search_query group by store_id, Order_No";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -26,17 +26,17 @@ class Common_model extends CI_Model
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30') )  between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and date(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30') )  between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
-        $sql="SELECT * FROM `tbl_challan_data` WHERE 1 and initial_stage=1 $search_query order by Due_on, Store_Name";
+        $sql = "SELECT * FROM `tbl_challan_data` WHERE 1 and initial_stage=1 $search_query order by Due_on, Store_Name";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -46,26 +46,26 @@ class Common_model extends CI_Model
     {
         // print_r($param);
 
-        $sql_query='';
-        $sql="select * from tbl_challan_data group by incoming_station_id";
+        $sql_query = '';
+        $sql = "select * from tbl_challan_data group by incoming_station_id";
         $query = $this->db->query($sql)->result_array();
 
         foreach ($query as $r) {
-            $sql_query.="count(if(incoming_station_id=".$r['incoming_station_id'].", 1 , null)) as '".$r['incoming_station_id']."', ";
+            $sql_query .= "count(if(incoming_station_id=" . $r['incoming_station_id'] . ", 1 , null)) as '" . $r['incoming_station_id'] . "', ";
         }
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30') ) between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and date(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30') ) between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
-        $sql="SELECT $sql_query COUNT(Barcode) as total, date(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')) as date FROM `tbl_challan_data` WHERE 1 and initial_stage =1 $search_query GROUP by initial_stage, day(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')) order by date(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')) desc";
+        $sql = "SELECT $sql_query COUNT(Barcode) as total, date(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')) as date FROM `tbl_challan_data` WHERE 1 and initial_stage =1 $search_query GROUP by initial_stage, day(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')) order by date(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')) desc";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -77,17 +77,17 @@ class Common_model extends CI_Model
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and YEAR(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')) = YEAR('".$param['from_date']."') and MONTH(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')) = MONTH('".$param['from_date']."')";
+            $search_query = " and YEAR(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')) = YEAR('" . $param['from_date'] . "') and MONTH(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')) = MONTH('" . $param['from_date'] . "')";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
-        $sql="SELECT COUNT(Barcode) as totalmtd FROM `tbl_challan_data` WHERE 1 and initial_stage =1 $search_query ";
+        $sql = "SELECT COUNT(Barcode) as totalmtd FROM `tbl_challan_data` WHERE 1 and initial_stage =1 $search_query ";
         $query = $this->db->query($sql)->first_row();
         return $query;
     }
@@ -99,20 +99,20 @@ class Common_model extends CI_Model
     {
         // print_r($param);
 
-        $sql_query='';
-        $sql="select * from tbl_challan_data group by incoming_station_id";
+        $sql_query = '';
+        $sql = "select * from tbl_challan_data group by incoming_station_id";
         $query = $this->db->query($sql)->result_array();
 
         foreach ($query as $r) {
-            $sql_query.="count(if(incoming_station_id=".$r['incoming_station_id'].", 1 , null)) as '".$r['incoming_station_id']."', ";
+            $sql_query .= "count(if(incoming_station_id=" . $r['incoming_station_id'] . ", 1 , null)) as '" . $r['incoming_station_id'] . "', ";
         }
 
 
 
         if (!empty($param['from_date'])) {
-            $search_query=" and date(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')) = '".$param['from_date']."'";
+            $search_query = " and date(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')) = '" . $param['from_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         /*
@@ -121,7 +121,7 @@ class Common_model extends CI_Model
         */
 
 
-        $sql="SELECT $sql_query date_format(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30'),  '%H') as hr_no, COUNT(Barcode) as total  FROM `tbl_challan_data` WHERE 1 and initial_stage =1 $search_query  GROUP by initial_stage, hour(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')), day(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30'))";
+        $sql = "SELECT $sql_query date_format(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30'),  '%H') as hr_no, COUNT(Barcode) as total  FROM `tbl_challan_data` WHERE 1 and initial_stage =1 $search_query  GROUP by initial_stage, hour(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30')), day(CONVERT_TZ(initial_time, @@session.time_zone, '+05:30'))";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -129,7 +129,7 @@ class Common_model extends CI_Model
     public function get_all_Service()
     {
         return $this->db->query("select Primary_Service from tbl_challan_data group by Primary_Service order by Primary_Service asc")
-        ->result_array();
+            ->result_array();
     }
 
     public function getSpotCompleteData($param)
@@ -137,19 +137,19 @@ class Common_model extends CI_Model
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30') )  between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30') )  between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
         //$sql="SELECT * FROM `tbl_challan_data` right join (select group_concat(station_id) as st, Barcode, group_concat(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) as spt from tbl_spot where 1 $search_query group by Barcode order by spot_time asc) as temp on (temp.Barcode=tbl_challan_data.Barcode) WHERE 1  order by Due_on, Store_Name";
 
-        $sql="SELECT Store_Name, Order_No, Order_Date, Sub_Garment, Primary_Service, Due_on, date_format(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30'),  '%d-%m-%Y %H:%i:%s') as spot_time, tbl_spot.Barcode, station_id FROM `tbl_spot` inner join tbl_challan_data on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1 $search_query order by spot_time desc" ;
+        $sql = "SELECT Store_Name, Order_No, Order_Date, Sub_Garment, Primary_Service, Due_on, date_format(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30'),  '%d-%m-%Y %H:%i:%s') as spot_time, tbl_spot.Barcode, station_id FROM `tbl_spot` inner join tbl_challan_data on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1 $search_query order by spot_time desc";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -157,7 +157,7 @@ class Common_model extends CI_Model
 
     public function getSpotStationId()
     {
-        $sql="select * from tbl_spot group by station_id";
+        $sql = "select * from tbl_spot group by station_id";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -165,7 +165,7 @@ class Common_model extends CI_Model
 
     public function getPackingStations()
     {
-        $sql="select * from tbl_challan_data group by packing_station_id";
+        $sql = "select * from tbl_challan_data group by packing_station_id";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -173,21 +173,21 @@ class Common_model extends CI_Model
 
     public function getQCStations()
     {
-        $sql="select * from tbl_challan_data group by qc_station_id";
+        $sql = "select * from tbl_challan_data group by qc_station_id";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
 
     public function getAllUserName()
     {
-        $sql="select * from tbl_users";
+        $sql = "select * from tbl_users";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
 
     public function getInitialStations()
     {
-        $sql="select * from tbl_challan_data group by incoming_station_id";
+        $sql = "select * from tbl_challan_data group by incoming_station_id";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -199,32 +199,32 @@ class Common_model extends CI_Model
     public function getSpotTotalData($param)
     {
         // print_r($param);
-        $sql_query='';
-        $sql="select * from tbl_spot group by station_id";
+        $sql_query = '';
+        $sql = "select * from tbl_spot group by station_id";
         $query = $this->db->query($sql)->result_array();
 
         foreach ($query as $r) {
-            $sql_query.="count(if(station_id=".$r['station_id'].", 1 , null)) as '".$r['station_id']."', ";
+            $sql_query .= "count(if(station_id=" . $r['station_id'] . ", 1 , null)) as '" . $r['station_id'] . "', ";
         }
 
 
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30') ) between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30') ) between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and station_id='".$param['store_id']."'";
+            $search_query .= " and station_id='" . $param['store_id'] . "'";
         }
 
         if (!empty($param['Primary_Service'])) {
-            $search_query.=" and Primary_Service='".$param['Primary_Service']."'";
+            $search_query .= " and Primary_Service='" . $param['Primary_Service'] . "'";
         }
 
 
-        $sql="SELECT $sql_query count(tbl_spot.Barcode) as total, date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) as date FROM `tbl_spot` inner join tbl_challan_data on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query GROUP by day(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) order by date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) desc";
+        $sql = "SELECT $sql_query count(tbl_spot.Barcode) as total, date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) as date FROM `tbl_spot` inner join tbl_challan_data on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query GROUP by day(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) order by date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) desc";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -238,21 +238,21 @@ class Common_model extends CI_Model
 
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30') ) between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30') ) between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and station_id='".$param['store_id']."'";
+            $search_query .= " and station_id='" . $param['store_id'] . "'";
         }
 
         if (!empty($param['Primary_Service'])) {
-            $search_query.=" and Primary_Service='".$param['Primary_Service']."'";
+            $search_query .= " and Primary_Service='" . $param['Primary_Service'] . "'";
         }
 
 
-        $sql="SELECT station_id,count(tbl_spot.Barcode) as total, count(case WHEN default_service = 'DC' then 1 else null end) as DC, count(case WHEN default_service = 'Laundry' then 1 else null end) as Laundry FROM `tbl_spot` inner join (select Barcode, (select defualt_service_code FROM tbl_default_service where service_code=tbl_challan_data.Primary_Service) as default_service  from tbl_challan_data) as tc on (tbl_spot.Barcode=tc.Barcode) WHERE 1 $search_query GROUP by day(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')), tbl_spot.station_id order by station_id  asc";
+        $sql = "SELECT station_id,count(tbl_spot.Barcode) as total, count(case WHEN default_service = 'DC' then 1 else null end) as DC, count(case WHEN default_service = 'Laundry' then 1 else null end) as Laundry FROM `tbl_spot` inner join (select Barcode, (select defualt_service_code FROM tbl_default_service where service_code=tbl_challan_data.Primary_Service) as default_service  from tbl_challan_data) as tc on (tbl_spot.Barcode=tc.Barcode) WHERE 1 $search_query GROUP by day(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')), tbl_spot.station_id order by station_id  asc";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -265,21 +265,21 @@ class Common_model extends CI_Model
 
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and YEAR(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) = YEAR('".$param['from_date']."') and MONTH(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) = MONTH('".$param['from_date']."')";
+            $search_query = " and YEAR(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) = YEAR('" . $param['from_date'] . "') and MONTH(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) = MONTH('" . $param['from_date'] . "')";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and station_id='".$param['store_id']."'";
+            $search_query .= " and station_id='" . $param['store_id'] . "'";
         }
 
         if (!empty($param['Primary_Service'])) {
-            $search_query.=" and Primary_Service='".$param['Primary_Service']."'";
+            $search_query .= " and Primary_Service='" . $param['Primary_Service'] . "'";
         }
 
 
-        $sql="SELECT station_id,count(tbl_spot.Barcode) as total, count(case WHEN default_service = 'DC' then 1 else null end) as DC, count(case WHEN default_service = 'Laundry' then 1 else null end) as Laundry  FROM `tbl_spot` inner join (select Barcode, (select defualt_service_code FROM tbl_default_service where service_code=tbl_challan_data.Primary_Service) as default_service from tbl_challan_data) as tc on (tbl_spot.Barcode=tc.Barcode) WHERE 1 $search_query GROUP by  tbl_spot.station_id order by station_id  asc";
+        $sql = "SELECT station_id,count(tbl_spot.Barcode) as total, count(case WHEN default_service = 'DC' then 1 else null end) as DC, count(case WHEN default_service = 'Laundry' then 1 else null end) as Laundry  FROM `tbl_spot` inner join (select Barcode, (select defualt_service_code FROM tbl_default_service where service_code=tbl_challan_data.Primary_Service) as default_service from tbl_challan_data) as tc on (tbl_spot.Barcode=tc.Barcode) WHERE 1 $search_query GROUP by  tbl_spot.station_id order by station_id  asc";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -291,33 +291,33 @@ class Common_model extends CI_Model
     {
         // print_r($param);
 
-        $sql_query='';
-        $sql="select * from tbl_spot group by station_id";
+        $sql_query = '';
+        $sql = "select * from tbl_spot group by station_id";
         $query = $this->db->query($sql)->result_array();
 
         foreach ($query as $r) {
-            $sql_query.="count(if(station_id=".$r['station_id'].", 1 , null)) as '".$r['station_id']."', ";
+            $sql_query .= "count(if(station_id=" . $r['station_id'] . ", 1 , null)) as '" . $r['station_id'] . "', ";
         }
 
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30') ) between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and date(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30') ) between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and station_id='".$param['store_id']."'";
+            $search_query .= " and station_id='" . $param['store_id'] . "'";
         }
 
         if (!empty($param['Primary_Service'])) {
-            $search_query.=" and Primary_Service='".$param['Primary_Service']."'";
+            $search_query .= " and Primary_Service='" . $param['Primary_Service'] . "'";
         }
 
 
 
 
-        $sql="SELECT $sql_query date_format(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30'),  '%H') as hr_no, COUNT(tbl_spot.Barcode) as total FROM `tbl_spot` inner join tbl_challan_data on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query GROUP by  hour(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')), day(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) ";
+        $sql = "SELECT $sql_query date_format(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30'),  '%H') as hr_no, COUNT(tbl_spot.Barcode) as total FROM `tbl_spot` inner join tbl_challan_data on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query GROUP by  hour(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')), day(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) ";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -328,17 +328,17 @@ class Common_model extends CI_Model
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') )  between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') )  between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
-        $sql="SELECT * FROM `tbl_challan_data` WHERE 1 and packaging_stage=1 $search_query order by Due_on, Store_Name";
+        $sql = "SELECT * FROM `tbl_challan_data` WHERE 1 and packaging_stage=1 $search_query order by Due_on, Store_Name";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -351,17 +351,17 @@ class Common_model extends CI_Model
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') )  between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') )  between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
-        $sql="SELECT COUNT(Barcode) as total, date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') ) as date  FROM `tbl_challan_data` WHERE 1 and packaging_stage =1 $search_query GROUP by packaging_stage, day(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') )";
+        $sql = "SELECT COUNT(Barcode) as total, date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') ) as date  FROM `tbl_challan_data` WHERE 1 and packaging_stage =1 $search_query GROUP by packaging_stage, day(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') )";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -372,17 +372,17 @@ class Common_model extends CI_Model
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') )  between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') )  between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
-        $sql="SELECT COUNT(tbl_challan_data.Barcode) as total, packing_station_id, date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') ) as date, count(case WHEN default_service = 'DC' then 1 else null end) as DC, count(case WHEN default_service = 'Laundry' then 1 else null end) as Laundry, count(case WHEN default_service = 'Shoe' then 1 else null end) as Shoe FROM `tbl_challan_data`inner join (select Barcode, (select defualt_service_code FROM tbl_default_service where service_code=tbl_challan_data.Primary_Service) as default_service  from tbl_challan_data) as tc on (tbl_challan_data.Barcode=tc.Barcode)  WHERE 1 and packaging_stage =1 $search_query GROUP by packaging_stage, packing_station_id";
+        $sql = "SELECT COUNT(tbl_challan_data.Barcode) as total, packing_station_id, date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') ) as date, count(case WHEN default_service = 'DC' then 1 else null end) as DC, count(case WHEN default_service = 'Laundry' then 1 else null end) as Laundry, count(case WHEN default_service = 'Shoe' then 1 else null end) as Shoe FROM `tbl_challan_data`inner join (select Barcode, (select defualt_service_code FROM tbl_default_service where service_code=tbl_challan_data.Primary_Service) as default_service  from tbl_challan_data) as tc on (tbl_challan_data.Barcode=tc.Barcode)  WHERE 1 and packaging_stage =1 $search_query GROUP by packaging_stage, packing_station_id";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -394,17 +394,17 @@ class Common_model extends CI_Model
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and YEAR(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30')) = YEAR('".$param['from_date']."') and MONTH(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30')) = MONTH('".$param['from_date']."')";
+            $search_query = " and YEAR(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30')) = YEAR('" . $param['from_date'] . "') and MONTH(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30')) = MONTH('" . $param['from_date'] . "')";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
-        $sql="SELECT COUNT(tbl_challan_data.Barcode) as total, packing_station_id, date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') ) as date, count(case WHEN default_service = 'DC' then 1 else null end) as DC, count(case WHEN default_service = 'Laundry' then 1 else null end) as Laundry, count(case WHEN default_service = 'Shoe' then 1 else null end) as Shoe FROM `tbl_challan_data`inner join (select Barcode, (select defualt_service_code FROM tbl_default_service where service_code=tbl_challan_data.Primary_Service) as default_service  from tbl_challan_data) as tc on (tbl_challan_data.Barcode=tc.Barcode)  WHERE 1 and packaging_stage =1 $search_query GROUP by packaging_stage, packing_station_id";
+        $sql = "SELECT COUNT(tbl_challan_data.Barcode) as total, packing_station_id, date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30') ) as date, count(case WHEN default_service = 'DC' then 1 else null end) as DC, count(case WHEN default_service = 'Laundry' then 1 else null end) as Laundry, count(case WHEN default_service = 'Shoe' then 1 else null end) as Shoe FROM `tbl_challan_data`inner join (select Barcode, (select defualt_service_code FROM tbl_default_service where service_code=tbl_challan_data.Primary_Service) as default_service  from tbl_challan_data) as tc on (tbl_challan_data.Barcode=tc.Barcode)  WHERE 1 and packaging_stage =1 $search_query GROUP by packaging_stage, packing_station_id";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -415,19 +415,19 @@ class Common_model extends CI_Model
     {
         // print_r($param);
 
-        $sql_query='';
-        $sql="select * from tbl_challan_data group by packing_station_id";
+        $sql_query = '';
+        $sql = "select * from tbl_challan_data group by packing_station_id";
         $query = $this->db->query($sql)->result_array();
 
         foreach ($query as $r) {
-            $sql_query.="count(if(packing_station_id=".$r['packing_station_id'].", 1 , null)) as '".$r['packing_station_id']."', ";
+            $sql_query .= "count(if(packing_station_id=" . $r['packing_station_id'] . ", 1 , null)) as '" . $r['packing_station_id'] . "', ";
         }
 
 
         if (!empty($param['from_date'])) {
-            $search_query=" and date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30')) = '".$param['from_date']."'";
+            $search_query = " and date(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30')) = '" . $param['from_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         /*
@@ -436,39 +436,39 @@ class Common_model extends CI_Model
         */
 
 
-        $sql="SELECT $sql_query date_format(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30'),  '%H') as hr_no, COUNT(Barcode) as total  FROM `tbl_challan_data` WHERE 1 and packaging_stage =1 $search_query  GROUP by packaging_stage, hour(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30')), day(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30'))";
+        $sql = "SELECT $sql_query date_format(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30'),  '%H') as hr_no, COUNT(Barcode) as total  FROM `tbl_challan_data` WHERE 1 and packaging_stage =1 $search_query  GROUP by packaging_stage, hour(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30')), day(CONVERT_TZ(packaging_time, @@session.time_zone, '+05:30'))";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
 
 
-/***************Photo start****************/
-public function getPhotoData($param)
-{
-    // print_r($param);
+    /***************Photo start****************/
+    public function getPhotoData($param)
+    {
+        // print_r($param);
 
-    if (!empty($param['from_date']) && !empty($param['to_date'])) {
-        $search_query=" and date(CONVERT_TZ(tbl_picture.create_date, @@session.time_zone, '+05:30') )  between '".$param['from_date']."' and '".$param['to_date']."'";
-    } else {
-        $search_query='';
+        if (!empty($param['from_date']) && !empty($param['to_date'])) {
+            $search_query = " and date(CONVERT_TZ(tbl_picture.create_date, @@session.time_zone, '+05:30') )  between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
+        } else {
+            $search_query = '';
+        }
+
+        if (!empty($param['store_id'])) {
+            $search_query .= " and substring_index(tbl_picture.Barcode, '-', 3)='" . $param['store_id'] . "'";
+        }
+
+
+
+
+
+        $sql = "select station_id, tbl_challan_data.Barcode, img_remarks, total_image, create_date, Store_Name, Order_No, Order_Date, Primary_Service, Due_on,Sub_Garment from (SELECT station_id, Barcode, remarks, count(Barcode) as total_image, GROUP_CONCAT(tbl_picture.remarks) as img_remarks, create_date FROM `tbl_picture` WHERE 1  $search_query group by Barcode HAVING min(create_date) ) as tbl_picture_temp  join tbl_challan_data on (tbl_picture_temp.Barcode=tbl_challan_data.Barcode)";
+        $query = $this->db->query($sql)->result_array();
+        //$query="";
+        return $query;
     }
 
-    if (!empty($param['store_id'])) {
-        $search_query.=" and substring_index(tbl_picture.Barcode, '-', 3)='".$param['store_id']."'";
-    }
 
-
-
-
-
-    $sql="select station_id, tbl_challan_data.Barcode, img_remarks, total_image, create_date, Store_Name, Order_No, Order_Date, Primary_Service, Due_on,Sub_Garment from (SELECT station_id, Barcode, remarks, count(Barcode) as total_image, GROUP_CONCAT(tbl_picture.remarks) as img_remarks, create_date FROM `tbl_picture` WHERE 1  $search_query group by Barcode HAVING min(create_date) ) as tbl_picture_temp  join tbl_challan_data on (tbl_picture_temp.Barcode=tbl_challan_data.Barcode)";
-    $query = $this->db->query($sql)->result_array();
-    //$query="";
-    return $query;
-}
-
-
-/**********************Photo End**** */
+    /**********************Photo End**** */
 
 
     public function getQcCompleteData($param)
@@ -476,20 +476,20 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(tbl_qc.qc_time, @@session.time_zone, '+05:30') )  between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and date(CONVERT_TZ(tbl_qc.qc_time, @@session.time_zone, '+05:30') )  between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
         // $sql="SELECT * FROM `tbl_challan_data` left join (select group_concat(qc_status) as qcs, Barcode, group_concat(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')) as qct from tbl_qc group by Barcode order by qc_time asc) as temp on (temp.Barcode=tbl_challan_data.Barcode) WHERE 1 and qc_stage=1 $search_query order by Due_on, Store_Name";
 
 
-        $sql="SELECT Store_Name, Order_No, Order_Date, Sub_Garment, tbl_qc.qc_status, tbl_qc.qc_station_id, Primary_Service, Due_on, date_format(CONVERT_TZ(tbl_qc.qc_time, @@session.time_zone, '+05:30'),  '%d-%m-%Y %H:%i:%s') as qc_time, tbl_qc.Barcode, tbl_spot.station_id as spot_station_id, date_format(CONVERT_TZ(tbl_spot.spot_time, @@session.time_zone, '+05:30'),  '%d-%m-%Y %H:%i:%s') as spot_time FROM `tbl_qc` inner join tbl_challan_data on (tbl_qc.Barcode=tbl_challan_data.Barcode) inner join tbl_spot on (tbl_spot.Barcode=tbl_qc.Barcode) WHERE 1 and qc_stage=1  $search_query order by tbl_qc.qc_time desc";
+        $sql = "SELECT Store_Name, Order_No, Order_Date, Sub_Garment, tbl_qc.qc_status, tbl_qc.qc_station_id, Primary_Service, Due_on, date_format(CONVERT_TZ(tbl_qc.qc_time, @@session.time_zone, '+05:30'),  '%d-%m-%Y %H:%i:%s') as qc_time, tbl_qc.Barcode, tbl_spot.station_id as spot_station_id, date_format(CONVERT_TZ(tbl_spot.spot_time, @@session.time_zone, '+05:30'),  '%d-%m-%Y %H:%i:%s') as spot_time FROM `tbl_qc` inner join tbl_challan_data on (tbl_qc.Barcode=tbl_challan_data.Barcode) inner join tbl_spot on (tbl_spot.Barcode=tbl_qc.Barcode) WHERE 1 and qc_stage=1  $search_query order by tbl_qc.qc_time desc";
 
 
         $query = $this->db->query($sql)->result_array();
@@ -502,17 +502,17 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
-        $sql="SELECT COUNT(Barcode) as total,  count(case when qc_status = 'Pass' then 1 else NULL end) as pass_count, count(case when qc_status = 'Fail' then 1 else NULL end) as fail_count, count(case when qc_status = 'Sorry' then 1 else NULL end) as sorry_count , date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) as date , count(DISTINCT(Barcode)) as uniquebarcode FROM `tbl_qc` WHERE 1  $search_query GROUP by day(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') )";
+        $sql = "SELECT COUNT(Barcode) as total,  count(case when qc_status = 'Pass' then 1 else NULL end) as pass_count, count(case when qc_status = 'Fail' then 1 else NULL end) as fail_count, count(case when qc_status = 'Sorry' then 1 else NULL end) as sorry_count , date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) as date , count(DISTINCT(Barcode)) as uniquebarcode FROM `tbl_qc` WHERE 1  $search_query GROUP by day(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') )";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -524,17 +524,17 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
-        $sql="SELECT COUNT(tbl_qc.Barcode) as total,  count(case when qc_status = 'Pass' then 1 else NULL end) as pass_count, count(case when qc_status = 'Fail' then 1 else NULL end) as fail_count, count(case when qc_status = 'Sorry' then 1 else NULL end) as sorry_count , date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) as date , station_id FROM `tbl_qc` inner join tbl_spot on (tbl_spot.Barcode=tbl_qc.Barcode) WHERE 1  $search_query GROUP by day(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ), tbl_spot.station_id";
+        $sql = "SELECT COUNT(tbl_qc.Barcode) as total,  count(case when qc_status = 'Pass' then 1 else NULL end) as pass_count, count(case when qc_status = 'Fail' then 1 else NULL end) as fail_count, count(case when qc_status = 'Sorry' then 1 else NULL end) as sorry_count , date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) as date , station_id FROM `tbl_qc` inner join tbl_spot on (tbl_spot.Barcode=tbl_qc.Barcode) WHERE 1  $search_query GROUP by day(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ), tbl_spot.station_id";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -547,17 +547,17 @@ public function getPhotoData($param)
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
             //  $search_query=" and date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) between '".$param['from_date']."' and '".$param['to_date']."'";
-            $search_query=" and YEAR(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')) = YEAR('".$param['from_date']."') and MONTH(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')) = MONTH('".$param['from_date']."')";
+            $search_query = " and YEAR(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')) = YEAR('" . $param['from_date'] . "') and MONTH(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')) = MONTH('" . $param['from_date'] . "')";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
-        $sql="SELECT COUNT(tbl_qc.Barcode) as total,  count(case when qc_status = 'Pass' then 1 else NULL end) as pass_count, count(case when qc_status = 'Fail' then 1 else NULL end) as fail_count, count(case when qc_status = 'Sorry' then 1 else NULL end) as sorry_count , date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) as date , station_id FROM `tbl_qc` inner join tbl_spot on (tbl_spot.Barcode=tbl_qc.Barcode) WHERE 1  $search_query GROUP by  tbl_spot.station_id";
+        $sql = "SELECT COUNT(tbl_qc.Barcode) as total,  count(case when qc_status = 'Pass' then 1 else NULL end) as pass_count, count(case when qc_status = 'Fail' then 1 else NULL end) as fail_count, count(case when qc_status = 'Sorry' then 1 else NULL end) as sorry_count , date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) as date , station_id FROM `tbl_qc` inner join tbl_spot on (tbl_spot.Barcode=tbl_qc.Barcode) WHERE 1  $search_query GROUP by  tbl_spot.station_id";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -568,17 +568,17 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
-        $sql="SELECT COUNT(Barcode) as total,  count(case when qc_status = 'Pass' then 1 else NULL end) as pass_count, count(case when qc_status = 'Fail' then 1 else NULL end) as fail_count, count(case when qc_status = 'Sorry' then 1 else NULL end) as sorry_count , date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) as date , count(DISTINCT(Barcode)) as uniquebarcode, qc_station_id FROM `tbl_qc` WHERE 1  $search_query GROUP by day(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ), qc_station_id";
+        $sql = "SELECT COUNT(Barcode) as total,  count(case when qc_status = 'Pass' then 1 else NULL end) as pass_count, count(case when qc_status = 'Fail' then 1 else NULL end) as fail_count, count(case when qc_status = 'Sorry' then 1 else NULL end) as sorry_count , date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) as date , count(DISTINCT(Barcode)) as uniquebarcode, qc_station_id FROM `tbl_qc` WHERE 1  $search_query GROUP by day(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ), qc_station_id";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -588,17 +588,17 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and YEAR(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')) = YEAR('".$param['from_date']."') and MONTH(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')) = MONTH('".$param['from_date']."')";
+            $search_query = " and YEAR(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')) = YEAR('" . $param['from_date'] . "') and MONTH(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')) = MONTH('" . $param['from_date'] . "')";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
-        $sql="SELECT COUNT(Barcode) as total,  count(case when qc_status = 'Pass' then 1 else NULL end) as pass_count, count(case when qc_status = 'Fail' then 1 else NULL end) as fail_count, count(case when qc_status = 'Sorry' then 1 else NULL end) as sorry_count , date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) as date , count(DISTINCT(Barcode)) as uniquebarcode, qc_station_id FROM `tbl_qc` WHERE 1  $search_query GROUP by  qc_station_id";
+        $sql = "SELECT COUNT(Barcode) as total,  count(case when qc_status = 'Pass' then 1 else NULL end) as pass_count, count(case when qc_status = 'Fail' then 1 else NULL end) as fail_count, count(case when qc_status = 'Sorry' then 1 else NULL end) as sorry_count , date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30') ) as date , count(DISTINCT(Barcode)) as uniquebarcode, qc_station_id FROM `tbl_qc` WHERE 1  $search_query GROUP by  qc_station_id";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -610,9 +610,9 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['from_date'])) {
-            $search_query=" and date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')) = '".$param['from_date']."'";
+            $search_query = " and date(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')) = '" . $param['from_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         /*
@@ -621,7 +621,7 @@ public function getPhotoData($param)
         */
 
 
-        $sql="SELECT date_format(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30'),  '%H') as hr_no, COUNT(Barcode) as total,  count(case when qc_status = 'Pass' then 1 else NULL end) as pass_count, count(case when qc_status = 'Fail' then 1 else NULL end) as fail_count, count(case when qc_status = 'Sorry' then 1 else NULL end) as sorry_count  FROM `tbl_qc` WHERE 1 $search_query  GROUP by hour(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')), day(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30'))";
+        $sql = "SELECT date_format(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30'),  '%H') as hr_no, COUNT(Barcode) as total,  count(case when qc_status = 'Pass' then 1 else NULL end) as pass_count, count(case when qc_status = 'Fail' then 1 else NULL end) as fail_count, count(case when qc_status = 'Sorry' then 1 else NULL end) as sorry_count  FROM `tbl_qc` WHERE 1 $search_query  GROUP by hour(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')), day(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30'))";
         $query = $this->db->query($sql)->result_array();
         return $query;
         //return;
@@ -640,21 +640,21 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and Due_on between '".date('Y-m-d', strtotime($param['from_date']. ' + 1 days'))."' and '".date('Y-m-d', strtotime($param['to_date']. ' + 1 days'))."'";
+            $search_query = " and Due_on between '" . date('Y-m-d', strtotime($param['from_date'] . ' + 1 days')) . "' and '" . date('Y-m-d', strtotime($param['to_date'] . ' + 1 days')) . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
         if (!empty($param['services'])) {
-            $search_query.=" and Primary_Service='".$param['services']."'";
+            $search_query .= " and Primary_Service='" . $param['services'] . "'";
         }
 
 
-        $sql="SELECT * FROM `tbl_challan_data` WHERE 1 and dispatch_status=0 $search_query order by Due_on, Store_Name";
+        $sql = "SELECT * FROM `tbl_challan_data` WHERE 1 and dispatch_status=0 $search_query order by Due_on, Store_Name";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -667,21 +667,47 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and Due_on between '".date('Y-m-d', strtotime($param['from_date']. ' + 1 days'))."' and '".date('Y-m-d', strtotime($param['to_date']. ' + 1 days'))."'";
+            $search_query = " and Due_on between '" . date('Y-m-d', strtotime($param['from_date'] . ' + 1 days')) . "' and '" . date('Y-m-d', strtotime($param['to_date'] . ' + 1 days')) . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
         if (!empty($param['services'])) {
-            $search_query.=" and Primary_Service='".$param['services']."'";
+            $search_query .= " and Primary_Service='" . $param['services'] . "'";
         }
 
 
-        $sql="SELECT tbl_challan_data.*, tbl_spot.spot_time, tbl_spot.station_id FROM tbl_challan_data left join tbl_spot on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query order by Due_on, Store_Name";
+        $sql = "SELECT tbl_challan_data.*, tbl_spot.spot_time, tbl_spot.station_id FROM tbl_challan_data left join tbl_spot on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query order by Due_on, Store_Name";
+        $query = $this->db->query($sql)->result_array();
+        return $query;
+    }
+
+
+
+    public function vendorreport($param)
+    {
+        // print_r($param);
+
+        if (!empty($param['from_date']) && !empty($param['to_date'])) {
+            $search_query = " and date(CONVERT_TZ(out_time, @@session.time_zone, '+05:30') )  between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
+        } else {
+            $search_query = '';
+        }
+
+        if (!empty($param['store_id'])) {
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
+        }
+
+        if (!empty($param['services'])) {
+            $search_query .= " and Primary_Service='" . $param['services'] . "'";
+        }
+
+
+        $sql = "SELECT tbl_challan_data.*, tbl_vendor.out_station_id, out_time, vendor_name, in_time, in_station_id FROM tbl_challan_data  join tbl_vendor on (tbl_vendor.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query order by out_time desc";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -693,19 +719,19 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['order_no'])) {
-            $search_query=" and Order_No='".$param['order_no']."'";
+            $search_query = " and Order_No='" . $param['order_no'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
 
         if ($search_query) {
-            $sql="SELECT tbl_challan_data.*, tbl_spot.spot_time, tbl_spot.station_id, case when Color != '' then Color else (SELECT packing_type FROM `tbl_default_packing` WHERE 1 and concat(category_name, ' - ', garment_name)=Garment limit 0,1)  end as color_new  FROM `tbl_challan_data` left join (select max(spot_time) as spot_time, station_id, Barcode from tbl_spot group by Barcode) as tbl_spot on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query";
+            $sql = "SELECT tbl_challan_data.*, tbl_spot.spot_time, tbl_spot.station_id, case when Color != '' then Color else (SELECT packing_type FROM `tbl_default_packing` WHERE 1 and concat(category_name, ' - ', garment_name)=Garment limit 0,1)  end as color_new  FROM `tbl_challan_data` left join (select max(spot_time) as spot_time, station_id, Barcode from tbl_spot group by Barcode) as tbl_spot on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query";
             $query = $this->db->query($sql)->result_array();
             return $query;
         }
@@ -718,26 +744,26 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['order_no'])) {
-            $search_query=" and Order_No='".$param['order_no']."'";
+            $search_query = " and Order_No='" . $param['order_no'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
         if (!empty($param['order_priority'])) {
-            $search_query.=" and order_priority='".$param['order_priority']."'";
+            $search_query .= " and order_priority='" . $param['order_priority'] . "'";
         } else {
-            $search_query.=" and order_priority != 0";
+            $search_query .= " and order_priority != 0";
         }
 
-        $search_query.=" and dispatch_status=0";
+        $search_query .= " and dispatch_status=0";
 
 
 
-        $sql="SELECT store_id, order_priority, Store_Name, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, Due_on, Primary_Service  FROM `tbl_challan_data` WHERE 1  $search_query group by store_id, Order_No ";
+        $sql = "SELECT store_id, order_priority, Store_Name, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, Due_on, Primary_Service  FROM `tbl_challan_data` WHERE 1  $search_query group by store_id, Order_No ";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -747,21 +773,21 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and Due_on between '".date('Y-m-d', strtotime($param['from_date']. ' + 1 days'))."' and '".date('Y-m-d', strtotime($param['to_date']. ' + 1 days'))."'";
+            $search_query = " and Due_on between '" . date('Y-m-d', strtotime($param['from_date'] . ' + 1 days')) . "' and '" . date('Y-m-d', strtotime($param['to_date'] . ' + 1 days')) . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
         if (!empty($param['services'])) {
-            $search_query.=" and Primary_Service='".$param['services']."'";
+            $search_query .= " and Primary_Service='" . $param['services'] . "'";
         }
 
 
-        $sql="SELECT store_id, Store_Name, Order_Date, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, sum(case when color_new = 'Fold' then 1 else 0 end) as fold, sum(case when color_new = 'Hanger' then 1 else 0 end) as hanger, Due_on, Primary_Service  FROM (select *, case when Color != '' then Color else (SELECT packing_type FROM `tbl_default_packing` WHERE 1 and concat(category_name, ' - ', garment_name)=Garment limit 0,1) end as color_new from tbl_challan_data) as tbl_challan_data WHERE 1 and dispatch_status=0 $search_query group by store_id, Order_No ";
+        $sql = "SELECT store_id, Store_Name, Order_Date, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, sum(case when color_new = 'Fold' then 1 else 0 end) as fold, sum(case when color_new = 'Hanger' then 1 else 0 end) as hanger, Due_on, Primary_Service  FROM (select *, case when Color != '' then Color else (SELECT packing_type FROM `tbl_default_packing` WHERE 1 and concat(category_name, ' - ', garment_name)=Garment limit 0,1) end as color_new from tbl_challan_data) as tbl_challan_data WHERE 1 and dispatch_status=0 $search_query group by store_id, Order_No ";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -772,21 +798,21 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and Due_on between '".date('Y-m-d', strtotime($param['from_date']. ' + 1 days'))."' and '".date('Y-m-d', strtotime($param['to_date']. ' + 1 days'))."'";
+            $search_query = " and Due_on between '" . date('Y-m-d', strtotime($param['from_date'] . ' + 1 days')) . "' and '" . date('Y-m-d', strtotime($param['to_date'] . ' + 1 days')) . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
         if (!empty($param['services'])) {
-            $search_query.=" and Primary_Service='".$param['services']."'";
+            $search_query .= " and Primary_Service='" . $param['services'] . "'";
         }
 
 
-        $sql="select * from (SELECT store_id, Order_Date, Store_Name, count(Barcode) as total_garment, Order_No,  Due_on, Primary_Service, max(cancel_status) as cancel_status, max(initial_stage) as initial_stage, max(qc_stage) as qc_stage, max(packaging_stage) as packaging_stage, max(dispatch_status) as dispatch_status  FROM  tbl_challan_data group by store_id, Order_No) as tbl_challan_new  WHERE 1 and cancel_status=0 and initial_stage=0 and qc_stage=0 and packaging_stage=0 and dispatch_status=0";
+        $sql = "select * from (SELECT store_id, Order_Date, Store_Name, count(Barcode) as total_garment, Order_No,  Due_on, Primary_Service, max(cancel_status) as cancel_status, max(initial_stage) as initial_stage, max(qc_stage) as qc_stage, max(packaging_stage) as packaging_stage, max(dispatch_status) as dispatch_status  FROM  tbl_challan_data group by store_id, Order_No) as tbl_challan_new  WHERE 1 and cancel_status=0 and initial_stage=0 and qc_stage=0 and packaging_stage=0 and dispatch_status=0";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -797,21 +823,21 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and Due_on between '".date('Y-m-d', strtotime($param['from_date']. ' + 1 days'))."' and '".date('Y-m-d', strtotime($param['to_date']. ' + 1 days'))."'";
+            $search_query = " and Due_on between '" . date('Y-m-d', strtotime($param['from_date'] . ' + 1 days')) . "' and '" . date('Y-m-d', strtotime($param['to_date'] . ' + 1 days')) . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
         if (!empty($param['services'])) {
-            $search_query.=" and Primary_Service='".$param['services']."'";
+            $search_query .= " and Primary_Service='" . $param['services'] . "'";
         }
 
 
-        $sql="SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, count(case when qc_stage=1 and (qc_status='Pass' or qc_status='Sorry') then 1 else null end) as qc_done, sum(case when color_new = 'Fold' then 1 else 0 end) as fold, sum(case when color_new = 'Hanger' then 1 else 0 end) as hanger, Due_on, Primary_Service  FROM (select *, case when Color != '' then Color else (SELECT packing_type FROM `tbl_default_packing` WHERE 1 and concat(category_name, ' - ', garment_name)=Garment limit 0,1) end as color_new from tbl_challan_data) as tbl_challan_data WHERE 1 and dispatch_status=0 $search_query group by store_id, Order_No ";
+        $sql = "SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No, count(case when packaging_stage = 1 then 1 else null end) as psc, count(case when qc_stage=1 and (qc_status='Pass' or qc_status='Sorry') then 1 else null end) as qc_done, sum(case when color_new = 'Fold' then 1 else 0 end) as fold, sum(case when color_new = 'Hanger' then 1 else 0 end) as hanger, Due_on, Primary_Service  FROM (select *, case when Color != '' then Color else (SELECT packing_type FROM `tbl_default_packing` WHERE 1 and concat(category_name, ' - ', garment_name)=Garment limit 0,1) end as color_new from tbl_challan_data) as tbl_challan_data WHERE 1 and dispatch_status=0 $search_query group by store_id, Order_No ";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -822,19 +848,19 @@ public function getPhotoData($param)
         // print_r($param);
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) between '".date('Y-m-d', strtotime($param['from_date']))."' and '".date('Y-m-d', strtotime($param['to_date']))."'";
+            $search_query = " and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) between '" . date('Y-m-d', strtotime($param['from_date'])) . "' and '" . date('Y-m-d', strtotime($param['to_date'])) . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
 
 
 
-        $sql="SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No, Due_on, count(case when packaging_stage = 1 then 1 else null end) as psc, CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30') as dispatch_time, Primary_Service  FROM `tbl_challan_data` WHERE 1 and dispatch_status=1 $search_query group by store_id, Order_No ";
+        $sql = "SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No, Due_on, count(case when packaging_stage = 1 then 1 else null end) as psc, CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30') as dispatch_time, Primary_Service  FROM `tbl_challan_data` WHERE 1 and dispatch_status=1 $search_query group by store_id, Order_No ";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -844,12 +870,12 @@ public function getPhotoData($param)
     {
         // print_r($param);
 
-        $date=date('Y-m-d', strtotime($param['from_date']));
+        $date = date('Y-m-d', strtotime($param['from_date']));
 
 
 
 
-        $sql="select Due_on, count(Due_on) as total, COUNT(case when dispatch_status=1 and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) <= '".$date."' then 1 else null end) as total_dispatch_all, COUNT(case when dispatch_status=1 and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) = '".$date."' then 1 else null end) as total_dispatch, count(case WHEN default_service = 'DC' and (date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) >= '".$date."' or dispatch_status=0) then 1 else null end) as DC, count(case WHEN default_service = 'DC' and dispatch_status=1 and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) = '".$date."' then 1 else null end) as dc_dispatch, count(case WHEN default_service = 'Laundry' and (date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) >= '".$date."' or dispatch_status=0) then 1 else null end) as Laundry, count(case WHEN default_service = 'Laundry' and dispatch_status=1 and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) = '".$date."' then 1 else null end) as laundry_dispatch, count(case WHEN default_service = 'Shoe' and (date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) >= '".$date."' or dispatch_status=0) then 1 else null end) as Shoe , count(case WHEN default_service = 'Shoe' AND dispatch_status=1 and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) = '".$date."' then 1 else null end) as shoe_dispatch from (SELECT * from tbl_challan_data where 1  group by store_id, Order_No) as temp inner join (select Barcode, (select defualt_service_code FROM tbl_default_service where service_code=tbl_challan_data.Primary_Service) as default_service from tbl_challan_data) as tc on (temp.Barcode=tc.Barcode) where 1  group by Due_on";
+        $sql = "select Due_on, count(Due_on) as total, COUNT(case when dispatch_status=1 and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) <= '" . $date . "' then 1 else null end) as total_dispatch_all, COUNT(case when dispatch_status=1 and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) = '" . $date . "' then 1 else null end) as total_dispatch, count(case WHEN default_service = 'DC' and (date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) >= '" . $date . "' or dispatch_status=0) then 1 else null end) as DC, count(case WHEN default_service = 'DC' and dispatch_status=1 and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) = '" . $date . "' then 1 else null end) as dc_dispatch, count(case WHEN default_service = 'Laundry' and (date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) >= '" . $date . "' or dispatch_status=0) then 1 else null end) as Laundry, count(case WHEN default_service = 'Laundry' and dispatch_status=1 and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) = '" . $date . "' then 1 else null end) as laundry_dispatch, count(case WHEN default_service = 'Shoe' and (date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) >= '" . $date . "' or dispatch_status=0) then 1 else null end) as Shoe , count(case WHEN default_service = 'Shoe' AND dispatch_status=1 and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) = '" . $date . "' then 1 else null end) as shoe_dispatch from (SELECT * from tbl_challan_data where 1  group by store_id, Order_No) as temp inner join (select Barcode, (select defualt_service_code FROM tbl_default_service where service_code=tbl_challan_data.Primary_Service) as default_service from tbl_challan_data) as tc on (temp.Barcode=tc.Barcode) where 1  group by Due_on";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -864,18 +890,18 @@ public function getPhotoData($param)
 
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $date=date('Y-m-d', strtotime($param['from_date']." -1 days"));
+            $date = date('Y-m-d', strtotime($param['from_date'] . " -1 days"));
 
-            $search_query=" and Due_on >='".date('Y-m-02', strtotime($date))."' and Due_on <='".date('Y-m-d', strtotime(" +0 mins"))."'";
+            $search_query = " and Due_on >='" . date('Y-m-02', strtotime($date)) . "' and Due_on <='" . date('Y-m-d', strtotime(" +0 mins")) . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
 
 
 
 
-        $sql="select Due_on, count(Due_on) as total, COUNT(case when dispatch_status=1 and  date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) <= DATE_SUB(Due_on, INTERVAL 1 DAY) then 1 else null end) as total_dispatch, count(case WHEN default_service = 'DC' then 1 else null end) as DC, count(case WHEN default_service = 'DC' and dispatch_status=1  and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) <= DATE_SUB(Due_on, INTERVAL 1 DAY) then 1 else null end) as dc_dispatch, count(case WHEN default_service = 'Laundry' then 1 else null end) as Laundry, count(case WHEN default_service = 'Laundry' and dispatch_status=1  and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) <= DATE_SUB(Due_on, INTERVAL 1 DAY) then 1 else null end) as laundry_dispatch, count(case WHEN default_service = 'Shoe' then 1 else null end) as Shoe , count(case WHEN default_service = 'Shoe' AND dispatch_status=1  and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) <= DATE_SUB(Due_on, INTERVAL 1 DAY) then 1 else null end) as shoe_dispatch from (SELECT * from tbl_challan_data where 1 $search_query  group by store_id, Order_No) as temp inner join (select Barcode, (select defualt_service_code FROM tbl_default_service where service_code=tbl_challan_data.Primary_Service) as default_service from tbl_challan_data) as tc on (temp.Barcode=tc.Barcode) group by Due_on";
+        $sql = "select Due_on, count(Due_on) as total, COUNT(case when dispatch_status=1 and  date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) <= DATE_SUB(Due_on, INTERVAL 1 DAY) then 1 else null end) as total_dispatch, count(case WHEN default_service = 'DC' then 1 else null end) as DC, count(case WHEN default_service = 'DC' and dispatch_status=1  and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) <= DATE_SUB(Due_on, INTERVAL 1 DAY) then 1 else null end) as dc_dispatch, count(case WHEN default_service = 'Laundry' then 1 else null end) as Laundry, count(case WHEN default_service = 'Laundry' and dispatch_status=1  and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) <= DATE_SUB(Due_on, INTERVAL 1 DAY) then 1 else null end) as laundry_dispatch, count(case WHEN default_service = 'Shoe' then 1 else null end) as Shoe , count(case WHEN default_service = 'Shoe' AND dispatch_status=1  and date(CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30')) <= DATE_SUB(Due_on, INTERVAL 1 DAY) then 1 else null end) as shoe_dispatch from (SELECT * from tbl_challan_data where 1 $search_query  group by store_id, Order_No) as temp inner join (select Barcode, (select defualt_service_code FROM tbl_default_service where service_code=tbl_challan_data.Primary_Service) as default_service from tbl_challan_data) as tc on (temp.Barcode=tc.Barcode) group by Due_on";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -886,7 +912,7 @@ public function getPhotoData($param)
 
     public function updatedispatchchallan($store_id)
     {
-        $sql="insert into tbl_challan (store_id, create_date) values (".$store_id.", now()) on duplicate key update  create_date=now()";
+        $sql = "insert into tbl_challan (store_id, create_date) values (" . $store_id . ", now()) on duplicate key update  create_date=now()";
         $query = $this->db->query($sql);
     }
 
@@ -900,7 +926,7 @@ public function getPhotoData($param)
                 else
         */
 
-        $sql="select * from tbl_challan where store_id='".$param['store_id']."'";
+        $sql = "select * from tbl_challan where store_id='" . $param['store_id'] . "'";
         $query = $this->db->query($sql)->result_array();
 
 
@@ -910,23 +936,23 @@ public function getPhotoData($param)
 
         */
 
-        $search_query='';
+        $search_query = '';
 
         if ($query[0]['create_date']) {
-            $search_query=" and dispatch_time > date_sub(\"".$query[0]['create_date']."\", interval 330 minute)";
+            $search_query = " and dispatch_time > date_sub(\"" . $query[0]['create_date'] . "\", interval 330 minute)";
         }
 
 
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         } else {
-            $search_query.=" and store_id=0";
+            $search_query .= " and store_id=0";
         }
 
 
 
-        $sql="SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No, Due_on, count(case when packaging_stage = 1 then 1 else null end) as psc, count(case when Color = 'Fold' then 1 else null end) as total_fold, count(case when Color = 'Hanger' then 1 else null end) as total_hanger, CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30') as dispatch_time, Primary_Service  FROM `tbl_challan_data` WHERE 1 and dispatch_status=1 $search_query group by store_id, Order_No ";
+        $sql = "SELECT store_id, Store_Name, count(Barcode) as total_garment, Order_No, Due_on, count(case when packaging_stage = 1 then 1 else null end) as psc, count(case when Color = 'Fold' then 1 else null end) as total_fold, count(case when Color = 'Hanger' then 1 else null end) as total_hanger, CONVERT_TZ(dispatch_time, @@session.time_zone, '+05:30') as dispatch_time, Primary_Service  FROM `tbl_challan_data` WHERE 1 and dispatch_status=1 $search_query group by store_id, Order_No ";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -954,18 +980,18 @@ public function getPhotoData($param)
 
     public function dispatchorder($order_no, $store_id)
     {
-        $sql="update tbl_challan_data set dispatch_status=1, dispatch_time='".date('Y-m-d H:i:s')."' where Order_No='".$order_no."' and store_id=".$store_id;
+        $sql = "update tbl_challan_data set dispatch_status=1, dispatch_time='" . date('Y-m-d H:i:s') . "' where Order_No='" . $order_no . "' and store_id=" . $store_id;
         $this->db->query($sql);
     }
     public function cancelorder($order_no, $store_id)
     {
-        $sql="update tbl_challan_data set cancel_status=1, cancel_time='".date('Y-m-d H:i:s')."' where Order_No='".$order_no."' and store_id=".$store_id;
+        $sql = "update tbl_challan_data set cancel_status=1, cancel_time='" . date('Y-m-d H:i:s') . "' where Order_No='" . $order_no . "' and store_id=" . $store_id;
         $this->db->query($sql);
     }
 
     public function setPriority($params)
     {
-        $sql="update tbl_challan_data set order_priority=".$params['order_priority']." where Order_No='".$params['order_no']."' and store_id=".$params['store_id'];
+        $sql = "update tbl_challan_data set order_priority=" . $params['order_priority'] . " where Order_No='" . $params['order_no'] . "' and store_id=" . $params['store_id'];
         $this->db->query($sql);
     }
 
@@ -974,14 +1000,15 @@ public function getPhotoData($param)
     {
         // foreach($params as $key => $value){
 
-        $sql = $this->db->insert_string('tbl_challan_data', $param);// . ' ON DUPLICATE KEY UPDATE duplicate=LAST_INSERT_ID(duplicate)';
+        $sql = $this->db->insert_string('tbl_challan_data', $param); // . ' ON DUPLICATE KEY UPDATE duplicate=LAST_INSERT_ID(duplicate)';
         $sql = str_replace('INSERT INTO', 'INSERT IGNORE INTO', $sql);
         $this->db->query($sql);
         if (!$this->db->insert_id()) {
-            $query=$this->db->where(array('initial_stage'=> 0, 'Barcode'=>$param['Barcode']))
-                                    ->update('tbl_challan_data', $param);
+            $query = $this->db->where(array('initial_stage' => 0, 'Barcode' => $param['Barcode']))
+                ->update('tbl_challan_data', $param);
             //print_r($this->db->last_query());
-        };
+        }
+        ;
 
 
         // }
@@ -993,7 +1020,7 @@ public function getPhotoData($param)
 
     public function challan_data($param)
     {
-        $sql = $this->db->query("select * from tbl_challan_data where Order_Date between '".$param['from_date']."' and '".$param['to_date']."'")->result_array();
+        $sql = $this->db->query("select * from tbl_challan_data where Order_Date between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'")->result_array();
 
         //print_r($this->db->last_query());
         return $sql;
@@ -1005,7 +1032,7 @@ public function getPhotoData($param)
 
     public function getBarcode($id)
     {
-        return $this->db->get_where('tbl_challan_data', array('Barcode'=>$id))->row_array();
+        return $this->db->get_where('tbl_challan_data', array('Barcode' => $id))->row_array();
     }
 
 
@@ -1025,7 +1052,7 @@ public function getPhotoData($param)
     /********GET IMAGE BY QUERY*******/
     public function getmailimages($order_no, $store_id)
     {
-        $sql="select * from tbl_picture where tbl_picture.Barcode in (select tbl_challan_data.Barcode from tbl_challan_data where Order_No='".$order_no."' and store_id=".$store_id.")";
+        $sql = "select * from tbl_picture where tbl_picture.Barcode in (select tbl_challan_data.Barcode from tbl_challan_data where Order_No='" . $order_no . "' and store_id=" . $store_id . ")";
         return $this->db->query($sql)->result_array();
     }
 
@@ -1080,7 +1107,7 @@ public function getPhotoData($param)
 
     public function updateStoreOpenBalance($store_id, $open_bal)
     {
-        $query="update stores set opening_balance=$open_bal where store_crm_code='".$store_id."'";
+        $query = "update stores set opening_balance=$open_bal where store_crm_code='" . $store_id . "'";
         $this->db->query($query);
     }
 
@@ -1261,11 +1288,11 @@ public function getPhotoData($param)
     public function upload_image($max_size)
     {
         //-- set upload path
-        $config['upload_path']  = "./assets/images/";
-        $config['allowed_types']= 'gif|jpg|png|jpeg';
-        $config['max_size']     = '92000';
-        $config['max_width']    = '92000';
-        $config['max_height']   = '92000';
+        $config['upload_path'] = "./assets/images/";
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = '92000';
+        $config['max_width'] = '92000';
+        $config['max_height'] = '92000';
 
         $this->load->library('upload', $config);
 
@@ -1273,76 +1300,76 @@ public function getPhotoData($param)
             $data = $this->upload->data();
 
             //-- set upload path
-            $source             = "./assets/images/".$data['file_name'] ;
-            $destination_thumb  = "./assets/images/thumbnail/" ;
-            $destination_medium = "./assets/images/medium/" ;
+            $source = "./assets/images/" . $data['file_name'];
+            $destination_thumb = "./assets/images/thumbnail/";
+            $destination_medium = "./assets/images/medium/";
             $main_img = $data['file_name'];
             // Permission Configuration
-            chmod($source, 0777) ;
+            chmod($source, 0777);
 
             /* Resizing Processing */
             // Configuration Of Image Manipulation :: Static
-            $this->load->library('image_lib') ;
+            $this->load->library('image_lib');
             $img['image_library'] = 'GD2';
-            $img['create_thumb']  = true;
-            $img['maintain_ratio']= true;
+            $img['create_thumb'] = true;
+            $img['maintain_ratio'] = true;
 
             /// Limit Width Resize
-            $limit_medium   = $max_size ;
-            $limit_thumb    = 200 ;
+            $limit_medium = $max_size;
+            $limit_thumb = 200;
 
             // Size Image Limit was using (LIMIT TOP)
-            $limit_use  = $data['image_width'] > $data['image_height'] ? $data['image_width'] : $data['image_height'] ;
+            $limit_use = $data['image_width'] > $data['image_height'] ? $data['image_width'] : $data['image_height'];
 
             // Percentase Resize
             if ($limit_use > $limit_medium || $limit_use > $limit_thumb) {
-                $percent_medium = $limit_medium/$limit_use ;
-                $percent_thumb  = $limit_thumb/$limit_use ;
+                $percent_medium = $limit_medium / $limit_use;
+                $percent_thumb = $limit_thumb / $limit_use;
             }
 
             //// Making THUMBNAIL ///////
-            $img['width']  = $limit_use > $limit_thumb ?  $data['image_width'] * $percent_thumb : $data['image_width'] ;
-            $img['height'] = $limit_use > $limit_thumb ?  $data['image_height'] * $percent_thumb : $data['image_height'] ;
+            $img['width'] = $limit_use > $limit_thumb ? $data['image_width'] * $percent_thumb : $data['image_width'];
+            $img['height'] = $limit_use > $limit_thumb ? $data['image_height'] * $percent_thumb : $data['image_height'];
 
             // Configuration Of Image Manipulation :: Dynamic
-            $img['thumb_marker'] = '_thumb-'.floor($img['width']).'x'.floor($img['height']) ;
-            $img['quality']      = ' 100%' ;
-            $img['source_image'] = $source ;
-            $img['new_image']    = $destination_thumb ;
+            $img['thumb_marker'] = '_thumb-' . floor($img['width']) . 'x' . floor($img['height']);
+            $img['quality'] = ' 100%';
+            $img['source_image'] = $source;
+            $img['new_image'] = $destination_thumb;
 
-            $thumb_nail = $data['raw_name']. $img['thumb_marker'].$data['file_ext'];
+            $thumb_nail = $data['raw_name'] . $img['thumb_marker'] . $data['file_ext'];
             // Do Resizing
             $this->image_lib->initialize($img);
             $this->image_lib->resize();
-            $this->image_lib->clear() ;
+            $this->image_lib->clear();
 
             ////// Making MEDIUM /////////////
-            $img['width']   = $limit_use > $limit_medium ?  $data['image_width'] * $percent_medium : $data['image_width'] ;
-            $img['height']  = $limit_use > $limit_medium ?  $data['image_height'] * $percent_medium : $data['image_height'] ;
+            $img['width'] = $limit_use > $limit_medium ? $data['image_width'] * $percent_medium : $data['image_width'];
+            $img['height'] = $limit_use > $limit_medium ? $data['image_height'] * $percent_medium : $data['image_height'];
 
             // Configuration Of Image Manipulation :: Dynamic
-            $img['thumb_marker'] = '_medium-'.floor($img['width']).'x'.floor($img['height']) ;
-            $img['quality']      = '100%' ;
-            $img['source_image'] = $source ;
-            $img['new_image']    = $destination_medium ;
+            $img['thumb_marker'] = '_medium-' . floor($img['width']) . 'x' . floor($img['height']);
+            $img['quality'] = '100%';
+            $img['source_image'] = $source;
+            $img['new_image'] = $destination_medium;
 
-            $mid = $data['raw_name']. $img['thumb_marker'].$data['file_ext'];
+            $mid = $data['raw_name'] . $img['thumb_marker'] . $data['file_ext'];
             // Do Resizing
             $this->image_lib->initialize($img);
             $this->image_lib->resize();
-            $this->image_lib->clear() ;
+            $this->image_lib->clear();
 
             //-- set upload path
-            $images = 'assets/images/medium/'.$mid;
-            $thumb  = 'assets/images/thumbnail/'.$thumb_nail;
-            unlink($source) ;
+            $images = 'assets/images/medium/' . $mid;
+            $thumb = 'assets/images/thumbnail/' . $thumb_nail;
+            unlink($source);
 
             return array(
-                    'images' => $images,
-                    'thumb' => $thumb
-                );
+                'images' => $images,
+                'thumb' => $thumb
+            );
         } else {
-            echo "Failed! to upload image" ;
+            echo "Failed! to upload image";
         }
     }
 
@@ -1350,8 +1377,8 @@ public function getPhotoData($param)
 
     public function incomingtospot4pm($start_date, $end_date)
     {
-        $sql="SELECT count(*) as total_incoming, SUM(case when spot_time  then 1 else 0 end) as total_spot
-, SUM(case when (spot_time and HOUR(TIMEDIFF(initial_time, spot_time)) <=3)  then 1 else 0 end) as total_spot_ok, sum(case when spot_time then 0 else 1 end  ) as total_spot_pending, date_add(initial_time, INTERVAL 5.30 hour) as incoming FROM `tbl_challan_data` left join  (select * from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and initial_stage=1 and date_add(initial_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'";
+        $sql = "SELECT count(*) as total_incoming, SUM(case when spot_time  then 1 else 0 end) as total_spot
+, SUM(case when (spot_time and HOUR(TIMEDIFF(initial_time, spot_time)) <=3)  then 1 else 0 end) as total_spot_ok, sum(case when spot_time then 0 else 1 end  ) as total_spot_pending, date_add(initial_time, INTERVAL 5.30 hour) as incoming FROM `tbl_challan_data` left join  (select * from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and initial_stage=1 and date_add(initial_time, INTERVAL 5.30 hour) BETWEEN '" . $start_date . "' and '" . $end_date . "'";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -1359,8 +1386,8 @@ public function getPhotoData($param)
 
     public function incomingtospot8am($start_date, $end_date, $to_end_date)
     {
-        $sql="SELECT count(*) as total_incoming, SUM(case when spot_time  then 1 else 0 end) as total_spot
-, SUM(case when (spot_time != '' and date_add(initial_time, INTERVAL 5.30 hour) <= date_add('".$start_date."', INTERVAL 3 hour) and HOUR(TIMEDIFF(initial_time, spot_time)) <=3) or (spot_time != '' and date_add(initial_time, INTERVAL 5.30 hour) >= date_add('".$start_date."', INTERVAL 3 hour) and date_add(spot_time, INTERVAL 5.30 hour) < '".$to_end_date."' ) then 1 else 0 end) as total_spot_ok, sum(case when spot_time then 0 else 1 end  ) as total_spot_pending, date_add(initial_time, INTERVAL 5.30 hour) as incoming FROM `tbl_challan_data` left join  (select * from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and initial_stage=1 and date_add(initial_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'";
+        $sql = "SELECT count(*) as total_incoming, SUM(case when spot_time  then 1 else 0 end) as total_spot
+, SUM(case when (spot_time != '' and date_add(initial_time, INTERVAL 5.30 hour) <= date_add('" . $start_date . "', INTERVAL 3 hour) and HOUR(TIMEDIFF(initial_time, spot_time)) <=3) or (spot_time != '' and date_add(initial_time, INTERVAL 5.30 hour) >= date_add('" . $start_date . "', INTERVAL 3 hour) and date_add(spot_time, INTERVAL 5.30 hour) < '" . $to_end_date . "' ) then 1 else 0 end) as total_spot_ok, sum(case when spot_time then 0 else 1 end  ) as total_spot_pending, date_add(initial_time, INTERVAL 5.30 hour) as incoming FROM `tbl_challan_data` left join  (select * from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and initial_stage=1 and date_add(initial_time, INTERVAL 5.30 hour) BETWEEN '" . $start_date . "' and '" . $end_date . "'";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -1368,7 +1395,7 @@ public function getPhotoData($param)
 
     public function spottingtoqc($start_date, $end_date, $to_end_date)
     {
-        $sql="SELECT  SUM(case when spot_time then 1 else 0 end) as total_spot , SUM(case when (spot_time != '' and date_add(spot_time, INTERVAL 5.30 hour) <= date_add('".$start_date."', INTERVAL 3 hour) and HOUR(TIMEDIFF(qc_time, spot_time)) <=3) or (spot_time != '' and date_add(spot_time, INTERVAL 5.30 hour) >= date_add('".$start_date."', INTERVAL 3 hour) and date_add(qc_time, INTERVAL 5.30 hour) < '".$to_end_date."' ) then 1 else 0 end) as total_qc_ok, sum(case when qc_time then 1 else 0 end ) as total_qc_done, sum(case when qc_time then 0 else 1 end ) as total_qc_pending FROM `tbl_challan_data` left join (select * from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and date_add(spot_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'";
+        $sql = "SELECT  SUM(case when spot_time then 1 else 0 end) as total_spot , SUM(case when (spot_time != '' and date_add(spot_time, INTERVAL 5.30 hour) <= date_add('" . $start_date . "', INTERVAL 3 hour) and HOUR(TIMEDIFF(qc_time, spot_time)) <=3) or (spot_time != '' and date_add(spot_time, INTERVAL 5.30 hour) >= date_add('" . $start_date . "', INTERVAL 3 hour) and date_add(qc_time, INTERVAL 5.30 hour) < '" . $to_end_date . "' ) then 1 else 0 end) as total_qc_ok, sum(case when qc_time then 1 else 0 end ) as total_qc_done, sum(case when qc_time then 0 else 1 end ) as total_qc_pending FROM `tbl_challan_data` left join (select * from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and date_add(spot_time, INTERVAL 5.30 hour) BETWEEN '" . $start_date . "' and '" . $end_date . "'";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -1376,42 +1403,42 @@ public function getPhotoData($param)
 
     public function qctopack($start_date, $end_date, $to_end_date)
     {
-        $sql="SELECT SUM(case when qc_time and qc_status= 'Pass' then 1 else 0 end) as total_qc , SUM(case when (qc_time != '' and date_add(qc_time, INTERVAL 5.30 hour) <= date_add('".$start_date."', INTERVAL 2 hour) and HOUR(TIMEDIFF(qc_time, packaging_time)) <=3) or (qc_time != '' and date_add(qc_time, INTERVAL 5.30 hour) >= date_add('".$start_date."', INTERVAL 2 hour) and date_add(packaging_time, INTERVAL 5.30 hour) < '".$to_end_date."' ) then 1 else 0 end) as total_pack_ok, sum(case when packaging_time then 1 else 0 end ) as total_pack_done, sum(case when packaging_time then 0 else 1 end ) as total_pack_pending FROM `tbl_challan_data`  WHERE 1 and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'";
+        $sql = "SELECT SUM(case when qc_time and qc_status= 'Pass' then 1 else 0 end) as total_qc , SUM(case when (qc_time != '' and date_add(qc_time, INTERVAL 5.30 hour) <= date_add('" . $start_date . "', INTERVAL 2 hour) and HOUR(TIMEDIFF(qc_time, packaging_time)) <=3) or (qc_time != '' and date_add(qc_time, INTERVAL 5.30 hour) >= date_add('" . $start_date . "', INTERVAL 2 hour) and date_add(packaging_time, INTERVAL 5.30 hour) < '" . $to_end_date . "' ) then 1 else 0 end) as total_pack_ok, sum(case when packaging_time then 1 else 0 end ) as total_pack_done, sum(case when packaging_time then 0 else 1 end ) as total_pack_pending FROM `tbl_challan_data`  WHERE 1 and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '" . $start_date . "' and '" . $end_date . "'";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
 
 
 
-    public function incomingtospot1am($start_date, $end_date, $current_date, $p='')
+    public function incomingtospot1am($start_date, $end_date, $current_date, $p = '')
     {
         if ($p) {
-            $sql_search=" and Primary_Service in (".$p.")";
+            $sql_search = " and Primary_Service in (" . $p . ")";
         } else {
-            $sql_search=" and Primary_Service not in ('SHC', 'SI')";
+            $sql_search = " and Primary_Service not in ('SHC', 'SI')";
         }
-        $sql="SELECT count(*) as total_incoming, SUM(case when spot_time  then 1 else 0 end) as total_spot
- FROM `tbl_challan_data` left join  (select MIN(spot_time) as spot_time, Barcode from tbl_spot  where date_add(spot_time, INTERVAL 5.30 hour) < '".$current_date."' group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and initial_stage=1 and date_add(initial_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;
+        $sql = "SELECT count(*) as total_incoming, SUM(case when spot_time  then 1 else 0 end) as total_spot
+ FROM `tbl_challan_data` left join  (select MIN(spot_time) as spot_time, Barcode from tbl_spot  where date_add(spot_time, INTERVAL 5.30 hour) < '" . $current_date . "' group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and initial_stage=1 and date_add(initial_time, INTERVAL 5.30 hour) BETWEEN '" . $start_date . "' and '" . $end_date . "'" . $sql_search;
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
 
-    public function spottingtoqc1am($start_date, $end_date, $current_date, $p='')
+    public function spottingtoqc1am($start_date, $end_date, $current_date, $p = '')
     {
         if ($p) {
-            $sql_search=" and Primary_Service in (".$p.")";
+            $sql_search = " and Primary_Service in (" . $p . ")";
         } else {
-            $sql_search=" and Primary_Service not in ('SHC', 'SI')";
+            $sql_search = " and Primary_Service not in ('SHC', 'SI')";
         }
 
-        $sql="SELECT SUM(case when spot_time then 1 else 0 end) as total_spot,  sum(case when qc_time and date_add(qc_time, INTERVAL 5.30 hour) < '".$current_date."' then 1 else 0 end ) as total_qc_done FROM `tbl_challan_data` left join (select MIN(spot_time) as spot_time, Barcode from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and date_add(spot_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;
+        $sql = "SELECT SUM(case when spot_time then 1 else 0 end) as total_spot,  sum(case when qc_time and date_add(qc_time, INTERVAL 5.30 hour) < '" . $current_date . "' then 1 else 0 end ) as total_qc_done FROM `tbl_challan_data` left join (select MIN(spot_time) as spot_time, Barcode from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and date_add(spot_time, INTERVAL 5.30 hour) BETWEEN '" . $start_date . "' and '" . $end_date . "'" . $sql_search;
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
 
 
 
-    public function qctospotting1am($start_date, $end_date, $current_date, $p='')
+    public function qctospotting1am($start_date, $end_date, $current_date, $p = '')
     {
         // if($p)
         // $sql_search=" and Primary_Service in (".$p.")";
@@ -1419,23 +1446,23 @@ public function getPhotoData($param)
         // $sql_search=" and Primary_Service not in ('SHC', 'SI')";
 
 
-        $query = $this->db->query('CALL getqctospot(?, ?, ?)', array('f_dt'=> $start_date, 't_dt'=>$end_date, 'till_dt'=>$current_date));
-        $res=$query->result_array();
+        $query = $this->db->query('CALL getqctospot(?, ?, ?)', array('f_dt' => $start_date, 't_dt' => $end_date, 'till_dt' => $current_date));
+        $res = $query->result_array();
         mysqli_next_result($this->db->conn_id);
         $query->free_result();
         return $res;
     }
 
 
-    public function qctopack1am($start_date, $end_date, $current_date, $p='')
+    public function qctopack1am($start_date, $end_date, $current_date, $p = '')
     {
         if ($p) {
-            $sql_search=" and Primary_Service in (".$p.")";
+            $sql_search = " and Primary_Service in (" . $p . ")";
         } else {
-            $sql_search=" and Primary_Service not in ('SHC', 'SI')";
+            $sql_search = " and Primary_Service not in ('SHC', 'SI')";
         }
-        $sql_search.=" and qc_status='Pass'";
-        $sql="SELECT SUM(case when qc_time  then 1 else 0 end) as total_qc ,  sum(case when packaging_time  and date_add(packaging_time, INTERVAL 5.30 hour) < '".$current_date."' then 1 else 0 end ) as total_pack_done FROM `tbl_challan_data` WHERE 1  and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;
+        $sql_search .= " and qc_status='Pass'";
+        $sql = "SELECT SUM(case when qc_time  then 1 else 0 end) as total_qc ,  sum(case when packaging_time  and date_add(packaging_time, INTERVAL 5.30 hour) < '" . $current_date . "' then 1 else 0 end ) as total_pack_done FROM `tbl_challan_data` WHERE 1  and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '" . $start_date . "' and '" . $end_date . "'" . $sql_search;
         ;
         $query = $this->db->query($sql)->result_array();
         return $query;
@@ -1444,45 +1471,45 @@ public function getPhotoData($param)
 
     /************************Export exception report****** */
 
-    public function incomingtospotexport($start_date, $end_date, $current_date, $p='')
+    public function incomingtospotexport($start_date, $end_date, $current_date, $p = '')
     {
         if ($p) {
-            $sql_search=" and Primary_Service in (".$p.")";
+            $sql_search = " and Primary_Service in (" . $p . ")";
         } else {
-            $sql_search=" and Primary_Service not in ('SHC', 'SI')";
+            $sql_search = " and Primary_Service not in ('SHC', 'SI')";
         }
 
 
-        $sql_search.=" and (spot_time is null or date_add(initial_time, INTERVAL 5.30 hour) > '".$current_date."' )";
-        $sql="SELECT tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(initial_time, INTERVAL 5.30 hour)as incoming, spot_time, packaging_stage FROM `tbl_challan_data` left join  (select MIN(spot_time) as spot_time, Barcode from tbl_spot  where date_add(spot_time, INTERVAL 5.30 hour) < '".$current_date."' group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and initial_stage=1 and date_add(initial_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;
+        $sql_search .= " and (spot_time is null or date_add(initial_time, INTERVAL 5.30 hour) > '" . $current_date . "' )";
+        $sql = "SELECT tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(initial_time, INTERVAL 5.30 hour)as incoming, spot_time, packaging_stage FROM `tbl_challan_data` left join  (select MIN(spot_time) as spot_time, Barcode from tbl_spot  where date_add(spot_time, INTERVAL 5.30 hour) < '" . $current_date . "' group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and initial_stage=1 and date_add(initial_time, INTERVAL 5.30 hour) BETWEEN '" . $start_date . "' and '" . $end_date . "'" . $sql_search;
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
 
 
-    public function spottingtoqcexport($start_date, $end_date, $current_date, $p='')
+    public function spottingtoqcexport($start_date, $end_date, $current_date, $p = '')
     {
         if ($p) {
-            $sql_search=" and Primary_Service in (".$p.")";
+            $sql_search = " and Primary_Service in (" . $p . ")";
         } else {
-            $sql_search=" and Primary_Service not in ('SHC', 'SI')";
+            $sql_search = " and Primary_Service not in ('SHC', 'SI')";
         }
-        $sql_search.=" and (qc_time is null or date_add(qc_time, INTERVAL 5.30 hour) > '".$current_date."' )";
-        $sql="SELECT tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(spot_time, INTERVAL 5.30 hour)as incoming, packaging_stage FROM `tbl_challan_data` left join (select MIN(spot_time) as spot_time, Barcode from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and date_add(spot_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;
+        $sql_search .= " and (qc_time is null or date_add(qc_time, INTERVAL 5.30 hour) > '" . $current_date . "' )";
+        $sql = "SELECT tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(spot_time, INTERVAL 5.30 hour)as incoming, packaging_stage FROM `tbl_challan_data` left join (select MIN(spot_time) as spot_time, Barcode from tbl_spot group by Barcode) as spot on (spot.Barcode=tbl_challan_data.Barcode) WHERE 1 and date_add(spot_time, INTERVAL 5.30 hour) BETWEEN '" . $start_date . "' and '" . $end_date . "'" . $sql_search;
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
 
-    public function qctopackexport($start_date, $end_date, $current_date, $p='')
+    public function qctopackexport($start_date, $end_date, $current_date, $p = '')
     {
         if ($p) {
-            $sql_search=" and Primary_Service in (".$p.")";
+            $sql_search = " and Primary_Service in (" . $p . ")";
         } else {
-            $sql_search=" and Primary_Service not in ('SHC', 'SI')";
+            $sql_search = " and Primary_Service not in ('SHC', 'SI')";
         }
-        $sql_search.=" and (packaging_time is null or date_add(packaging_time, INTERVAL 5.30 hour) > '".$current_date."' )";
-        $sql_search.=" and qc_status='Pass'";
-        $sql="SELECT  tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(qc_time, INTERVAL 5.30 hour)as incoming, packaging_stage FROM `tbl_challan_data` WHERE 1  and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '".$start_date."' and '".$end_date."'".$sql_search;
+        $sql_search .= " and (packaging_time is null or date_add(packaging_time, INTERVAL 5.30 hour) > '" . $current_date . "' )";
+        $sql_search .= " and qc_status='Pass'";
+        $sql = "SELECT  tbl_challan_data.Barcode, Store_Name, Sub_Garment, date_add(qc_time, INTERVAL 5.30 hour)as incoming, packaging_stage FROM `tbl_challan_data` WHERE 1  and date_add(qc_time, INTERVAL 5.30 hour) BETWEEN '" . $start_date . "' and '" . $end_date . "'" . $sql_search;
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -1492,14 +1519,14 @@ public function getPhotoData($param)
 
     public function getPictures($order_no, $store_id)
     {
-        $sql="SELECT * FROM `tbl_picture`  left join tbl_challan_data on (tbl_challan_data.Barcode=tbl_picture.Barcode) where store_id=$store_id and Order_No='".$order_no."'";
+        $sql = "SELECT * FROM `tbl_picture`  left join tbl_challan_data on (tbl_challan_data.Barcode=tbl_picture.Barcode) where store_id=$store_id and Order_No='" . $order_no . "'";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
 
     public function getPicturestoEmail()
     {
-        $sql="select * from (SELECT max(create_date) as photo_time, tbl_picture.Barcode, Order_No, store_id FROM `tbl_picture` left join tbl_challan_data on (tbl_challan_data.Barcode=tbl_picture.Barcode) where photo_email=0 group by Order_No, store_id) as temp where photo_time < DATE_SUB(NOW(), INTERVAL 3 HOUR)";
+        $sql = "select * from (SELECT max(create_date) as photo_time, tbl_picture.Barcode, Order_No, store_id FROM `tbl_picture` left join tbl_challan_data on (tbl_challan_data.Barcode=tbl_picture.Barcode) where photo_email=0 group by Order_No, store_id) as temp where photo_time < DATE_SUB(NOW(), INTERVAL 3 HOUR)";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }
@@ -1507,7 +1534,7 @@ public function getPhotoData($param)
 
     public function update_email_status($order_no, $store_id)
     {
-        $sql="update tbl_challan_data set photo_email=1 where Order_No='".$order_no."' and store_id=".$store_id;
+        $sql = "update tbl_challan_data set photo_email=1 where Order_No='" . $order_no . "' and store_id=" . $store_id;
         $query = $this->db->query($sql);
         return $query;
     }
@@ -1518,34 +1545,34 @@ public function getPhotoData($param)
 
     public function missingyn($param)
     {
-        $search_query='';
+        $search_query = '';
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_query=" and Order_Date between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_query = " and Order_Date between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_query='';
+            $search_query = '';
         }
 
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
         if (empty($param['filter_type'])) {
-            $param['filter_type']=1;
+            $param['filter_type'] = 1;
         }
 
-        if ($param['filter_type']==1) {
-            $search_query.=" and Send_to_Workshop='Yes' and initial_stage=0";
+        if ($param['filter_type'] == 1) {
+            $search_query .= " and Send_to_Workshop='Yes' and initial_stage=0";
         }
-        if ($param['filter_type']==2) {
-            $search_query.=" and Send_to_Workshop='No' and initial_stage=1";
+        if ($param['filter_type'] == 2) {
+            $search_query .= " and Send_to_Workshop='No' and initial_stage=1";
         }
-        if ($param['filter_type']==3) {
-            $search_query.=" and Send_to_Workshop='No' and initial_stage=0";
+        if ($param['filter_type'] == 3) {
+            $search_query .= " and Send_to_Workshop='No' and initial_stage=0";
         }
 
-        $sql="SELECT * FROM `tbl_challan_data` WHERE 1 $search_query ";
+        $sql = "SELECT * FROM `tbl_challan_data` WHERE 1 $search_query ";
         $query = $this->db->query($sql)->result();
         return $query;
     }
@@ -1555,29 +1582,29 @@ public function getPhotoData($param)
 
     public function imgreport($param)
     {
-        $search_query='';
-        $search_sub_query='';
+        $search_query = '';
+        $search_sub_query = '';
 
         if (!empty($param['from_date']) && !empty($param['to_date'])) {
-            $search_sub_query=" and date(tbl_picture.create_date) between '".$param['from_date']."' and '".$param['to_date']."'";
+            $search_sub_query = " and date(tbl_picture.create_date) between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
         } else {
-            $search_sub_query='';
+            $search_sub_query = '';
         }
 
 
         if (!empty($param['store_id'])) {
-            $search_query.=" and store_id='".$param['store_id']."'";
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
         }
 
         if (!empty($param['garment_type'])) {
-            $search_query.=" and Sub_Garment='".$param['garment_type']."'";
+            $search_query .= " and Sub_Garment='" . $param['garment_type'] . "'";
         }
 
         if (!empty($param['primary_service'])) {
-            $search_query.=" and Primary_Service='".$param['primary_service']."'";
+            $search_query .= " and Primary_Service='" . $param['primary_service'] . "'";
         }
 
-        $sql="SELECT tbl_picture.*, tbl_challan_data.* from tbl_picture  join tbl_challan_data on (tbl_picture.Barcode=tbl_challan_data.Barcode) where id in(SELECT id FROM tbl_picture where 1  $search_sub_query group by Barcode HAVING min(create_date)) $search_query";
+        $sql = "SELECT tbl_picture.*, tbl_challan_data.* from tbl_picture  join tbl_challan_data on (tbl_picture.Barcode=tbl_challan_data.Barcode) where id in(SELECT id FROM tbl_picture where 1  $search_sub_query group by Barcode HAVING min(create_date)) $search_query";
         $query = $this->db->query($sql)->result();
         return $query;
     }
@@ -1585,7 +1612,7 @@ public function getPhotoData($param)
 
     public function getImageByBarcode($barcode)
     {
-        $sql="select * from tbl_picture where Barcode='".$barcode."'";
+        $sql = "select * from tbl_picture where Barcode='" . $barcode . "'";
 
         $query = $this->db->query($sql)->result();
         return $query;
