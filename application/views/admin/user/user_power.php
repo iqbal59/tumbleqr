@@ -23,7 +23,7 @@
     
     <!-- Start Page Content -->
 
-    <div class="row mt-3">
+    <div class="row mx-1 mt-3">
 
         <div class="col-md-12">
             <?php $msg = $this->session->flashdata('msg'); ?>
@@ -105,7 +105,7 @@
 
 
         <div class="col-lg-7">
-            <div class="card card-outline-info ">
+            <div class="card card-outline-info pb-4">
                 <div class="card-header">
                     <h4 class="m-b-0 text-white"> All Power List</h4>
                 </div>

@@ -54,7 +54,7 @@
                     <h4 class="m-b-0 text-white">Search</h4>
                 </div> -->
                 <div class="card-body py-1 pt-2">
-                    <form method="get" action="<?php echo base_url('admin/reports/initialcomplete') ?>"
+                    <form method="get" action="<?php echo base_url('admin/reports/drycomplete') ?>"
                         class="form-horizontal" novalidate>
                         <div class="form-body">
                             <div class="row">

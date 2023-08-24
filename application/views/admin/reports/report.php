@@ -1,10 +1,10 @@
 <!-- Container fluid  -->
 
-<div class="container-fluid">
+<div class="container-fluid p-0">
 
     <!-- Bread crumb and right sidebar toggle -->
 
-    <div class="row page-titles p-1">
+    <div class="row page-titles mx-1 p-2">
         <div class="col-md-5 col-8 align-self-center">
             <h3 class="text-themecolor m-b-0 m-t-0">Vendor Report</h3>
             <ol class="breadcrumb">
@@ -157,7 +157,6 @@
                                             </div>
 
 
-
                                         </div>
                                     </div>
                                 </div>
@@ -220,6 +219,7 @@
                                                 <?php echo $challan['Sub_Garment']; ?>
 
                                             </td>
+
 
                                             <td>
                                                 <?php echo $challan['Primary_Service']; ?>

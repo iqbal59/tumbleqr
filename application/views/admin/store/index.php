@@ -60,9 +60,9 @@
             </div>
             <?php endif ?>
 
-            <div class="card">
+            <div class="card mx-1">
 
-                <div class="card-body">
+                <div class="card-body px-2 pt-0">
 
                     <?php if ($this->session->userdata('role') == 'admin'): ?>
                     <!-- <a href="<?php echo base_url('admin/store/add') ?>" class="btn btn-info pull-right"><i class="fa fa-plus"></i> Add New Store</a> &nbsp; -->

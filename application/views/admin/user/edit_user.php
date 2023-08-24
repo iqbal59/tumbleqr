@@ -30,7 +30,7 @@
 
     <div class="row mt-3">
         <div class="col-lg-12">
-            <div class="card card-outline-info">
+            <div class="card card-outline-info mx-1">
                 <div class="card-header">
                     <h4 class="m-b-0 text-white"> Edit User <a href="<?php echo base_url('admin/user/all_user_list') ?>" class="btn btn-info pull-right"><i class="fa fa-list"></i> All Users </a></h4>
 
