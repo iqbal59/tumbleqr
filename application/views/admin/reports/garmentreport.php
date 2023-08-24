@@ -80,8 +80,7 @@
                                                         <div class="controls">
                                                             <input type="date" name="s_from_date"
                                                                 class="form-control form-control-sm"
-                                                                placeholder="MM/DD/YYYY"
-                                                                value="<?php if (!empty($condition)) {
+                                                                placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
                                                                     echo $condition['from_date'];
                                                                 } ?>">
                                                         </div>
@@ -93,8 +92,7 @@
                                                         <div class="controls">
                                                             <input type="date" name="s_to_date"
                                                                 class="form-control form-control-sm"
-                                                                placeholder="MM/DD/YYYY"
-                                                                value="<?php if (!empty($condition)) {
+                                                                placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
                                                                     echo $condition['to_date'];
                                                                 } ?>">
                                                         </div>
@@ -148,103 +146,153 @@
                     </form>
                 </div>
             </div>
-            <?php if(!empty($challans)) {?>
-            <div class="card">
-                <div class="card-body pt-1">
-                    <div class="table-responsive">
-                        <table id="example23" class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
-                            cellspacing="0" cellpadding="0" width="100%">
-                            <thead>
-                                <tr>
+            <?php if (!empty($challans)) { ?>
+                <div class="card">
+                    <div class="card-body pt-1">
+                        <div class="table-responsive">
+                            <table id="example23"
+                                class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
+                                cellspacing="0" cellpadding="0" width="100%">
+                                <thead>
+                                    <tr>
 
-                                    <th>Store Name</th>
-                                    <th>Order No.</th>
-                                    <th>Order Date</th>
-                                    <th>Garment</th>
-                                    <th>Barcode</th>
-                                    <th>Primary Service</th>
-                                    <th>Due On</th>
-                                    <th>Status</th>
-                                    <th>Incoming Time</th>
-                                    <th>Spotting Time</th>
-                                    <th>QC Time</th>
-                                    <th>Packing Time</th>
-                                    <th>Dispatch Time</th>
-                                    <th>Iron</th>
-                                    <th>Washing</th>
-                                    <th>LOT Making</th>
-                                    <th>Incoming Photo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach($challans as $challan){
-	                                if($challan['incomplete_cloth']!=0)
-	                                continue;
-	                                
-	                                 ?>
-                                <tr>
-
-                                    <td><?php echo $challan['Store_Name']; ?></td>
-                                    <td><?php echo $challan['Order_No']; ?></td>
-                                    <td><?php echo date('d-m-Y', strtotime($challan['Order_Date'])); ?></td>
-                                    <td><?php echo $challan['Sub_Garment']; ?>
-                                    </td>
-                                    <td><?php echo $challan['Barcode']; ?></td>
+                                        <th>Store Name</th>
+                                        <th>Order No.</th>
+                                        <th>Order Date</th>
+                                        <th>Garment</th>
+                                        <th>Barcode</th>
+                                        <th>Primary Service</th>
+                                        <th>Due On</th>
+                                        <th>Status</th>
+                                        <th>Incoming</th>
+                                        <th>Photo</th>
+                                        <th>LOT</th>
+                                        <th>Spotting</th>
+                                        <th>Washing</th>
+                                        <th>QC</th>
+                                        <th>Iron</th>
+                                        <th>Packing</th>
+                                        <th>Dispatch</th>
 
 
-                                    <td><?php echo $challan['Primary_Service']; ?></td>
-                                    <td><span
-                                            style="display:none;"><?php echo strtotime($challan['Due_on']. ' - 1 days');?></span><?php echo date("d-m-Y", strtotime($challan['Due_on']. ' - 1 days')); ?>
-                                    </td>
 
 
-                                    <td>
-                                        <?php
-	                                    
-	                                    if( $challan['dispatch_status']==1)
-	                                    echo "Dispatch";
-	                                    
-	                                    else if( $challan['packaging_stage']==1)
-	                                    echo "Packed";
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($challans as $challan) {
+                                        if ($challan['incomplete_cloth'] != 0)
+                                            continue;
 
-	                                    else if($challan['qc_stage']==1)
-	                                    echo "Quality Check ". $challan['qc_status'];
+                                        ?>
+                                        <tr>
 
-                                        else if($challan['spot_time'])
-	                                    echo "Spot";
-                                        
-	                                   else if($challan['initial_stage']==1)
-	                                    echo "Incoming";
-	                                    
-                                        else if($challan['cancel_status']==1)
-	                                    echo "Cancel";
+                                            <td>
+                                                <?php echo $challan['Store_Name']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['Order_No']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo date('d-m-Y', strtotime($challan['Order_Date'])); ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['Sub_Garment']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['Barcode']; ?>
+                                            </td>
 
-	                                    else
-	                                    echo "Not Tracked"
-	                                    ?>
+
+                                            <td>
+                                                <?php echo $challan['Primary_Service']; ?>
+                                            </td>
+                                            <td><span style="display:none;"><?php echo strtotime($challan['Due_on'] . ' - 1 days'); ?></span>
+                                                <?php echo date("d-m-Y", strtotime($challan['Due_on'] . ' - 1 days')); ?>
+                                            </td>
 
 
-                                    </td>
-                                    <td><?php if(!empty($challan['initial_time'])){echo date('d-m-Y H:i:s', strtotime($challan['initial_time'].' +330 mins')); }?>
-                                    </td>
-                                    <td><?php if(!empty($challan['spot_time'])){echo date('d-m-Y H:i:s', strtotime($challan['spot_time'].' +330 mins')); }?>
-                                    </td>
-                                    <td><?php if(!empty($challan['qc_time'])){ echo date('d-m-Y H:i:s', strtotime($challan['qc_time'].' +330 mins'));} ?>
-                                    </td>
+                                            <td>
+                                                <?php
 
-                                    <td><?php if(!empty($challan['packaging_time'])){ echo date('d-m-Y H:i:s', strtotime($challan['packaging_time'].' +330 mins'));} ?>
-                                    </td>
-                                    <td><?php if(!empty($challan['dispatch_time'])){ echo date('d-m-Y H:i:s', strtotime($challan['dispatch_time'].' +330 mins')); }?>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                                if ($challan['dispatch_status'] == 1)
+                                                    echo "Dispatch";
+                                                else if ($challan['packaging_stage'] == 1)
+                                                    echo "Packed";
+                                                else if ($challan['qc_stage'] == 1)
+                                                    echo "Quality Check " . $challan['qc_status'];
+                                                else if ($challan['spot_time'])
+                                                    echo "Spot";
+                                                else if ($challan['initial_stage'] == 1)
+                                                    echo "Incoming";
+                                                else if ($challan['cancel_status'] == 1)
+                                                    echo "Cancel";
+                                                else
+                                                    echo "Not Tracked"
+                                                        ?>
 
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+
+                                                                    </td>
+                                                                    <td>
+                                                <?php if (!empty($challan['initial_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['initial_time'] . ' +330 mins'));
+                                                } ?>
+                                            </td>
+
+                                            <td>
+                                                <?php if (!empty($challan['initial_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['initial_time'] . ' +330 mins'));
+                                                } ?>
+                                            </td>
+                                            <td>
+                                                <?php if (!empty($challan['initial_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['initial_time'] . ' +330 mins'));
+                                                } ?>
+                                            </td>
+
+
+                                            <td>
+                                                <?php if (!empty($challan['spot_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['spot_time'] . ' +330 mins'));
+                                                } ?>
+                                            </td>
+
+                                            <td>
+                                                <?php if (!empty($challan['initial_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['initial_time'] . ' +330 mins'));
+                                                } ?>
+                                            </td>
+
+
+                                            <td>
+                                                <?php if (!empty($challan['qc_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['qc_time'] . ' +330 mins'));
+                                                } ?>
+                                            </td>
+
+                                            <td>
+                                                <?php if (!empty($challan['initial_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['initial_time'] . ' +330 mins'));
+                                                } ?>
+                                            </td>
+
+                                            <td>
+                                                <?php if (!empty($challan['packaging_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['packaging_time'] . ' +330 mins'));
+                                                } ?>
+                                            </td>
+                                            <td>
+                                                <?php if (!empty($challan['dispatch_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['dispatch_time'] . ' +330 mins'));
+                                                } ?>
+                                            </td>
+
+
+
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
