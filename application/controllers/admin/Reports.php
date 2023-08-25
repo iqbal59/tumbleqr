@@ -1340,7 +1340,7 @@ class Reports extends CI_Controller
     public function report()
     {
         $data['page_title'] = 'Vendor Report';
-        if ($this->input->server('REQUEST_METHOD') === 'GET') {
+        if ($this->input->server('REQUEST_METHOD') === 'POST' || $this->input->server('REQUEST_METHOD') === 'GET') {
             // echo "POST";
             // die();
             $data['condition'] = array(
