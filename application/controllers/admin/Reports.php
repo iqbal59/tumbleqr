@@ -1344,9 +1344,9 @@ class Reports extends CI_Controller
             // echo "POST";
             // die();
             $data['condition'] = array(
-                'from_date' => $this->input->get('s_from_date') ? $this->input->get('s_from_date') : date('Y-m-d'),
-                'to_date' => $this->input->get('s_to_date') ? $this->input->get('s_to_date') : date('Y-m-d'),
-                'vendor_name' => $this->input->get('vendor_name') ? $this->input->get('vendor_name') : ""
+                'from_date' => $this->input->post('s_from_date') ? $this->input->post('s_from_date') : date('Y-m-d'),
+                'to_date' => $this->input->post('s_to_date') ? $this->input->post('s_to_date') : date('Y-m-d'),
+                'vendor_name' => $this->input->post('vendor_name') ? $this->input->post('vendor_name') : ""
             );
             $data['condition'] = $this->security->xss_clean($data['condition']);
             $data['challans'] = $this->common_model->vendorreport($data['condition']);
