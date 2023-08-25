@@ -80,6 +80,25 @@ class Mailsend extends CI_Controller
         }
     }
 
+    public function sendvendorreport()
+    {
+        $data = array();
+        //$data['page_title'] = 'Pending Report';
+        if (($this->input->server('REQUEST_METHOD') === 'GET' || $this->input->server('REQUEST_METHOD') === 'POST') && $this->input->get('vendor_id')) {
+            // echo "POST";
+            // die();
+            $data['condition'] = array(
+                'from_date' => $this->input->post('s_from_date') ? $this->input->post('s_from_date') : date('Y-m-d', strtotime('- 7 days')),
+                'to_date' => $this->input->post('s_to_date') ? $this->input->post('s_to_date') : date('Y-m-d', strtotime('+ 7 days')),
+                'vendor_name' => $this->input->post('vendor_name'),
+            );
+            $data['condition'] = $this->security->xss_clean($data['condition']);
+            $data['challans'] = $this->common_model->vendorreport($data['condition']);
+
+            $this->load->view('admin/mail/printvendor', $data);
+        }
+    }
+
     public function imagemailcontent()
     {
         $data = array();
@@ -555,7 +574,7 @@ class Mailsend extends CI_Controller
     public function incomingtospot4pm()
     {
         $data = array();
-//         //$data['page_title'] = 'Pending Report';
+        //         //$data['page_title'] = 'Pending Report';
         //         if($this->input->server('REQUEST_METHOD') === 'GET'  && $this->input->get('store_id') ){
         //           // echo "POST";
         //           // die();
@@ -593,17 +612,17 @@ class Mailsend extends CI_Controller
     public function exportexceptionincomingtospot($start_date, $end_date, $current_date, $file_name)
     {
         header("Content-type: application/csv");
-        header("Content-Disposition: attachment; filename=\"exception_report_".$file_name."_".date('d-m-Y_H_i_s').".csv\"");
+        header("Content-Disposition: attachment; filename=\"exception_report_" . $file_name . "_" . date('d-m-Y_H_i_s') . ".csv\"");
         header("Pragma: no-cache");
         header("Expires: 0");
         $handle = fopen('php://output', 'w');
-        fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'Incoming Time','Packing Status'));
+        fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'Incoming Time', 'Packing Status'));
 
 
 
 
         $dataItems = $this->common_model->incomingtospotexport(urldecode($start_date), urldecode($end_date), urldecode($current_date));
-        $i=0;
+        $i = 0;
         foreach ($dataItems as $item) {
             fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['incoming'], $item['packaging_stage']));
         }
@@ -616,17 +635,17 @@ class Mailsend extends CI_Controller
     public function exportexceptionspottoqc($start_date, $end_date, $current_date, $file_name)
     {
         header("Content-type: application/csv");
-        header("Content-Disposition: attachment; filename=\"exception_report_".$file_name."_".date('d-m-Y_H_i_s').".csv\"");
+        header("Content-Disposition: attachment; filename=\"exception_report_" . $file_name . "_" . date('d-m-Y_H_i_s') . ".csv\"");
         header("Pragma: no-cache");
         header("Expires: 0");
         $handle = fopen('php://output', 'w');
-        fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'Spot Time','Packing Status'));
+        fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'Spot Time', 'Packing Status'));
 
 
 
 
         $dataItems = $this->common_model->spottingtoqcexport(urldecode($start_date), urldecode($end_date), urldecode($current_date));
-        $i=0;
+        $i = 0;
         foreach ($dataItems as $item) {
             fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['incoming'], $item['packaging_stage']));
         }
@@ -638,15 +657,15 @@ class Mailsend extends CI_Controller
     public function exportexceptionqctopack($start_date, $end_date, $current_date, $file_name)
     {
         header("Content-type: application/csv");
-        header("Content-Disposition: attachment; filename=\"exception_report_".$file_name."_".date('d-m-Y_H_i_s').".csv\"");
+        header("Content-Disposition: attachment; filename=\"exception_report_" . $file_name . "_" . date('d-m-Y_H_i_s') . ".csv\"");
         header("Pragma: no-cache");
         header("Expires: 0");
         $handle = fopen('php://output', 'w');
-        fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'QC Time','Packing Status'));
+        fputcsv($handle, array('Sr No.', 'Barcode', 'Store Name', 'Garment', 'QC Time', 'Packing Status'));
 
 
         $dataItems = $this->common_model->qctopackexport(urldecode($start_date), urldecode($end_date), urldecode($current_date));
-        $i=0;
+        $i = 0;
         foreach ($dataItems as $item) {
             fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['incoming'], $item['packaging_stage']));
         }
@@ -659,7 +678,7 @@ class Mailsend extends CI_Controller
     public function exportexceptionqctospot($start_date, $end_date, $current_date, $file_name)
     {
         header("Content-type: application/csv");
-        header("Content-Disposition: attachment; filename=\"exception_report_".$file_name."_".date('d-m-Y_H_i_s').".csv\"");
+        header("Content-Disposition: attachment; filename=\"exception_report_" . $file_name . "_" . date('d-m-Y_H_i_s') . ".csv\"");
         header("Pragma: no-cache");
         header("Expires: 0");
         $handle = fopen('php://output', 'w');
@@ -667,7 +686,7 @@ class Mailsend extends CI_Controller
 
 
         $dataItems = $this->common_model->qctospotting1am(urldecode($start_date), urldecode($end_date), urldecode($current_date));
-        $i=0;
+        $i = 0;
         foreach ($dataItems as $item) {
             fputcsv($handle, array(++$i, $item['Barcode'], $item['Store_Name'], $item['Sub_Garment'], $item['qc_fail_time'], $item['re_spot_time'], $item['diff_in_hr']));
         }
@@ -902,65 +921,65 @@ class Mailsend extends CI_Controller
     }
 
 
-//Cloth Stuck Report
+    //Cloth Stuck Report
 
-public function sendClothReport()
-{
-    $file_name="assets/file.csv";
-    $file = fopen($file_name, 'w');
+    public function sendClothReport()
+    {
+        $file_name = "assets/file.csv";
+        $file = fopen($file_name, 'w');
 
-    //SPOT
-    fputcsv($file, array("Spotting"));
-    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
-    $clothes = $this->report_model->getSpotPendingClothes();
-    foreach ($clothes as $c) {
-        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
+        //SPOT
+        fputcsv($file, array("Spotting"));
+        fputcsv($file, array('Barcode', 'Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
+        $clothes = $this->report_model->getSpotPendingClothes();
+        foreach ($clothes as $c) {
+            fputcsv($file, array($c['Barcode'], $c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
+        }
+        fputcsv($file, array());
+        fputcsv($file, array());
+
+        //QC
+        fputcsv($file, array("QC"));
+        fputcsv($file, array('Barcode', 'Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
+        $clothes = $this->report_model->getQcPendingClothes();
+        foreach ($clothes as $c) {
+            fputcsv($file, array($c['Barcode'], $c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
+        }
+        fputcsv($file, array());
+        fputcsv($file, array());
+
+        //IRON
+        fputcsv($file, array("Iron"));
+        fputcsv($file, array('Barcode', 'Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
+        $clothes = $this->report_model->getIronPendingClothes();
+        foreach ($clothes as $c) {
+            fputcsv($file, array($c['Barcode'], $c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
+        }
+        fputcsv($file, array());
+        fputcsv($file, array());
+
+        //Packing
+        fputcsv($file, array("Packing"));
+        fputcsv($file, array('Barcode', 'Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
+        $clothes = $this->report_model->getPackingPendingClothes();
+        foreach ($clothes as $c) {
+            fputcsv($file, array($c['Barcode'], $c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
+        }
+        fputcsv($file, array());
+        fputcsv($file, array());
+        //Ready to Dispatch
+        fputcsv($file, array("Ready to Dispatch"));
+        fputcsv($file, array('Barcode', 'Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
+        $clothes = $this->report_model->getRtdPendindClothes();
+        foreach ($clothes as $c) {
+            fputcsv($file, array($c['Barcode'], $c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
+        }
+
+
+
+
+        fclose($file);
+
+        $this->sendEmail("Pending Clothes Report", "Pending Report", "Akash.patel@tumbledry.in", array('Gaurav.Teotia@tumbledry.in', 'tumbledryfactory@gmail.com'), $file_name);
     }
-    fputcsv($file, array());
-    fputcsv($file, array());
-
-    //QC
-    fputcsv($file, array("QC"));
-    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
-    $clothes = $this->report_model->getQcPendingClothes();
-    foreach ($clothes as $c) {
-        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
-    }
-    fputcsv($file, array());
-    fputcsv($file, array());
-
-    //IRON
-    fputcsv($file, array("Iron"));
-    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
-    $clothes = $this->report_model->getIronPendingClothes();
-    foreach ($clothes as $c) {
-        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
-    }
-    fputcsv($file, array());
-    fputcsv($file, array());
-
-    //Packing
-    fputcsv($file, array("Packing"));
-    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
-    $clothes = $this->report_model->getPackingPendingClothes();
-    foreach ($clothes as $c) {
-        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
-    }
-    fputcsv($file, array());
-    fputcsv($file, array());
-    //Ready to Dispatch
-    fputcsv($file, array("Ready to Dispatch"));
-    fputcsv($file, array('Barcode','Store Name', 'Cloth Name', 'Due On', 'Incoming Time'));
-    $clothes = $this->report_model->getRtdPendindClothes();
-    foreach ($clothes as $c) {
-        fputcsv($file, array($c['Barcode'],$c['Store_Name'], $c['Sub_Garment'], $c['Due_on'], $c['initial_time']));
-    }
-
-
-
-
-    fclose($file);
-
-    $this->sendEmail("Pending Clothes Report", "Pending Report", "Akash.patel@tumbledry.in", array('Gaurav.Teotia@tumbledry.in', 'tumbledryfactory@gmail.com'), $file_name);
-}
 }

@@ -49,7 +49,7 @@ $(function () {
         $(".nav-toggler i").toggleClass("ti-menu"),
         $(".nav-toggler i").addClass("ti-close");
     }),
-    $(".sidebartoggler").on("click", function () {}),
+    $(".sidebartoggler").on("click", function () { }),
     $(".search-box a, .search-box .app-search .srh-btn").on(
       "click",
       function () {
@@ -70,13 +70,13 @@ $(function () {
     $(function () {
       for (
         var i = window.location,
-          e = $("ul#sidebarnav a")
-            .filter(function () {
-              return this.href == i;
-            })
-            .addClass("active")
-            .parent()
-            .addClass("active");
+        e = $("ul#sidebarnav a")
+          .filter(function () {
+            return this.href == i;
+          })
+          .addClass("active")
+          .parent()
+          .addClass("active");
         ;
 
       ) {
@@ -237,6 +237,25 @@ $(document).ready(function () {
       $("#challan_form").submit();
     } else {
       alert("Select Store");
+      return;
+    }
+  });
+
+
+  // Vendor Report
+
+  $("#sendvendorreport").click(function () {
+    let vendor_id = $("#vendor_name").val();
+    // alert(vendor_id);
+    if (vendor_id != "") {
+      $("#vendor_report").attr(
+        "action",
+        $("#vendorprint").val() + "?vendor_id=" + vendor_id
+      );
+      $("#vendor_report").attr("target", "_blank");
+      $("#vendor_report").submit();
+    } else {
+      alert("Select Vendor");
       return;
     }
   });

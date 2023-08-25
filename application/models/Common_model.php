@@ -698,13 +698,13 @@ class Common_model extends CI_Model
             $search_query = '';
         }
 
-        if (!empty($param['store_id'])) {
-            $search_query .= " and store_id='" . $param['store_id'] . "'";
+        if (!empty($param['vendor_name'])) {
+            $search_query .= " and vendor_name='" . $param['vendor_name'] . "'";
         }
 
-        if (!empty($param['services'])) {
-            $search_query .= " and Primary_Service='" . $param['services'] . "'";
-        }
+        // if (!empty($param['services'])) {
+        //     $search_query .= " and Primary_Service='" . $param['services'] . "'";
+        // }
 
 
         $sql = "SELECT tbl_challan_data.*, tbl_vendor.out_station_id, out_time, vendor_name, in_time, in_station_id FROM tbl_challan_data  join tbl_vendor on (tbl_vendor.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query order by out_time desc";

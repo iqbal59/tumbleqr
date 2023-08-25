@@ -33,20 +33,20 @@
 
             <?php $msg = $this->session->flashdata('msg'); ?>
             <?php if (isset($msg)): ?>
-                <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
-                    <?php echo $msg; ?> &nbsp;
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                            aria-hidden="true">×</span> </button>
-                </div>
+            <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
+                <?php echo $msg; ?> &nbsp;
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                        aria-hidden="true">×</span> </button>
+            </div>
             <?php endif ?>
 
             <?php $error_msg = $this->session->flashdata('error_msg'); ?>
             <?php if (isset($error_msg)): ?>
-                <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
-                    <?php echo $error_msg; ?> &nbsp;
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                            aria-hidden="true">×</span> </button>
-                </div>
+            <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
+                <?php echo $error_msg; ?> &nbsp;
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                        aria-hidden="true">×</span> </button>
+            </div>
             <?php endif ?>
 
             <div class="card card-outline-info mb-2">
@@ -54,8 +54,12 @@
                     <h4 class="m-b-0 text-white">Search</h4>
                 </div> -->
                 <div class="card-body py-1 pt-2">
-                    <form method="get" action="<?php echo base_url('admin/reports/report') ?>" class="form-horizontal"
-                        novalidate>
+                    <form method="post" id="vendor_report" action="<?php echo base_url('admin/reports/report') ?>"
+                        class="form-horizontal" novalidate>
+
+                        <input type="hidden" name="vendorprint" id="vendorprint"
+                            value="<?php echo base_url('admin/mailsend/sendvendorreport');?>" />
+
                         <div class="form-body">
                             <div class="row">
                                 <div class="col-md-12">
@@ -89,52 +93,27 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-3">
-                                                    <div class="form-group m-0">
-                                                        <h5>Store Name</h5>
-                                                        <div class="controls">
-                                                            <select name="store_id" class="form-control select2">
-                                                                <option value="">--Select--</option>
-                                                                <?php
-                                                                if (!empty($stores)) {
-                                                                    foreach ($stores as $store) {
-                                                                        $selected = '';
-                                                                        if (!empty($condition)) {
-                                                                            if ($condition['store_id'] == $store['store_id']) {
-                                                                                $selected = "selected";
-                                                                            }
-                                                                        }
 
-                                                                        echo '<option value="' . $store['store_id'] . '"   ' . $selected . '>' . $store['Store_Name'] . '</option>';
-                                                                    }
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
 
 
 
                                                 <div class="col-md-3">
                                                     <div class="form-group m-0">
-                                                        <h5>Services</h5>
+                                                        <h5>Vendor Name</h5>
                                                         <div class="controls">
-                                                            <select name="services" class="form-control select2">
+                                                            <select id="vendor_name" name="vendor_name"
+                                                                class="form-control select2">
                                                                 <option value="">--Select--</option>
-                                                                <?php
-                                                                if (!empty($services)) {
-                                                                    foreach ($services as $service) {
-                                                                        $selected = '';
-                                                                        if (!empty($condition)) {
-                                                                            if ($condition['services'] == $service['Primary_Service']) {
-                                                                                $selected = "selected";
-                                                                            }
-                                                                        }
+                                                                <option value="Vendor 1"
+                                                                    <?php  echo $condition['vendor_name']=='Vendor 1'?"selected":"";?>>
+                                                                    Vendor 1</option>
+                                                                <option value="Vendor 2"
+                                                                    <?php  echo $condition['vendor_name']=='Vendor 2'?"selected":"";?>>
+                                                                    Vendor 2</option>
+                                                                <option value="Vendor 3"
+                                                                    <?php  echo $condition['vendor_name']=='Vendor 3'?"selected":"";?>>
+                                                                    Vendor 3</option>
 
-                                                                        echo '<option value="' . $service['Primary_Service'] . '"   ' . $selected . '>' . $service['Primary_Service'] . '</option>';
-                                                                    }
-                                                                }
                                                                 ?>
                                                             </select>
                                                         </div>
@@ -149,6 +128,9 @@
                                                         <div class="controls">
                                                             <button type="submit"
                                                                 class="btn btn-sm btn-success">Show</button>
+
+                                                            <button type="button" id="sendvendorreport"
+                                                                class="btn btn-sm btn-success">Print</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -177,89 +159,89 @@
 
                 // print_r($challans);
                 ?>
-                <div class="card">
-                    <div class="card-body pt-1">
-                        <div class="table-responsive">
+            <div class="card">
+                <div class="card-body pt-1">
+                    <div class="table-responsive">
 
-                            <table id="example23"
-                                class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
-                                cellspacing="0" cellpadding="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th>Store Name</th>
-                                        <th>Order No.</th>
-                                        <th>Barcode</th>
-                                        <th>Garment Name</th>
-                                        <th>Service</th>
-                                        <th>Vendor Name</th>
-                                        <th>Check-Out</th>
-                                        <th>check-Out SID</th>
-                                        <th>Check-In</th>
-                                        <th>Check-In SID </th>
+                        <table id="example23"
+                            class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
+                            cellspacing="0" cellpadding="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Store Name</th>
+                                    <th>Order No.</th>
+                                    <th>Barcode</th>
+                                    <th>Garment Name</th>
+                                    <th>Service</th>
+                                    <th>Vendor Name</th>
+                                    <th>Check-Out</th>
+                                    <th>check-Out SID</th>
+                                    <th>Check-In</th>
+                                    <th>Check-In SID </th>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($challans as $challan) { ?>
-                                        <tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($challans as $challan) { ?>
+                                <tr>
 
-                                            <td>
-                                                <?php echo $challan['Store_Name']; ?>
+                                    <td>
+                                        <?php echo $challan['Store_Name']; ?>
 
-                                            </td>
-                                            <td>
-                                                <?php echo $challan['Order_No']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $challan['Order_No']; ?>
 
-                                            </td>
-                                            <td>
-                                                <?php echo $challan['Barcode']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $challan['Barcode']; ?>
 
-                                            </td>
-                                            <td>
-                                                <?php echo $challan['Sub_Garment']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $challan['Sub_Garment']; ?>
 
-                                            </td>
-
-
-                                            <td>
-                                                <?php echo $challan['Primary_Service']; ?>
-
-                                            </td>
-
-                                            <td>
-                                                <?php echo $challan['vendor_name']; ?>
-
-                                            </td>
-                                            <td>
-                                                <?php echo $challan['out_time']; ?>
-
-                                            </td>
-
-                                            <td>
-                                                <?php echo $challan['out_station_id']; ?>
-
-                                            </td>
-
-                                            <td>
-                                                <?php echo $challan['in_time']; ?>
-
-                                            </td>
-
-                                            <td>
-                                                <?php echo $challan['in_station_id']; ?>
-
-                                            </td>
+                                    </td>
 
 
+                                    <td>
+                                        <?php echo $challan['Primary_Service']; ?>
 
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
+                                    </td>
 
-                        </div>
+                                    <td>
+                                        <?php echo $challan['vendor_name']; ?>
+
+                                    </td>
+                                    <td>
+                                        <?php echo $challan['out_time']; ?>
+
+                                    </td>
+
+                                    <td>
+                                        <?php echo $challan['out_station_id']; ?>
+
+                                    </td>
+
+                                    <td>
+                                        <?php echo $challan['in_time']; ?>
+
+                                    </td>
+
+                                    <td>
+                                        <?php echo $challan['in_station_id']; ?>
+
+                                    </td>
+
+
+
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+
                     </div>
                 </div>
+            </div>
             <?php } ?>
         </div>
     </div>
