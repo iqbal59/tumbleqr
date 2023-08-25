@@ -259,4 +259,11 @@ $(document).ready(function () {
       return;
     }
   });
+
+
+  $("#showvendorreport").click(function () {
+    $("#vendor_report").attr("action", $("#vendorshow").val());
+    $("#vendor_report").attr("target", "_self");
+    $("#vendor_report").submit();
+  });
 });

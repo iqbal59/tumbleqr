@@ -60,6 +60,10 @@
                         <input type="hidden" name="vendorprint" id="vendorprint"
                             value="<?php echo base_url('admin/mailsend/sendvendorreport');?>" />
 
+
+                        <input type="hidden" name="vendorshow" id="vendorshow"
+                            value="<?php echo base_url('admin/reports/report');?>" />
+
                         <div class="form-body">
                             <div class="row">
                                 <div class="col-md-12">
@@ -126,7 +130,7 @@
                                                     <div class="form-group mt-1">
                                                         <label class="control-label text-right col-md-3"></label>
                                                         <div class="controls">
-                                                            <button type="submit"
+                                                            <button type="button" id="showvendorreport"
                                                                 class="btn btn-sm btn-success">Show</button>
 
                                                             <button type="button" id="sendvendorreport"
