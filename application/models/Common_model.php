@@ -681,7 +681,8 @@ class Common_model extends CI_Model
         }
 
 
-        $sql = "SELECT tbl_challan_data.*, tbl_spot.spot_time, tbl_spot.station_id FROM tbl_challan_data left join tbl_spot on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query order by Due_on, Store_Name";
+        // $sql = "SELECT tbl_challan_data.*, tbl_spot.spot_time, tbl_spot.station_id FROM tbl_challan_data left join tbl_spot on (tbl_spot.Barcode=tbl_challan_data.Barcode) WHERE 1  $search_query order by Due_on, Store_Name";
+        $sql = "SELECT * FROM tbl_challan_data  WHERE 1  $search_query order by Due_on, Store_Name";
         $query = $this->db->query($sql)->result_array();
         return $query;
     }

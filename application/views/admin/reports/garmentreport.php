@@ -240,26 +240,26 @@
                                             </td>
 
                                             <td>
-                                                <?php if (!empty($challan['initial_time'])) {
-                                                    echo date('d-m-Y H:i:s', strtotime($challan['initial_time'] . ' +330 mins'));
+                                                <?php if (!empty($challan['photo_final_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['photo_final_time'] . ' +0 mins'));
                                                 } ?>
                                             </td>
                                             <td>
-                                                <?php if (!empty($challan['initial_time'])) {
-                                                    echo date('d-m-Y H:i:s', strtotime($challan['initial_time'] . ' +330 mins'));
+                                                <?php if (!empty($challan['lot_final_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['lot_final_time'] . ' +330 mins'));
                                                 } ?>
                                             </td>
 
 
                                             <td>
-                                                <?php if (!empty($challan['spot_time'])) {
-                                                    echo date('d-m-Y H:i:s', strtotime($challan['spot_time'] . ' +330 mins'));
+                                                <?php if (!empty($challan['spot_final_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['spot_final_time'] . ' +330 mins'));
                                                 } ?>
                                             </td>
 
                                             <td>
-                                                <?php if (!empty($challan['initial_time'])) {
-                                                    echo date('d-m-Y H:i:s', strtotime($challan['initial_time'] . ' +330 mins'));
+                                                <?php if (!empty($challan['washing_final_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['washing_final_time'] . ' +330 mins'));
                                                 } ?>
                                             </td>
 
@@ -271,8 +271,8 @@
                                             </td>
 
                                             <td>
-                                                <?php if (!empty($challan['initial_time'])) {
-                                                    echo date('d-m-Y H:i:s', strtotime($challan['initial_time'] . ' +330 mins'));
+                                                <?php if (!empty($challan['iron_final_time'])) {
+                                                    echo date('d-m-Y H:i:s', strtotime($challan['iron_final_time'] . ' +330 mins'));
                                                 } ?>
                                             </td>
 
