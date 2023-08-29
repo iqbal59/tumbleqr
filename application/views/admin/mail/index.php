@@ -98,10 +98,11 @@ and also iPads specifically.
 }
 </style>
 
-<h2>Report Summary <?php echo date('d-m-Y', strtotime($dateData));?>
+<h2>Report Summary
+    <?php echo date('d-m-Y', strtotime($dateData)); ?>
 </h2>
 <h3>Initial Total</h3>
-<?php if (!empty($initialTotals)) {?>
+<?php if (!empty($initialTotals)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -126,14 +127,16 @@ and also iPads specifically.
                 <tbody>
                     <?php foreach ($initialTotals as $challan) { ?>
                     <tr>
-                        <td><span
-                                style="display:none;"><?php echo strtotime($challan['date']);?></span><?php echo $challan['date']; ?>
+                        <td><span style="display:none;"><?php echo strtotime($challan['date']); ?></span>
+                            <?php echo $challan['date']; ?>
                         </td>
 
-                        <td><?php echo $challan['total']; ?>
+                        <td>
+                            <?php echo $challan['total']; ?>
                         </td>
 
-                        <td><?php echo $mtdinitial->totalmtd; ?>
+                        <td>
+                            <?php echo $mtdinitial->totalmtd; ?>
                         </td>
                     </tr>
                     <?php } ?>
@@ -144,7 +147,7 @@ and also iPads specifically.
         </div>
     </div>
 </div>
-<?php } else {?>
+<?php } else { ?>
 
 <div class="card">
 
@@ -172,7 +175,8 @@ and also iPads specifically.
                     <tr>
 
 
-                        <td><?php echo $mtdinitial->totalmtd; ?>
+                        <td>
+                            <?php echo $mtdinitial->totalmtd; ?>
                         </td>
                     </tr>
 
@@ -185,22 +189,22 @@ and also iPads specifically.
 </div>
 
 <?php
-            }?>
+} ?>
 
 <h3>Initial Hourly</h3>
 
 <?php
- 
 
 
-foreach ($allusers as $user) {
-    $users[$user['station_id']]=$user['user_name'];
-}
+
+// foreach ($allusers as $user) {
+//     $users[$user['station_id']]=$user['user_name'];
+// }
 
 //print_r($users);
 
 
- if (!empty($initialTotalsHourly)) {?>
+if (!empty($initialTotalsHourly)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -219,31 +223,34 @@ foreach ($allusers as $user) {
                         <th>Hr No.</th>
                         <th>Total</th>
                         <?php
-                                        
-                                        foreach ($initial_stations as $station) {
-                                            echo "<th>".$users[$station['incoming_station_id']]."</th>";
-                                        }
-                                    ?>
+
+                            foreach ($initial_stations as $station) {
+                                echo "<th>" . $station['incoming_station_id'] . "</th>";
+                            }
+                            ?>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                                    $t=0;
-                                   
-                                    $ts=array();
-                                     foreach ($initialTotalsHourly as $challan) { ?>
+                        $t = 0;
+
+                        $ts = array();
+                        foreach ($initialTotalsHourly as $challan) { ?>
                     <tr>
-                        <td><?php echo $challan['hr_no']."-".($challan['hr_no']+1); ?>
+                        <td>
+                            <?php echo $challan['hr_no'] . "-" . ($challan['hr_no'] + 1); ?>
                         </td>
-                        <td><?php echo $challan['total']; $t+=$challan['total'];?>
+                        <td>
+                            <?php echo $challan['total'];
+                                    $t += $challan['total']; ?>
                         </td>
                         <?php
-                                        
-                                        foreach ($initial_stations as $station) {
-                                            echo "<td>".$challan[$station['incoming_station_id']]."</td>";
-                                            $ts[$station['incoming_station_id']]+=$challan[$station['incoming_station_id']];
-                                        }
-                                    ?>
+
+                                foreach ($initial_stations as $station) {
+                                    echo "<td>" . $challan[$station['incoming_station_id']] . "</td>";
+                                    $ts[$station['incoming_station_id']] += $challan[$station['incoming_station_id']];
+                                }
+                                ?>
 
                     </tr>
                     <?php } ?>
@@ -252,14 +259,15 @@ foreach ($allusers as $user) {
                 <tfooter>
                     <tr>
                         <td>Total</td>
-                        <td><?php echo $t; ?>
+                        <td>
+                            <?php echo $t; ?>
                         </td>
                         <?php
-                                        
-                                        foreach ($initial_stations as $station) {
-                                            echo "<td>".$ts[$station['incoming_station_id']]."</td>";
-                                        }
-                                    ?>
+
+                            foreach ($initial_stations as $station) {
+                                echo "<td>" . $ts[$station['incoming_station_id']] . "</td>";
+                            }
+                            ?>
 
                     </tr>
 
@@ -271,12 +279,12 @@ foreach ($allusers as $user) {
         </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
 
 
 <h3>Spot Total</h3>
 
-<?php if (!empty($spotTotal)) {?>
+<?php if (!empty($spotTotal)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -305,21 +313,28 @@ foreach ($allusers as $user) {
                 </thead>
                 <tbody>
                     <?php
-                                    $dc=0;
-                                    $l=0;
-                                    $t=0;
-                                    
-                                    foreach ($spotTotal as $challan) { ?>
+                        $dc = 0;
+                        $l = 0;
+                        $t = 0;
+
+                        foreach ($spotTotal as $challan) { ?>
                     <tr>
 
 
-                        <td><?php echo $users[$challan['station_id']]; ?>
+                        <td>
+                            <?php echo $challan['station_id']; ?>
                         </td>
-                        <td><?php echo $challan['DC']; $dc+=$challan['DC'];?>
+                        <td>
+                            <?php echo $challan['DC'];
+                                    $dc += $challan['DC']; ?>
                         </td>
-                        <td><?php echo $challan['Laundry']; $l+=$challan['Laundry'];?>
+                        <td>
+                            <?php echo $challan['Laundry'];
+                                    $l += $challan['Laundry']; ?>
                         </td>
-                        <td><?php echo $challan['total']; $t+=$challan['total'];?>
+                        <td>
+                            <?php echo $challan['total'];
+                                    $t += $challan['total']; ?>
                         </td>
 
 
@@ -331,11 +346,14 @@ foreach ($allusers as $user) {
 
 
                         <td>Total</td>
-                        <td><?php echo $dc; ?>
+                        <td>
+                            <?php echo $dc; ?>
                         </td>
-                        <td><?php echo $l; ?>
+                        <td>
+                            <?php echo $l; ?>
                         </td>
-                        <td><?php echo $t; ?>
+                        <td>
+                            <?php echo $t; ?>
                         </td>
 
 
@@ -349,13 +367,13 @@ foreach ($allusers as $user) {
         </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
 
 
 
 <h3>Clothes handled in the month by the spotter</h3>
 
-<?php if (!empty($spotTotalMonth)) {?>
+<?php if (!empty($spotTotalMonth)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -384,22 +402,29 @@ foreach ($allusers as $user) {
                 </thead>
                 <tbody>
                     <?php
-                                    
-                                      $dc=0;
-                                    $l=0;
-                                    $t=0;
 
-                                    foreach ($spotTotalMonth as $challan) { ?>
+                        $dc = 0;
+                        $l = 0;
+                        $t = 0;
+
+                        foreach ($spotTotalMonth as $challan) { ?>
                     <tr>
 
 
-                        <td><?php echo $users[$challan['station_id']]; ?>
+                        <td>
+                            <?php echo $challan['station_id']; ?>
                         </td>
-                        <td><?php echo $challan['DC']; $dc+=$challan['DC'];?>
+                        <td>
+                            <?php echo $challan['DC'];
+                                    $dc += $challan['DC']; ?>
                         </td>
-                        <td><?php echo $challan['Laundry']; $l+=$challan['Laundry'];?>
+                        <td>
+                            <?php echo $challan['Laundry'];
+                                    $l += $challan['Laundry']; ?>
                         </td>
-                        <td><?php echo $challan['total']; $t+=$challan['total'];?>
+                        <td>
+                            <?php echo $challan['total'];
+                                    $t += $challan['total']; ?>
                         </td>
 
 
@@ -411,11 +436,14 @@ foreach ($allusers as $user) {
 
 
                         <td>Total</td>
-                        <td><?php echo $dc; ?>
+                        <td>
+                            <?php echo $dc; ?>
                         </td>
-                        <td><?php echo $l; ?>
+                        <td>
+                            <?php echo $l; ?>
                         </td>
-                        <td><?php echo $t; ?>
+                        <td>
+                            <?php echo $t; ?>
                         </td>
 
 
@@ -429,14 +457,14 @@ foreach ($allusers as $user) {
         </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
 
 
 
 
 <h3>Clothes handled today by the QC person, re-mapped to the Spotting person who had handled these clothes earlier</h3>
 
-<?php if (!empty($qc_by_spotter_id)) {?>
+<?php if (!empty($qc_by_spotter_id)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -466,25 +494,34 @@ foreach ($allusers as $user) {
                 </thead>
                 <tbody>
                     <?php
-                                    $t=0;
-                                    $fc=0;
-                                    $sc=0;
-                                    
-                                    foreach ($qc_by_spotter_id as $challan) { ?>
+                        $t = 0;
+                        $fc = 0;
+                        $sc = 0;
+
+                        foreach ($qc_by_spotter_id as $challan) { ?>
                     <tr>
 
 
-                        <td><?php echo $users[$challan['station_id']]; ?>
+                        <td>
+                            <?php echo $challan['station_id']; ?>
                         </td>
-                        <td><?php echo $challan['total']; $t+=$challan['total']; ?>
+                        <td>
+                            <?php echo $challan['total'];
+                                    $t += $challan['total']; ?>
                         </td>
-                        <td><?php echo $challan['fail_count'];$fc+=$challan['fail_count']; ?>
+                        <td>
+                            <?php echo $challan['fail_count'];
+                                    $fc += $challan['fail_count']; ?>
                         </td>
-                        <td><?php echo number_format(($challan['fail_count']/$challan['total'])*100, 2); ?>
+                        <td>
+                            <?php echo number_format(($challan['fail_count'] / $challan['total']) * 100, 2); ?>
                         </td>
-                        <td><?php echo $challan['sorry_count'];$sc+=$challan['sorry_count']; ?>
+                        <td>
+                            <?php echo $challan['sorry_count'];
+                                    $sc += $challan['sorry_count']; ?>
                         </td>
-                        <td><?php echo number_format(($challan['sorry_count']/$challan['total'])*100, 2); ?>
+                        <td>
+                            <?php echo number_format(($challan['sorry_count'] / $challan['total']) * 100, 2); ?>
                         </td>
 
 
@@ -497,15 +534,20 @@ foreach ($allusers as $user) {
 
 
                         <td>Total</td>
-                        <td><?php echo $t; ?>
+                        <td>
+                            <?php echo $t; ?>
                         </td>
-                        <td><?php echo $fc; ?>
+                        <td>
+                            <?php echo $fc; ?>
                         </td>
-                        <td><?php echo number_format(($fc/$t)*100, 2); ?>
+                        <td>
+                            <?php echo number_format(($fc / $t) * 100, 2); ?>
                         </td>
-                        <td><?php echo $sc ?>
+                        <td>
+                            <?php echo $sc ?>
                         </td>
-                        <td><?php echo number_format(($sc/$t)*100, 2); ?>
+                        <td>
+                            <?php echo number_format(($sc / $t) * 100, 2); ?>
                         </td>
 
 
@@ -519,12 +561,12 @@ foreach ($allusers as $user) {
         </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
 
 
 <h3>Clothes handled MTD by the QC person, re-mapped to the Spotting person who had handled these clothes earlier</h3>
 
-<?php if (!empty($qc_by_month_spotter_id)) {?>
+<?php if (!empty($qc_by_month_spotter_id)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -554,25 +596,34 @@ foreach ($allusers as $user) {
                 </thead>
                 <tbody>
                     <?php
-                                    $t=0;
-                                    $fc=0;
-                                    $sc=0;
-                                    
-                                    foreach ($qc_by_month_spotter_id as $challan) { ?>
+                        $t = 0;
+                        $fc = 0;
+                        $sc = 0;
+
+                        foreach ($qc_by_month_spotter_id as $challan) { ?>
                     <tr>
 
 
-                        <td><?php echo $users[$challan['station_id']]; ?>
+                        <td>
+                            <?php echo $challan['station_id']; ?>
                         </td>
-                        <td><?php echo $challan['total']; $t+=$challan['total']; ?>
+                        <td>
+                            <?php echo $challan['total'];
+                                    $t += $challan['total']; ?>
                         </td>
-                        <td><?php echo $challan['fail_count'];$fc+=$challan['fail_count']; ?>
+                        <td>
+                            <?php echo $challan['fail_count'];
+                                    $fc += $challan['fail_count']; ?>
                         </td>
-                        <td><?php echo number_format(($challan['fail_count']/$challan['total'])*100, 2); ?>
+                        <td>
+                            <?php echo number_format(($challan['fail_count'] / $challan['total']) * 100, 2); ?>
                         </td>
-                        <td><?php echo $challan['sorry_count'];$sc+=$challan['sorry_count']; ?>
+                        <td>
+                            <?php echo $challan['sorry_count'];
+                                    $sc += $challan['sorry_count']; ?>
                         </td>
-                        <td><?php echo number_format(($challan['sorry_count']/$challan['total'])*100, 2); ?>
+                        <td>
+                            <?php echo number_format(($challan['sorry_count'] / $challan['total']) * 100, 2); ?>
                         </td>
 
 
@@ -585,15 +636,20 @@ foreach ($allusers as $user) {
 
 
                         <td>Total</td>
-                        <td><?php echo $t; ?>
+                        <td>
+                            <?php echo $t; ?>
                         </td>
-                        <td><?php echo $fc; ?>
+                        <td>
+                            <?php echo $fc; ?>
                         </td>
-                        <td><?php echo number_format(($fc/$t)*100, 2); ?>
+                        <td>
+                            <?php echo number_format(($fc / $t) * 100, 2); ?>
                         </td>
-                        <td><?php echo $sc ?>
+                        <td>
+                            <?php echo $sc ?>
                         </td>
-                        <td><?php echo number_format(($sc/$t)*100, 2); ?>
+                        <td>
+                            <?php echo number_format(($sc / $t) * 100, 2); ?>
                         </td>
 
 
@@ -607,12 +663,12 @@ foreach ($allusers as $user) {
         </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
 
 
 <h3>Spot Hourly</h3>
 
-<?php if (!empty($spotTotalHourly)) {?>
+<?php if (!empty($spotTotalHourly)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -631,34 +687,37 @@ foreach ($allusers as $user) {
                         <th>Hr No.</th>
                         <th>Total</th>
                         <?php
-                                        
-                                        foreach ($stations as $station) {
-                                            echo "<th>".$users[$station['station_id']]."</th>";
-                                        }
-                                    ?>
+
+                            foreach ($stations as $station) {
+                                echo "<th>" . $users[$station['station_id']] . "</th>";
+                            }
+                            ?>
 
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                                    $t=0;
-                                    $tp=0;
-                                    $tf=0;
-                                    $ts=array();
-                                     foreach ($spotTotalHourly as $challan) { ?>
+                        $t = 0;
+                        $tp = 0;
+                        $tf = 0;
+                        $ts = array();
+                        foreach ($spotTotalHourly as $challan) { ?>
                     <tr>
-                        <td><?php echo $challan['hr_no']."-".($challan['hr_no']+1); ?>
+                        <td>
+                            <?php echo $challan['hr_no'] . "-" . ($challan['hr_no'] + 1); ?>
                         </td>
-                        <td><?php echo $challan['total']; $t+=$challan['total'];?>
+                        <td>
+                            <?php echo $challan['total'];
+                                    $t += $challan['total']; ?>
                         </td>
 
                         <?php
-                                        
-                                        foreach ($stations as $station) {
-                                            echo "<td>".$challan[$station['station_id']]."</td>";
-                                            $ts[$station['station_id']]+=$challan[$station['station_id']];
-                                        }
-                                    ?>
+
+                                foreach ($stations as $station) {
+                                    echo "<td>" . $challan[$station['station_id']] . "</td>";
+                                    $ts[$station['station_id']] += $challan[$station['station_id']];
+                                }
+                                ?>
                     </tr>
                     <?php } ?>
                 </tbody>
@@ -666,15 +725,16 @@ foreach ($allusers as $user) {
                 <tfooter>
                     <tr>
                         <td>Total</td>
-                        <td><?php echo $t; ?>
+                        <td>
+                            <?php echo $t; ?>
                         </td>
 
                         <?php
-                                        
-                                        foreach ($stations as $station) {
-                                            echo "<td>".$ts[$station['station_id']]."</td>";
-                                        }
-                                    ?>
+
+                            foreach ($stations as $station) {
+                                echo "<td>" . $ts[$station['station_id']] . "</td>";
+                            }
+                            ?>
 
 
                     </tr>
@@ -687,11 +747,11 @@ foreach ($allusers as $user) {
         </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
 
 
 <h3>QC Total</h3>
-<?php if (!empty($qctotal)) {?>
+<?php if (!empty($qctotal)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -725,27 +785,37 @@ foreach ($allusers as $user) {
                 <tbody>
                     <?php foreach ($qctotal as $challan) { ?>
                     <tr>
-                        <td><?php echo $users[$challan['qc_station_id']]; ?>
+                        <td>
+                            <?php echo $users[$challan['qc_station_id']]; ?>
                         </td>
-                        <td><?php echo $challan['total']; ?>
+                        <td>
+                            <?php echo $challan['total']; ?>
                         </td>
-                        <td><?php echo $challan['pass_count']; ?>
-                        </td>
-
-                        <td><?php echo $challan['fail_count']; ?>
-                        </td>
-                        <td><?php echo $challan['sorry_count']; ?>
+                        <td>
+                            <?php echo $challan['pass_count']; ?>
                         </td>
 
-                        <td><?php echo number_format(($challan['pass_count']/$challan['total'])*100, 2); ?>
+                        <td>
+                            <?php echo $challan['fail_count']; ?>
                         </td>
-                        <td><?php echo number_format(($challan['fail_count']/$challan['total'])*100, 2); ?>
+                        <td>
+                            <?php echo $challan['sorry_count']; ?>
                         </td>
-                        <td><?php echo number_format(($challan['sorry_count']/$challan['total'])*100, 2); ?>
+
+                        <td>
+                            <?php echo number_format(($challan['pass_count'] / $challan['total']) * 100, 2); ?>
                         </td>
-                        <td><?php echo $repeat=$challan['total']-$challan['uniquebarcode']; ?>
+                        <td>
+                            <?php echo number_format(($challan['fail_count'] / $challan['total']) * 100, 2); ?>
                         </td>
-                        <td> <?php echo number_format((($repeat/$challan['total'])*100), 2);?>
+                        <td>
+                            <?php echo number_format(($challan['sorry_count'] / $challan['total']) * 100, 2); ?>
+                        </td>
+                        <td>
+                            <?php echo $repeat = $challan['total'] - $challan['uniquebarcode']; ?>
+                        </td>
+                        <td>
+                            <?php echo number_format((($repeat / $challan['total']) * 100), 2); ?>
                         </td>
 
 
@@ -758,11 +828,11 @@ foreach ($allusers as $user) {
         </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
 
 
 <h3>QC Total Monthly</h3>
-<?php if (!empty($qctotalmonthly)) {?>
+<?php if (!empty($qctotalmonthly)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -796,27 +866,37 @@ foreach ($allusers as $user) {
                 <tbody>
                     <?php foreach ($qctotalmonthly as $challan) { ?>
                     <tr>
-                        <td><?php echo $users[$challan['qc_station_id']]; ?>
+                        <td>
+                            <?php echo $users[$challan['qc_station_id']]; ?>
                         </td>
-                        <td><?php echo $challan['total']; ?>
+                        <td>
+                            <?php echo $challan['total']; ?>
                         </td>
-                        <td><?php echo $challan['pass_count']; ?>
-                        </td>
-
-                        <td><?php echo $challan['fail_count']; ?>
-                        </td>
-                        <td><?php echo $challan['sorry_count']; ?>
+                        <td>
+                            <?php echo $challan['pass_count']; ?>
                         </td>
 
-                        <td><?php echo number_format(($challan['pass_count']/$challan['total'])*100, 2); ?>
+                        <td>
+                            <?php echo $challan['fail_count']; ?>
                         </td>
-                        <td><?php echo number_format(($challan['fail_count']/$challan['total'])*100, 2); ?>
+                        <td>
+                            <?php echo $challan['sorry_count']; ?>
                         </td>
-                        <td><?php echo number_format(($challan['sorry_count']/$challan['total'])*100, 2); ?>
+
+                        <td>
+                            <?php echo number_format(($challan['pass_count'] / $challan['total']) * 100, 2); ?>
                         </td>
-                        <td><?php echo $repeat=$challan['total']-$challan['uniquebarcode']; ?>
+                        <td>
+                            <?php echo number_format(($challan['fail_count'] / $challan['total']) * 100, 2); ?>
                         </td>
-                        <td> <?php echo number_format((($repeat/$challan['total'])*100), 2);?>
+                        <td>
+                            <?php echo number_format(($challan['sorry_count'] / $challan['total']) * 100, 2); ?>
+                        </td>
+                        <td>
+                            <?php echo $repeat = $challan['total'] - $challan['uniquebarcode']; ?>
+                        </td>
+                        <td>
+                            <?php echo number_format((($repeat / $challan['total']) * 100), 2); ?>
                         </td>
 
 
@@ -829,7 +909,7 @@ foreach ($allusers as $user) {
         </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
 
 
 
@@ -837,7 +917,7 @@ foreach ($allusers as $user) {
 
 
 <h3>QC Hourly</h3>
-<?php if (!empty($qchourly)) {?>
+<?php if (!empty($qchourly)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -867,29 +947,41 @@ foreach ($allusers as $user) {
                 </thead>
                 <tbody>
                     <?php
-                                    $t=0;
-                                    $tp=0;
-                                    $tf=0;
-                                    $ts=0;
-                                     foreach ($qchourly as $challan) { ?>
+                        $t = 0;
+                        $tp = 0;
+                        $tf = 0;
+                        $ts = 0;
+                        foreach ($qchourly as $challan) { ?>
                     <tr>
-                        <td><?php echo $challan['hr_no']."-".($challan['hr_no']+1); ?>
+                        <td>
+                            <?php echo $challan['hr_no'] . "-" . ($challan['hr_no'] + 1); ?>
                         </td>
-                        <td><?php echo $challan['total']; $t+=$challan['total'];?>
+                        <td>
+                            <?php echo $challan['total'];
+                                    $t += $challan['total']; ?>
                         </td>
-                        <td><?php echo $challan['pass_count']; $tp+=$challan['pass_count'];?>
+                        <td>
+                            <?php echo $challan['pass_count'];
+                                    $tp += $challan['pass_count']; ?>
                         </td>
 
-                        <td><?php echo $challan['fail_count']; $tf+=$challan['fail_count'];?>
+                        <td>
+                            <?php echo $challan['fail_count'];
+                                    $tf += $challan['fail_count']; ?>
                         </td>
-                        <td><?php echo $challan['sorry_count']; $ts+=$challan['sorry_count']; ?>
+                        <td>
+                            <?php echo $challan['sorry_count'];
+                                    $ts += $challan['sorry_count']; ?>
                         </td>
 
-                        <td><?php echo round(($challan['pass_count']/$challan['total'])*100); ?>
+                        <td>
+                            <?php echo round(($challan['pass_count'] / $challan['total']) * 100); ?>
                         </td>
-                        <td><?php echo round(($challan['fail_count']/$challan['total'])*100); ?>
+                        <td>
+                            <?php echo round(($challan['fail_count'] / $challan['total']) * 100); ?>
                         </td>
-                        <td><?php echo round(($challan['sorry_count']/$challan['total'])*100); ?>
+                        <td>
+                            <?php echo round(($challan['sorry_count'] / $challan['total']) * 100); ?>
                         </td>
 
                     </tr>
@@ -899,20 +991,27 @@ foreach ($allusers as $user) {
                 <tfooter>
                     <tr>
                         <td>Total</td>
-                        <td><?php echo $t; ?>
+                        <td>
+                            <?php echo $t; ?>
                         </td>
-                        <td><?php echo $tp; ?>
+                        <td>
+                            <?php echo $tp; ?>
                         </td>
-                        <td><?php echo $tf; ?>
+                        <td>
+                            <?php echo $tf; ?>
                         </td>
 
-                        <td><?php echo $ts; ?>
+                        <td>
+                            <?php echo $ts; ?>
                         </td>
-                        <td><?php echo round(($tp/$t)*100); ?>
+                        <td>
+                            <?php echo round(($tp / $t) * 100); ?>
                         </td>
-                        <td><?php echo round(($tf/$t)*100); ?>
+                        <td>
+                            <?php echo round(($tf / $t) * 100); ?>
                         </td>
-                        <td><?php echo round(($ts/$t)*100); ?>
+                        <td>
+                            <?php echo round(($ts / $t) * 100); ?>
                         </td>
                     </tr>
 
@@ -924,11 +1023,11 @@ foreach ($allusers as $user) {
         </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
 
 <h3>Packing Total</h3>
 
-<?php if (!empty($packingtotal)) {?>
+<?php if (!empty($packingtotal)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -953,24 +1052,28 @@ foreach ($allusers as $user) {
                 </thead>
                 <tbody>
                     <?php foreach ($packingtotal as $challan) {
-                                         ?>
+                            ?>
                     <tr>
 
-                        <td><?php echo $users[$challan['packing_station_id']]; ?>
+                        <td>
+                            <?php echo $users[$challan['packing_station_id']]; ?>
                         </td>
                         </td>
-                        <td><?php echo $challan['DC']; ?>
+                        <td>
+                            <?php echo $challan['DC']; ?>
                         </td>
                         </td>
-                        <td><?php echo $challan['Laundry']; ?>
+                        <td>
+                            <?php echo $challan['Laundry']; ?>
                         </td>
                         </td>
-                        <td><?php echo $challan['Shoe']; ?>
+                        <td>
+                            <?php echo $challan['Shoe']; ?>
                         </td>
                         </td>
                     </tr>
                     <?php
-                                     } ?>
+                        } ?>
                 </tbody>
             </table>
 
@@ -978,14 +1081,14 @@ foreach ($allusers as $user) {
         </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
 
 
 
 
 <h3>Packing Monthly</h3>
 
-<?php if (!empty($packingtotalmonthly)) {?>
+<?php if (!empty($packingtotalmonthly)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -1010,24 +1113,28 @@ foreach ($allusers as $user) {
                 </thead>
                 <tbody>
                     <?php foreach ($packingtotalmonthly as $challan) {
-                                         ?>
+                            ?>
                     <tr>
 
-                        <td><?php echo $users[$challan['packing_station_id']]; ?>
+                        <td>
+                            <?php echo $users[$challan['packing_station_id']]; ?>
                         </td>
                         </td>
-                        <td><?php echo $challan['DC']; ?>
+                        <td>
+                            <?php echo $challan['DC']; ?>
                         </td>
                         </td>
-                        <td><?php echo $challan['Laundry']; ?>
+                        <td>
+                            <?php echo $challan['Laundry']; ?>
                         </td>
                         </td>
-                        <td><?php echo $challan['Shoe']; ?>
+                        <td>
+                            <?php echo $challan['Shoe']; ?>
                         </td>
                         </td>
                     </tr>
                     <?php
-                                     } ?>
+                        } ?>
                 </tbody>
             </table>
 
@@ -1035,12 +1142,12 @@ foreach ($allusers as $user) {
         </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
 
 
 <h3>Packing Hourly</h3>
 
-<?php if (!empty($packinghourly)) {?>
+<?php if (!empty($packinghourly)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -1059,32 +1166,35 @@ foreach ($allusers as $user) {
                         <th>Hr No.</th>
                         <th>Total</th>
                         <?php
-                                        
-                                        foreach ($packing_stations as $station) {
-                                            echo "<th>".$users[$station['packing_station_id']]."</th>";
-                                        }
-                                    ?>
+
+                            foreach ($packing_stations as $station) {
+                                echo "<th>" . $users[$station['packing_station_id']] . "</th>";
+                            }
+                            ?>
 
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                                    $t=0;
-                                    $ts=array();
-                                     foreach ($packinghourly as $challan) { ?>
+                        $t = 0;
+                        $ts = array();
+                        foreach ($packinghourly as $challan) { ?>
                     <tr>
-                        <td><?php echo $challan['hr_no']."-".($challan['hr_no']+1); ?>
+                        <td>
+                            <?php echo $challan['hr_no'] . "-" . ($challan['hr_no'] + 1); ?>
                         </td>
-                        <td><?php echo $challan['total']; $t+=$challan['total'];?>
+                        <td>
+                            <?php echo $challan['total'];
+                                    $t += $challan['total']; ?>
                         </td>
                         <?php
-                                        
-                                        foreach ($packing_stations as $station) {
-                                            echo "<td>".$challan[$station['packing_station_id']]."</td>";
-                                            
-                                            $ts[$station['packing_station_id']]+=$challan[$station['packing_station_id']];
-                                        }
-                                    ?>
+
+                                foreach ($packing_stations as $station) {
+                                    echo "<td>" . $challan[$station['packing_station_id']] . "</td>";
+
+                                    $ts[$station['packing_station_id']] += $challan[$station['packing_station_id']];
+                                }
+                                ?>
 
                     </tr>
                     <?php } ?>
@@ -1093,14 +1203,15 @@ foreach ($allusers as $user) {
                 <tfooter>
                     <tr>
                         <td>Total</td>
-                        <td><?php echo $t; ?>
+                        <td>
+                            <?php echo $t; ?>
                         </td>
                         <?php
-                                        
-                                        foreach ($packing_stations as $station) {
-                                            echo "<td>".$ts[$station['packing_station_id']]."</td>";
-                                        }
-                                    ?>
+
+                            foreach ($packing_stations as $station) {
+                                echo "<td>" . $ts[$station['packing_station_id']] . "</td>";
+                            }
+                            ?>
 
                     </tr>
 
@@ -1112,13 +1223,13 @@ foreach ($allusers as $user) {
         </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
 
 
 
 <h3>Dispatch Report</h3>
 
-<?php if (!empty($dispatchData)) {?>
+<?php if (!empty($dispatchData)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -1159,39 +1270,41 @@ foreach ($allusers as $user) {
 
 
                     <?php
-                                    
-                                    $td=0;
-                                    $tdis=0;
-                                    $tdc=0;
-                                    $tdcd=0;
-                                    $l=0;
-                                    $ld=0;
-                                    $s=0;
-                                    $sd=0;
-                                    
-                                    foreach ($dispatchData as $challan) {
-                                        if (($challan['total']-$challan['total_dispatch_all'])==0 &&  $challan['total_dispatch']==0) {
-                                            continue;
-                                        }
-                                   
-                                   
-                                        $color='';
-                                    
-                                    
-                                        $dt=date('d-m-Y', strtotime($dateData));
-                                        $dt1=date('d-m-Y', strtotime($challan['Due_on'].' -1 days'));
-                                    
-                                        if ($dt == $dt1) {
-                                            $color="higlight";
-                                        } ?>
+
+                        $td = 0;
+                        $tdis = 0;
+                        $tdc = 0;
+                        $tdcd = 0;
+                        $l = 0;
+                        $ld = 0;
+                        $s = 0;
+                        $sd = 0;
+
+                        foreach ($dispatchData as $challan) {
+                            if (($challan['total'] - $challan['total_dispatch_all']) == 0 && $challan['total_dispatch'] == 0) {
+                                continue;
+                            }
+
+
+                            $color = '';
+
+
+                            $dt = date('d-m-Y', strtotime($dateData));
+                            $dt1 = date('d-m-Y', strtotime($challan['Due_on'] . ' -1 days'));
+
+                            if ($dt == $dt1) {
+                                $color = "higlight";
+                            } ?>
                     <tr class="<?php echo $color; ?>">
 
-                        <td><?php echo date('d M y', strtotime($challan['Due_on'].' -1 days')); ?>
+                        <td>
+                            <?php echo date('d M y', strtotime($challan['Due_on'] . ' -1 days')); ?>
                         </td>
 
 
-                        <td><?php echo $due_order_count=$challan['total']-$challan['total_dispatch_all']+$challan['total_dispatch'];
-                                        $td+=$due_order_count; ?>
+                        <td>
+                            <?php echo $due_order_count = $challan['total'] - $challan['total_dispatch_all'] + $challan['total_dispatch'];
+                                    $td += $due_order_count; ?>
                         </td>
                         <!--
                                                                          <td><?php echo $challan['total']; ?>
@@ -1202,124 +1315,147 @@ foreach ($allusers as $user) {
                         -->
 
 
-                        <td><?php echo $challan['total_dispatch'];
-                                        $tdis+= $challan['total_dispatch']; ?>
+                        <td>
+                            <?php echo $challan['total_dispatch'];
+                                    $tdis += $challan['total_dispatch']; ?>
                         </td>
 
-                        <td><?php
-                        
-                        if ($due_order_count !=0) {
-                            echo $v=number_format(($challan['total_dispatch']/$due_order_count)*100, 2);
-                        } else {
-                            echo "0.00";
-                        } ?>
+                        <td>
+                            <?php
+
+                                    if ($due_order_count != 0) {
+                                        echo $v = number_format(($challan['total_dispatch'] / $due_order_count) * 100, 2);
+                                    } else {
+                                        echo "0.00";
+                                    } ?>
                         </td>
 
-                        <td><?php echo $challan['DC'];
-                                        $tdc+= $challan['DC']; ?>
+                        <td>
+                            <?php echo $challan['DC'];
+                                    $tdc += $challan['DC']; ?>
                         </td>
 
-                        <td><?php echo $challan['dc_dispatch'];
-                                        $tdcd+= $challan['dc_dispatch']; ?>
+                        <td>
+                            <?php echo $challan['dc_dispatch'];
+                                    $tdcd += $challan['dc_dispatch']; ?>
                         </td>
 
-                        <td><?php
-                        
-                        if ($challan['DC'] != 0) {
-                            echo $v= number_format(($challan['dc_dispatch']/$challan['DC'])*100, 2);
-                        } else {
-                            echo "0.00";
-                        } ?>
+                        <td>
+                            <?php
+
+                                    if ($challan['DC'] != 0) {
+                                        echo $v = number_format(($challan['dc_dispatch'] / $challan['DC']) * 100, 2);
+                                    } else {
+                                        echo "0.00";
+                                    } ?>
                         </td>
-                        <td><?php echo $challan['Laundry'];
-                                        $l+= $challan['Laundry']; ?>
+                        <td>
+                            <?php echo $challan['Laundry'];
+                                    $l += $challan['Laundry']; ?>
                         </td>
 
-                        <td><?php echo $challan['laundry_dispatch'];
-                                        $ld+= $challan['laundry_dispatch']; ?>
+                        <td>
+                            <?php echo $challan['laundry_dispatch'];
+                                    $ld += $challan['laundry_dispatch']; ?>
                         </td>
 
-                        <td><?php
-                        if ($challan['Laundry'] != 0) {
-                            echo  $v = number_format(($challan['laundry_dispatch']/$challan['Laundry'])*100, 2);
-                        } else {
-                            echo "0.00";
-                        } ?>
+                        <td>
+                            <?php
+                                    if ($challan['Laundry'] != 0) {
+                                        echo $v = number_format(($challan['laundry_dispatch'] / $challan['Laundry']) * 100, 2);
+                                    } else {
+                                        echo "0.00";
+                                    } ?>
                         </td>
 
-                        <td><?php echo $challan['Shoe'];
-                                        $s+= $challan['Shoe']; ?>
+                        <td>
+                            <?php echo $challan['Shoe'];
+                                    $s += $challan['Shoe']; ?>
                         </td>
 
-                        <td><?php echo $challan['shoe_dispatch'];
-                                        $sd+= $challan['shoe_dispatch']; ?>
+                        <td>
+                            <?php echo $challan['shoe_dispatch'];
+                                    $sd += $challan['shoe_dispatch']; ?>
                         </td>
 
-                        <td><?php
-                        
-                        if ($challan['Shoe']!= 0) {
-                            echo $v= number_format(($challan['shoe_dispatch']/$challan['Shoe'])*100, 2);
-                        } else {
-                            echo "0.00";
-                        } ?>
+                        <td>
+                            <?php
+
+                                    if ($challan['Shoe'] != 0) {
+                                        echo $v = number_format(($challan['shoe_dispatch'] / $challan['Shoe']) * 100, 2);
+                                    } else {
+                                        echo "0.00";
+                                    } ?>
                         </td>
 
                     </tr>
                     <?php
-                                    } ?>
+                        } ?>
 
                     <tr>
                         <td>Total</td>
-                        <td><?php echo  $td;?>
+                        <td>
+                            <?php echo $td; ?>
                         </td>
-                        <td><?php echo  $tdis;?>
+                        <td>
+                            <?php echo $tdis; ?>
                         </td>
-                        <td><?php
-                        
-                        if ($td != 0) {
-                            echo number_format(($tdis/$td)*100, 2);
-                        } else {
-                            echo "0.00";
-                        }
-                        ?>
+                        <td>
+                            <?php
+
+                                if ($td != 0) {
+                                    echo number_format(($tdis / $td) * 100, 2);
+                                } else {
+                                    echo "0.00";
+                                }
+                                ?>
                         </td>
-                        <td><?php echo  $tdc;?>
+                        <td>
+                            <?php echo $tdc; ?>
                         </td>
-                        <td><?php echo  $tdcd;?>
+                        <td>
+                            <?php echo $tdcd; ?>
                         </td>
-                        <td><?php
-                        if ($tdc != 0) {
-                            echo number_format(($tdcd/$tdc)*100, 2);
-                        } else {
-                            echo "0.00";
-                        }
-                        ?>
+                        <td>
+                            <?php
+                                if ($tdc != 0) {
+                                    echo number_format(($tdcd / $tdc) * 100, 2);
+                                } else {
+                                    echo "0.00";
+                                }
+                                ?>
                         </td>
 
-                        <td><?php echo  $l;?>
+                        <td>
+                            <?php echo $l; ?>
                         </td>
-                        <td><?php echo  $ld;?>
+                        <td>
+                            <?php echo $ld; ?>
                         </td>
-                        <td><?php
-                        if ($l!= 0) {
-                            echo number_format(($ld/$l)*100, 2);
-                        } else {
-                            echo "0.00";
-                        }
-                        ?>
+                        <td>
+                            <?php
+                                if ($l != 0) {
+                                    echo number_format(($ld / $l) * 100, 2);
+                                } else {
+                                    echo "0.00";
+                                }
+                                ?>
                         </td>
 
-                        <td><?php echo  $s;?>
+                        <td>
+                            <?php echo $s; ?>
                         </td>
-                        <td><?php echo  $sd;?>
+                        <td>
+                            <?php echo $sd; ?>
                         </td>
-                        <td><?php
-                        if ($s != 0) {
-                            echo number_format(($sd/$s)*100, 2);
-                        } else {
-                            echo "0.00";
-                        }
-                        ?>
+                        <td>
+                            <?php
+                                if ($s != 0) {
+                                    echo number_format(($sd / $s) * 100, 2);
+                                } else {
+                                    echo "0.00";
+                                }
+                                ?>
                         </td>
 
 
@@ -1331,14 +1467,14 @@ foreach ($allusers as $user) {
         </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
 
 
 
 
 <h3>Dispatch Report Monthly</h3>
 
-<?php if (!empty($dispatchDataMonthly)) {?>
+<?php if (!empty($dispatchDataMonthly)) { ?>
 <div class="card">
 
     <div class="card-body">
@@ -1373,149 +1509,174 @@ foreach ($allusers as $user) {
                 <tbody>
 
                     <?php
-                                    
-                                    
-                                       $td=0;
-                                    $tdis=0;
-                                    $tdc=0;
-                                    $tdcd=0;
-                                    $l=0;
-                                    $ld=0;
-                                    $s=0;
-                                    $sd=0;
-                                    
 
-                                    
-                                    foreach ($dispatchDataMonthly as $challan) {
-                                        ?>
+
+                        $td = 0;
+                        $tdis = 0;
+                        $tdc = 0;
+                        $tdcd = 0;
+                        $l = 0;
+                        $ld = 0;
+                        $s = 0;
+                        $sd = 0;
+
+
+
+                        foreach ($dispatchDataMonthly as $challan) {
+                            ?>
                     <tr>
 
-                        <td><?php echo date('d-m-Y', strtotime($challan['Due_on'].' -1 days')); ?>
+                        <td>
+                            <?php echo date('d-m-Y', strtotime($challan['Due_on'] . ' -1 days')); ?>
                         </td>
 
-                        <td><?php echo $challan['total'];
-                                        $td+=$challan['total']; ?>
+                        <td>
+                            <?php echo $challan['total'];
+                                    $td += $challan['total']; ?>
                         </td>
 
-                        <td><?php echo $challan['total_dispatch'];
-                                        $tdis+=$challan['total_dispatch']; ?>
+                        <td>
+                            <?php echo $challan['total_dispatch'];
+                                    $tdis += $challan['total_dispatch']; ?>
                         </td>
 
-                        <td><?php
-                        
-                        if ($challan['total'] != 0) {
-                            echo $v=number_format(($challan['total_dispatch']/$challan['total'])*100, 2);
-                        } else {
-                            echo "0.00";
-                        } ?>
+                        <td>
+                            <?php
+
+                                    if ($challan['total'] != 0) {
+                                        echo $v = number_format(($challan['total_dispatch'] / $challan['total']) * 100, 2);
+                                    } else {
+                                        echo "0.00";
+                                    } ?>
                         </td>
 
-                        <td><?php echo $challan['DC'];
-                                        $tdc+=$challan['DC']; ?>
+                        <td>
+                            <?php echo $challan['DC'];
+                                    $tdc += $challan['DC']; ?>
                         </td>
 
-                        <td><?php echo $challan['dc_dispatch'];
-                                        $tdcd+=$challan['dc_dispatch']; ?>
+                        <td>
+                            <?php echo $challan['dc_dispatch'];
+                                    $tdcd += $challan['dc_dispatch']; ?>
                         </td>
 
-                        <td><?php
-                        
-                        if ($challan['DC'] != 0) {
-                            echo $v= number_format(($challan['dc_dispatch']/$challan['DC'])*100, 2);
-                        } else {
-                            echo "0.00";
-                        } ?>
+                        <td>
+                            <?php
+
+                                    if ($challan['DC'] != 0) {
+                                        echo $v = number_format(($challan['dc_dispatch'] / $challan['DC']) * 100, 2);
+                                    } else {
+                                        echo "0.00";
+                                    } ?>
                         </td>
-                        <td><?php echo $challan['Laundry'];
-                                        $l+=$challan['Laundry']; ?>
+                        <td>
+                            <?php echo $challan['Laundry'];
+                                    $l += $challan['Laundry']; ?>
                         </td>
 
-                        <td><?php echo $challan['laundry_dispatch'];
-                                        $ld+=$challan['laundry_dispatch']; ?>
+                        <td>
+                            <?php echo $challan['laundry_dispatch'];
+                                    $ld += $challan['laundry_dispatch']; ?>
                         </td>
 
-                        <td><?php
-                        
-                        if ($challan['Laundry'] != 0) {
-                            echo $v= number_format(($challan['laundry_dispatch']/$challan['Laundry'])*100, 2);
-                        } else {
-                            echo "0.00" ;
-                        } ?>
+                        <td>
+                            <?php
+
+                                    if ($challan['Laundry'] != 0) {
+                                        echo $v = number_format(($challan['laundry_dispatch'] / $challan['Laundry']) * 100, 2);
+                                    } else {
+                                        echo "0.00";
+                                    } ?>
                         </td>
 
-                        <td><?php echo $challan['Shoe'];
-                                        $l+=$challan['Shoe']; ?>
+                        <td>
+                            <?php echo $challan['Shoe'];
+                                    $l += $challan['Shoe']; ?>
                         </td>
 
-                        <td><?php echo $challan['shoe_dispatch'];
-                                        $ld+=$challan['shoe_dispatch']; ?>
+                        <td>
+                            <?php echo $challan['shoe_dispatch'];
+                                    $ld += $challan['shoe_dispatch']; ?>
                         </td>
 
-                        <td><?php
-                        
-                        if ($challan['Shoe'] != 0) {
-                            echo $v= number_format(($challan['shoe_dispatch']/$challan['Shoe'])*100, 2);
-                        } else {
-                            echo "0.00";
-                        } ?>
+                        <td>
+                            <?php
+
+                                    if ($challan['Shoe'] != 0) {
+                                        echo $v = number_format(($challan['shoe_dispatch'] / $challan['Shoe']) * 100, 2);
+                                    } else {
+                                        echo "0.00";
+                                    } ?>
                         </td>
 
                     </tr>
                     <?php
-                                    } ?>
+                        } ?>
 
 
                     <tr>
                         <td>Total</td>
-                        <td><?php echo  $td;?>
+                        <td>
+                            <?php echo $td; ?>
                         </td>
-                        <td><?php echo  $tdis;?>
+                        <td>
+                            <?php echo $tdis; ?>
                         </td>
-                        <td><?php
-                        if ($td != 0) {
-                            echo number_format(($tdis/$td)*100, 2);
-                        } else {
-                            echo "0.00";
-                        }
-                        ?>
+                        <td>
+                            <?php
+                                if ($td != 0) {
+                                    echo number_format(($tdis / $td) * 100, 2);
+                                } else {
+                                    echo "0.00";
+                                }
+                                ?>
                         </td>
-                        <td><?php echo  $tdc;?>
+                        <td>
+                            <?php echo $tdc; ?>
                         </td>
-                        <td><?php echo  $tdcd;?>
+                        <td>
+                            <?php echo $tdcd; ?>
                         </td>
-                        <td><?php
-                        if ($tdc != 0) {
-                            echo number_format(($tdcd/$tdc)*100, 2);
-                        } else {
-                            echo "0.00";
-                        }
-                        ?>
-                        </td>
-
-                        <td><?php echo  $l;?>
-                        </td>
-                        <td><?php echo  $ld;?>
-                        </td>
-                        <td><?php
-                        if ($l != 0) {
-                            echo number_format(($ld/$l)*100, 2);
-                        } else {
-                            echo "0.00";
-                        }
-                        ?>
+                        <td>
+                            <?php
+                                if ($tdc != 0) {
+                                    echo number_format(($tdcd / $tdc) * 100, 2);
+                                } else {
+                                    echo "0.00";
+                                }
+                                ?>
                         </td>
 
-                        <td><?php echo  $s;?>
+                        <td>
+                            <?php echo $l; ?>
                         </td>
-                        <td><?php echo  $sd;?>
+                        <td>
+                            <?php echo $ld; ?>
                         </td>
-                        <td><?php
-                        if ($s != 0) {
-                            echo number_format(($sd/$s)*100, 2);
-                        } else {
-                            echo "0.00";
-                        }
-                        ?>
+                        <td>
+                            <?php
+                                if ($l != 0) {
+                                    echo number_format(($ld / $l) * 100, 2);
+                                } else {
+                                    echo "0.00";
+                                }
+                                ?>
+                        </td>
+
+                        <td>
+                            <?php echo $s; ?>
+                        </td>
+                        <td>
+                            <?php echo $sd; ?>
+                        </td>
+                        <td>
+                            <?php
+                                if ($s != 0) {
+                                    echo number_format(($sd / $s) * 100, 2);
+                                } else {
+                                    echo "0.00";
+                                }
+                                ?>
                         </td>
 
 

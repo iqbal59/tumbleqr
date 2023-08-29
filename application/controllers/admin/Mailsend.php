@@ -24,7 +24,7 @@ class Mailsend extends CI_Controller
         //  print_r($data['condition']);
 
         $data['dateData'] = $data['condition']['from_date'];
-        $data['allusers'] = $this->common_model->getAllUserName();
+        //$data['allusers'] = $this->common_model->getAllUserName();
         $data['initialTotals'] = $this->common_model->getInitialTotalData($data['condition']);
         $data['mtdinitial'] = $this->common_model->getInitialTotalDataMonth($data['condition']);
 
