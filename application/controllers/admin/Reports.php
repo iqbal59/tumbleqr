@@ -786,7 +786,7 @@ class Reports extends CI_Controller
             );
             $data['condition'] = $this->security->xss_clean($data['condition']);
             $data['challans'] = $this->common_model->garmentreport($data['condition']);
-            echo $this->db->last_query();
+            //echo $this->db->last_query();
             $data['stores'] = $this->store_model->get_all_stores();
         }
 
@@ -1005,7 +1005,7 @@ class Reports extends CI_Controller
                 'store_id' => $this->input->get('store_id')
             );
             $data['condition'] = $this->security->xss_clean($data['condition']);
-            $data['challans'] = $this->common_model->readytodispatch($data['condition']);
+            $data['challans'] = $this->common_model->otherreadytodispatch($data['condition']);
             $data['stores'] = $this->store_model->get_all_stores();
         }
 
