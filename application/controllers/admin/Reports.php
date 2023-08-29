@@ -458,21 +458,21 @@ class Reports extends CI_Controller
 
     public function photoall()
     {
-        // $data = array();
-        // $data['page_title'] = 'Photo Report';
-        // if ($this->input->server('REQUEST_METHOD') === 'GET') {
-        //     // echo "POST";
-        //     // die();
-        //     $data['condition']=array(
-        //        'from_date'=> $this->input->get('s_from_date')?$this->input->get('s_from_date'):date('Y-m-d'),
-        //        'to_date'=> $this->input->get('s_to_date')?$this->input->get('s_to_date'):date('Y-m-d'),
-        //        'store_id'=> $this->input->get('store_id')
-        //    );
-        //     $data['condition'] = $this->security->xss_clean($data['condition']);
-        //     $data['challans']=$this->common_model->getPackageDataTotalMailReport($data['condition']);
-        //     $data['stores']=$this->store_model->get_all_stores();
-        //     $data['packing_stations']=$this->common_model->getPackingStations();
-        // }
+        $data = array();
+        $data['page_title'] = 'Photo Report';
+        if ($this->input->server('REQUEST_METHOD') === 'GET') {
+            // echo "POST";
+            // die();
+            $data['condition'] = array(
+                'from_date' => $this->input->get('s_from_date') ? $this->input->get('s_from_date') : date('Y-m-d'),
+                'to_date' => $this->input->get('s_to_date') ? $this->input->get('s_to_date') : date('Y-m-d'),
+                'store_id' => $this->input->get('store_id')
+            );
+            $data['condition'] = $this->security->xss_clean($data['condition']);
+            $data['challans'] = $this->common_model->getPhotoAll($data['condition']);
+            $data['stores'] = $this->store_model->get_all_stores();
+
+        }
 
 
         $data['main_content'] = $this->load->view('admin/reports/photoall', $data, true);
@@ -493,6 +493,7 @@ class Reports extends CI_Controller
             );
             $data['condition'] = $this->security->xss_clean($data['condition']);
             $data['challans'] = $this->common_model->getPackageDataHourly($data['condition']);
+            echo $this->db->last_query();
             $data['stores'] = $this->store_model->get_all_stores();
             $data['packing_stations'] = $this->common_model->getPackingStations();
         }

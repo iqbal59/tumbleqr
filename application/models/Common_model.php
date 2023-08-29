@@ -468,6 +468,30 @@ class Common_model extends CI_Model
     }
 
 
+
+
+
+    public function getPhotoAll($param)
+    {
+        // print_r($param);
+
+        if (!empty($param['from_date']) && !empty($param['to_date'])) {
+            $search_query = " and date(CONVERT_TZ(tbl_picture.create_date, @@session.time_zone, '+05:30') )  between '" . $param['from_date'] . "' and '" . $param['to_date'] . "'";
+        } else {
+            $search_query = '';
+        }
+
+        if (!empty($param['store_id'])) {
+            $search_query .= " and store_id='" . $param['store_id'] . "'";
+        }
+
+
+        //$sql="SELECT * FROM `tbl_challan_data` right join (select group_concat(station_id) as st, Barcode, group_concat(CONVERT_TZ(spot_time, @@session.time_zone, '+05:30')) as spt from tbl_spot where 1 $search_query group by Barcode order by spot_time asc) as temp on (temp.Barcode=tbl_challan_data.Barcode) WHERE 1  order by Due_on, Store_Name";
+
+        $sql = "SELECT Store_Name, Order_No, Order_Date, Sub_Garment, Primary_Service, Due_on, date_format(CONVERT_TZ(tbl_picture.create_date, @@session.time_zone, '+05:30'),  '%d-%m-%Y %H:%i:%s') as photo_time, tbl_picture.Barcode, station_id FROM `tbl_picture` inner join tbl_challan_data on (tbl_picture.Barcode=tbl_challan_data.Barcode) WHERE 1 $search_query order by tbl_picture.create_date desc";
+        $query = $this->db->query($sql)->result_array();
+        return $query;
+    }
     /**********************Photo End**** */
 
 

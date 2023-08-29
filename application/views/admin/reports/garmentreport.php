@@ -44,20 +44,20 @@
 
             <?php $msg = $this->session->flashdata('msg'); ?>
             <?php if (isset($msg)): ?>
-                <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
-                    <?php echo $msg; ?> &nbsp;
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                            aria-hidden="true">×</span> </button>
-                </div>
+            <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
+                <?php echo $msg; ?> &nbsp;
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                        aria-hidden="true">×</span> </button>
+            </div>
             <?php endif ?>
 
             <?php $error_msg = $this->session->flashdata('error_msg'); ?>
             <?php if (isset($error_msg)): ?>
-                <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
-                    <?php echo $error_msg; ?> &nbsp;
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                            aria-hidden="true">×</span> </button>
-                </div>
+            <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
+                <?php echo $error_msg; ?> &nbsp;
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                        aria-hidden="true">×</span> </button>
+            </div>
             <?php endif ?>
 
             <div class="card card-outline-info mb-2">
@@ -147,73 +147,74 @@
                 </div>
             </div>
             <?php if (!empty($challans)) { ?>
-                <div class="card">
-                    <div class="card-body pt-1">
-                        <div class="table-responsive">
-                            <table id="example23"
-                                class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
-                                cellspacing="0" cellpadding="0" width="100%">
-                                <thead>
-                                    <tr>
+            <div class="card">
+                <div class="card-body pt-1">
+                    <div class="table-responsive">
+                        <table id="example23"
+                            class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
+                            cellspacing="0" cellpadding="0" width="100%">
+                            <thead>
+                                <tr>
 
-                                        <th>Store Name</th>
-                                        <th>Order No.</th>
-                                        <th>Order Date</th>
-                                        <th>Garment</th>
-                                        <th>Barcode</th>
-                                        <th>Primary Service</th>
-                                        <th>Due On</th>
-                                        <th>Status</th>
-                                        <th>Incoming</th>
-                                        <th>Photo</th>
-                                        <th>LOT</th>
-                                        <th>Spotting</th>
-                                        <th>Washing</th>
-                                        <th>QC</th>
-                                        <th>Iron</th>
-                                        <th>Packing</th>
-                                        <th>Dispatch</th>
-
-
+                                    <th>Store Name</th>
+                                    <th>Order No.</th>
+                                    <th>Order Date</th>
+                                    <th>Garment</th>
+                                    <th>Barcode</th>
+                                    <th>Primary Service</th>
+                                    <th>Due On</th>
+                                    <th>Status</th>
+                                    <th>Incoming</th>
+                                    <th>Photo</th>
+                                    <th>LOT</th>
+                                    <th>Spotting</th>
+                                    <th>Washing</th>
+                                    <th>QC</th>
+                                    <th>Iron</th>
+                                    <th>Packing</th>
+                                    <th>Dispatch</th>
 
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($challans as $challan) {
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($challans as $challan) {
                                         if ($challan['incomplete_cloth'] != 0)
                                             continue;
 
                                         ?>
-                                        <tr>
+                                <tr>
 
-                                            <td>
-                                                <?php echo $challan['Store_Name']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $challan['Order_No']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo date('d-m-Y', strtotime($challan['Order_Date'])); ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $challan['Sub_Garment']; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $challan['Barcode']; ?>
-                                            </td>
-
-
-                                            <td>
-                                                <?php echo $challan['Primary_Service']; ?>
-                                            </td>
-                                            <td><span style="display:none;"><?php echo strtotime($challan['Due_on'] . ' - 1 days'); ?></span>
-                                                <?php echo date("d-m-Y", strtotime($challan['Due_on'] . ' - 1 days')); ?>
-                                            </td>
+                                    <td>
+                                        <?php echo $challan['Store_Name']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $challan['Order_No']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo date('d-m-Y', strtotime($challan['Order_Date'])); ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $challan['Sub_Garment']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $challan['Barcode']; ?>
+                                    </td>
 
 
-                                            <td>
-                                                <?php
+                                    <td>
+                                        <?php echo $challan['Primary_Service']; ?>
+                                    </td>
+                                    <td><span
+                                            style="display:none;"><?php echo strtotime($challan['Due_on'] . ' - 1 days'); ?></span>
+                                        <?php echo date("d-m-Y", strtotime($challan['Due_on'] . ' - 1 days')); ?>
+                                    </td>
+
+
+                                    <td>
+                                        <?php
 
                                                 if ($challan['dispatch_status'] == 1)
                                                     echo "Dispatch";
@@ -221,7 +222,7 @@
                                                     echo "Packed";
                                                 else if ($challan['qc_stage'] == 1)
                                                     echo "Quality Check " . $challan['qc_status'];
-                                                else if ($challan['spot_time'])
+                                                else if ($challan['spot_final_time'])
                                                     echo "Spot";
                                                 else if ($challan['initial_stage'] == 1)
                                                     echo "Incoming";
@@ -232,70 +233,70 @@
                                                         ?>
 
 
-                                                                    </td>
-                                                                    <td>
-                                                <?php if (!empty($challan['initial_time'])) {
+                                    </td>
+                                    <td>
+                                        <?php if (!empty($challan['initial_time'])) {
                                                     echo date('d-m-Y H:i:s', strtotime($challan['initial_time'] . ' +330 mins'));
                                                 } ?>
-                                            </td>
+                                    </td>
 
-                                            <td>
-                                                <?php if (!empty($challan['photo_final_time'])) {
+                                    <td>
+                                        <?php if (!empty($challan['photo_final_time'])) {
                                                     echo date('d-m-Y H:i:s', strtotime($challan['photo_final_time'] . ' +0 mins'));
                                                 } ?>
-                                            </td>
-                                            <td>
-                                                <?php if (!empty($challan['lot_final_time'])) {
+                                    </td>
+                                    <td>
+                                        <?php if (!empty($challan['lot_final_time'])) {
                                                     echo date('d-m-Y H:i:s', strtotime($challan['lot_final_time'] . ' +330 mins'));
                                                 } ?>
-                                            </td>
+                                    </td>
 
 
-                                            <td>
-                                                <?php if (!empty($challan['spot_final_time'])) {
+                                    <td>
+                                        <?php if (!empty($challan['spot_final_time'])) {
                                                     echo date('d-m-Y H:i:s', strtotime($challan['spot_final_time'] . ' +330 mins'));
                                                 } ?>
-                                            </td>
+                                    </td>
 
-                                            <td>
-                                                <?php if (!empty($challan['washing_final_time'])) {
+                                    <td>
+                                        <?php if (!empty($challan['washing_final_time'])) {
                                                     echo date('d-m-Y H:i:s', strtotime($challan['washing_final_time'] . ' +330 mins'));
                                                 } ?>
-                                            </td>
+                                    </td>
 
 
-                                            <td>
-                                                <?php if (!empty($challan['qc_time'])) {
+                                    <td>
+                                        <?php if (!empty($challan['qc_time'])) {
                                                     echo date('d-m-Y H:i:s', strtotime($challan['qc_time'] . ' +330 mins'));
                                                 } ?>
-                                            </td>
+                                    </td>
 
-                                            <td>
-                                                <?php if (!empty($challan['iron_final_time'])) {
+                                    <td>
+                                        <?php if (!empty($challan['iron_final_time'])) {
                                                     echo date('d-m-Y H:i:s', strtotime($challan['iron_final_time'] . ' +330 mins'));
                                                 } ?>
-                                            </td>
+                                    </td>
 
-                                            <td>
-                                                <?php if (!empty($challan['packaging_time'])) {
+                                    <td>
+                                        <?php if (!empty($challan['packaging_time'])) {
                                                     echo date('d-m-Y H:i:s', strtotime($challan['packaging_time'] . ' +330 mins'));
                                                 } ?>
-                                            </td>
-                                            <td>
-                                                <?php if (!empty($challan['dispatch_time'])) {
+                                    </td>
+                                    <td>
+                                        <?php if (!empty($challan['dispatch_time'])) {
                                                     echo date('d-m-Y H:i:s', strtotime($challan['dispatch_time'] . ' +330 mins'));
                                                 } ?>
-                                            </td>
+                                    </td>
 
 
 
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </div>
             <?php } ?>
         </div>
     </div>
