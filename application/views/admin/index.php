@@ -93,28 +93,30 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/fontawesome-free-6.4.2-web/css/all.min.css">
     <style>
+    .con {
+        font-size: 14px !important;
+    }
 
-        .con{
-            font-size:14px !important;
-        }
-        table tbody td{
-            padding: 4px !important;
-        }
-        #main-wrapper div .container-fluid{
-            padding:0;
-        }
-        #main-wrapper div .container-fluid .page-titles{
-            margin: 0px 5px 0px 5px ;
-            padding: 8px 8px 8px 5px !important; 
-        }
-        #main-wrapper div .container-fluid .col-12 .card:nth-of-type(1) .card-body{
-            padding-top: 15px !important; 
-        }
-        #main-wrapper div .container-fluid .col-12 .card:nth-of-type(2) .card-body{
-            padding: 0px 10px 10px 10px;
-        }
+    table tbody td {
+        padding: 4px !important;
+    }
 
+    #main-wrapper div .container-fluid {
+        padding: 0;
+    }
 
+    #main-wrapper div .container-fluid .page-titles {
+        margin: 0px 5px 0px 5px;
+        padding: 8px 8px 8px 5px !important;
+    }
+
+    #main-wrapper div .container-fluid .col-12 .card:nth-of-type(1) .card-body {
+        padding-top: 15px !important;
+    }
+
+    #main-wrapper div .container-fluid .col-12 .card:nth-of-type(2) .card-body {
+        padding: 0px 10px 10px 10px;
+    }
     </style>
 </head>
 
@@ -533,24 +535,28 @@
 
                         <li class="m-0 p-0">
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-
-                                    class="fa fa-pencil-square-o con"></i><span class="hide-menu font-weight-normal">Initial Stage</span></a>
+                                    class="fa fa-pencil-square-o con"></i><span
+                                    class="hide-menu font-weight-normal">Initial Stage</span></a>
 
                             <ul aria-expanded="false" class="collapse">
 
 
                                 <li><a href="<?php echo base_url('admin/reports/initial') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Initial Stage Report</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Initial
+                                            Stage Report</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/initialcomplete') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Complete</span></a></li>
+                                            class="fa fa-angle-right"></i> <span
+                                            class="font-weight-normal">Complete</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/initialtotal') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Total Report</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Total
+                                            Report</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/initialhourly') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Report Hourly</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Report
+                                            Hourly</span></a></li>
 
 
                             </ul>
@@ -559,21 +565,25 @@
 
                         <li class="m-0 p-0">
 
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
-                            class="fa-solid fa-arrows-to-circle con"></i><span class="hide-menu font-weight-normal">Spotting Stage</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa-solid fa-arrows-to-circle con"></i><span
+                                    class="hide-menu font-weight-normal">Spotting Stage</span></a>
 
                             <ul aria-expanded="false" class="collapse">
 
 
                                 <li><a href="<?php echo base_url('admin/reports/spotcomplete') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Complete</span></a></li>
+                                            class="fa fa-angle-right"></i> <span
+                                            class="font-weight-normal">Complete</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/spottotal') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Total Report</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Total
+                                            Report</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/spothourly') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class=" font-weight-normal">Report Hourly</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class=" font-weight-normal">Report
+                                            Hourly</span></a></li>
 
 
                             </ul>
@@ -584,22 +594,25 @@
 
                         <li class="m-0 p-0">
 
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
-                            class="fa-solid fa-medal con"></i><span class="hide-menu font-weight-normal">Quality
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa-solid fa-medal con"></i><span class="hide-menu font-weight-normal">Quality
                                     Checking</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
 
                                 <li><a href="<?php echo base_url('admin/reports/qccomplete') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Complete</span></a></li>
+                                            class="fa fa-angle-right"></i> <span
+                                            class="font-weight-normal">Complete</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/qcreport') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Quality Report</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Quality
+                                            Report</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/qcreporthourly') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Quality Report Hourly</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Quality
+                                            Report Hourly</span></a></li>
 
 
 
@@ -612,22 +625,26 @@
 
                         <li class="m-0 p-0">
 
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
-                            class="fa-solid fa-suitcase con"></i><span class="hide-menu font-weight-normal">Packaging</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa-solid fa-suitcase con"></i><span
+                                    class="hide-menu font-weight-normal">Packaging</span></a>
 
                             <ul aria-expanded="false" class="collapse">
 
 
 
                                 <li><a href="<?php echo base_url('admin/reports/packagingcomplete') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Complete</span></a></li>
+                                            class="fa fa-angle-right"></i> <span
+                                            class="font-weight-normal">Complete</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/packagingall') ?>"><i
-                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Total Report</span></a></li>
+                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Total
+                                            Report</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/packaging') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Packing Hourly</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Packing
+                                            Hourly</span></a></li>
 
 
 
@@ -637,42 +654,50 @@
 
                         <li class="m-0 p-0">
 
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
-                            class="fa-solid fa-camera con"></i><span class="hide-menu font-weight-normal">Photo</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa-solid fa-camera con"></i><span
+                                    class="hide-menu font-weight-normal">Photo</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
 
                                 <li><a href="<?php echo base_url('admin/reports/photocomplete') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Complete</span></a></li>
+                                            class="fa fa-angle-right"></i> <span
+                                            class="font-weight-normal">Complete</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/photoall') ?>"><i
-                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Total Report</span></a></li>
+                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Total
+                                            Report</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/photo') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Photo Hourly</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Photo
+                                            Hourly</span></a></li>
 
                             </ul>
                         </li>
 
                         <li class="m-0 p-0">
 
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
-                            class="fa-solid fa-vest-patches con"></i><span class="hide-menu font-weight-normal">Tailor</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa-solid fa-vest-patches con"></i><span
+                                    class="hide-menu font-weight-normal">Tailor</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
 
                                 <li><a href="<?php echo base_url('admin/reports/tailorcomplete') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Complete</span></a></li>
+                                            class="fa fa-angle-right"></i> <span
+                                            class="font-weight-normal">Complete</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/tailorall') ?>"><i
-                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Total Report</span></a></li>
+                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Total
+                                            Report</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/tailor') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Tailor Hourly</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Tailor
+                                            Hourly</span></a></li>
 
                             </ul>
                         </li>
@@ -682,21 +707,25 @@
 
                         <li class="m-0 p-0">
 
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
-                            class="fa-solid fa-arrows-rotate con"></i><span class="hide-menu font-weight-normal">Lot Making</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa-solid fa-arrows-rotate con"></i><span
+                                    class="hide-menu font-weight-normal">Lot Making</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
 
                                 <li><a href="<?php echo base_url('admin/reports/lotcomplete') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Complete</span></a></li>
+                                            class="fa fa-angle-right"></i> <span
+                                            class="font-weight-normal">Complete</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/lotall') ?>"><i
-                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Total Report</span></a></li>
+                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Total
+                                            Report</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/lot') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Lot Hourly</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Lot
+                                            Hourly</span></a></li>
 
                             </ul>
                         </li>
@@ -705,21 +734,25 @@
 
                         <li class="m-0 p-0">
 
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
-                            class="fa-solid fa-jug-detergent con"></i><span class="hide-menu font-weight-normal">Washing</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa-solid fa-jug-detergent con"></i><span
+                                    class="hide-menu font-weight-normal">Washing</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
 
                                 <li><a href="<?php echo base_url('admin/reports/washcomplete') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Complete</span></a></li>
+                                            class="fa fa-angle-right"></i> <span
+                                            class="font-weight-normal">Complete</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/washall') ?>"><i
-                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Total Report</span></a></li>
+                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Total
+                                            Report</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/wash') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Wash Hourly</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Wash
+                                            Hourly</span></a></li>
 
                             </ul>
                         </li>
@@ -727,21 +760,25 @@
 
                         <li class="m-0 p-0">
 
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
-                            class="fa-solid fa-wind con"></i><span class="hide-menu font-weight-normal">Dry</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa-solid fa-wind con"></i><span
+                                    class="hide-menu font-weight-normal">Dry</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
 
                                 <li><a href="<?php echo base_url('admin/reports/drycomplete') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Complete</span></a></li>
+                                            class="fa fa-angle-right"></i> <span
+                                            class="font-weight-normal">Complete</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/dryall') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Total Report</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Total
+                                            Report</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/dry') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Dry Hourly</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Dry
+                                            Hourly</span></a></li>
 
                             </ul>
                         </li>
@@ -749,20 +786,24 @@
 
                         <li class="m-0 p-0">
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o con"></i><span class="hide-menu font-weight-normal">Iron Lot</span></a>
+                                    class="fa fa-pencil-square-o con"></i><span
+                                    class="hide-menu font-weight-normal">Iron Lot</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
 
                                 <li><a href="<?php echo base_url('admin/reports/ironlotcomplete') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Complete</span></a></li>
+                                            class="fa fa-angle-right"></i> <span
+                                            class="font-weight-normal">Complete</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/ironlotall') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Total Report</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Total
+                                            Report</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/ironlot') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Iron Lot Hourly</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Iron Lot
+                                            Hourly</span></a></li>
 
                             </ul>
                         </li>
@@ -771,20 +812,24 @@
 
                         <li class="m-0 p-0">
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-pencil-square-o con"></i><span class="hide-menu font-weight-normal">Iron</span></a>
+                                    class="fa fa-pencil-square-o con"></i><span
+                                    class="hide-menu font-weight-normal">Iron</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
 
                                 <li><a href="<?php echo base_url('admin/reports/ironcomplete') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Complete</span></a></li>
+                                            class="fa fa-angle-right"></i> <span
+                                            class="font-weight-normal">Complete</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/ironall') ?>"><i
-                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Total Report</span></a></li>
+                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Total
+                                            Report</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/iron') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Iron Hourly</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Iron
+                                            Hourly</span></a></li>
 
                             </ul>
                         </li>
@@ -793,8 +838,9 @@
 
                         <li class="m-0 p-0">
 
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
-                            class="fa-solid fa-store con"></i><span class="hide-menu font-weight-normal">Vendor</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa-solid fa-store con"></i><span
+                                    class="hide-menu font-weight-normal">Vendor</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
@@ -819,7 +865,8 @@
                                             class="fa fa-angle-right"></i> Raffu Challan</a></li> -->
 
                                 <li><a href="<?php echo base_url('admin/reports/report') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Report</span></a></li>
+                                            class="fa fa-angle-right"></i> <span
+                                            class="font-weight-normal">Report</span></a></li>
 
 
                             </ul>
@@ -829,18 +876,18 @@
 
                         <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
-
-                                href="<?php echo base_url('admin/reports/pendingreport') ?>" aria-expanded="false"><i 
-                                class="fa-solid fa-file-circle-exclamation con"></i><span class="hide-menu font-weight-normal">Pending Garment
+                                href="<?php echo base_url('admin/reports/pendingreport') ?>" aria-expanded="false"><i
+                                    class="fa-solid fa-file-circle-exclamation con"></i><span
+                                    class="hide-menu font-weight-normal">Pending Garment
                                     Report</span></a>
                         </li>
 
 
                         <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
-
-                                href="<?php echo base_url('admin/reports/garmentreport') ?>" aria-expanded="false"><i 
-                                class="fa-solid fa-file-lines con"></i><span class="hide-menu font-weight-normal">Garment
+                                href="<?php echo base_url('admin/reports/garmentreport') ?>" aria-expanded="false"><i
+                                    class="fa-solid fa-file-lines con"></i><span
+                                    class="hide-menu font-weight-normal">Garment
                                     Report</span></a>
                         </li>
 
@@ -848,8 +895,8 @@
 
                         <li class="m-0 p-0">
                             <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/missingyn') ?>"
-
-                                aria-expanded="false"><i class="fa-regular fa-circle-question con"></i><span class="hide-menu font-weight-normal">Missing
+                                aria-expanded="false"><i class="fa-regular fa-circle-question con"></i><span
+                                    class="hide-menu font-weight-normal">Missing
                                     Garment Report</span></a>
                         </li>
 
@@ -857,8 +904,8 @@
 
                         <li class="m-0 p-0">
                             <a class="waves-effect waves-dark" href="<?php echo base_url('admin/reports/imgreport') ?>"
-
-                                aria-expanded="false"><i class="fa-solid fa-image con"></i><span class="hide-menu font-weight-normal">Garment
+                                aria-expanded="false"><i class="fa-solid fa-image con"></i><span
+                                    class="hide-menu font-weight-normal">Garment
                                     Image</span></a>
                         </li>
 
@@ -868,73 +915,79 @@
                         <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
                                 href="<?php echo base_url('admin/reports/pendingorderreport') ?>"
-
-                                aria-expanded="false"><i class="fa-solid fa-clock-rotate-left con"></i><span class="hide-menu font-weight-normal">Order
+                                aria-expanded="false"><i class="fa-solid fa-clock-rotate-left con"></i><span
+                                    class="hide-menu font-weight-normal">Order
                                     Status</span></a>
                         </li>
 
 
                         <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
-
-                                href="<?php echo base_url('admin/reports/orderpriority') ?>" aria-expanded="false"><i 
-                                class="fa-solid fa-list-ol con"></i><span class="hide-menu font-weight-normal">Order
+                                href="<?php echo base_url('admin/reports/orderpriority') ?>" aria-expanded="false"><i
+                                    class="fa-solid fa-list-ol con"></i><span class="hide-menu font-weight-normal">Order
                                     Priority</span></a>
                         </li>
 
                         <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
                                 href="<?php echo base_url('admin/reports/orderstatuspriority') ?>"
-
-                                aria-expanded="false"><i class="mdi mdi-gauge con"></i><span class="hide-menu font-weight-normal">Order Status
+                                aria-expanded="false"><i class="mdi mdi-gauge con"></i><span
+                                    class="hide-menu font-weight-normal">Order Status
                                     Priority</span></a>
                         </li>
 
                         <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
                                 href="<?php echo base_url('admin/reports/printpackinglabel') ?>"
-
-                                aria-expanded="false"><i class="fa-solid fa-barcode con"></i><span class="hide-menu font-weight-normal">Print Packing
+                                aria-expanded="false"><i class="fa-solid fa-barcode con"></i><span
+                                    class="hide-menu font-weight-normal">Print Packing
                                     Label</span></a>
                         </li>
 
                         <li class="m-0 p-0">
                             <a class="waves-effect waves-dark"
-
-                                href="<?php echo base_url('admin/reports/exceptionreport') ?>" aria-expanded="false"><i 
-                                class="fa-solid fa-triangle-exclamation con"></i><span class="hide-menu font-weight-normal">Exception
+                                href="<?php echo base_url('admin/reports/exceptionreport') ?>" aria-expanded="false"><i
+                                    class="fa-solid fa-triangle-exclamation con"></i><span
+                                    class="hide-menu font-weight-normal">Exception
                                     Report</span></a>
                         </li>
 
 
                         <li class="m-0 p-0">
 
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
-                            class="fa-solid fa-truck-fast con"></i><span class="hide-menu font-weight-normal">Dispatch</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa-solid fa-truck-fast con"></i><span
+                                    class="hide-menu font-weight-normal">Dispatch</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
 
                                 <li><a href="<?php echo base_url('admin/reports/readytodispatch') ?>"><i
-                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Ready to Dispatch</span> </a></li>
+                                            class="fa fa-angle-right"></i><span class="font-weight-normal">Ready to
+                                            Dispatch</span> </a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/quickwing') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Quick Win</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Quick
+                                            Win</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/otherreadytodispatch') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Other Ready to Dispatch</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Other Ready
+                                            to Dispatch</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/dispatchreport') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Dispatch Order</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Dispatch
+                                            Order</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/reports/sendchallan') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Send Challan</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Send
+                                            Challan</span></a></li>
 
 
                                 <li><a href="<?php echo base_url('admin/reports/cancelledorder') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Cancel Order</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Cancel
+                                            Order</span></a></li>
 
 
 
@@ -944,20 +997,28 @@
 
                         <li class="m-0 p-0">
 
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i 
-                            class="fa-solid fa-file-import con"></i><span class="hide-menu font-weight-normal">Import</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                    class="fa-solid fa-file-import con"></i><span
+                                    class="hide-menu font-weight-normal">Import</span></a>
 
                             <ul aria-expanded="false" class="collapse">
 
 
                                 <li><a href="<?php echo base_url('admin/import/importchallandata') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Import Challan Data</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Import
+                                            Challan Data</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/import/importstorechallandata') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Import Store Challan Data</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Import Store
+                                            Challan Data</span></a></li>
 
                                 <li><a href="<?php echo base_url('admin/import/challandata') ?>"><i
-                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Challan data</span></a></li>
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Challan
+                                            Data</span></a></li>
+
+                                <li><a href="<?php echo base_url('admin/import/challanautodata') ?>"><i
+                                            class="fa fa-angle-right"></i> <span class="font-weight-normal">Import Auto
+                                            Challan data</span></a></li>
 
 
                             </ul>
@@ -974,36 +1035,43 @@
                         <li class="m-0 p-0">
                             <a class="has-arrow waves-effect waves-dark"
                                 href="<?php echo base_url('admin/user/all_user_list') ?>" aria-expanded="false"><i
-                                    class="fa fa-user con"></i><span class="hide-menu font-weight-normal">User</span></a>
+                                    class="fa fa-user con"></i><span
+                                    class="hide-menu font-weight-normal">User</span></a>
                             <ul aria-expanded="false" class="collapse">
 
                                 <?php if ($this->session->userdata('role') == 'admin'): ?>
 
-                                <li><a href="<?php echo base_url('admin/user') ?>"><i class="fa fa-angle-right con"></i> <span class="font-weight-normal">Add User</span></a></li>
+                                <li><a href="<?php echo base_url('admin/user') ?>"><i class="fa fa-angle-right con"></i>
+                                        <span class="font-weight-normal">Add User</span></a></li>
                                 <li><a href="<?php echo base_url('admin/user/power') ?>"><i
-                                            class="fa fa-angle-right con"></i> <span class="font-weight-normal">Add User Power</span></a></li>
+                                            class="fa fa-angle-right con"></i> <span class="font-weight-normal">Add User
+                                            Power</span></a></li>
                                 <?php else: ?>
 
                                 <?php if (check_power(1)): ?>
 
-                                <li><a href="<?php echo base_url('admin/user') ?>"><i class="fa fa-angle-right"></i> <span class="font-weight-normal">Add User</span> </a></li>
+                                <li><a href="<?php echo base_url('admin/user') ?>"><i class="fa fa-angle-right"></i>
+                                        <span class="font-weight-normal">Add User</span> </a></li>
                                 <?php endif; ?>
                                 <?php endif ?>
 
                                 <li><a href="<?php echo base_url('admin/user/all_user_list') ?>"><i
-                                            class="fa fa-angle-right con"></i> <span class="font-weight-normal">All Users</span></a></li>
+                                            class="fa fa-angle-right con"></i> <span class="font-weight-normal">All
+                                            Users</span></a></li>
                             </ul>
                         </li>
 
 
                         <li class="m-0 p-0">
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
-                                    class="fa fa-shopping-cart con"></i><span class="hide-menu font-weight-normalfont-weight-normal">Master</span></a>
+                                    class="fa fa-shopping-cart con"></i><span
+                                    class="hide-menu font-weight-normalfont-weight-normal">Master</span></a>
                             <ul aria-expanded="false" class="collapse">
 
 
 
-                                <li><a href="<?php echo base_url('admin/store') ?>"><i class="fa fa-angle-right con"></i>
+                                <li><a href="<?php echo base_url('admin/store') ?>"><i
+                                            class="fa fa-angle-right con"></i>
                                         <span class="font-weight-normal">Stores</span> </a></li>
 
 
