@@ -127,7 +127,9 @@ and also iPads specifically.
                 <tbody>
                     <?php foreach ($initialTotals as $challan) { ?>
                     <tr>
-                        <td><span style="display:none;"><?php echo strtotime($challan['date']); ?></span>
+                        <td><span style="display:none;">
+                                <?php echo strtotime($challan['date']); ?>
+                            </span>
                             <?php echo $challan['date']; ?>
                         </td>
 
@@ -361,6 +363,91 @@ if (!empty($initialTotalsHourly)) { ?>
                     </tr>
 
                 </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+<?php } ?>
+
+
+
+<h3>Spot Hourly</h3>
+
+<?php if (!empty($spotTotalHourly)) { ?>
+<div class="card">
+
+    <div class="card-body">
+
+
+
+        <div class="table-responsive m-t-40">
+
+
+
+
+            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0"
+                width="100%">
+                <thead>
+                    <tr>
+                        <th>Hr No.</th>
+                        <th>Total</th>
+                        <?php
+
+                            foreach ($stations as $station) {
+                                echo "<th>" . $station['station_id'] . "</th>";
+                            }
+                            ?>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $t = 0;
+                        $tp = 0;
+                        $tf = 0;
+                        $ts = array();
+                        foreach ($spotTotalHourly as $challan) { ?>
+                    <tr>
+                        <td>
+                            <?php echo $challan['hr_no'] . "-" . ($challan['hr_no'] + 1); ?>
+                        </td>
+                        <td>
+                            <?php echo $challan['total'];
+                                    $t += $challan['total']; ?>
+                        </td>
+
+                        <?php
+
+                                foreach ($stations as $station) {
+                                    echo "<td>" . $challan[$station['station_id']] . "</td>";
+                                    $ts[$station['station_id']] += $challan[$station['station_id']];
+                                }
+                                ?>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+
+                <tfooter>
+                    <tr>
+                        <td>Total</td>
+                        <td>
+                            <?php echo $t; ?>
+                        </td>
+
+                        <?php
+
+                            foreach ($stations as $station) {
+                                echo "<td>" . $ts[$station['station_id']] . "</td>";
+                            }
+                            ?>
+
+
+                    </tr>
+
+                </tfooter>
+
             </table>
 
 
@@ -666,89 +753,6 @@ if (!empty($initialTotalsHourly)) { ?>
 <?php } ?>
 
 
-<h3>Spot Hourly</h3>
-
-<?php if (!empty($spotTotalHourly)) { ?>
-<div class="card">
-
-    <div class="card-body">
-
-
-
-        <div class="table-responsive m-t-40">
-
-
-
-
-            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0"
-                width="100%">
-                <thead>
-                    <tr>
-                        <th>Hr No.</th>
-                        <th>Total</th>
-                        <?php
-
-                            foreach ($stations as $station) {
-                                echo "<th>" . $users[$station['station_id']] . "</th>";
-                            }
-                            ?>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        $t = 0;
-                        $tp = 0;
-                        $tf = 0;
-                        $ts = array();
-                        foreach ($spotTotalHourly as $challan) { ?>
-                    <tr>
-                        <td>
-                            <?php echo $challan['hr_no'] . "-" . ($challan['hr_no'] + 1); ?>
-                        </td>
-                        <td>
-                            <?php echo $challan['total'];
-                                    $t += $challan['total']; ?>
-                        </td>
-
-                        <?php
-
-                                foreach ($stations as $station) {
-                                    echo "<td>" . $challan[$station['station_id']] . "</td>";
-                                    $ts[$station['station_id']] += $challan[$station['station_id']];
-                                }
-                                ?>
-                    </tr>
-                    <?php } ?>
-                </tbody>
-
-                <tfooter>
-                    <tr>
-                        <td>Total</td>
-                        <td>
-                            <?php echo $t; ?>
-                        </td>
-
-                        <?php
-
-                            foreach ($stations as $station) {
-                                echo "<td>" . $ts[$station['station_id']] . "</td>";
-                            }
-                            ?>
-
-
-                    </tr>
-
-                </tfooter>
-
-            </table>
-
-
-        </div>
-    </div>
-</div>
-<?php } ?>
-
 
 <h3>QC Total</h3>
 <?php if (!empty($qctotal)) { ?>
@@ -786,7 +790,7 @@ if (!empty($initialTotalsHourly)) { ?>
                     <?php foreach ($qctotal as $challan) { ?>
                     <tr>
                         <td>
-                            <?php echo $users[$challan['qc_station_id']]; ?>
+                            <?php echo $challan['qc_station_id']; ?>
                         </td>
                         <td>
                             <?php echo $challan['total']; ?>
@@ -867,7 +871,7 @@ if (!empty($initialTotalsHourly)) { ?>
                     <?php foreach ($qctotalmonthly as $challan) { ?>
                     <tr>
                         <td>
-                            <?php echo $users[$challan['qc_station_id']]; ?>
+                            <?php echo $challan['qc_station_id']; ?>
                         </td>
                         <td>
                             <?php echo $challan['total']; ?>
@@ -1056,7 +1060,7 @@ if (!empty($initialTotalsHourly)) { ?>
                     <tr>
 
                         <td>
-                            <?php echo $users[$challan['packing_station_id']]; ?>
+                            <?php echo $challan['packing_station_id']; ?>
                         </td>
                         </td>
                         <td>
@@ -1117,7 +1121,7 @@ if (!empty($initialTotalsHourly)) { ?>
                     <tr>
 
                         <td>
-                            <?php echo $users[$challan['packing_station_id']]; ?>
+                            <?php echo $challan['packing_station_id']; ?>
                         </td>
                         </td>
                         <td>
@@ -1168,7 +1172,7 @@ if (!empty($initialTotalsHourly)) { ?>
                         <?php
 
                             foreach ($packing_stations as $station) {
-                                echo "<th>" . $users[$station['packing_station_id']] . "</th>";
+                                echo "<th>" . $station['packing_station_id'] . "</th>";
                             }
                             ?>
 

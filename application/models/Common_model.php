@@ -72,6 +72,9 @@ class Common_model extends CI_Model
 
 
 
+
+
+
     public function getInitialTotalDataMonth($param)
     {
         // print_r($param);
