@@ -1184,9 +1184,13 @@ class Reports extends CI_Controller
             $store_id = $this->input->get('store_id');
             $from = $this->input->get('from');
             $to = $this->input->get('to');
-            if ($order_no && $store_id) {
-                $this->common_model->dispatchorder($order_no, $store_id);
-                $this->session->set_flashdata('msg', 'Store added Successfully');
+            if ($order_no && $store_id) { {
+                    $this->common_model->dispatchorder($order_no, $store_id);
+                    // sendimagemailcontent
+                    $this->sendphotomailsend($store_id, $order_no);
+                }
+
+                $this->session->set_flashdata('msg', 'Dispatch Successfully');
             } else {
                 $this->session->set_flashdata('error_msg', 'Error');
             }
@@ -1198,7 +1202,65 @@ class Reports extends CI_Controller
         }
     }
 
+    private function sendphotomailsend($store_id, $order_no)
+    {
+        $data = array();
+        //$data['page_title'] = 'Pending Report';
+        // if ($this->input->server('REQUEST_METHOD') === 'GET' && $this->input->get('store_id') && $this->input->get('order_no')) {
+        if ($store_id != null && $order_no != null) {
+            $content = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/imagemailcontent?store_id=' . $this->input->get('store_id') . '&order_no=' . $this->input->get('order_no'));
+            if (!$content) {
+                return;
+            }
 
+            $this->load->library('PHPMailer_Lib');
+
+            // PHPMailer object
+            $mail = $this->phpmailer_lib->load();
+
+            // SMTP configuration
+            $mail->isSMTP();
+            $mail->Host = 'mail.centuryfasteners.in';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'admin@centuryfasteners.in';
+            $mail->Password = 'B5]DIG&#OcNH';
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
+
+            $mail->setFrom('admin@centuryfasteners.in', 'tumbledry');
+            $mail->addReplyTo('admin@centuryfasteners.in', 'tumbledry');
+
+            // Add a recipient
+            $mail->addAddress('Gaurav.Nigam@tumbledry.in');
+            $mail->addCC('Akash.patel@tumbledry.in');
+            $mail->addBCC('iqbal.alam59@gmail.com');
+
+            // Add cc or bcc
+            // $mail->addCC('Gaurav.Teotia@tumbledry.in');
+            // $mail->addCC('gaurishankarm@gmail.com');
+            // $mail->addCC('tumbledryfactory@gmail.com');
+            // $mail->addBCC('iqbal.alam59@gmail.com');
+
+            // Email subject
+            $mail->Subject = 'Image email';
+
+            // Set email format to HTML
+            $mail->isHTML(true);
+
+            // Email body content
+            $mailContent = $content;
+
+            $mail->Body = $mailContent;
+
+            // Send email
+            if (!$mail->send()) {
+                //echo 'Message could not be sent.';
+                //echo 'Mailer Error: ' . $mail->ErrorInfo;
+            } else {
+                //echo 'Message has been sent';
+            }
+        }
+    }
 
     public function cancelorder()
     {

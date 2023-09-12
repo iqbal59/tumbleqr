@@ -111,11 +111,12 @@ class Mailsend extends CI_Controller
         }
     }
 
-    public function sendimagemailcontent()
+    public function sendimagemailcontent($store_id, $order_no)
     {
         $data = array();
         //$data['page_title'] = 'Pending Report';
-        if ($this->input->server('REQUEST_METHOD') === 'GET' && $this->input->get('store_id') && $this->input->get('order_no')) {
+        // if ($this->input->server('REQUEST_METHOD') === 'GET' && $this->input->get('store_id') && $this->input->get('order_no')) {
+        if ($store_id != null && $order_no != null) {
             $content = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/imagemailcontent?store_id=' . $this->input->get('store_id') . '&order_no=' . $this->input->get('order_no'));
             if (!$content) {
                 return;
@@ -140,7 +141,7 @@ class Mailsend extends CI_Controller
 
             // Add a recipient
             $mail->addAddress('Gaurav.Nigam@tumbledry.in');
-            $mail->addCC('gaurishankarm@gmail.com');
+            $mail->addCC('Akash.patel@tumbledry.in');
             $mail->addBCC('iqbal.alam59@gmail.com');
 
             // Add cc or bcc
