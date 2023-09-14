@@ -1187,7 +1187,7 @@ class Reports extends CI_Controller
             if ($order_no && $store_id) { {
                     $this->common_model->dispatchorder($order_no, $store_id);
                     // sendimagemailcontent
-                    $flg = 0;
+                    $flgPhoto = 0;
                     $imgData = $this->common_model->getmailimages($order_no, $store_id);
                     foreach ($imgData as $img) {
                         if ($img['picture_new']) {
@@ -1195,7 +1195,7 @@ class Reports extends CI_Controller
                             break;
                         }
                     }
-                    if ($flg == 1)
+                    if ($flgPhoto == 1)
                         $this->sendphotomailsend($store_id, $order_no);
                 }
 
