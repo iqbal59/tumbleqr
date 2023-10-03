@@ -1214,12 +1214,10 @@ class Reports extends CI_Controller
     public function sendphotomailsend($store_id, $order_no)
     {
         $data = array();
-        echo "dsfdf";
         //$data['page_title'] = 'Pending Report';
         // if ($this->input->server('REQUEST_METHOD') === 'GET' && $this->input->get('store_id') && $this->input->get('order_no')) {
         if ($store_id != null && $order_no != null) {
-            echo "ddd";
-            echo $content = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/imagemailcontent?store_id=' . $this->input->get('store_id') . '&order_no=' . $this->input->get('order_no'));
+            $content = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/imagemailcontent?store_id=' . $store_id . '&order_no=' . $order_no);
             if (!$content) {
                 return;
             }
@@ -1243,9 +1241,9 @@ class Reports extends CI_Controller
             $mail->addReplyTo('admin@centuryfasteners.in', 'tumbledry');
 
             // Add a recipient
-            // $mail->addAddress('Gaurav.Nigam@tumbledry.in');
-            //$mail->addCC('Akash.patel@tumbledry.in');
-            $mail->addAddress('iqbal.alam59@gmail.com');
+            $mail->addAddress('Gaurav.Nigam@tumbledry.in');
+            $mail->addCC('Akash.patel@tumbledry.in');
+            $mail->addBCC('iqbal.alam59@gmail.com');
 
             // Add cc or bcc
             // $mail->addCC('Gaurav.Teotia@tumbledry.in');
@@ -1266,10 +1264,10 @@ class Reports extends CI_Controller
 
             // Send email
             if (!$mail->send()) {
-                echo 'Message could not be sent.';
+                // echo 'Message could not be sent.';
                 //echo 'Mailer Error: ' . $mail->ErrorInfo;
             } else {
-                echo 'Message has been sent';
+                //echo 'Message has been sent';
             }
         }
     }
