@@ -1216,59 +1216,59 @@ class Reports extends CI_Controller
         $data = array();
         //$data['page_title'] = 'Pending Report';
         // if ($this->input->server('REQUEST_METHOD') === 'GET' && $this->input->get('store_id') && $this->input->get('order_no')) {
-        if ($store_id != null && $order_no != null) {
-            echo $content = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/imagemailcontent?store_id=' . $this->input->get('store_id') . '&order_no=' . $this->input->get('order_no'));
-            if (!$content) {
-                return;
-            }
-
-            $this->load->library('PHPMailer_Lib');
-
-            // PHPMailer object
-            $mail = $this->phpmailer_lib->load();
-
-            // SMTP configuration
-            $mail->isSMTP();
-            $mail->Host = 'mail.centuryfasteners.in';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'admin@centuryfasteners.in';
-            $mail->Password = 'B5]DIG&#OcNH';
-            $mail->SMTPSecure = 'ssl';
-            $mail->Port = 465;
-
-            $mail->setFrom('admin@centuryfasteners.in', 'tumbledry');
-            $mail->addReplyTo('admin@centuryfasteners.in', 'tumbledry');
-
-            // Add a recipient
-            $mail->addAddress('Gaurav.Nigam@tumbledry.in');
-            $mail->addCC('Akash.patel@tumbledry.in');
-            $mail->addBCC('iqbal.alam59@gmail.com');
-
-            // Add cc or bcc
-            // $mail->addCC('Gaurav.Teotia@tumbledry.in');
-            // $mail->addCC('gaurishankarm@gmail.com');
-            // $mail->addCC('tumbledryfactory@gmail.com');
-            // $mail->addBCC('iqbal.alam59@gmail.com');
-
-            // Email subject
-            $mail->Subject = 'Image email';
-
-            // Set email format to HTML
-            $mail->isHTML(true);
-
-            // Email body content
-            $mailContent = $content;
-
-            $mail->Body = $mailContent;
-
-            // Send email
-            if (!$mail->send()) {
-                //echo 'Message could not be sent.';
-                //echo 'Mailer Error: ' . $mail->ErrorInfo;
-            } else {
-                //echo 'Message has been sent';
-            }
+        //if ($store_id != null && $order_no != null) {
+        echo $content = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/imagemailcontent?store_id=' . $this->input->get('store_id') . '&order_no=' . $this->input->get('order_no'));
+        if (!$content) {
+            return;
         }
+
+        $this->load->library('PHPMailer_Lib');
+
+        // PHPMailer object
+        $mail = $this->phpmailer_lib->load();
+
+        // SMTP configuration
+        $mail->isSMTP();
+        $mail->Host = 'mail.centuryfasteners.in';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'admin@centuryfasteners.in';
+        $mail->Password = 'B5]DIG&#OcNH';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+
+        $mail->setFrom('admin@centuryfasteners.in', 'tumbledry');
+        $mail->addReplyTo('admin@centuryfasteners.in', 'tumbledry');
+
+        // Add a recipient
+        $mail->addAddress('Gaurav.Nigam@tumbledry.in');
+        $mail->addCC('Akash.patel@tumbledry.in');
+        $mail->addBCC('iqbal.alam59@gmail.com');
+
+        // Add cc or bcc
+        // $mail->addCC('Gaurav.Teotia@tumbledry.in');
+        // $mail->addCC('gaurishankarm@gmail.com');
+        // $mail->addCC('tumbledryfactory@gmail.com');
+        // $mail->addBCC('iqbal.alam59@gmail.com');
+
+        // Email subject
+        $mail->Subject = 'Image email';
+
+        // Set email format to HTML
+        $mail->isHTML(true);
+
+        // Email body content
+        $mailContent = $content;
+
+        $mail->Body = $mailContent;
+
+        // Send email
+        if (!$mail->send()) {
+            //echo 'Message could not be sent.';
+            //echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            //echo 'Message has been sent';
+        }
+        //}
     }
 
     public function cancelorder()
