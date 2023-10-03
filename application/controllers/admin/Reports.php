@@ -1211,7 +1211,7 @@ class Reports extends CI_Controller
         }
     }
 
-    private function sendphotomailsend($store_id, $order_no)
+    public function sendphotomailsend($store_id, $order_no)
     {
         $data = array();
         //$data['page_title'] = 'Pending Report';
