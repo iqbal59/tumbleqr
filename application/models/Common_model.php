@@ -1108,7 +1108,8 @@ class Common_model extends CI_Model
     /********GET IMAGE BY QUERY*******/
     public function getmailimages($order_no, $store_id)
     {
-        $sql = "select * from tbl_picture where tbl_picture.Barcode in (select tbl_challan_data.Barcode from tbl_challan_data where Order_No='" . $order_no . "' and store_id=" . $store_id . ")";
+        // $sql = "select * from tbl_picture where tbl_picture.Barcode in (select tbl_challan_data.Barcode from tbl_challan_data where Order_No='" . $order_no . "' and store_id=" . $store_id . ")";
+        $sql = "select * from tbl_picture where substring_index(tbl_picture.Barcode,'-', 1) = '" . $order_no . "' and  substring_index(tbl_picture.Barcode,'-', -1)=" . $store_id;
         return $this->db->query($sql)->result_array();
     }
 

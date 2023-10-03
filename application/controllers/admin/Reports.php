@@ -1191,7 +1191,7 @@ class Reports extends CI_Controller
                     $imgData = $this->common_model->getmailimages($order_no, $store_id);
                     foreach ($imgData as $img) {
                         if ($img['picture_new']) {
-                            $flg = 1;
+                            $flgPhoto = 1;
                             break;
                         }
                     }
