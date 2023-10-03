@@ -1184,20 +1184,20 @@ class Reports extends CI_Controller
             $store_id = $this->input->get('store_id');
             $from = $this->input->get('from');
             $to = $this->input->get('to');
-            if ($order_no && $store_id) { {
-                    $this->common_model->dispatchorder($order_no, $store_id);
-                    // sendimagemailcontent
-                    $flgPhoto = 0;
-                    $imgData = $this->common_model->getmailimages($order_no, $store_id);
-                    foreach ($imgData as $img) {
-                        if ($img['picture_new']) {
-                            $flgPhoto = 1;
-                            break;
-                        }
+            if ($order_no && $store_id) {
+                $this->common_model->dispatchorder($order_no, $store_id);
+                // sendimagemailcontent
+                $flgPhoto = 0;
+                $imgData = $this->common_model->getmailimages($order_no, $store_id);
+                foreach ($imgData as $img) {
+                    if ($img['picture_new']) {
+                        $flgPhoto = 1;
+                        break;
                     }
-                    if ($flgPhoto == 1)
-                        $this->sendphotomailsend($store_id, $order_no);
                 }
+                if ($flgPhoto == 1)
+                    $this->sendphotomailsend($store_id, $order_no);
+
 
                 $this->session->set_flashdata('msg', 'Dispatch Successfully');
             } else {
