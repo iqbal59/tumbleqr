@@ -1196,10 +1196,10 @@ class Reports extends CI_Controller
                     }
                 }
                 if ($flgPhoto == 1)
-                    $this->sendphotomailsend($store_id, $order_no);
+                    //  $this->sendphotomailsend($store_id, $order_no);
 
 
-                $this->session->set_flashdata('msg', 'Dispatch Successfully');
+                    $this->session->set_flashdata('msg', 'Dispatch Successfully');
             } else {
                 $this->session->set_flashdata('error_msg', 'Error');
             }
