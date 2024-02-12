@@ -44,20 +44,20 @@
 
             <?php $msg = $this->session->flashdata('msg'); ?>
             <?php if (isset($msg)): ?>
-            <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
-                <?php echo $msg; ?> &nbsp;
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                        aria-hidden="true">×</span> </button>
-            </div>
+                <div class="alert alert-success delete_msg pull" style="width: 100%"> <i class="fa fa-check-circle"></i>
+                    <?php echo $msg; ?> &nbsp;
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                            aria-hidden="true">×</span> </button>
+                </div>
             <?php endif ?>
 
             <?php $error_msg = $this->session->flashdata('error_msg'); ?>
             <?php if (isset($error_msg)): ?>
-            <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
-                <?php echo $error_msg; ?> &nbsp;
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
-                        aria-hidden="true">×</span> </button>
-            </div>
+                <div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i>
+                    <?php echo $error_msg; ?> &nbsp;
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span
+                            aria-hidden="true">×</span> </button>
+                </div>
             <?php endif ?>
 
             <div class="card card-outline-info mb-2">
@@ -201,96 +201,112 @@
                 </div>
             </div>
             <?php if (!empty($challans)) { ?>
-            <div class="card">
-                <div class="card-body pt-1">
-                    <div class="table-responsive">
-                        <table id="example23"
-                            class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
-                            cellspacing="0" cellpadding="0" width="100%">
-                            <thead>
-                                <tr>
+                <div class="card">
+                    <div class="card-body pt-1">
+                        <div class="table-responsive">
+                            <table id="example23"
+                                class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
+                                cellspacing="0" cellpadding="0" width="100%">
+                                <thead>
+                                    <tr>
 
-                                    <th>Store Name</th>
-                                    <th>Order No.</th>
-                                    <th>Order Date</th>
-                                    <th>Cloth No.</th>
-                                    <th>Garment</th>
-                                    <th>Qc Status</th>
-                                    <th>Station Id</th>
-                                    <th>Spot Station Id</th>
-                                    <th>Spot Time</th>
-                                    <th>Primary Service</th>
-                                    <th>Due On</th>
-                                    <th>Scan Time</th>
-                                    <th>B W</th>
-                                    <th>B H</th>
-                                    <th>A W</th>
-                                    <th>A H</th>
+                                        <th>Store Name</th>
+                                        <th>Order No.</th>
+                                        <th>Order Date</th>
+                                        <th>Cloth No.</th>
+                                        <th>Garment</th>
+                                        <th>Qc Status</th>
+                                        <th>Station Id</th>
+                                        <th>Spot Station Id</th>
+                                        <th>Spot Time</th>
+                                        <th>Primary Service</th>
+                                        <th>Due On</th>
+                                        <th>Scan Time</th>
+                                        <th>B W</th>
+                                        <th>B H</th>
+                                        <th>A W</th>
+                                        <th>A H</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($challans as $challan) { ?>
-                                <tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($challans as $challan) { ?>
+                                        <tr>
 
-                                    <td>
-                                        <?php echo $challan['Store_Name']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $challan['Order_No']; ?>
-                                    </td>
-                                    <td><span style="display:none;">
-                                            <?php echo strtotime($challan['Order_Date']); ?>
-                                        </span>
-                                        <?php echo date("d-m-Y", strtotime($challan['Order_Date'])); ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $challan['Barcode']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $challan['Sub_Garment']; ?>
-                                    </td>
+                                            <td>
+                                                <?php echo $challan['Store_Name']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['Order_No']; ?>
+                                            </td>
+                                            <td><span style="display:none;">
+                                                    <?php echo strtotime($challan['Order_Date']); ?>
+                                                </span>
+                                                <?php echo date("d-m-Y", strtotime($challan['Order_Date'])); ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['Barcode']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['Sub_Garment']; ?>
+                                            </td>
 
-                                    <td>
-                                        <?php echo $challan['qc_status']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $challan['qc_station_id']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $challan['spot_station_id']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $challan['spot_time']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $challan['Primary_Service']; ?>
-                                    </td>
+                                            <td>
+                                                <?php echo $challan['qc_status']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['qc_station_id']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['spot_station_id']; ?>
+                                            </td>
+                                            <td>
+                                                <?php
 
-                                    <td><span style="display:none;">
-                                            <?php echo strtotime($challan['Due_on']); ?>
-                                        </span>
-                                        <?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
-                                    </td>
-                                    <td><span style="display:none;">
-                                            <?php echo strtotime($challan['qc_time']); ?>
-                                        </span>
-                                        <?php echo $challan['qc_time']; ?>
-                                    </td>
+                                                //echo $challan['spot_time']; 
+                                                echo date('d-m-Y H:i:s', strtotime($challan['spot_time'] . ' +330 mins'));
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['Primary_Service']; ?>
+                                            </td>
 
-                                    <td><?php echo $challan['garment_width']; ?></td>
-                                    <td><?php echo $challan['garment_height']; ?></td>
-                                    <td><?php echo $challan['qc_garment_width']; ?></td>
-                                    <td><?php echo $challan['qc_garment_height']; ?></td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                                            <td><span style="display:none;">
+                                                    <?php echo strtotime($challan['Due_on']); ?>
+                                                </span>
+                                                <?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
+                                            </td>
+                                            <td><span style="display:none;">
+                                                    <?php echo strtotime($challan['qc_time']); ?>
+                                                </span>
+                                                <?php
+
+                                                //echo $challan['qc_time'];
+                                                echo date('d-m-Y H:i:s', strtotime($challan['qc_time'] . ' +330 mins'));
+                                                ?>
+                                            </td>
+
+                                            <td>
+                                                <?php echo $challan['garment_width']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['garment_height']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['qc_garment_width']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $challan['qc_garment_height']; ?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
 
 
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php } ?>
         </div>
     </div>
