@@ -516,7 +516,7 @@ class Common_model extends CI_Model
         // $sql="SELECT * FROM `tbl_challan_data` left join (select group_concat(qc_status) as qcs, Barcode, group_concat(CONVERT_TZ(qc_time, @@session.time_zone, '+05:30')) as qct from tbl_qc group by Barcode order by qc_time asc) as temp on (temp.Barcode=tbl_challan_data.Barcode) WHERE 1 and qc_stage=1 $search_query order by Due_on, Store_Name";
 
 
-        $sql = "SELECT Store_Name, Order_No, Order_Date, Sub_Garment, tbl_qc.qc_status, tbl_qc.qc_station_id, Primary_Service, Due_on, date_format(CONVERT_TZ(tbl_qc.qc_time, @@session.time_zone, '+05:30'),  '%d-%m-%Y %H:%i:%s') as qc_time, tbl_qc.Barcode, tbl_spot.station_id as spot_station_id, date_format(CONVERT_TZ(tbl_spot.spot_time, @@session.time_zone, '+05:30'),  '%d-%m-%Y %H:%i:%s') as spot_time FROM `tbl_qc` inner join tbl_challan_data on (tbl_qc.Barcode=tbl_challan_data.Barcode) inner join tbl_spot on (tbl_spot.Barcode=tbl_qc.Barcode) WHERE 1 and qc_stage=1  $search_query order by tbl_qc.qc_time desc";
+        $sql = "SELECT Store_Name, Order_No, Order_Date, Sub_Garment, garment_width,garment_height,qc_garment_width,qc_garment_height, tbl_qc.qc_status, tbl_qc.qc_station_id, Primary_Service, Due_on, date_format(CONVERT_TZ(tbl_qc.qc_time, @@session.time_zone, '+05:30'),  '%d-%m-%Y %H:%i:%s') as qc_time, tbl_qc.Barcode, tbl_spot.station_id as spot_station_id, date_format(CONVERT_TZ(tbl_spot.spot_time, @@session.time_zone, '+05:30'),  '%d-%m-%Y %H:%i:%s') as spot_time FROM `tbl_qc` inner join tbl_challan_data on (tbl_qc.Barcode=tbl_challan_data.Barcode) inner join tbl_spot on (tbl_spot.Barcode=tbl_qc.Barcode) WHERE 1 and qc_stage=1  $search_query order by tbl_qc.qc_time desc";
 
 
         $query = $this->db->query($sql)->result_array();

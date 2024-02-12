@@ -68,19 +68,21 @@
                     <form method="get" action="<?php echo base_url('admin/reports/qccomplete') ?>"
                         class="form-horizontal" novalidate>
                         <div class="form-body">
-                            
+
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="row"> 
+                                    <div class="row">
                                         <div class="col-md-12 controls">
                                             <div class="row">
                                                 <div class="col-md-2">
                                                     <div class="form-group m-0">
                                                         <h5>Enter From Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="date" name="s_from_date" class="form-control form-control-sm"
-                                                                placeholder="MM/DD/YYYY" 
-                                                                value="<?php if(!empty($condition)){echo $condition['from_date'];} ?>">
+                                                            <input type="date" name="s_from_date"
+                                                                class="form-control form-control-sm"
+                                                                placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
+                                                                    echo $condition['from_date'];
+                                                                } ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -88,53 +90,65 @@
                                                     <div class="form-group m-0">
                                                         <h5>Enter To Date <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="date" name="s_to_date" class="form-control form-control-sm"
-                                                                placeholder="MM/DD/YYYY" 
-                                                                value="<?php if(!empty($condition)){echo $condition['to_date'];}?>">
+                                                            <input type="date" name="s_to_date"
+                                                                class="form-control form-control-sm"
+                                                                placeholder="MM/DD/YYYY" value="<?php if (!empty($condition)) {
+                                                                    echo $condition['to_date'];
+                                                                } ?>">
                                                         </div>
                                                     </div>
                                                 </div>
 
-<div class="col-md-3">
+                                                <div class="col-md-3">
                                                     <div class="form-group m-0">
                                                         <h5>Store Name</h5>
                                                         <div class="controls">
-                                                           <select  name="store_id" class="form-control form-control-sm">
-	                                                           <option value="">--Select--</option>
-	                                                           <?php
-		                                                           if(!empty($stores)){
-			                                                           foreach($stores as $store){
-				                                                           $selected='';
-				                                                            if(!empty($condition)){if($condition['store_id']==$store['store_id']) {$selected="selected";}}
-				                                                           
-				                                                           echo '<option value="'.$store['store_id'].'"   '.$selected.'>'.$store['Store_Name'].'</option>';
-			                                                           }
-		                                                           }
-		                                                           ?>
-                                                           </select>
+                                                            <select name="store_id"
+                                                                class="form-control form-control-sm">
+                                                                <option value="">--Select--</option>
+                                                                <?php
+                                                                if (!empty($stores)) {
+                                                                    foreach ($stores as $store) {
+                                                                        $selected = '';
+                                                                        if (!empty($condition)) {
+                                                                            if ($condition['store_id'] == $store['store_id']) {
+                                                                                $selected = "selected";
+                                                                            }
+                                                                        }
+
+                                                                        echo '<option value="' . $store['store_id'] . '"   ' . $selected . '>' . $store['Store_Name'] . '</option>';
+                                                                    }
+                                                                }
+                                                                ?>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
 
 
 
-<div class="col-md-3">
+                                                <div class="col-md-3">
                                                     <div class="form-group m-0">
                                                         <h5>Services</h5>
                                                         <div class="controls">
-                                                           <select  name="services" class="form-control form-control-sm">
-	                                                           <option value="">--Select--</option>
-	                                                           <?php
-		                                                           if(!empty($services)){
-			                                                           foreach($services as $service){
-				                                                           $selected='';
-				                                                            if(!empty($condition)){if($condition['services']==$service['Primary_Service']) {$selected="selected";}}
-				                                                           
-				                                                           echo '<option value="'.$service['Primary_Service'].'"   '.$selected.'>'.$service['Primary_Service'].'</option>';
-			                                                           }
-		                                                           }
-		                                                           ?>
-                                                           </select>
+                                                            <select name="services"
+                                                                class="form-control form-control-sm">
+                                                                <option value="">--Select--</option>
+                                                                <?php
+                                                                if (!empty($services)) {
+                                                                    foreach ($services as $service) {
+                                                                        $selected = '';
+                                                                        if (!empty($condition)) {
+                                                                            if ($condition['services'] == $service['Primary_Service']) {
+                                                                                $selected = "selected";
+                                                                            }
+                                                                        }
+
+                                                                        echo '<option value="' . $service['Primary_Service'] . '"   ' . $selected . '>' . $service['Primary_Service'] . '</option>';
+                                                                    }
+                                                                }
+                                                                ?>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -145,7 +159,8 @@
                                                     <div class="form-group mt-1">
                                                         <label class="control-label text-right col-md-3"></label>
                                                         <div class="controls">
-                                                            <button type="submit" class="btn btn-sm btn-success">Show</button>
+                                                            <button type="submit"
+                                                                class="btn btn-sm btn-success">Show</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -174,8 +189,8 @@
 
 
                             <!-- CSRF token -->
-                            <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>"
-                                value="<?=$this->security->get_csrf_hash();?>" />
+                            <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>"
+                                value="<?= $this->security->get_csrf_hash(); ?>" />
 
 
 
@@ -185,11 +200,12 @@
                     </form>
                 </div>
             </div>
-            <?php if(!empty($challans)) {?>
+            <?php if (!empty($challans)) { ?>
             <div class="card">
                 <div class="card-body pt-1">
                     <div class="table-responsive">
-                        <table id="example23" class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
+                        <table id="example23"
+                            class="display text-dark nowrap table table-hover table-striped table-bordered table-sm"
                             cellspacing="0" cellpadding="0" width="100%">
                             <thead>
                                 <tr>
@@ -202,38 +218,70 @@
                                     <th>Qc Status</th>
                                     <th>Station Id</th>
                                     <th>Spot Station Id</th>
-                                       <th>Spot Time</th>
+                                    <th>Spot Time</th>
                                     <th>Primary Service</th>
                                     <th>Due On</th>
                                     <th>Scan Time</th>
-                                  
+                                    <th>B W</th>
+                                    <th>B H</th>
+                                    <th>A W</th>
+                                    <th>A H</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($challans as $challan){ ?>
+                                <?php foreach ($challans as $challan) { ?>
                                 <tr>
 
-                                    <td><?php echo $challan['Store_Name']; ?></td>
-                                    <td><?php echo $challan['Order_No']; ?></td>
-                                    <td><span
-                                            style="display:none;"><?php echo strtotime($challan['Order_Date']);?></span><?php echo date("d-m-Y", strtotime($challan['Order_Date'])); ?>
+                                    <td>
+                                        <?php echo $challan['Store_Name']; ?>
                                     </td>
-                                    <td><?php echo $challan['Barcode']; ?></td>
-                                    <td><?php echo $challan['Sub_Garment']; ?></td>
-                                     
-									<td><?php echo $challan['qc_status']; ?></td>
-                                    <td><?php echo $challan['qc_station_id']; ?></td>
-                                     <td><?php echo $challan['spot_station_id']; ?></td>
-                                       <td><?php echo $challan['spot_time']; ?></td>
-                                    <td><?php echo $challan['Primary_Service']; ?></td>
-                                   
-                                    <td><span
-                                            style="display:none;"><?php echo strtotime($challan['Due_on']);?></span><?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
+                                    <td>
+                                        <?php echo $challan['Order_No']; ?>
                                     </td>
-                                    <td><span
-                                            style="display:none;"><?php echo strtotime($challan['qc_time']);?></span><?php echo $challan['qc_time']; ?>
+                                    <td><span style="display:none;">
+                                            <?php echo strtotime($challan['Order_Date']); ?>
+                                        </span>
+                                        <?php echo date("d-m-Y", strtotime($challan['Order_Date'])); ?>
                                     </td>
-                                   
+                                    <td>
+                                        <?php echo $challan['Barcode']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $challan['Sub_Garment']; ?>
+                                    </td>
+
+                                    <td>
+                                        <?php echo $challan['qc_status']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $challan['qc_station_id']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $challan['spot_station_id']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $challan['spot_time']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $challan['Primary_Service']; ?>
+                                    </td>
+
+                                    <td><span style="display:none;">
+                                            <?php echo strtotime($challan['Due_on']); ?>
+                                        </span>
+                                        <?php echo date("d-m-Y", strtotime($challan['Due_on'])); ?>
+                                    </td>
+                                    <td><span style="display:none;">
+                                            <?php echo strtotime($challan['qc_time']); ?>
+                                        </span>
+                                        <?php echo $challan['qc_time']; ?>
+                                    </td>
+
+                                    <td><?php echo $challan['garment_width']; ?></td>
+                                    <td><?php echo $challan['garment_height']; ?></td>
+                                    <td><?php echo $challan['qc_garment_width']; ?></td>
+                                    <td><?php echo $challan['qc_garment_height']; ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -243,7 +291,7 @@
                     </div>
                 </div>
             </div>
-            <?php }?>
+            <?php } ?>
         </div>
     </div>
 

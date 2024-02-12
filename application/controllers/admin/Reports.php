@@ -795,6 +795,34 @@ class Reports extends CI_Controller
         $this->load->view('admin/index', $data);
     }
 
+
+    public function exportgarmentreport()
+    {
+        $data = array();
+        $data['condition'] = array(
+            'from_date' => $this->input->get('s_from_date') ? $this->input->get('s_from_date') : date('Y-m-d'),
+            'to_date' => $this->input->get('s_to_date') ? $this->input->get('s_to_date') : date('Y-m-d'),
+
+        );
+        $data['condition'] = $this->security->xss_clean($data['condition']);
+
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename=garments-' . date('d-m-Y') . '.csv');
+        // create a file pointer connected to the output stream
+        $output = fopen('php://output', 'w');
+        // output the column headings
+
+
+        fputcsv($output, array('Store Name', 'Order No.', 'Order Date', 'Garment', 'Barcode', 'Primary Service', 'Due On', 'Status', 'Incoming', 'Photo', 'LOT', 'Spotting', 'Washing', 'QC', 'Iron', 'Packing', 'Dispatch'));
+        $data['challans'] = $this->common_model->garmentreport($data['condition']);
+
+        foreach ($data['rosters'] as $row) {
+            $itemrow = array();
+            fputcsv($output, $itemrow);
+        }
+    }
+
+
     public function exceptionreport()
     {
         $data = array();
