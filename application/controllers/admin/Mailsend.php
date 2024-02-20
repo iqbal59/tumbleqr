@@ -140,9 +140,10 @@ class Mailsend extends CI_Controller
             $mail->addReplyTo('admin@centuryfasteners.in', 'tumbledry');
 
             // Add a recipient
-            $mail->addAddress('Gaurav.Nigam@tumbledry.in');
-            $mail->addCC('Akash.patel@tumbledry.in');
-            $mail->addBCC('iqbal.alam59@gmail.com');
+            //$mail->addAddress('Gaurav.Nigam@tumbledry.in');
+            $mail->addAddress('iqbal.alam59@gmail.com');
+            //$mail->addCC('Akash.patel@tumbledry.in');
+            //$mail->addBCC('iqbal.alam59@gmail.com');
 
             // Add cc or bcc
             // $mail->addCC('Gaurav.Teotia@tumbledry.in');
