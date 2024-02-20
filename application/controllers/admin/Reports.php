@@ -1224,10 +1224,10 @@ class Reports extends CI_Controller
                     }
                 }
                 if ($flgPhoto == 1)
-                    //  $this->sendphotomailsend($store_id, $order_no);
+                    $this->sendphotomailsend($store_id, $order_no);
 
 
-                    $this->session->set_flashdata('msg', 'Dispatch Successfully');
+                $this->session->set_flashdata('msg', 'Dispatch Successfully');
             } else {
                 $this->session->set_flashdata('error_msg', 'Error');
             }
@@ -1269,10 +1269,10 @@ class Reports extends CI_Controller
             $mail->addReplyTo('admin@centuryfasteners.in', 'tumbledry');
 
             // Add a recipient
-            //$mail->addAddress('Gaurav.Nigam@tumbledry.in');
-            $mail->addAddress('iqbal.alam59@gmail.com');
+            $mail->addAddress('Gaurav.Nigam@tumbledry.in');
+            //$mail->addAddress('iqbal.alam59@gmail.com');
             $mail->addCC('Akash.patel@tumbledry.in');
-            //$mail->addBCC('iqbal.alam59@gmail.com');
+            $mail->addBCC('iqbal.alam59@gmail.com');
 
 
             // Email subject
