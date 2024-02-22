@@ -117,7 +117,7 @@ class Mailsend extends CI_Controller
         //$data['page_title'] = 'Pending Report';
         // if ($this->input->server('REQUEST_METHOD') === 'GET' && $this->input->get('store_id') && $this->input->get('order_no')) {
         if ($store_id != null && $order_no != null) {
-            $content = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/imagemailcontent?store_id=' . $this->input->get('store_id') . '&order_no=' . $this->input->get('order_no'));
+            echo $content = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/imagemailcontent?store_id=' . $this->input->get('store_id') . '&order_no=' . $this->input->get('order_no'));
             if (!$content) {
                 return;
             }
