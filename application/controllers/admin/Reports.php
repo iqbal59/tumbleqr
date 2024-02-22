@@ -1258,15 +1258,25 @@ class Reports extends CI_Controller
 
             // SMTP configuration
             $mail->isSMTP();
-            $mail->Host = 'mail.centuryfasteners.in';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'admin@centuryfasteners.in';
-            $mail->Password = 'B5]DIG&#OcNH';
-            $mail->SMTPSecure = 'ssl';
-            $mail->Port = 465;
+            // $mail->Host = 'mail.centuryfasteners.in';
+            // $mail->SMTPAuth = true;
+            // $mail->Username = 'admin@centuryfasteners.in';
+            // $mail->Password = 'B5]DIG&#OcNH';
+            // $mail->SMTPSecure = 'ssl';
+            // $mail->Port = 465;
 
-            $mail->setFrom('admin@centuryfasteners.in', 'tumbledry');
-            $mail->addReplyTo('admin@centuryfasteners.in', 'tumbledry');
+            // $mail->setFrom('admin@centuryfasteners.in', 'tumbledry');
+            // $mail->addReplyTo('admin@centuryfasteners.in', 'tumbledry');
+
+            $mail->Host = 'smtp.office365.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'mis2@tumbledry.in';
+            $mail->Password = 'Dag79650';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+
+            $mail->setFrom('mis2@tumbledry.in', 'Tumbledry');
+            $mail->addReplyTo('mis2@tumbeldry.in', 'Tumbledry');
 
             // Add a recipient
             $mail->addAddress('Gaurav.Nigam@tumbledry.in');
