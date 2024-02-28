@@ -153,6 +153,7 @@ class Mailsend extends CI_Controller
 
             $mail->addCC('anuj18.9999@gmail.com');
             $mail->addCC('iqbal.alam59@gmail.com');
+            $mail->addCC('tech@tumbledry.in');
             //$mail->addCC('Akash.patel@tumbledry.in');
             //$mail->addBCC('iqbal.alam59@gmail.com');
 
