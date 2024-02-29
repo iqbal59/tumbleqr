@@ -1283,6 +1283,7 @@ class Reports extends CI_Controller
             //$mail->addAddress('iqbal.alam59@gmail.com');
             $mail->addCC('Akash.patel@tumbledry.in');
             $mail->addBCC('iqbal.alam59@gmail.com');
+            $mail->addCC('Romigaurav@gmail.com');
 
 
             // Email subject
