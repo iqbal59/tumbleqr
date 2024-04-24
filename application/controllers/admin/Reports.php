@@ -1287,7 +1287,7 @@ class Reports extends CI_Controller
 
 
             // Email subject
-            $mail->Subject = 'Image email';
+            $mail->Subject = 'Before & After Images Of Tumbledry Order #' . $order_no;
 
             // Set email format to HTML
             $mail->isHTML(true);
