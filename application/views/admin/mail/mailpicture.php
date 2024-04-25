@@ -13,17 +13,21 @@
 
 
 
-            <?php foreach ($imagesData as $image) {
+            <?php 
+            $i=0;
+            foreach ($imagesData as $image) {
                 //  if (($image['remarks'] != 'Colour Bleed' && $image['remarks'] != 'Stain') || $image['picture_new'] == '')
                 if (!$image['picture_new'])
                     continue;
                 ?>
             <tr>
                 <td align="center" style="padding-top:15px; position:relative;">
+                    <?php if($i==0){?>
                     <img src="https://simplifytumbledry.in/assets/emailer/before_after/before.png" alt=""
                         style="position:absolute; top:0;left:30;">
                     <img src="https://simplifytumbledry.in/assets/emailer/before_after/after.png" alt=""
                         style="position:absolute; top:0;right:30;">
+                    <?php }?>
                     <div
                         style="padding-bottom:60px; background:url('https://simplifytumbledry.in/assets/emailer/before_after/bg-image.png')  no-repeat  bottom center; margin :0 auto; width:80%">
                         <table align="center" border:"0" style=" background:#fff;padding:3%; margin:0px;" width="98%">
@@ -47,7 +51,7 @@
                 </td>
             </tr>
 
-            <?php } ?>
+            <?php $i++; } ?>
 
 
 
