@@ -25,7 +25,7 @@
                     <td align="center" style="padding-top:15px;">
 
                         <div
-                            style="width:564px; height:<?php echo $i == 0 ? '372px' : '332px' ?>'; background:url('https://simplifytumbledry.in/assets/emailer/before_after/<?php echo $i == 0 ? 'first_row_bg.png' : 'bg-image.png' ?>') no-repeat bottom center; margin :0 auto; ">
+                            style="width:564px; height:<?php echo $i == 0 ? '372px' : '332px' ?>'; background:url('https://simplifytumbledry.in/assets/emailer/before_after/<?php echo $i == 0 ? 'first_row_bg.png' : 'bg-image.png' ?>') #fff no-repeat bottom center; margin :0 auto; ">
                             <div style="<?php echo $i == 0 ? 'padding:50px' : 'padding:0px 50px 50px 50px' ?>">
                                 <table align="center" border:"0" width="98%">
 
