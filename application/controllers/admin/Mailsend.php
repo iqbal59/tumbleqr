@@ -130,25 +130,25 @@ class Mailsend extends CI_Controller
 
             // SMTP configuration
             $mail->isSMTP();
-            $mail->Host = 'mail.centuryfasteners.in';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'admin@centuryfasteners.in';
-            $mail->Password = 'B5]DIG&#OcNH';
-            $mail->SMTPSecure = 'ssl';
-            $mail->Port = 465;
-
-            // $mail->Host = 'smtp.office365.com';
+            // $mail->Host = 'mail.centuryfasteners.in';
             // $mail->SMTPAuth = true;
-            // $mail->Username = 'mis2@tumbledry.in';
-            // $mail->Password = 'Dag79650';
-            // $mail->SMTPSecure = 'tls';
-            // $mail->Port = 587;
+            // $mail->Username = 'admin@centuryfasteners.in';
+            // $mail->Password = 'B5]DIG&#OcNH';
+            // $mail->SMTPSecure = 'ssl';
+            // $mail->Port = 465;
+
+            $mail->Host = 'smtp.office365.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'mis2@tumbledry.in';
+            $mail->Password = 'Dag79650';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
 
             $mail->setFrom('mis2@tumbledry.in', 'Tumbledry');
             $mail->addReplyTo('mis2@tumbeldry.in', 'Tumbledry');
 
             // Add a recipient
-            $mail->addAddress('tech@tumbledry.in');
+            $mail->addAddress('iqbal.alam59@gmail.com');
             // $mail->addCC('anuj.gupta@tumbledry.in');
 
             // $mail->addCC('anuj18.9999@gmail.com');
