@@ -1,6 +1,6 @@
 <div
-    style="max-width:600px; background:url('https://simplifytumbledry.in/assets/emailer/before_after/bg.png') #fff top left; margin:0 auto;">
-    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
+    style="max-width:604px; background:url('https://simplifytumbledry.in/assets/emailer/before_after/bg.png') #fff top left; margin:0 auto;">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tbody>
             <tr>
                 <td align="center">
@@ -13,45 +13,45 @@
 
 
 
-            <?php 
-            $i=0;
+            <?php
+            $i = 0;
+            //$imagesData = array(array('picture' => '6633314e61358.jpg', 'picture_new' => '6633314e61358.jpg'), array('picture' => '6633314e61358.jpg', 'picture_new' => '6633314e61358.jpg'));
             foreach ($imagesData as $image) {
-                //  if (($image['remarks'] != 'Colour Bleed' && $image['remarks'] != 'Stain') || $image['picture_new'] == '')
+
                 if (!$image['picture_new'])
                     continue;
                 ?>
-            <tr>
-                <td align="center" style="padding-top:15px; position:relative;">
-                    <?php if($i==0){?>
-                    <img src="https://simplifytumbledry.in/assets/emailer/before_after/before.png" alt=""
-                        style="position:absolute; top:0;left:30;">
-                    <img src="https://simplifytumbledry.in/assets/emailer/before_after/after.png" alt=""
-                        style="position:absolute; top:0;right:30;">
-                    <?php }?>
-                    <div
-                        style="padding-bottom:60px; background:url('https://simplifytumbledry.in/assets/emailer/before_after/bg-image.png')  no-repeat  bottom center; margin :0 auto; width:80%">
-                        <table align="center" border:"0" style=" background:#fff;padding:3%; margin:0px;" width="98%">
+                <tr>
+                    <td align="center" style="padding-top:15px; position:relative;">
 
-                            <tbody>
-                                <tr>
-                                    <td style="padding-right:10px;">
-                                        <img width="100%"
-                                            src="https://swatinfosystems.com/upload/<?php echo $image['picture']; ?>"
-                                            alt="">
-                                    </td>
-                                    <td style="padding-left:10px;">
-                                        <img width="100%"
-                                            src="https://swatinfosystems.com/upload/<?php echo $image['picture_new']; ?>"
-                                            alt="">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </td>
-            </tr>
+                        <div
+                            style="background:url('https://simplifytumbledry.in/assets/emailer/before_after/<?php echo $i == 0 ? 'first_row_bg.png' : 'bg-image.png' ?>') no-repeat bottom center; margin :0 auto; width:564px; height:<?php echo $i == 0 ? '372px' : '332px' ?>';">
+                            <div style="<?php echo $i == 0 ? 'padding:50px' : 'padding:0px 50px 50px 50px' ?>">
+                                <table align="center" border:"0" width="98%">
 
-            <?php $i++; } ?>
+                                    <tbody>
+                                        <tr>
+                                            <td align="left" style="<?php echo $i == 0 ? '' : 'padding-top:15px;' ?>">
+
+                                                <img width="217" height="270"
+                                                    src="https://swatinfosystems.com/upload/<?php echo $image['picture']; ?>"
+                                                    alt="" style="object-fit: contain;">
+                                            </td>
+                                            <td align="right" style="<?php echo $i == 0 ? '' : 'padding-top:15px;' ?>">
+                                                <img width="217" height="270" style="object-fit: contain;"
+                                                    src="https://swatinfosystems.com/upload/<?php echo $image['picture_new']; ?>"
+                                                    alt="">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <?php $i++;
+            } ?>
 
 
 
@@ -64,39 +64,16 @@
 
             <tr>
                 <td align="center" style=" padding:50px 0;">
-                    <table align="center" border="0" cellpadding="20" cellspacing="0" width="80%"
-                        style="border-radius:5px;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
+                    <table align="center" border="0" cellpadding="20" cellspacing="0" width="80%">
                         <tbody>
 
 
                             <tr>
                                 <td> <a href="#" target="_blank"><img
-                                            src="https://simplifytumbledry.in/assets/emailer/before_after/icon_01.png"
+                                            src="https://simplifytumbledry.in/assets/emailer/before_after/services.png"
                                             width="100%" alt=""></a>
                                 </td>
 
-                                <td> <a href="#" target="_blank"><img
-                                            src="https://simplifytumbledry.in/assets/emailer/before_after/icon_02.png"
-                                            width="100%" alt=""></a>
-                                </td>
-
-                                <td> <a href="#" target="_blank"><img
-                                            src="https://simplifytumbledry.in/assets/emailer/before_after/icon_03.png"
-                                            width="100%" alt=""></a>
-                                </td>
-                                <td> <a href="#" target="_blank"><img
-                                            src="https://simplifytumbledry.in/assets/emailer/before_after/icon_04.png"
-                                            width="100%" alt=""></a>
-                                </td>
-                                <td> <a href="#" target="_blank"><img
-                                            src="https://simplifytumbledry.in/assets/emailer/before_after/icon_05.png"
-                                            width="100%" alt=""></a>
-                                </td>
-
-                                <td> <a href="#" target="_blank"><img
-                                            src="https://simplifytumbledry.in/assets/emailer/before_after/icon_06.png"
-                                            width="100%" alt=""></a>
-                                </td>
 
 
                             </tr>
