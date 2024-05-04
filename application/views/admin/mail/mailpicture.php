@@ -15,7 +15,7 @@
 
             <?php
             $i = 0;
-            $imagesData = array(array('picture' => '6633314e61358.jpg', 'picture_new' => '6633314e61358.jpg'), array('picture' => '6633314e61358.jpg', 'picture_new' => '6633314e61358.jpg'));
+            //$imagesData = array(array('picture' => '6633314e61358.jpg', 'picture_new' => '6633314e61358.jpg'), array('picture' => '6633314e61358.jpg', 'picture_new' => '6633314e61358.jpg'));
             foreach ($imagesData as $image) {
 
                 if (!$image['picture_new'])
