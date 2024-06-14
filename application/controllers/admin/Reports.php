@@ -1280,11 +1280,12 @@ class Reports extends CI_Controller
 
             // Add a recipient
             $mail->addAddress('Akash.patel@tumbledry.in');
+            $mail->addCC('anuj18.9999@gmail.com');
             //$mail->addCC('Gaurav.Nigam@tumbledry.in');
             //$mail->addAddress('iqbal.alam59@gmail.com');
             //$mail->addCC('Akash.patel@tumbledry.in');
             $mail->addBCC('iqbal.alam59@gmail.com');
-            //$mail->addCC('Romigaurav@gmail.com');
+            $mail->addCC('Romigaurav@gmail.com');
 
 
             // Email subject
