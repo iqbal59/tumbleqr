@@ -118,9 +118,9 @@ class Mailsend extends CI_Controller
         // if ($this->input->server('REQUEST_METHOD') === 'GET' && $this->input->get('store_id') && $this->input->get('order_no')) {
         if ($store_id != null && $order_no != null) {
 
-            //$content = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/imagemailcontent?store_id=' . $store_id . '&order_no=' . $order_no);
+            $content = file_get_contents('https://centuryfasteners.in/tumbleqr/admin/mailsend/imagemailcontent?store_id=' . $store_id . '&order_no=' . $order_no);
 
-            $content = "Testing email by iqbal";
+            //$content = "Testing email by iqbal";
             if (!$content) {
                 return;
             }
@@ -139,29 +139,29 @@ class Mailsend extends CI_Controller
             // $mail->SMTPSecure = 'ssl';
             // $mail->Port = 465;
 
-            // $mail->Host = 'smtp.office365.com';
-            // $mail->SMTPAuth = true;
-            // $mail->Username = 'mis2@tumbledry.in';
-            // $mail->Password = 'Dag79650';
-            // $mail->SMTPSecure = 'tls';
-            // $mail->Port = 587;
-
-            $mail->SMTPDebug = 2;
             $mail->Host = 'smtp.office365.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'support@mailyellowpages.ae';
-            $mail->Password = '#TF@12346#';
+            $mail->Username = 'mis2@tumbledry.in';
+            $mail->Password = 'Dag79650';
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
+
+            // $mail->SMTPDebug = 2;
+            // $mail->Host = 'smtp.office365.com';
+            // $mail->SMTPAuth = true;
+            // $mail->Username = 'support@mailyellowpages.ae';
+            // $mail->Password = '#TF@12346#';
+            // $mail->SMTPSecure = 'tls';
+            // $mail->Port = 587;
 
             $mail->setFrom('support@mailyellowpages.ae', 'YellowPages');
             $mail->addReplyTo('support@mailyellowpages.ae', 'YellowPages');
 
             // Add a recipient
             $mail->addAddress('iqbal.alam59@gmail.com');
-            $mail->addCC('dd.divakar@sakshemit.com');
 
-            // $mail->addCC('anuj18.9999@gmail.com');
+
+            //$mail->addCC('anuj18.9999@gmail.com');
             // $mail->addCC('iqbal.alam59@gmail.com');
             // $mail->addCC('tech@tumbledry.in');
             // $mail->addCC('Romigaurav@gmail.com');
