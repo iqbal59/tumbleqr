@@ -154,8 +154,8 @@ class Mailsend extends CI_Controller
             // $mail->SMTPSecure = 'tls';
             // $mail->Port = 587;
 
-            $mail->setFrom('support@mailyellowpages.ae', 'YellowPages');
-            $mail->addReplyTo('support@mailyellowpages.ae', 'YellowPages');
+            $mail->setFrom('mis2@tumbledry.in', 'tumbledry');
+            $mail->addReplyTo('mis2@tumbledry.in', 'tumbledry');
 
             // Add a recipient
             $mail->addAddress('iqbal.alam59@gmail.com');
